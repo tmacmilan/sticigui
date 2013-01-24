@@ -3766,13 +3766,19 @@ function expPdf(lambda, x) {  // exponential density
 
 
 function factorial(n) { // computes n!
-    var fac=1;
-    for (var i=n; i > 1; i--) {fac *= i;}
+    if (n != Math.floor(n)) {
+      fac = Math.NaN;
+    } else {
+      var fac=1;
+      for (var i=n; i > 1; i--) {fac *= i;}
+    }
     return(Math.round(fac));
 }
 
 function binomialCoef(n,k) { // computes n choose k
-    if (n < k || n < 0) {
+    if (n != Math.floor(n) || k != Math.floor(k)) {
+        return(Math.NaN);
+    } else if (n < k || n < 0) {
         return(0.0);
     } else if ( k == 0 || n == 0 || n == k) {
         return(1.0);
@@ -4018,10 +4024,13 @@ function pDieRolls(rolls,spots) { // chance that the sum of 'rolls' rolls of a d
 }
 
 function permutations(n,k) { // number of permutations of k of n things
-    if (n < k || n < 0) {
-        return(0);
+    var coef;
+    if ((Math.floor(n) != n ) || (Math.floor(k) != k)) {
+        coef = Math.NaN;
+    } else if (n < k || n < 0) {
+        coef = 0;
     } else if ( k==0 || n == 0) {
-        return(1);
+        coef = 1;
     } else {
         var coef=1;
         for (var j=0; j < k; j++) coef *= (n-j);

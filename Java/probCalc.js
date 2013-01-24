@@ -43,9 +43,6 @@ function probCalc(container_id, params) {
     function init() {
         var me = $('<div />').addClass('probCalc');
         self.container.append(me);
-        // display
-        self.theDisplay = $('<input type="text" readonly />').attr('size',self.options['digits']);
-        me.append(self.theDisplay);
         // distribution selection
         self.selectDist = $('<select />').change(function() {
               alert($(this).val());
@@ -63,6 +60,9 @@ function probCalc(container_id, params) {
                });
         })
         self.distDiv.append(self.distDivs[self.options['distributions'][0][0]]);
+        // display
+        self.theDisplay = $('<input type="text" readonly />').attr('size',self.options['digits']);
+        me.append(self.theDisplay);
     }
     init();
 

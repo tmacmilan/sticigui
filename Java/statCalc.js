@@ -135,7 +135,7 @@ function statCalc(container_id, params) {
                case 'bin':
                    if (self.inProgress) {
                         self.x = doBinaryOp(self.x, self.currentOp, t);
-                        self.theDisplay.val(self.x);
+                        self.theDisplay.val(self.x.toString());
                    } else {
                         self.x = t;
                         self.theDisplay.val('?');
@@ -147,7 +147,7 @@ function statCalc(container_id, params) {
                case 'eq':
                    if (self.inProgress) {
                         self.x = doBinaryOp(self.x, self.currentOp, t);
-                        self.theDisplay.val(self.x);
+                        self.theDisplay.val(self.x.toString());
                         self.inProgress = false;
                         self.currentOp = null;
                    }
@@ -182,15 +182,16 @@ function statCalc(container_id, params) {
                      res = parseFloat(x)^parseFloat(y);
                      break;
                  case 'nCk':
-                     res = binomialCoef(parseInt(x), parseInt(y));
+                     res = binomialCoef(parseFloat(x), parseFloat(y));
                      break;
                  case 'nPk':
-                     res = permutations(parseInt(x), parseInt(y));
+                     res = permutations(parseFloat(x), parseFloat(y));
                      break;
                  default:
                      console.log('unexpected binary function in statCalc ' + op);
               }
-        } catch(e) {}
+        } catch(e) {
+        }
         return(res);
     }
 
