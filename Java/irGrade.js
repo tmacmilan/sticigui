@@ -2019,7 +2019,7 @@ function writeChapterNav(relPath) {
                    'target="_top">Assignments</a></li>' +
                 '<li><a href="javascript:void(0)" title="calculator applet" onClick="calcWin = ' +
                    'window.open(\''
-                             + relPath + '/../Java/Html/StatCalc.htm\',\'calcWin\',' +
+                             + relPath + '/../Java/Html/SimpleStatCalc.htm\',\'calcWin\',' +
                    '\'toolbar=no,location=no,directories=no,status=no,' +
                    'scrollbars=yes,resizable=yes,width=320,height=200,top=0,left=0\');"> ' +
                    'Calculator</a></li>' +
