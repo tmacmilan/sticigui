@@ -48,16 +48,21 @@ function probCalc(container_id, params) {
         me.append(self.theDisplay);
         // distribution selection
         self.selectDist = $('<select />').change(function() {
-              changeDist($(this).text());
+              alert($(this).val());
+              changeDist($(this).val());
         });
-        $.each(self.options['distributions'], function(i, v) {
-               $('<option/>', { value : v[0] }).text(v[0]).appendTo(self.selectDist);
-               self.distDivs[v[0]] = $('<div />').html('<p>'+v[1].join(',') + '</p>');
-        })
         me.append(self.selectDist);
         self.distDiv = $('<div />').addClass('distDiv');
-        self.distDiv.append(self.distDivs[self.options['distributions'][0]]);
         me.append(self.distDiv);
+        $.each(self.options['distributions'], function(i, v) {
+               $('<option/>', { value : v[0] }).text(v[0]).appendTo(self.selectDist);
+               self.distDivs[v[0]] = $('<div />');
+               $.each(v[1], function(j, parm) {
+                     self.distDivs[v[0]].append('<input type="text" readonly />').attr('size','parmDigits');
+                     self.distDivs[v[0]].after(parm);
+               });
+        })
+        self.distDiv.append(self.distDivs[self.options['distributions'][0][0]]);
     }
     init();
 

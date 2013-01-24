@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/1/23/2008'; // modification date and time
+var irGradeModTime = '2013/1/24/1208'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -3768,7 +3768,7 @@ function expPdf(lambda, x) {  // exponential density
 function factorial(n) { // computes n!
     var fac=1;
     for (var i=n; i > 1; i--) {fac *= i;}
-    return(fac);
+    return(Math.round(fac));
 }
 
 function binomialCoef(n,k) { // computes n choose k
@@ -3782,7 +3782,7 @@ function binomialCoef(n,k) { // computes n choose k
         for (var j = 0; j < minnk; j++) {
             coef *= (n-j)/(minnk-j);
         }
-        return(coef);
+        return(Math.round(coef));
     }
 }
 
@@ -3853,7 +3853,7 @@ function multinomialCoef(list, n) { // multinomial coefficient.
             val /= factorial(list[i]);
         }
     }
-    return(val);
+    return(Math.round(val));
 }
 
 function multinomialPmf(olist, plist, n) { // multinomial pmf; not stable algorithm
@@ -4026,7 +4026,7 @@ function permutations(n,k) { // number of permutations of k of n things
         var coef=1;
         for (var j=0; j < k; j++) coef *= (n-j);
     }
-    return(coef);
+    return(Math.round(coef));
 }
 
 
