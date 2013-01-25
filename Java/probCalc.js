@@ -29,7 +29,8 @@ function probCalc(container_id, params) {
                                      ["Exponential", ["mean"]],
                                      ["Poisson", ["mean"]]
                                    ],
-                    digits: 20
+                    digits: 20,
+                    paramDigits: 4
     };
 
 // Extend options
@@ -43,26 +44,46 @@ function probCalc(container_id, params) {
     function init() {
         var me = $('<div />').addClass('probCalc');
         self.container.append(me);
+ 
         // distribution selection
+        self.selectDiv = $('<div />').addClass('selectDiv').append('If X has a ');
         self.selectDist = $('<select />').change(function() {
-              alert($(this).val());
               changeDist($(this).val());
         });
-        me.append(self.selectDist);
-        self.distDiv = $('<div />').addClass('distDiv');
-        me.append(self.distDiv);
+
+        // parameters of the distributions
         $.each(self.options['distributions'], function(i, v) {
                $('<option/>', { value : v[0] }).text(v[0]).appendTo(self.selectDist);
-               self.distDivs[v[0]] = $('<div />');
+               self.distDivs[v[0]] = $('<div />').css('display','inline');
                $.each(v[1], function(j, parm) {
-                     self.distDivs[v[0]].append('<input type="text" readonly />').attr('size','parmDigits');
-                     self.distDivs[v[0]].after(parm);
+                     self.distDivs[v[0]].append(parm + ' = ')
+                                        .append($('<input type="text" />').attr('size','paramDigits'))
+                                        .append(', ');
                });
         })
-        self.distDiv.append(self.distDivs[self.options['distributions'][0][0]]);
+ 
+         self.paramSpan = $('<span />').addClass('paramSpan');
+         self.selectDiv.append(self.selectDist)
+                      .append('distribution, with parameters ')
+                      .append(self.paramSpan);
+       
+        // start with the first listed distribution
+        self.paramSpan.append(self.distDivs[self.options['distributions'][0][0]]);
+
+        // range over which to find the probability
+        self.selectDiv.append(' the chance that ')
+                      .append($('<input type="checkbox">').css('id','useLower').click(calcProb))
+                      .append('X &ge;')
+                      .append($('<input type="text" />').attr('size',self.options['digits']).val("0"))
+                      .append($('<input type="checkbox">').css('id','useUpper').click(calcProb))
+                      .append('and X &le;')
+                      .append($('<input type="text" />').attr('size',self.options['digits']).val("0"))
+                      .append(' is ');
+
         // display
         self.theDisplay = $('<input type="text" readonly />').attr('size',self.options['digits']);
-        me.append(self.theDisplay);
+        self.selectDiv.append(self.theDisplay);
+        me.append(self.selectDiv);
     }
     init();
 
@@ -70,8 +91,14 @@ function probCalc(container_id, params) {
 
     function changeDist(dist) {
         self.currDist = dist;
-        self.distDiv.empty();
-        self.distDiv.append(self.distDivs[dist]);
+        self.paramSpan.empty();
+        var inx = $.grep(self.options['distributions'], function(i,v) {
+                if(v[0] === dist) {
+                  return(v);
+                }
+        });
+        alert(inx);
+        self.paramSpan.append(self.distDivs[inx[0]]);  // replace with parameters for current distribution
         calcProb();
     }
 
