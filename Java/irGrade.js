@@ -1079,7 +1079,7 @@ function getGrades(theForm) {
         $('#scores').html('<p class="center">Retrieving scores for SID ' +
                                                        mySID + '<blink>&hellip;</blink></p>');
         scoresURL = scoreBase + 'class=' + course + '&teacher=' + teacher + '&gpath=' + gPath + '&sids';
-        var reg = new RegExp('/^\s+' + mySID + '\s+/', 'gi');
+        var reg = new RegExp('/\s*' + mySID + '\s*/', 'gi');
         getURL = $.ajax({
                           type: 'GET',
                           url:   scoresURL
@@ -1091,7 +1091,7 @@ function getGrades(theForm) {
                             $.each(rt, function(i, r) {
                                   if (!r.match('#') && (r.match(mySID.toString()) || r.match('Set'))) {
                                       row = $('<tr />');
-                                      $.each(r.replace(/ +/gm,' ').replace(/^\s+SID\s+/gi,'').replace(reg,'').split(' '), function(j, el) {
+                                      $.each(r.replace(/ +/gm,' ').replace(/^\s*SID\s*/gi,'').replace(reg,'').split(' '), function(j, el) {
                                            $('<td />' ).html(el).appendTo(row);
                                       });
                                       row.appendTo(scTab);

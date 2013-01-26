@@ -101,38 +101,33 @@ function probCalc(container_id, params) {
     }
 
     function calcProb() {
-        var loLim = self.selectDiv.find('.useLower').prop('checked') ? 
-                      parseInt(self.selectDiv.find('.loLim').val()) : false;
-        var hiLim = self.selectDiv.find('.useUpper').prop('checked') ? 
-                      parseInt(self.selectDiv.find('.hiLim').val()) : false;
-        var prob = Number.NaN;
+        var loCk  = self.selectDiv.find('.useLower').prop('checked');
+        var loLim = loCk ? parseInt(self.selectDiv.find('.loLim').val()) : Number.NaN;
+        var hiCk  = self.selectDiv.find('.useUpper').prop('checked');
+        var hiLim = hiCk ? parseInt(self.selectDiv.find('.hiLim').val()) : Number.NaN;
+        var prob  = Number.NaN;
 
         switch(self.currDist) {
              case "Binomial":
                 var n = self.distDivs[self.currDist].find('.n').val();
                 var p = self.distDivs[self.currDist].find('.p').val();
-                alert(binomialCdf(n, p, hiLim));
-                var t = hiLim ? binomialCdf(n, p, hiLim) : 1.0;
-                var b = loLim ? binomialCdf(n, p, loLim) : 0.0;
+                var t = hiCk ? binomialCdf(n, p, hiLim) : 1.0;
+                var b = loCk ? binomialCdf(n, p, loLim-1) : 0.0;
                 prob = t - b;
-                if (loLim) {
-                   alert('loLim is true');
-                }
-                alert('hiLim, loLim, p, n, t, b, prob ' + hiLim + ' ' + loLim + ' ' + n + ' ' + p + ' ' + t + ' ' + b + ' ' + prob);
                 break;
 
              case "Geometric":
                 var p = self.distDivs[self.currDist].find('.p').val();
-                var t = hiLim ? geoCdf(p, hiLim) : 1.0;
-                var b = loLim ? geoCdf(p, loLim) : 0.0;
+                var t = hiCk ? geoCdf(p, hiLim) : 1.0;
+                var b = loCk ? geoCdf(p, loLim-1) : 0.0;
                 prob = t - b;
                 break;
 
              case "Negative Binomial":
                 var p = self.distDivs[self.currDist].find('.p').val();
                 var r = self.distDivs[self.currDist].find('.r').val();
-                var t = hiLim ? negBinomialCdf( p,  r, hiLim) : 1.0;
-                var b = loLim ? negBinomialCdf( p,  r, loLim) : 0.0;
+                var t = hiCk ? negBinomialCdf( p,  r, hiLim) : 1.0;
+                var b = loCk ? negBinomialCdf( p,  r, loLim-1) : 0.0;
                 prob = t - b;
                 break;
 /*
