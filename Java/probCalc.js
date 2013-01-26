@@ -62,8 +62,8 @@ function probCalc(container_id, params) {
                });
         })
  
-         self.paramSpan = $('<span />').addClass('paramSpan');
-         self.selectDiv.append(self.selectDist)
+        self.paramSpan = $('<span />').addClass('paramSpan');
+        self.selectDiv.append(self.selectDist)
                       .append('distribution with ')
                       .append(self.paramSpan);
        
@@ -101,21 +101,24 @@ function probCalc(container_id, params) {
     }
 
     function calcProb() {
-      alert(self.selectDiv.children());
-        var loLim = self.selectDiv.children().find('.useLower').prop('checked') ? 
-                      parseInt(self.selectDiv.children().find('.loLim').val()) : false;
-        var hiLim = self.selectDiv.children().find('.useUpper').prop('checked') ? 
-                      parseInt(self.selectDiv.children().find('.hiLim').val()) : false;
+        var loLim = self.selectDiv.find('.useLower').prop('checked') ? 
+                      parseInt(self.selectDiv.find('.loLim').val()) : false;
+        var hiLim = self.selectDiv.find('.useUpper').prop('checked') ? 
+                      parseInt(self.selectDiv.find('.hiLim').val()) : false;
         var prob = Number.NaN;
 
-        alert('lo, hi: ' + loLim + ' ' + hiLim)
         switch(self.currDist) {
              case "Binomial":
-                var n = self.distDivs[self.currDist].children().find('.n').val();
-                var p = self.distDivs[self.currDist].children().find('.p').val();
+                var n = self.distDivs[self.currDist].find('.n').val();
+                var p = self.distDivs[self.currDist].find('.p').val();
+                alert(binomialCdf(n, p, hiLim));
                 var t = hiLim ? binomialCdf(n, p, hiLim) : 1.0;
                 var b = loLim ? binomialCdf(n, p, loLim) : 0.0;
                 prob = t - b;
+                if (loLim) {
+                   alert('loLim is true');
+                }
+                alert('hiLim, loLim, p, n, t, b, prob ' + hiLim + ' ' + loLim + ' ' + n + ' ' + p + ' ' + t + ' ' + b + ' ' + prob);
                 break;
 
              case "Geometric":
