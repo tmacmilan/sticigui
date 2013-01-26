@@ -124,14 +124,16 @@ function probCalc(container_id, params) {
         var hiCk  = self.selectDiv.find('.useUpper').prop('checked');
         var hiLim = hiCk ? parseFloat(self.selectDiv.find('.hiLim').val()) : Number.NaN;
 
-console.log($.each(self.distDivs[self.currDist].find(':input').val().trim(), function(i, v) {return(v)}));
+        var allParamsDefined = true;
+        $.each(self.distDivs[self.currDist].find(':input'), function(i, v) {
+               if (v.value.trim().length == 0) {
+                   allParamsDefined = false;
+               }
+        });
 
-        if (loCk && hiCk && (loLim >= hiLim)) {
+        if (loCk && hiCk && (loLim > hiLim)) {
               prob = 0.0;
-        } else if (!loCk && !hiCk) {
-              prob = Number.NaN;
-        } else if (vMinMax(self.distDivs[self.currDist].find(':input').val().trim().length)[0] < 1) {
-              // test whether all parameters are defined
+        } else if ((!loCk && !hiCk) || !allParamsDefined) {
               prob = Number.NaN;
         } else {
 
@@ -208,7 +210,7 @@ console.log($.each(self.distDivs[self.currDist].find(':input').val().trim(), fun
                       console.log('unexpected distribution in probCalc.calcProb ' + dist);
               }
         }
-        self.theDisplay.val(prob.toFixed(self.digits));
+        self.theDisplay.val(prob.toFixed(self.options['digits']));
     }
 
 }
