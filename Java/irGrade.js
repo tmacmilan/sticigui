@@ -3636,7 +3636,8 @@ function betaGuts( x, a, b) { // guts of the incomplete beta function
 }
 
 function chi2Cdf( x, df ) {
-    return(gammaCdf(x,df/2,2));
+    var p =  (df == Math.floor(df)) ? gammaCdf(x,df/2,2) : Number.NaN;
+    return(p);
 }
 
 function chi2Inv( p, df ) { // kluge for chi-square quantile function.

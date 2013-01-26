@@ -39,7 +39,7 @@ function probCalc(container_id, params) {
                                      ["Exponential", ["mean"]],
                                      ["Poisson", ["mean"]]
                                    ],
-                    digits: 20,
+                    digits: 10,
                     paramDigits: 4
     };
 
@@ -118,14 +118,20 @@ function probCalc(container_id, params) {
     function calcProb() {
         var prob  = Number.NaN;
 
+        // get range over which to compute the probability
         var loCk  = self.selectDiv.find('.useLower').prop('checked');
-        var loLim = loCk ? parseInt(self.selectDiv.find('.loLim').val()) : Number.NaN;
+        var loLim = loCk ? parseFloat(self.selectDiv.find('.loLim').val()) : Number.NaN;
         var hiCk  = self.selectDiv.find('.useUpper').prop('checked');
-        var hiLim = hiCk ? parseInt(self.selectDiv.find('.hiLim').val()) : Number.NaN;
+        var hiLim = hiCk ? parseFloat(self.selectDiv.find('.hiLim').val()) : Number.NaN;
+
+console.log($.each(self.distDivs[self.currDist].find(':input').val().trim(), function(i, v) {return(v)}));
 
         if (loCk && hiCk && (loLim >= hiLim)) {
               prob = 0.0;
         } else if (!loCk && !hiCk) {
+              prob = Number.NaN;
+        } else if (vMinMax(self.distDivs[self.currDist].find(':input').val().trim().length)[0] < 1) {
+              // test whether all parameters are defined
               prob = Number.NaN;
         } else {
 
@@ -165,8 +171,8 @@ function probCalc(container_id, params) {
                    case "Normal":
                       var m = parseFloat(self.distDivs[self.currDist].find('.mean').val());
                       var s = parseFloat(self.distDivs[self.currDist].find('.SD').val());
-                      var t = hiCk ? normCdf(m, s, hiLim) : 1.0;
-                      var b = loCk ? normCdf(m, s, loLim) : 0.0;
+                      var t = hiCk ? normCdf((hiLim-m)/s) : 1.0;
+                      var b = loCk ? normCdf((loLim-m)/s) : 0.0;
                       prob = t - b;
                       break;
 
@@ -202,7 +208,7 @@ function probCalc(container_id, params) {
                       console.log('unexpected distribution in probCalc.calcProb ' + dist);
               }
         }
-        self.theDisplay.val(prob.toString());
+        self.theDisplay.val(prob.toFixed(self.digits));
     }
 
 }
