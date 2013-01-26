@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/1/24/1208'; // modification date and time
+var irGradeModTime = '2013/1/25/1408'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -2585,7 +2585,7 @@ function roundToDig(num, dig) { // rounds a number or list to dig digits after t
         return(fmt);
     } else {
         alert('Error #1 in irGrade.roundToDig(): argument (' + num.toString() + ') is not a number or an array');
-        return(Math.NaN);
+        return(Number.NaN);
     }
 }
 
@@ -2749,7 +2749,7 @@ function vScalarSum(list, scalar) { // adds the scalar to every component of the
 function vVectorSum(list1, list2) { // vector addition
     if (list1.length != list2.length) {
         alert('Error #1 in irGrade.vVectorSum: vector lengths are not equal');
-        return(Math.NaN);
+        return(Number.NaN);
     } else {
         var vs = new Array(length(list1));
         for (var i =0; i < list1.length; i++) {
@@ -2760,7 +2760,7 @@ function vVectorSum(list1, list2) { // vector addition
 }
 
 function vPointwiseMult(list1, list2) { // componentwise multiplication of two vectors
-    var list3 = Math.NaN;
+    var list3 = Number.NaN;
     if (list1.length != list2.length) {
         alert('Error #1 in irGrade.vPointwiseMult: vector lengths do not match!');
     } else {
@@ -2935,7 +2935,7 @@ function corr(list1, list2) {
 // computes the correlation coefficient of list1 and list2
     if (list1.length != list2.length) {
         alert('Error #1 in irGrade.corr(): lists have different lengths!');
-        return(Math.NaN);
+        return(Number.NaN);
     } else {
         var ave1 = mean(list1);
         var ave2 = mean(list2);
@@ -2993,7 +2993,7 @@ function histEstimatedPercentile(pct, binEnd, counts) {  // estimates the pth pe
         var p = pct/100.0;
         var pctile;
         if (p > 1.0) {
-            pctile = Math.NaN;
+            pctile = Number.NaN;
         } else if (p == 1.0) {
             pctile = binEnd[nBins];
         } else {
@@ -3365,7 +3365,7 @@ function erfInv(y) {
 
 function betaCdf( x,  a,  b) {
    if (a <= 0 || b <= 0) {
-      return(Math.NaN);
+      return(Number.NaN);
    } else if (x >= 1) {
       return(1.0);
    } else if ( x > 0.0) {
@@ -3377,7 +3377,7 @@ function betaCdf( x,  a,  b) {
 
 function betaPdf( x,  a,  b) {
     if (a <= 0 || b <= 0 || x < 0 || x > 1) {
-        return(Math.NaN);
+        return(Number.NaN);
     } else if ((x == 0 && a < 1) || (x == 2 && b < 1)) {
         return(Math.POSITIVE_INFINITY);
     } else if (!(a <= 0 || b <= 0 || x <= 0 || x >= 1)) {
@@ -3393,7 +3393,7 @@ function lnBeta( x, y) {
 
 function betaInv( p,  a,  b) {
     if (p < 0 || p > 1 || a <= 0 || b <= 0) {
-        return(Math.NaN);
+        return(Number.NaN);
     } else if ( p == 0 ) {
         return(Math.NEGATIVE_INFINITY);
     } else if ( p == 1) {
@@ -3479,7 +3479,7 @@ function lnGamma(x) {
           -2.777777777777681622553e-03, 8.333333333333333331554247e-02,
            5.7083835261e-03];
 
-     var lng = Math.NaN;
+     var lng = Number.NaN;
      var mach = 1.e-12;
      var den = 1.0;
      var num = 0;
@@ -3548,7 +3548,7 @@ function normPdf( mu,  sigma, x) {
 function tCdf(df, x) { // cdf of Student's t distribution with df degrees of freedom
     var ans;
     if (df < 1) {
-        ans = Math.NaN;
+        ans = Number.NaN;
     } else if (x == 0.0) {
         ans = 0.5;
     } else if (df == 1) {
@@ -3565,7 +3565,7 @@ function tInv(p, df ) { // inverse Student-t distribution with
                                               // df degrees of freedom
     var z;
     if (df < 0 || p < 0) {
-        return(Math.NaN);
+        return(Number.NaN);
     } else if (p == 0) {
         return(Math.NEGATIVE_INFINITY);
     } else if (p == 1) {
@@ -3586,7 +3586,7 @@ function incBeta(x, a, b) { // incomplete beta function
        // Ref: Abramowitz & Stegun, Handbook of Mathemtical Functions, sec. 26.5.
     var res;
     if (x < 0 || x > 1) {
-        res = Math.NaN;
+        res = Number.NaN;
     } else {
         res = 0;
         var bt = Math.exp(lnGamma(a+b) - lnGamma(a) - lnGamma(b) +
@@ -3639,13 +3639,13 @@ function chi2Cdf( x, df ) {
 }
 
 function chi2Inv( p, df ) { // kluge for chi-square quantile function.
-    var guess = Math.NaN;
+    var guess = Number.NaN;
     if (p == 0.0) {
         guess = 0.0;
     } else if ( p == 1.0 ) {
         guess = Math.POSITIVE_INFINITY;
     } else if ( p < 0.0 ) {
-        guess = Math.NaN;
+        guess = Number.NaN;
     } else {
         var tolAbs = 1.0e-8;
         var tolRel = 1.0e-3;
@@ -3679,7 +3679,7 @@ function chi2Inv( p, df ) { // kluge for chi-square quantile function.
 }
 
 function gammaCdf( x,  a,  b) { // gamma distribution CDF.
-    var p = Math.NaN;
+    var p = Number.NaN;
     if (a <= 0 || b <= 0) {
     } else if (x <= 0) {
         p = 0.0;
@@ -3767,7 +3767,7 @@ function expPdf(lambda, x) {  // exponential density
 
 function factorial(n) { // computes n!
     if (n != Math.floor(n)) {
-      fac = Math.NaN;
+      fac = Number.NaN;
     } else {
       var fac=1;
       for (var i=n; i > 1; i--) {fac *= i;}
@@ -3777,7 +3777,7 @@ function factorial(n) { // computes n!
 
 function binomialCoef(n,k) { // computes n choose k
     if (n != Math.floor(n) || k != Math.floor(k)) {
-        return(Math.NaN);
+        return(Number.NaN);
     } else if (n < k || n < 0) {
         return(0.0);
     } else if ( k == 0 || n == 0 || n == k) {
@@ -3914,7 +3914,7 @@ function geoTail( p,  k) {
 function geoInv(p, pt) { // geometric percentile function
     var t = 0;
     if (pt < 0 || pt > 1) {
-        t = Math.NaN;
+        t = Number.NaN;
     } else if (pt == 0.0) {
         t = 0;
     } else if (pt == 1.0) {
@@ -3986,7 +3986,7 @@ function negBinomialCdf( p,  s,  t) {
 function pDieRolls(rolls,spots) { // chance that the sum of 'rolls' rolls of a die = 'spots'
     if (rolls > 4) {
         alert('Error #1 in irGrade.pDiceRolls: too many rolls ' + rolls + '. ');
-        return(Math.NaN);
+        return(Number.NaN);
     } else {  // BRUTE FORCE!
         var found = 0;
         if (spots < rolls || spots > 6*rolls) {return(0.0);}
@@ -4026,7 +4026,7 @@ function pDieRolls(rolls,spots) { // chance that the sum of 'rolls' rolls of a d
 function permutations(n,k) { // number of permutations of k of n things
     var coef;
     if ((Math.floor(n) != n ) || (Math.floor(k) != k)) {
-        coef = Math.NaN;
+        coef = Number.NaN;
     } else if (n < k || n < 0) {
         coef = 0;
     } else if ( k==0 || n == 0) {
