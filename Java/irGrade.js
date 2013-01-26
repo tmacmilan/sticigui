@@ -19,7 +19,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Affero General Public License for more details.
-    <http://www.gnu.org/licenses/>.
+    http://www.gnu.org/licenses/
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/1/26/0030'; // modification date and time
+var irGradeModTime = '2013/1/26/1030'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -1079,7 +1079,7 @@ function getGrades(theForm) {
         $('#scores').html('<p class="center">Retrieving scores for SID ' +
                                                        mySID + '<blink>&hellip;</blink></p>');
         scoresURL = scoreBase + 'class=' + course + '&teacher=' + teacher + '&gpath=' + gPath + '&sids';
-        var reg = new RegExp('/\s*' + mySID + '\s*/', 'gi');
+        var reg = new RegExp('\s*' + mySID + '\s*', 'gi');
         getURL = $.ajax({
                           type: 'GET',
                           url:   scoresURL
@@ -3736,8 +3736,12 @@ function incGamma( x,  a) {
 
 function poissonPmf( lambda, k) {  // Poisson probability mass function
     var p = 0.0;
-    if (k >= 0) {
-        p = Math.exp(-lambda)*Math.pow(lambda,k)/factorial(k);
+    if (k != Math.floor(k)) {
+      p = Number.NaN;
+    } else {
+        if (k >= 0) {
+           p = Math.exp(-lambda)*Math.pow(lambda,k)/factorial(k);
+        }
     }
     return(p);
 }
@@ -3746,10 +3750,14 @@ function poissonCdf( lambda, k) {  // Poisson CDF
     var p = 0;
     var b = 0;
     var m = 0;
-    while (m <= k) {
-        b += Math.pow(lambda, m++)/factorial(k);
+    if (k != Math.floor(k)) {
+        p = Number.NaN;
+    } else {
+        while (m <= k) {
+           b += Math.pow(lambda, m++)/factorial(k);
+        }
+        p += Math.exp(-lambda)*b;
     }
-    p += Math.exp(-lambda)*b;
     return(p);
 }
 
@@ -3771,7 +3779,9 @@ function factorial(n) { // computes n!
       fac = Number.NaN;
     } else {
       var fac=1;
-      for (var i=n; i > 1; i--) {fac *= i;}
+      for (var i=n; i > 1; i--) {
+        fac *= i;
+      }
     }
     return(Math.round(fac));
 }
@@ -3891,20 +3901,28 @@ function multinomialPmf(olist, plist, n) { // multinomial pmf; not stable algori
 function geoPmf( p,  k) {
   // chance it takes k trials to the first success in iid Bernoulli(p) trials
   // EX = 1/p; SD(X) = sqrt(1-p)/p
-    if (k < 1 || p == 0.0) {
-        return(0.0);
+    var prob = 0.0;
+    if (k != Math.floor(k)) {
+        prob = Number.NaN;
+    } else if (k < 1 || p == 0.0) {
+        prob = 0.0;
     } else {
-        return(Math.pow((1-p),k-1)*p);
+        prob = Math.pow((1-p),k-1)*p;
     }
+    return(prob);
 }
 
 function geoCdf( p, k) {
   // chance it takes k or fewer trials to the first success in iid Bernoulli(p) trials
-    if (k < 1 || p == 0.0) {
-        return(0.0);
+    var prob = 0.0;
+    if (k != Math.floor(k)) {
+        prob = Number.NaN;
+    } else if (k < 1 || p == 0.0) {
+        prob = 0.0;
     } else {
-        return(1-Math.pow( 1-p, k));
+        prob = 1-Math.pow( 1-p, k);
     }
+    return(prob);
 }
 
 function geoTail( p,  k) {
@@ -3934,23 +3952,29 @@ function hyperGeoPmf( N,  M,  n,  m) {
   // chance of drawing m of M objects in a sample of size n from
   // N objects in all.  p = (M C m)*(N-M C n-m)/(N C n)
   // EX = n*M/N; SD(X)= sqrt((N-n)/(N-1))*sqrt(np(1-p));
-    var p;
-    if ( n < m || N < M || M < m  || m < 0 || N < 0) {
-        return(0.0);
+    var p = 0.0;
+    if (N != Math.floor(N) || M != Math.floor(M) || n != Math.floor(n) || m != Math.floor(m)) {
+        p = Number.NaN;
+    } else if ( n < m || N < M || M < m  || m < 0 || N < 0) {
+        p = 0.0;
     } else {
         p = binomialCoef(M,m)*binomialCoef(N-M,n-m)/binomialCoef(N,n);
-        return(p);
     }
+    return(p);
 }
 
 function hyperGeoCdf( N,  M,  n,  m) {
   // chance of drawing m or fewer of M objects in a sample of size n from
   // N objects in all
     var p=0.0;
-    var mMax = Math.min(m,M);
-    mMax = Math.min(mMax,n);
-    for (var i = 0; i <= mMax; i++) {
-        p += hyperGeoPmf(N, M, n, i);
+    if (N != Math.floor(N) || M != Math.floor(M) || n != Math.floor(n) || m != Math.floor(m)) {
+        p = Number.NaN;
+    } else {
+        var mMax = Math.min(m,M);
+        mMax = Math.min(mMax,n);
+        for (var i = 0; i <= mMax; i++) {
+            p += hyperGeoPmf(N, M, n, i);
+        }
     }
     return(p);
 }
@@ -3959,8 +3983,12 @@ function hyperGeoTail( N,  M,  n,  m) {
   // chance of drawing m or more of M objects in a sample of size n from
   // N objects in all
     var p=0.0;
-    for (var i = m; i <= Math.min(M,n); i++) {
-        p += hyperGeoPmf(N, M, n, i);
+    if (N != Math.floor(N) || M != Math.floor(M) || n != Math.floor(n) || m != Math.floor(m)) {
+        p = Number.NaN;
+    } else {
+        for (var i = m; i <= Math.min(M,n); i++) {
+            p += hyperGeoPmf(N, M, n, i);
+        }
     }
     return(p);
 }
@@ -3968,18 +3996,26 @@ function hyperGeoTail( N,  M,  n,  m) {
 function negBinomialPmf( p,  s,  t) {
   // chance that the sth success in iid Bernoulli trials is on the tth trial
   // EX = s/p; SD(X) = sqrt(s(1-p))/p
-    if (s > t || s < 0) {
-        return(0.0);
+    var prob = 0.0;
+    if (s != Math.floor(s) || t != Math.floor(t)) {
+        prob = Number.NaN;
+    } else if (s > t || s < 0) {
+        prob = 0.0;
+    } else {
+        prob = p*binomialPmf(t-1,p,s-1);
     }
-    var prob = p*binomialPmf(t-1,p,s-1);
     return(prob);
 }
 
 function negBinomialCdf( p,  s,  t) {
   // chance the sth success in iid Bernoulli trials is on or before the tth trial
     var prob = 0.0;
-    for (var i = s; i <= t; i++) {
-        prob += negBinomialPmf(p, s, i);
+    if (s != Math.floor(s) || t != Math.floor(t)) {
+         prob = Number.NaN;
+    } else {
+         for (var i = s; i <= t; i++) {
+             prob += negBinomialPmf(p, s, i);
+         }
     }
     return(prob);
 }
