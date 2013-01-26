@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/1/25/1408'; // modification date and time
+var irGradeModTime = '2013/1/26/0030'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -1079,6 +1079,7 @@ function getGrades(theForm) {
         $('#scores').html('<p class="center">Retrieving scores for SID ' +
                                                        mySID + '<blink>&hellip;</blink></p>');
         scoresURL = scoreBase + 'class=' + course + '&teacher=' + teacher + '&gpath=' + gPath + '&sids';
+        var reg = new RegExp('/^\s+' + mySID + '\s+/', 'gi');
         getURL = $.ajax({
                           type: 'GET',
                           url:   scoresURL
@@ -1090,7 +1091,7 @@ function getGrades(theForm) {
                             $.each(rt, function(i, r) {
                                   if (!r.match('#') && (r.match(mySID.toString()) || r.match('Set'))) {
                                       row = $('<tr />');
-                                      $.each(r.replace(/ +/gm,' ').split(' '), function(j, el) {
+                                      $.each(r.replace(/ +/gm,' ').replace(/^\s+SID\s+/gi,'').replace(reg,'').split(' '), function(j, el) {
                                            $('<td />' ).html(el).appendTo(row);
                                       });
                                       row.appendTo(scTab);
