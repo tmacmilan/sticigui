@@ -34,18 +34,23 @@
 <div class="problem">
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    var qStr = '<span class="qSpan">Roger Federer and Rafa Nadal are ' +
+    var qStr = 'Roger Federer and Rafa Nadal are ' +
                'two of the top-ranked men\'s tennis players.  They have ' +
                'played each other a total of 28 times; Federer won 10 of ' +
                'those, and Nadal won the other 18.  ' +
                'You have no other information about them.  ' +
-               'If you relied upon the Frequency Theory of Probability to ' +
-               'estimate the probability that Federer wins the next ' +
-               'time Federer and Nadal play each other, based upon only '
-               'the information in this problem, what would be your ' +
-               'best estimate of this probability?</span>';
+               'Suppose that when Federer and Nadal play against each other, ' +
+               'who wins is determined at random, as if by the toss of ' +
+               'a biased coin: if the coin lands &quot;heads,&quot; Federer wins and ' +
+               'if the coin lands &quot;tails,&quot; Nadal wins. Moreover, ' +
+               'assume that every time they play, the ' +
+               'chance Federer wins is the same. <span class="qSpan">Based upon only ' +
+               'the information in this problem, what is your ' +
+               'best estimate of the probability that Federer wins the next ' +
+               'time he and Nadal play against each other?  That is, what is your ' +
+               'best estimate of the chance that the hypothetical coin lands heads?</span>';
     document.writeln(qStr);
-    writeTextExercise(80,qCtr++,'');
+    writeTextExercise(10,qCtr++,numToRange(10/28));
     document.writeln('</p>');
 // -->
 </script>
@@ -59,9 +64,10 @@
                '(Probability of one pair in a five-card hand) ' +
                'from the SticiGui chapter on the Meaning of Probability, ' +
                'what theory of probability is the calculation implicitly ' +
-               'relying upon?  Why?</span>';
+               'relying upon?  What is the justification for relying on that ' +
+               'theory in this case?</span>';
     document.writeln(qStr);
-    writeTextExercise(160,qCtr++,'');
+    writeAreaExercise(3,50,qCtr++,'?');
     document.writeln('</p>');
 // -->
 </script>
@@ -71,9 +77,12 @@
 <div class="problem">
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    var qStr = '<span class="qSpan">What did you find difficult or confusing about the reading or the lectures, and what would you most like to see explained better? If nothing was difficult or confusing, and you understand the material pretty well, tell us what you found most interesting. Please be as specific as possible.</span>';
+    var qStr = '<span class="qSpan">What did you find difficult or confusing about the reading ' +
+               'or the lectures, and what would you most like to see explained better? If nothing was ' +
+               'difficult or confusing, and you understand the material pretty well, tell us what you ' +
+               'found most interesting. Please be as specific as possible.</span>';
     document.writeln(qStr);
-    writeTextExercise(800,qCtr++,'');
+    writeAreaExercise(20,50,qCtr++,'?');
     document.writeln('</p>');
 // -->
 </script>

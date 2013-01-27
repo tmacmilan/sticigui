@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/1/26/1030'; // modification date and time
+var irGradeModTime = '2013/1/27/1030'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -815,6 +815,32 @@ function qCheckString(q) {
    return(s);
 }
 
+function areaExercise(rows,cols,q,ca) {
+  // text input area of "size" size, id q, and appropriate onChange()
+    var s = '<textarea rows="' + rows + '" cols="' + cols + ' id="' + q.toString() + '" ';
+    if (ca == null || ca ) {
+        s += 'onChange="checkAnswer(id,value);"';
+    }
+    s += ' ></textarea>';
+    return(s);
+}
+
+function writeAreaExercise(rows, cols, q, ans) {
+    if (showQMarks) {
+          document.writeln('(Q' + q + ')');
+    }
+    var thisCA = (ans.trim() != '?') ? CA : false;
+    document.writeln(areaExercise(rows, cols, 'Q' + q, thisCA ));
+    if (thisCA) {
+        if (newStyleAnswer != null && newStyleAnswer) {
+           boxList[q - 1] = document.images.length;
+           document.writeln(qCheckString(q));
+        }
+    }
+    key[q - 1] = crypt(ans, randSeed.toString());
+    return(true);
+}
+
 function textExercise(size,q,ca) {
   // text input area of "size" size, id q, and appropriate onChange()
     var s = '<input type="text" size="' + size + '" id="' + q.toString() + '" name="' + q.toString() + '" ';
@@ -923,34 +949,25 @@ function scoreProblem(truth,response){
     var correctness;
     if (response == null) {
         correctness = false;
-    } else if (qTypeCode == 'FN') {
+    } else if (qTypeCode == 'FN') {  // functional solution
         eval(answer);
         correctness = eval('checkProblem(response)');
-    } else if (qTypeCode == 'WC') {
+    } else if (qTypeCode == 'WC') {  // wildcard
         rsp = trimBlanks(response);
-        if (rsp.length > 0) {
-           correctness = true;
-        }
-    } else if (qTypeCode == 'LA') {
+        correctness = (rsp.length > 0) ? true : false;
+    } else if (qTypeCode == 'NG') { // not machine graded
+        correctness = null;
+    } else if (qTypeCode == 'LA') {  // literal answer
         // try to parse as number; if fail, take literal.
         rsp = evalNum(response);
         if (!isNaN(rsp)) {
             response = rsp;
         }
-        if (answer.toString() == response.toString()) {
-            correctness = true;
-        } else {
-            correctness = false;
-        }
-    } else if (qTypeCode == 'RG') {
+        correctness = (answer.toString() == response.toString()) ? true : false;
+    } else if (qTypeCode == 'RG') {  // numerical range
         var r = evalNum(response);
-        if ((answer[0] <= r) && (r <= answer[1])) {
-            correctness = true;
-        } else {
-           correctness = false;
-        }
-    } else if (qTypeCode == 'MA') {
-        correctness = false;
+        correctness = ((answer[0] <= r) && (r <= answer[1])) ? true : false;
+    } else if (qTypeCode == 'MA') {  // multiple allowed
         resArray = response.split(',');
         resArray.sort()
         var matches = new Array();
@@ -962,10 +979,8 @@ function scoreProblem(truth,response){
                 }
             }
         }
-        if (vMinMax(matches)[0] == 1) {
-            correctness = true;
-        }
-    } else if (qTypeCode == 'MR') {
+        correctness = (vMinMax(matches)[0] == 1) ? true : false;
+    } else if (qTypeCode == 'MR') { // multiple required
         correctness = false;
         resArray = response.split(',');
         resArray.sort()
@@ -1038,6 +1053,10 @@ function parseKey(s) {
         qTypeCode = 'WC';                   // wildcard
         answer = '*';
         ansText = 'any non-blank answer';
+    } else if (s == '?') {
+        qTypeCode = 'NG';                   // non-graded
+        answer = '?';
+        ansText = 'not machine graded';
     } else {                           // answer is literal
         qTypeCode = 'LA';                   // literal answer (LA)
         answer = parsePercent(s);
@@ -1086,7 +1105,7 @@ function getGrades(theForm) {
                         })
                         .done(function(data) {
                             $('#scores').html('<p class="center">Scores for SID ' + mySID + '</p>');
-                            var scTab = $('<table />');
+                            var scTab = $('<table class="dataTable"/>');
                             var rt = data.split('\n');
                             $.each(rt, function(i, r) {
                                   if (!r.match('#') && (r.match(mySID.toString()) || r.match('Set'))) {
