@@ -12,10 +12,12 @@
 // -->
 </script>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script><script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script>
 
-<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js">
-</script>
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/statCalc.js"></script>
+
 <script language="JavaScript1.8" type="text/javascript"><!--
     var cNum = "experiments";
     writeChapterHead('SeEd',cNum);
@@ -1648,11 +1650,20 @@ A classic example of
 
 
 <p class="figure">
-    <applet width="620" height="280" code="DistCalc.class"
-    codebase="../../Java/" archive="PbsGui.zip">
-    <param name="distributions" value="binomial,geometric,hypergeometric,negative binomial">
-    You need Java to see this
-    </applet>
+  <div id="dist" class="distCalc">
+  </div>
+
+  <script>
+  jQuery(function() {
+    new distCalc('dist', {distributions: 
+                                  [ ["Binomial", ["n","p"]],
+                                     ["Geometric", ["p"]],
+                                     ["Negative Binomial", ["p","r"]],
+                                     ["Hypergeometric",["N","G","n"]]
+                                  ]
+      });
+  });
+  </script>
 </p>
 </div>
 

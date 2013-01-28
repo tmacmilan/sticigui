@@ -6,16 +6,18 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "27 January 2013 08:37 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
 </script>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script><script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script> 
 
-<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js">
-</script>
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/statCalc.js"></script>
+
 <script language="JavaScript1.8" type="text/javascript"><!--
     var cNum = "randomVariables";
     writeChapterHead('SeEd',cNum);
@@ -1061,10 +1063,20 @@
    text boxes to select the range for which you seek the probability.
 </p>
 <p class="figure">
-<applet code="DistCalc.class" codebase="../../Java/" align="baseline"
-  width="800" archive="PbsGui.zip" height="200">
-<param name="distributions" value="binomial,geometric,hypergeometric,negative binomial">
-</applet>
+  <div id="dist" class="distCalc">
+  </div>
+
+  <script>
+  jQuery(function() {
+    new distCalc('dist', {distributions: 
+                                  [ ["Binomial", ["n","p"]],
+                                     ["Geometric", ["p"]],
+                                     ["Negative Binomial", ["p","r"]],
+                                     ["Hypergeometric",["N","G","n"]]
+                                  ]
+      });
+  });
+  </script>
 </p>
 </div>
 

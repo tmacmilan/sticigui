@@ -15,6 +15,7 @@
 
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/statCalc.js"></script>
+
 <script language="JavaScript1.8" type="text/javascript"><!--
     var cNum = "experiments";
     labInstrSetUp('SeEd',cNum);
@@ -39,12 +40,28 @@
     You need Java to see this.
 </applet>
 </p>
+
+
 <p align="center">
-<applet code="DistCalc.class" codebase="../../Java/" align="baseline"
-     width="320" height="140" archive="PbsGui.zip">
-     You need Java to see this.
-</applet>
+  <div id="dist" class="distCalc">
+  </div>
+
+  <script>
+  jQuery(function() {
+    new distCalc('dist', {distributions: 
+                                  [ ["Binomial", ["n","p"]],
+                                     ["Geometric", ["p"]],
+                                     ["Negative Binomial", ["p","r"]],
+                                     ["Hypergeometric",["N","G","n"]],
+                                     ["Normal", ["mean","SD"]],
+                                     ["Student t", ["degrees of freedom"]],
+                                     ["Chi-square", ["degrees of freedom"]]
+                                  ]
+      });
+  });
+  </script>
 </p>
+
 <p align="center">
   <div id="calc" class="calculator">
   </div>

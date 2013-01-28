@@ -6,19 +6,20 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "23 January 2013 19:57 PST";
+	pageModDate = "27 January 2013 19:57 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
 </script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script><script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script> 
 
 <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 
 
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
-<script language="JavaScript1.8" type="text/javascript" src="../../Java/probCalc.js"></script>
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/statCalc.js"></script>
 
 <script language="JavaScript1.8" type="text/javascript"><!--
     writeChapterHead('SeEd','','Probability Calculator',true,'../../SticiGui');
@@ -34,13 +35,13 @@
 </script>
 
 
-<p align="center">
+<p class="figure">
 
 <div id="prob"></div>
 
 <script language="JavaScript1.8" type="text/javascript"><!--
  $(function() {
-    new probCalc('prob', {});
+    new distCalc('prob', {});
   });
 // -->
 </script>
@@ -127,6 +128,10 @@ for which the probability is calculated is infinity. When a box
 is checked, the value in the corresponding text area limits the
 
 range of possibilities for which the probability is calculated.</p>
+
+<p>
+  The tool also shows the expected value and standard error of the distribution.
+</p>
 
 
 

@@ -6,13 +6,14 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "27 January 2013 08:37 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
 </script>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script><script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script> 
 
 <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -20,8 +21,10 @@
 <script type="text/javascript" src="../../Java/sticigui.js"></script>
 <link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
 
-<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js">
-</script>
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/statCalc.js"></script>
+
+
 <script language="JavaScript1.8" type="text/javascript"><!--
     var cNum = "testing";
     writeChapterHead('SeEd',cNum);
@@ -682,10 +685,7 @@
            '&quot;good&quot; in the population, and the sample size into the ' +
            'probability calculator to see that the appropriate threshold ' +
            'value is ' + thresh.toString() + ':</p><p class="figure">' +
-           '<applet code="DistCalc.class" align="middle" width="740" height="230" ' +
-           'archive="PbsGui.zip" codebase="../../Java">' +
-           '<param name="distributions" value="hypergeometric">' +
-           'You need Java to see this.</applet></p>' +
+           '<div id="dist" class="distCalc"></div></p>' +
            '<p>Let us calculate the <a class="glossRef" href="gloss.htm#power">power</a> of this test ' +
            'against the alternative hypothesis that <span class="math">p&nbsp;=&nbsp;' +
            pAlt.toString() + '%</span>.  That is the probability that the sample sum exceeds ' +
@@ -699,6 +699,13 @@
            obs.toString() + ' or greater if the null hypothesis be true; namely, ' +
            roundToDig(100*pValue,2).toString() + '%. ';
     document.writeln(qStr);
+   jQuery(function() {
+      new distCalc('dist', {distributions: 
+                                  [ ["Hypergeometric",["N","G","n"]]
+                                  ]
+      });
+  });
+  </script>
 // -->
 </script>
 </p>

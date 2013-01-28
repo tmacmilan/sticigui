@@ -15,6 +15,7 @@
 
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/statCalc.js"></script>
+
 <script language="JavaScript1.8" type="text/javascript"><!--
     var cNum = "expectation";
     labInstrSetUp('SeEd',cNum);
@@ -25,12 +26,22 @@
 <body >
 
 <p align="center">
-<applet code="DistCalc.class" codebase="../../Java/" align="baseline"
-        width="630" height="280" archive="PbsGui.zip">
-        <param name="distributions" value="binomial,geometric,hypergeometric,negative binomial">
-        You need Java to see this.
-</applet>
+  <div id="dist" class="distCalc">
+  </div>
+
+  <script>
+  jQuery(function() {
+    new distCalc('dist', {distributions: 
+                                  [ ["Binomial", ["n","p"]],
+                                     ["Geometric", ["p"]],
+                                     ["Negative Binomial", ["p","r"]],
+                                     ["Hypergeometric",["N","G","n"]]
+                                  ]
+      });
+  });
+  </script>
 </p>
+
 <p align="center">
   <div id="calc" class="calculator">
   </div>

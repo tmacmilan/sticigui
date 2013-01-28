@@ -18,7 +18,7 @@ Dependencies: irGrade,js, jQuery, jQuery-ui
 
 */
 
-function probCalc(container_id, params) {
+function distCalc(container_id, params) {
     var self = this;
     this.container = $('#' + container_id);
 

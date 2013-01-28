@@ -2,7 +2,7 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "27 January 2013 08:37 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -14,6 +14,7 @@
 
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/statCalc.js"></script>
+
 <script language="JavaScript1.8" type="text/javascript"><!--
     var cNum = "set26";
     labInstrSetUp('SeEd',cNum);
@@ -25,10 +26,23 @@
 
 
 <p align="center">
-    <applet code="DistCalc.class" codebase="../../Java/" align="baseline"
-         width="700" height="200" archive="PbsGui.zip">
-         You need Java to see this.
-    </applet>
+  <div id="dist" class="distCalc">
+  </div>
+
+  <script>
+  jQuery(function() {
+    new distCalc('dist', {distributions: 
+                                  [ ["Binomial", ["n","p"]],
+                                     ["Geometric", ["p"]],
+                                     ["Negative Binomial", ["p","r"]],
+                                     ["Hypergeometric",["N","G","n"]],
+                                     ["Normal", ["mean","SD"]],
+                                     ["Student t", ["degrees of freedom"]],
+                                     ["Chi-square", ["degrees of freedom"]]
+                                  ]
+      });
+  });
+  </script>
 </p>
 
 <p align="center">
