@@ -817,7 +817,7 @@ function qCheckString(q) {
 
 function areaExercise(rows,cols,q,ca) {
   // text input area of "size" size, id q, and appropriate onChange()
-    var s = '<textarea rows="' + rows + '" cols="' + cols + ' id="' + q.toString() + '" ';
+    var s = '<br><textarea rows="' + rows + '" cols="' + cols + ' id="' + q.toString() + '" ';
     if (ca == null || ca ) {
         s += 'onChange="checkAnswer(id,value);"';
     }
