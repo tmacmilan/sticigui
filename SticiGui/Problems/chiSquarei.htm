@@ -2,13 +2,14 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "28 January 2013 08:37 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
 </script>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script><script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script> 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script> 
 
 
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js">
@@ -180,7 +181,7 @@
     var se = Math.sqrt(2*df);
     lims[0] = roundToDig(Math.max(0, df - lims[0]*se), 1) ;
     lims[1] = roundToDig(df + lims[1]*se, 1);
-    var theProb = chi2Cdf(lims[1], df) - chi2Cdf(lims[0], df);
+    var theProb = chi2Cdf(df, lims[1]) - chi2Cdf(df, lims[0]);
     var theP = 10*listOfRandInts(1,1,9)[0];
     var pctile = chi2Inv(theP/100, df);
     var qStr = '<span class="qSpan">The area under the chi-square curve with ' +
@@ -215,7 +216,7 @@
         expect = prop[i]*nTrees;
         chi2 += (observe[i] - expect)*(observe[i] - expect)/expect;
     }
-    var pVal = 1.0 - chi2Cdf(chi2, observe.length-1);
+    var pVal = 1.0 - chi2Cdf(observe.length-1, chi2);
     var nLoc = 5*listOfRandInts(1, 4, 7)[0];
     var propStr = new Array(prop.length);
     for (var i=0; i < prop.length; i++) {

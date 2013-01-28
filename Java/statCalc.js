@@ -234,8 +234,9 @@ function distCalc(container_id, params) {
                                      ["Exponential", ["mean"]],
                                      ["Poisson", ["mean"]]
                                    ],
-                    digits: 10,
-                    paramDigits: 4
+                    digits: 8,
+                    paramDigits: 4,
+                    showExpect: true
     };
 
 // Extend options
@@ -291,7 +292,7 @@ function distCalc(container_id, params) {
                       .append(' is ');
 
         // display
-        self.theDisplay = $('<input type="text" readonly />').attr('size',self.options['digits']+2);
+        self.theDisplay = $('<input type="text" readonly />').attr('size',self.options['digits']+4);
         self.expectSpan = $('<span />').addClass('expectSpan');
         self.selectDiv.append(self.theDisplay).append(self.expectSpan);
         me.append(self.selectDiv);
@@ -314,6 +315,7 @@ function distCalc(container_id, params) {
 
     function calcProb() {
         var prob  = Number.NaN;
+
         // get range over which to compute the probability
         var loCk  = self.selectDiv.find('.useLower').prop('checked');
         var loLim = loCk ? parseFloat(self.selectDiv.find('.loLim').val()) : Number.NaN;
@@ -329,11 +331,10 @@ function distCalc(container_id, params) {
 
         if ((!loCk && !hiCk) || !allParamsDefined) {
               prob = Number.NaN;
-              self.expectSpan.empty();
         } else if (loCk && hiCk && (loLim > hiLim)) {
               prob = 0.0;
         } else {
-
+              self.expectSpan.empty();
               switch(self.currDist) {
                    case "Binomial":
                       var n = parseFloat(self.distDivs[self.currDist].find('.n').val());
@@ -341,16 +342,20 @@ function distCalc(container_id, params) {
                       var t = hiCk ? binomialCdf(n, p, hiLim) : 1.0;
                       var b = loCk ? binomialCdf(n, p, loLim-1) : 0.0;
                       prob = t - b;
-                      self.expectSpan.append('E(X) = ' + (n*p).toFixed(self.options['paramDigits']) + 
-                                             '; SE(X) = ' + Math.sqrt(n*p*(1-p)).toFixed(self.options['paramDigits']));
+                      if (self.options['showExpect']) { 
+                          self.expectSpan.append('E(X) = ' + (n*p).toFixed(self.options['paramDigits']) + 
+                                                 '; SE(X) = ' + Math.sqrt(n*p*(1-p)).toFixed(self.options['paramDigits']));
+                      }
                       break;
 
                    case "Geometric":
                       var p = parsePercent(self.distDivs[self.currDist].find('.p').val());
                       var t = hiCk ? geoCdf(p, hiLim) : 1.0;
                       var b = loCk ? geoCdf(p, loLim-1) : 0.0;
-                      self.expectSpan.append('E(X) = ' + (1/p).toFixed(self.options['paramDigits']) + 
-                                             '; SE(X) = ' + (Math.sqrt(1-p)/p).toFixed(self.options['paramDigits']));
+                      if (self.options['showExpect']) { 
+                           self.expectSpan.append('E(X) = ' + (1/p).toFixed(self.options['paramDigits']) + 
+                                                  '; SE(X) = ' + (Math.sqrt(1-p)/p).toFixed(self.options['paramDigits']));
+                      }
                       prob = t - b;
                       break;
 
@@ -360,8 +365,10 @@ function distCalc(container_id, params) {
                       var t = hiCk ? negBinomialCdf( p,  r, hiLim) : 1.0;
                       var b = loCk ? negBinomialCdf( p,  r, loLim-1) : 0.0;
                       prob = t - b;
-                      self.expectSpan.append('E(X) = ' + (r/p).toFixed(self.options['paramDigits']) + 
-                                             '; SE(X) = ' + (Math.sqrt(r*(1-p))/p).toFixed(self.options['paramDigits']));
+                      if (self.options['showExpect']) { 
+                          self.expectSpan.append('E(X) = ' + (r/p).toFixed(self.options['paramDigits']) + 
+                                                 '; SE(X) = ' + (Math.sqrt(r*(1-p))/p).toFixed(self.options['paramDigits']));
+                      }
                       break;
 
                    case "Hypergeometric":
@@ -371,8 +378,11 @@ function distCalc(container_id, params) {
                       var t = hiCk ? hyperGeoCdf(N,  G, n, hiLim) : 1.0;
                       var b = loCk ? hyperGeoCdf(N,  G, n, loLim-1) : 0.0;
                       prob = t - b;
-                      self.expectSpan.append('E(X) = ' + (n*G/N).toFixed(self.options['paramDigits']) + 
-                                             '; SE(X) = ' + (Math.sqrt(n*(G/N)*(1-G/N)*(N-n)/(N-1))).toFixed(self.options['paramDigits']));
+                      var hyP = G/N;
+                      if (self.options['showExpect']) { 
+                           self.expectSpan.append('E(X) = ' + (n*hyP).toFixed(self.options['paramDigits']) + 
+                                                  '; SE(X) = ' + (Math.sqrt(n*hyP*(1-hyP)*(N-n)/(N-1))).toFixed(self.options['paramDigits']));
+                      }
                       break;
                    
                    case "Normal":
@@ -381,8 +391,10 @@ function distCalc(container_id, params) {
                       var t = hiCk ? normCdf((hiLim-m)/s) : 1.0;
                       var b = loCk ? normCdf((loLim-m)/s) : 0.0;
                       prob = t - b;
-                      self.expectSpan.append('E(X) = ' + m.toFixed(self.options['paramDigits']) + 
-                                             '; SE(X) = ' + s.toFixed(self.options['paramDigits']));
+                      if (self.options['showExpect']) { 
+                           self.expectSpan.append('E(X) = ' + m.toFixed(self.options['paramDigits']) + 
+                                                  '; SE(X) = ' + s.toFixed(self.options['paramDigits']));
+                      }
                       break;
 
                    case "Student t": 
@@ -390,14 +402,20 @@ function distCalc(container_id, params) {
                       var t = hiCk ? tCdf(df, hiLim) : 1.0;
                       var b = loCk ? tCdf(df, loLim) : 0.0;
                       prob = t - b;
-                      self.expectSpan.append('E(X) = 0' + 
-                                             '; SE(X) = ' + (Math.sqrt(df/(df-2))).toFixed(self.options['paramDigits']));
+                      var se = (df > 2) ? (Math.sqrt(df/(df-2))).toFixed(self.options['paramDigits']) : Number.NaN;
+                      if (self.options['showExpect']) { 
+                           self.expectSpan.append('E(X) = 0; SE(X) = ' + se);
+                      }
                       break;
 
                    case "Chi-square":
                       var df = parseFloat(self.distDivs[self.currDist].find('.degrees_of_freedom').val());
                       var t = hiCk ? chi2Cdf(df, hiLim) : 1.0;
                       var b = loCk ? chi2Cdf(df, loLim) : 0.0;
+                      if (self.options['showExpect']) { 
+                           self.expectSpan.append('E(X) = ' + df.toFixed(self.options['paramDigits']) + 
+                                                  '; SE(X) = ' + (Math.sqrt(2*df)).toFixed(self.options['paramDigits']));
+                      }
                       prob = t - b;
                       break;
 
@@ -406,6 +424,10 @@ function distCalc(container_id, params) {
                       var t = hiCk ? expCdf(m, hiLim) : 1.0;
                       var b = loCk ? expCdf(m, loLim) : 0.0;
                       prob = t - b;
+                      if (self.options['showExpect']) { 
+                           self.expectSpan.append('E(X) = ' + m.toFixed(self.options['paramDigits']) + 
+                                                  '; SE(X) = ' + m.toFixed(self.options['paramDigits']));
+                      }
                       break;
 
                    case "Poisson":
@@ -413,13 +435,17 @@ function distCalc(container_id, params) {
                       var t = hiCk ? poissonCdf(m, hiLim) : 1.0;
                       var b = loCk ? poissonCdf(m, loLim) : 0.0;
                       prob = t - b;
+                      if (self.options['showExpect']) { 
+                           self.expectSpan.append('E(X) = ' + m.toFixed(self.options['paramDigits']) + 
+                                                  '; SE(X) = ' + (Math.sqrt(m)).toFixed(self.options['paramDigits']));
+                      }
                       break;
 
                    default:
                       console.log('unexpected distribution in distCalc.calcProb ' + dist);
               }
         }
-        self.theDisplay.val(prob.toFixed(self.options['digits']));
+        self.theDisplay.val((100*prob).toFixed(self.options['digits']-3)+'%');
     }
 
 }

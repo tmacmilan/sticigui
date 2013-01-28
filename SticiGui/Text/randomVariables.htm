@@ -1000,54 +1000,10 @@
 </script>
     is a calculator to find the chance that a random variable with a binomial,
     geometric, negative binomial, or hypergeometric distribution falls in any range.
-    It also gives the expected value and standard error of these distributions,
-    which we shall study in the next few chapters.
     To use the tool, select the distribution you want from the drop-down menu.
     The display then prompts for the parameters of the
     distribution, and for the range of values of which to find the probability.
 </p>
-
-<p>
-    The parameters are labeled slightly differently from the notation we have used so far:
-</p>
-
-<p>
-    For the binomial distribution:
-</p>
-<ul>
-    <li>&quot;Trials&quot; is the number <em>n</em> of draws from the box.</li>
-    <li>&quot;P(success)&quot; is the fraction <em>p</em> of tickets in the box
-        labeled &quot;1.&quot;</li>
-</ul>
-
-<p>
-    For the geometric distribution:
-</p>
-<ul>
-    <li>&quot;P(success)&quot; is the fraction <em>p</em> of tickets in the box
-       labeled &quot;1.&quot;</li>
-</ul>
-
-<p>
-    For the negative binomial distribution:
-</p>
-
-<ul>
-    <li>&quot;P(success)&quot; is the fraction <em>p</em> of tickets labeled &quot;1&quot;
-        in the box.</li>
-    <li>&quot;#successes&quot; is the number <em>r</em> of tickets labeled &quot;1&quot;
-        to draw before stopping.</li>
-</ul>
-
-<p>
-    For the hypergeometric distribution:
-</p>
-
-<ul>
-    <li>&quot;Population size&quot; is the number <em>N</em> of tickets in the box.<./li>
-    <li>&quot;Good in population&quot; is the number <em>G</em> of tickets
-        labeled &quot;1&quot; in the box.</li>
-</ul>
 
 
 <div class="figure">
@@ -1058,7 +1014,7 @@
 </script>
 <p align="left">
    Select the distribution from the drop-down menu. 
-   Set the parameter values in the text boxes. Use the tic boxes and the 
+   Set the parameter values in the text boxes. Use the checkboxes and the 
    <span class="appCtrlName">&ge;</span> and <span class="appCtrlName">&le;</span>
    text boxes to select the range for which you seek the probability.
 </p>
@@ -1066,16 +1022,18 @@
   <div id="dist" class="distCalc">
   </div>
 
-  <script>
+  <script language="JavaScript1.8" type="text/javascript"><!--
   jQuery(function() {
     new distCalc('dist', {distributions: 
                                   [ ["Binomial", ["n","p"]],
                                      ["Geometric", ["p"]],
                                      ["Negative Binomial", ["p","r"]],
                                      ["Hypergeometric",["N","G","n"]]
-                                  ]
+                                  ],
+                         showExpect: false
       });
   });
+ // -->
   </script>
 </p>
 </div>
@@ -1106,7 +1064,7 @@
 // -->
 </script>
     select &quot;Hypergeometric&quot; in the top drop-down menu.
-    Set Population Size to 50,  #Good in Population to 20, and Sample Size to 17.
+    Set N to 50,  G to 20, and n to 17.
     Tic the box that precedes X&ge;, type 5 into the box that follows X&ge;,
     tic the box that precedes X&le;, and type 15 into the box that follows
     X&le;.

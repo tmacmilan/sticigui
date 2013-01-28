@@ -3654,7 +3654,7 @@ function betaGuts( x, a, b) { // guts of the incomplete beta function
     return(y);
 }
 
-function chi2Cdf( x, df ) {
+function chi2Cdf(df,  x) {
     var p =  (df == Math.floor(df)) ? gammaCdf(x,df/2,2) : Number.NaN;
     return(p);
 }
