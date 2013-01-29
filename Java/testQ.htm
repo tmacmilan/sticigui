@@ -2,7 +2,7 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 11:51 PST";
+	pageModDate = "28 January 2013 11:51 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -11,14 +11,28 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script>
 
-<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
-<script language="JavaScript1.8" type="text/javascript" src="../../Java/sticigui.js"></script>
-
 
 <form>
 <p>
+   <select id="mySelect" multiple="true" class="mySelect">
+    <option value="1">one</option>
+    <option value="2">two</option>
+    <option value="3">three</option>
+  </select>
 
 </p>
+
+<script>
+   $(document).ready(function() {
+       $('#mySelect').click(function() {
+           console.log($('#mySelect option:selected').map(function() { 
+                                            return(this.value.replace(/^\s+|\s+$/g,'').toLowerCase()); 
+                                        })
+                                        .get()
+                                        .join(','))
+        });
+  });
+</script>
 </form>
 
 </body>
