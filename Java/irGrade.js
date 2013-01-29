@@ -400,7 +400,7 @@ function trimBlanks(s){
 }
 
 function allBlanks(s) {
-    return (s == null || s.replace(/^\s+|\s+$/g,'').length == 0));
+    return (s == null || s.replace(/^\s+|\s+$/g,'').length == 0);
 }
 
 function removeAllBlanks(s){
