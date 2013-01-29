@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/1/27/1030'; // modification date and time
+var irGradeModTime = '2013/1/28/1830'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -395,36 +395,12 @@ var colors = ['red','orange','yellow','green','blue','indigo','violet',
 
 // ===============  STRING HANDLERS and HTML GENERATORS ===================
 
-function mailLink(user, host, domain, altText) {
-        var addr = user +  '&#64;' + host + '.' + domain;
-        if (typeof(altText) == 'undefined' || altText == null || altText.length == 0) {
-                altText = addr;
-        }
-        document.writeln('<a href="mai' + 'lto:' + addr + '">' + altText + '</a>');
-}
-
-function mailForm(user, host, domain, subTxt, onSubTxt) {
-        var addr = user +  '&#64;' + host + '.' + domain;
-        if (typeof(subject) == 'undefined' || altText == null || altText.length == 0) {
-                altText = addr;
-        }
-        document.writeln('<form method="post" action="mai' + 'lto:' + addr + '?subject="' +
-                subTxt + '" onsubmit="' + onSubTxt + '">');
-}
-
 function trimBlanks(s){
-    if (s == null || s.length == 0 ) { return(s); }
-    while (s.charAt(s.length-1) == ' ' ) {      // trim trailing blanks
-        s = s.substring(0, s.length-1);
-    }
-    while (s.charAt(0) == ' ') {                // trim leading blanks
-        s = s.substring(1, s.length);
-    }
-    return(s);
+    return(s.replace(/^\s+|\s+$/g,'');
 }
 
 function allBlanks(s) {
-    if (s == null || trimBlanks(s).length == 0) {
+    if (s == null || s.replace(/^\s+|\s+$/g,'').length == 0) {
         return(true);
     } else {
         return(false);
@@ -432,7 +408,7 @@ function allBlanks(s) {
 }
 
 function removeAllBlanks(s){
-    return(s.replace(/ +/gm,''));
+    return(s.replace(/\s+/gm,''));
 }
 
 function removeMarkup(s) { // removes html markup
@@ -459,20 +435,7 @@ function trimToLowerCase(s) {
     if (s == null || s.length == 0 ) {
         return(s);
     }
-    return(trimBlanks(s.toLowerCase()));
-}
-
-function allLetters(s){
-// return true if all characters in string s are letters (or trailing blanks)
-    var trimS = trimToLowerCase(s);
-    var alpha=' -abcdefghijklmnopqrstuvwxyz';
-    var truth = true;
-    for (var i = 0; i < trimS.length; i++) {
-        if(alpha.indexOf(trimS.charAt(i)) < 0) {
-            truth = false;
-        }
-    }
-    return(truth);
+    return((s.toLowerCase()).replace(/^\s+|\s+$/g,''));
 }
 
 function removeCommas(s) { // removes commas from a string
@@ -528,27 +491,7 @@ function evalNum(s) { // try to evaluate a string as a numeric value
 
 function parseMultiple(option) {
   // pre-processes multiple selections so that checkAnswer can be used to grade them
-    var response = '';
-    for (var i=0; i < option.length; i++) {
-        if (option[i].selected) {
-            response += trimToLowerCase(option[i].value) + ',' ;
-        }
-    }
-    if (response.charAt(response.length - 1) == ',') {  // trim trailing comma
-        response = response.substring(0, response.length - 1);
-    }
-    return(response);
-}
-
-function getFormElementIndex(q) {
- // finds the form element with id= q and returns its index.
-    for (var inx =0; inx < document.forms[0].elements.length; inx++) {
-        if (document.forms[0].elements[inx].id == q) {
-            return(inx);
-        }
-    }
-    alert('Error #1 in irGrade.getFormElementIndex(): Form element ' + q + ' is missing!');
-    return('document.forms[0].length');
+    return($(option ":selected").map(function(){ return(trimToLowerCase(this.value)); }).get().join(','));
 }
 
 function findNum(s) {
@@ -890,7 +833,7 @@ function radioExercise(q, opt, ca){  // makes a collection of radio inputs.
     var s = '';
     var oplen = opt.length;
     for (var i = 0; i < oplen; i++) {
-        s  += '<input type="radio" id="' + q + '" name="' + q + '" value="' + alphabet[i] + '" ';
+        s  += '<input type="radio" id="' + q + '_' + i + '" name="' + q + '" value="' + alphabet[i] + '" ';
         if (ca == null || ca) {
             s += 'onClick="checkAnswer(id,value);"';
         }
@@ -1522,7 +1465,7 @@ function isAnswered(qVal) { // checks whether the student answered a question
         if (resp != null && resp != '' && resp != '?') {
             iA = true;
         }
-    } else if (qT == 'text') {
+    } else if (qT == 'text' || qT == 'textarea') {
         resp = el.value;
        if (resp != null && resp != '' && removeAllBlanks(resp) != null &&
                  removeAllBlanks(resp).length > 0) {
@@ -1630,6 +1573,8 @@ function labletSubmit(theForm) {
              var s = collectResponses(theForm,true,true);
              document.forms[1].elements['contents'].value = crypt(s,bigPi);
              document.forms[1].submit();
+     // DEBUG
+             console.log(crypt(s,bigPi));
          });
          OK = true;
      } else {
@@ -1757,7 +1702,7 @@ function recoverResponses() {
                              }
                            }
                     }
-                 } else if (elem.type == 'text') {
+                } else if (elem.type == 'text' || elem.type == 'textarea') {
                        inx = searchStr.indexOf(qName);
                        if (inx > -1) {
                            searchStr = searchStr.substring(
@@ -1921,32 +1866,35 @@ function setExtraInputs(theForm) {
     var qType;
     var questionsAndAnswers = [];
     for (var i=1; i < qCtr; i++) {
-        qVal = 'Q' + i.toString();
-        qType = theForm.elements[qVal].type;
-        if (qType == 'select-one') {
-            resp = theForm.elements[qVal].options[
-               theForm.elements[qVal].options.selectedIndex].value;
-        } else if (qType == 'select-multiple') {
-            resp = parseMultiple(theForm.elements[qVal].options);
-        } else if (qType == 'text') {
-            resp = theForm.elements[qVal].value;
-        } else if (qType == 'radio') {
-            if (theForm.elements[qVal].checked) {
-                resp = theForm.elements[qVal].value;
-            }
-        } else if (qType == null || qType == 'undefined') { // radio too!
-            if (theForm.elements[qVal].checked) {
-                resp = theForm.elements[qVal].value;
-            }
-        } else {
-            alert('Error #1 in irGrade.setExtraInputs(): Input type ' + qType +
-               ' in question ' + qVal + ' is not supported!');
+        qVal = $('#Q' + i.toString());
+        try {
+              qType = qVal.attr('type'); // theForm.elements[qVal].type;
+              if (qType == 'select-one') {
+                  resp = qVal.filter(':selected').val();
+              } else if (qType == 'select-multiple') {
+                  resp = qVal.filter(':selected').val().join(',');
+              } else if (qType == 'text' || qType == 'textarea') {
+                  resp = qVal.val();
+              } else if (qType == 'radio') {
+                  resp = qValif (theForm.elements[qVal].checked) {
+                      resp = theForm.elements[qVal].value;
+                  }
+              } else if (qType == null || qType == 'undefined') { // radio too!
+                  if (theForm.elements[qVal].checked) {
+                      resp = theForm.elements[qVal].value;
+                  }
+              } else {
+                  alert('Error #1 in irGrade.setExtraInputs(): Input type ' + qType +
+                     ' in question ' + qVal + ' is not supported!');
+              }
+              var sp = scoreProblem(crypt(key[i-1], randSeed.toString()), resp);
+              if (sp) {
+                    nRight++;
+              }
+              questionsAndAnswers[i] = sp; 
+        } catch(e) {
+              console.log('Error in irGrade.setExtraInputs() for Q ' + i + ': ' + e);
         }
-        var sp = scoreProblem(crypt(key[i-1], randSeed.toString()), resp);
-        if (sp) {
-              nRight++;
-        }
-        questionsAndAnswers[i] = sp; // Onsophic
     }
     pushQuestionsWorked(questionsAndAnswers); // Onsophic
     theForm.elements['score'].value = roundToDig(100*nRight/(qCtr - 1),2).toString();
