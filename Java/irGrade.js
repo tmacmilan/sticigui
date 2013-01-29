@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/1/28/1830'; // modification date and time
+var irGradeModTime = '2013/1/28/2030'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -489,14 +489,18 @@ function evalNum(s) { // try to evaluate a string as a numeric value
     return(value);
 }
 
-function parseMultiple(option) {
+function parseMultiple(id) {
   // pre-processes multiple selections so that checkAnswer can be used to grade them
-    var thisOption = $('#' + option + ' option:selected');
-    return(thisOption.map(function() { 
+    return($('#' + id + ' option:selected').map(function() { 
                                             return(this.value.replace(/^\s+|\s+$/g,'').toLowerCase()); 
                                       })
                                       .get()
                                       .join(','));
+}
+
+function parseRadio(c) {
+  // pre-processes multiple selections so that checkAnswer can be used to grade them
+    return($('.' + c + ' :checked').val());
 }
 
 function findNum(s) {
@@ -599,10 +603,9 @@ function numToMultiple(opt,ans) { // finds the multiple choice closest to ans
     return(aVal);
 }
 
-function hiddenInput(string, val){  // hidden input with id=name="string" and value="val"
-    return('<input type="hidden" id="' + string + '" name="' + string + '" value="' + val + '" />');
+function hiddenInput(string, val){  // hidden input with id, name, and class ="string" and value="val"
+    return('<input type="hidden" class="' + string + '" id="' + string + '" name="' + string + '" value="' + val + '" />');
 }
-
 
 function citeChapter(s) {
     var j = chapterNumbers[s];
@@ -765,7 +768,7 @@ function qCheckString(q) {
 
 function areaExercise(rows,cols,q,ca) {
   // text input area of "size" size, id q, and appropriate onChange()
-    var s = '<br><textarea rows="' + rows + '" cols="' + cols + ' id="' + q.toString() + '" ';
+    var s = '<br><textarea rows="' + rows + '" cols="' + cols + ' id="' + q + '" class="' + q + '" ';
     if (ca == null || ca ) {
         s += 'onChange="checkAnswer(id,value);"';
     }
@@ -790,8 +793,8 @@ function writeAreaExercise(rows, cols, q, ans) {
 }
 
 function textExercise(size,q,ca) {
-  // text input area of "size" size, id q, and appropriate onChange()
-    var s = '<input type="text" size="' + size + '" id="' + q.toString() + '" name="' + q.toString() + '" ';
+  // text input area of "size" size, id q, class q and appropriate onChange()
+    var s = '<input type="text" size="' + size + '" id="' + q + '" name="' + q + '" class="' + q + '" ';
     if (ca == null || ca ) {
         s += 'onChange="checkAnswer(id,value);"';
     }
@@ -799,8 +802,8 @@ function textExercise(size,q,ca) {
     return(s);
 }
 
-function textProblem(size,q) {  // makes text input area of "size" size, id "q"
-    var s = '<input type="text" size="' + size + '" id="' + q + '" name="' + q + '" />';
+function textProblem(size,q) {  // makes text input area of "size" size, id, name and class "q"
+    var s = '<input type="text" size="' + size + '" id="' + q + '" name="' + q + '" class="' + q + '" />';
     return(s);
 }
 
@@ -838,7 +841,7 @@ function radioExercise(q, opt, ca){  // makes a collection of radio inputs.
     var s = '';
     var oplen = opt.length;
     for (var i = 0; i < oplen; i++) {
-        s  += '<input type="radio" id="' + q + '_' + i + '" name="' + q + '" value="' + alphabet[i] + '" ';
+        s  += '<input type="radio" id="' + q + '_' + i + '" name="' + q + '" class="' + q + '" value="' + alphabet[i] + '" ';
         if (ca == null || ca) {
             s += 'onClick="checkAnswer(id,value);"';
         }
@@ -859,7 +862,7 @@ function selectExercise(mult, q, opt, ca) {
     } else {
         size = 1;
     }
-    var s = '<select id="' + q + '" name="' + q + '" size="' + size + '" ';
+    var s = '<select id="' + q + '" class="' + q + '" name="' + q + '" size="' + size + '" ';
     if (mult) {
         s += 'multiple="' + mult + '" ';
     }
@@ -1130,6 +1133,7 @@ function spawnProblem(theForm,setName,relPath) {
             lablet.assignmentname = setName;
             var qStr = startXHT + '<head>' + metaTagXHT + styleSheetRef(relPath) +
                                    '<title>SticiGui Assignment ' + i.toString() + '</title>' +
+                                   '<script language="JavaScript1.8" type="text/javascript" src="../../Java/sticigui.js"></script>' +
                                    '<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>' +
                                    '</head>';
             lablet.document.writeln('<frameset rows="*,300"><frame id="instrWin" src="' + instr + '"' +
@@ -1466,7 +1470,7 @@ function isAnswered(qVal) { // checks whether the student answered a question
             iA = true;
         }
     } else if (qT == 'select-multiple') {
-        resp = parseMultiple(el.options);
+        resp = parseMultiple(el.id);
         if (resp != null && resp != '' && resp != '?') {
             iA = true;
         }
@@ -1477,11 +1481,7 @@ function isAnswered(qVal) { // checks whether the student answered a question
             iA = true;
         }
     } else if (qT == 'radio') { // incomprehensible bugs with this
-        for (var i=0; i < el.length; i++) {
-            if (el[i].checked) {
-                iA = true;
-            }
-        }
+        iA = parseRadio(el.class);
     } else if ( typeof(qT) == 'undefined' || qT == null ) { // assume it is a radio
         for (var i=0; i < el.length; i++) {
             if (el[i].checked) {
@@ -1877,13 +1877,11 @@ function setExtraInputs(theForm) {
               if (qType == 'select-one') {
                   resp = qVal.filter(':selected').val();
               } else if (qType == 'select-multiple') {
-                  resp = qVal.filter(':selected').val().join(',');
+                  resp = parseMultiple('#' + i.toString);
               } else if (qType == 'text' || qType == 'textarea') {
                   resp = qVal.val();
               } else if (qType == 'radio') {
-                  resp = qValif (theForm.elements[qVal].checked) {
-                      resp = theForm.elements[qVal].value;
-                  }
+                  resp = parseRadio(theForm.elements[qVal].class);
               } else if (qType == null || qType == 'undefined') { // radio too!
                   if (theForm.elements[qVal].checked) {
                       resp = theForm.elements[qVal].value;
@@ -2695,3 +2693,4 @@ function arrayToRow(v,alignment) {
     document.writeln('</tr>');
     return(true);
 }
+
