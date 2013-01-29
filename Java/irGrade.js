@@ -396,23 +396,20 @@ var colors = ['red','orange','yellow','green','blue','indigo','violet',
 // ===============  STRING HANDLERS and HTML GENERATORS ===================
 
 function trimBlanks(s){
-    return(s.replace(/^\s+|\s+$/g,''));
+    return(s ? s.replace(/^\s+|\s+$/g,'') : s);
 }
 
 function allBlanks(s) {
-    if (s == null || s.replace(/^\s+|\s+$/g,'').length == 0) {
-        return(true);
-    } else {
-        return(false);
-    }
+    return (s == null || s.replace(/^\s+|\s+$/g,'').length == 0));
 }
 
 function removeAllBlanks(s){
-    return(s.replace(/\s+/gm,''));
+    return(s ? s.replace(/\s+/gm,'') : s);
+
 }
 
 function removeMarkup(s) { // removes html markup
-    return(s.replace(/<[^>]*>/gm,''));
+    return(s ? s.replace(/<[^>]*>/gm,'') : s);
 }
 
 function replaceMarkupByChar(s,sub) { // replaces html markup with sub
@@ -423,27 +420,24 @@ function replaceMarkupByChar(s,sub) { // replaces html markup with sub
 }
 
 function removeSpecials(s) { // removes special characters markup EXCEPT brackets
-    return(s.replace(/[0123456789:;~`'"<>,.?\/+_@#$%^&*|!=-]+/gm,''));
+    return(s ? s.replace(/[0123456789:;~`'"<>,.?\/+_@#$%^&*|!=-]+/gm,'') : s);
 }
 
 function removeNonLogicals(s) { // removes special characters markup EXCEPT brackets and logical symbols
-    return(s.replace(/[0123456789:;`'"<>,.?\/+_@#$%^*=-]+/gm,''));
+    return(s ? s.replace(/[0123456789:;`'"<>,.?\/+_@#$%^*=-]+/gm,'') : s);
 }
 
 function trimToLowerCase(s) {
 // trim trailing blanks, convert to lower case
-    if (s == null || s.length == 0 ) {
-        return(s);
-    }
-    return((s.toLowerCase()).replace(/^\s+|\s+$/g,''));
+    return(s ? (s.toLowerCase()).replace(/^\s+|\s+$/g,'') : s);
 }
 
 function removeCommas(s) { // removes commas from a string
-    return(s.replace(/,/gm,''));
+    return(s ? s.replace(/,/gm,'') : s);
 }
 
 function removeString(str,s) { // removes instances of the string str from s.
-    return(s.replace(eval('/'+str+'/gm'),''));
+    return(s ? s.replace(eval('/'+str+'/gm'),'') : s);
 }
 
 function removeStrings(strArr,s) {
@@ -491,7 +485,7 @@ function evalNum(s) { // try to evaluate a string as a numeric value
 
 function parseMultiple(id) {
   // pre-processes multiple selections so that checkAnswer can be used to grade them
-    return($('#' + id + ' option:selected').map(function() { 
+    return($('.' + id + ' option:selected').map(function() { 
                                             return(this.value.replace(/^\s+|\s+$/g,'').toLowerCase()); 
                                       })
                                       .get()
