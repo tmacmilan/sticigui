@@ -1035,7 +1035,7 @@ function setCourseSpecs() {
 function getGrades(theForm) {
     if (validateLablet(theForm)) {
         myKey = CryptoJS.SHA256(trimToLowerCase(theForm.sid.value) + ',' + trimToLowerCase(theForm.email.value)).toString();
-        $('#scores').html('<p class="center">Retrieving scores '<blink>&hellip;</blink></p>');
+        $('#scores').html('<p class="center">Retrieving scores <blink>&hellip;</blink></p>');
         scoresURL = scoreBase + 'class=' + course + '&teacher=' + teacher + '&gpath=' + gPath + '&sids';
         var reg = new RegExp('\s*' + myKey + '\s*', 'gi');
         getURL = $.ajax({
