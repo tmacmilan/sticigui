@@ -34,7 +34,7 @@ var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
 var courseBase = './Courses/';     // base for looking for course-specific files
 var cssBase = '/Graphics/sticiGuiDefault.css';  // css file
-var graderActionURL = 'http://statistics.berkeley.edu/cgi-bin/grader5'; // URL of grading scripts
+var graderActionURL = 'http://statistics.berkeley.edu/cgi-bin/grader6'; // URL of grading scripts
 var chapterTitles = [
                          ['Preface','preface'],
                          ['Introduction','howto'],
@@ -255,7 +255,6 @@ var key = new Array();             // key for self-graded exercises
 var boxList = new Array();         // list of images for self-graded exercises
 var setNum;                        // current problem set number
 var isLab = false;                 // is this a problem set?
-var mySID;
 var acccessURL;
 var dueURL;
 var timeURL;
@@ -1035,21 +1034,20 @@ function setCourseSpecs() {
 
 function getGrades(theForm) {
     if (validateLablet(theForm)) {
-        mySID = theForm.sid.value;
-        $('#scores').html('<p class="center">Retrieving scores for SID ' +
-                                                       mySID + '<blink>&hellip;</blink></p>');
+        myKey = CryptoJS.SHA256(trimToLowerCase(theForm.sid.value) + ',' + trimToLowerCase(theForm.email.value)).toString();
+        $('#scores').html('<p class="center">Retrieving scores '<blink>&hellip;</blink></p>');
         scoresURL = scoreBase + 'class=' + course + '&teacher=' + teacher + '&gpath=' + gPath + '&sids';
-        var reg = new RegExp('\s*' + mySID + '\s*', 'gi');
+        var reg = new RegExp('\s*' + myKey + '\s*', 'gi');
         getURL = $.ajax({
                           type: 'GET',
                           url:   scoresURL
                         })
                         .done(function(data) {
-                            $('#scores').html('<p class="center">Scores for SID ' + mySID + '</p>');
+                            $('#scores').html('<p class="center">Scores for SID ' + theForm.sid.value + '</p>');
                             var scTab = $('<table class="dataTable"/>');
                             var rt = data.split('\n');
                             $.each(rt, function(i, r) {
-                                  if (!r.match('#') && (r.match(mySID.toString()) || r.match('Set'))) {
+                                  if (!r.match('#') && (r.match(myKey.toString()) || r.match('Set'))) {
                                       row = $('<tr />');
                                       $.each(r.replace(/ +/gm,' ').replace(/^\s*SID\s*/gi,'').replace(reg,'').split(' '), function(j, el) {
                                            $('<td />' ).html(el).appendTo(row);
@@ -1062,7 +1060,7 @@ function getGrades(theForm) {
                        .fail(function() {
                             alert('failed to retrieve scores');
                             $('#scores').html('<p>Unable to retrieve scores for SID ' +
-                                              mySID.toString() + ' at this time.</p>')
+                                              theForm.sid.value + ' at this time.</p>')
                                         .css('visibility', 'visible');
                        });
             }
