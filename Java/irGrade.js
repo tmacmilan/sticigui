@@ -1037,7 +1037,7 @@ function getGrades(theForm) {
         myKey = CryptoJS.SHA256(trimToLowerCase(theForm.sid.value) + ',' + trimToLowerCase(theForm.email.value)).toString();
         $('#scores').html('<p class="center">Retrieving scores <blink>&hellip;</blink></p>');
         scoresURL = scoreBase + 'class=' + course + '&teacher=' + teacher + '&gpath=' + gPath + '&sids';
-        var reg = new RegExp('\s*' + myKey + '\s*', 'gi');
+        var reg = new RegExp('^\s*' + myKey + '\s*', 'gi');
         getURL = $.ajax({
                           type: 'GET',
                           url:   scoresURL
@@ -1047,10 +1047,14 @@ function getGrades(theForm) {
                             var scTab = $('<table class="dataTable"/>');
                             var rt = data.split('\n');
                             $.each(rt, function(i, r) {
-                                  if (!r.match('#') && (r.match(myKey.toString()) || r.match('Set'))) {
+                                  if (r.match(myKey) || r.match('Set')) {
                                       row = $('<tr />');
-                                      $.each(r.replace(/ +/gm,' ').replace(/^\s*KEY\s*/gi,'').replace(reg,'').split(' '), function(j, el) {
-                                           $('<td />' ).html(el).appendTo(row);
+                                      $.each( r.replace(reg,'')
+                                               .replace(/^\s*KEY\s*/gi,'')
+                                               .replace(/NaN/,'----')
+                                               .replace(/\s+/gm,' ')
+                                               .split(' '), function(j, el) {
+                                                                  if(el) {$('<td />' ).html(el).appendTo(row);}
                                       });
                                       row.appendTo(scTab);
                                   }
