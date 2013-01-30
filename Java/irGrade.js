@@ -34,7 +34,7 @@ var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
 var courseBase = './Courses/';     // base for looking for course-specific files
 var cssBase = '/Graphics/sticiGuiDefault.css';  // css file
-var graderActionURL = 'http://statistics.berkeley.edu/cgi-bin/grader6'; // URL of grading scripts
+var graderActionURL = 'http://statistics.berkeley.edu/cgi-bin/grader5'; // URL of grading scripts
 var chapterTitles = [
                          ['Preface','preface'],
                          ['Introduction','howto'],
