@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/1/28/2030'; // modification date and time
+var irGradeModTime = '2013/1/29/2330'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -1049,7 +1049,7 @@ function getGrades(theForm) {
                             $.each(rt, function(i, r) {
                                   if (!r.match('#') && (r.match(myKey.toString()) || r.match('Set'))) {
                                       row = $('<tr />');
-                                      $.each(r.replace(/ +/gm,' ').replace(/^\s*SID\s*/gi,'').replace(reg,'').split(' '), function(j, el) {
+                                      $.each(r.replace(/ +/gm,' ').replace(/^\s*KEY\s*/gi,'').replace(reg,'').split(' '), function(j, el) {
                                            $('<td />' ).html(el).appendTo(row);
                                       });
                                       row.appendTo(scTab);
