@@ -2248,11 +2248,12 @@ function writeProblemSetHead(sn) {
     }
 }
 
-function writeProblemSetBody() {
-    theChapter = parent.theChapter;
+function writeProblemSetBody( ch, title ) {
+    var theChapter = parent.theChapter;
+    var assNum = ch ? ch : assignmentNumbers[theChapter];
     try {
          var qStr = '<form id="labletForm" method="POST" accept-charset="UTF-8">' +
-               hiddenInput('formname', 'SticiGuiSet' + assignmentNumbers[theChapter] ) +
+               hiddenInput('formname', 'SticiGuiSet' + assNum ) +
                hiddenInput('lastName','') +
                hiddenInput('firstName','') +
                hiddenInput('email','') +
@@ -2269,12 +2270,13 @@ function writeProblemSetBody() {
                hiddenInput('showWrongAfterSubmits','') +
                hiddenInput('extrainfo','');
    } catch(e) {
-         alert('Exception in writeProblemSetBody ' + e + ' theChapter ' + theChapter);
+         alert('Exception in writeProblemSetBody ' + e);
    }
     document.writeln(qStr);
     setRequiredInputs(document.forms[0]);
+    title = title ? title : assignmentTitles[assignmentNumbers[theChapter]][1];
     qStr = '<h1><a id="firstContent"></a><a href="../index.htm" target="_new">SticiGui</a>: ' +
-           assignmentTitles[assignmentNumbers[theChapter]][1] + '</h1>';
+            title + '</h1>';
     document.writeln(qStr);
     pushAssignmentOpened();
     return(true);
