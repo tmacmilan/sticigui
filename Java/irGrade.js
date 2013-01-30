@@ -485,11 +485,7 @@ function evalNum(s) { // try to evaluate a string as a numeric value
 
 function parseMultiple(id) {
   // pre-processes multiple selections so that checkAnswer can be used to grade them
-    return($('.' + id + ' option:selected').map(function() { 
-                                            return(this.value.replace(/^\s+|\s+$/g,'').toLowerCase()); 
-                                      })
-                                      .get()
-                                      .join(','));
+    return( ($('#' + id ).val() || []).join(','));
 }
 
 function parseRadio(c) {
@@ -740,7 +736,7 @@ function selectExerciseString(mult, q, opt, ans) {
         if (mult) {
             s += '<input type="button" id="B' + q +
                 '" value="Check Answer" onclick="checkAnswer(\'' + id +
-                '\',parseMultiple(' + id + '))" />';
+                '\',parseMultiple(\'' + id + '\'))" />';
         }
         if (newStyleAnswer != null && newStyleAnswer) {
             boxList[q - 1] = document.images.length;
@@ -1871,7 +1867,7 @@ function setExtraInputs(theForm) {
               if (qType == 'select-one') {
                   resp = qVal.filter(':selected').val();
               } else if (qType == 'select-multiple') {
-                  resp = parseMultiple('#' + i.toString);
+                  resp = parseMultiple('Q' + i.toString);
               } else if (qType == 'text' || qType == 'textarea') {
                   resp = qVal.val();
               } else if (qType == 'radio') {
