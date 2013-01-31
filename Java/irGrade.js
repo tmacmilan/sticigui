@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/1/28/2030'; // modification date and time
+var irGradeModTime = '2013/1/29/2330'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -255,7 +255,6 @@ var key = new Array();             // key for self-graded exercises
 var boxList = new Array();         // list of images for self-graded exercises
 var setNum;                        // current problem set number
 var isLab = false;                 // is this a problem set?
-var mySID;
 var acccessURL;
 var dueURL;
 var timeURL;
@@ -396,23 +395,20 @@ var colors = ['red','orange','yellow','green','blue','indigo','violet',
 // ===============  STRING HANDLERS and HTML GENERATORS ===================
 
 function trimBlanks(s){
-    return(s.replace(/^\s+|\s+$/g,''));
+    return(s ? s.replace(/^\s+|\s+$/g,'') : s);
 }
 
 function allBlanks(s) {
-    if (s == null || s.replace(/^\s+|\s+$/g,'').length == 0) {
-        return(true);
-    } else {
-        return(false);
-    }
+    return (s == null || s.replace(/^\s+|\s+$/g,'').length == 0);
 }
 
 function removeAllBlanks(s){
-    return(s.replace(/\s+/gm,''));
+    return(s ? s.replace(/\s+/gm,'') : s);
+
 }
 
 function removeMarkup(s) { // removes html markup
-    return(s.replace(/<[^>]*>/gm,''));
+    return(s ? s.replace(/<[^>]*>/gm,'') : s);
 }
 
 function replaceMarkupByChar(s,sub) { // replaces html markup with sub
@@ -423,27 +419,24 @@ function replaceMarkupByChar(s,sub) { // replaces html markup with sub
 }
 
 function removeSpecials(s) { // removes special characters markup EXCEPT brackets
-    return(s.replace(/[0123456789:;~`'"<>,.?\/+_@#$%^&*|!=-]+/gm,''));
+    return(s ? s.replace(/[0123456789:;~`'"<>,.?\/+_@#$%^&*|!=-]+/gm,'') : s);
 }
 
 function removeNonLogicals(s) { // removes special characters markup EXCEPT brackets and logical symbols
-    return(s.replace(/[0123456789:;`'"<>,.?\/+_@#$%^*=-]+/gm,''));
+    return(s ? s.replace(/[0123456789:;`'"<>,.?\/+_@#$%^*=-]+/gm,'') : s);
 }
 
 function trimToLowerCase(s) {
 // trim trailing blanks, convert to lower case
-    if (s == null || s.length == 0 ) {
-        return(s);
-    }
-    return((s.toLowerCase()).replace(/^\s+|\s+$/g,''));
+    return(s ? (s.toLowerCase()).replace(/^\s+|\s+$/g,'') : s);
 }
 
 function removeCommas(s) { // removes commas from a string
-    return(s.replace(/,/gm,''));
+    return(s ? s.replace(/,/gm,'') : s);
 }
 
 function removeString(str,s) { // removes instances of the string str from s.
-    return(s.replace(eval('/'+str+'/gm'),''));
+    return(s ? s.replace(eval('/'+str+'/gm'),'') : s);
 }
 
 function removeStrings(strArr,s) {
@@ -491,11 +484,7 @@ function evalNum(s) { // try to evaluate a string as a numeric value
 
 function parseMultiple(id) {
   // pre-processes multiple selections so that checkAnswer can be used to grade them
-    return($('#' + id + ' option:selected').map(function() { 
-                                            return(this.value.replace(/^\s+|\s+$/g,'').toLowerCase()); 
-                                      })
-                                      .get()
-                                      .join(','));
+    return( ($('#' + id ).val() || []).join(','));
 }
 
 function parseRadio(c) {
@@ -746,7 +735,7 @@ function selectExerciseString(mult, q, opt, ans) {
         if (mult) {
             s += '<input type="button" id="B' + q +
                 '" value="Check Answer" onclick="checkAnswer(\'' + id +
-                '\',parseMultiple(' + id + '))" />';
+                '\',parseMultiple(\'' + id + '\'))" />';
         }
         if (newStyleAnswer != null && newStyleAnswer) {
             boxList[q - 1] = document.images.length;
@@ -1045,24 +1034,26 @@ function setCourseSpecs() {
 
 function getGrades(theForm) {
     if (validateLablet(theForm)) {
-        mySID = theForm.sid.value;
-        $('#scores').html('<p class="center">Retrieving scores for SID ' +
-                                                       mySID + '<blink>&hellip;</blink></p>');
+        myKey = CryptoJS.SHA256(trimToLowerCase(theForm.sid.value) + ',' + trimToLowerCase(theForm.email.value)).toString();
+        $('#scores').html('<p class="center">Retrieving scores <blink>&hellip;</blink></p>');
         scoresURL = scoreBase + 'class=' + course + '&teacher=' + teacher + '&gpath=' + gPath + '&sids';
-        var reg = new RegExp('\s*' + mySID + '\s*', 'gi');
+        var reg = new RegExp('^\\s*(' + myKey + '|KEY)\\s*', 'gi');
         getURL = $.ajax({
                           type: 'GET',
                           url:   scoresURL
                         })
                         .done(function(data) {
-                            $('#scores').html('<p class="center">Scores for SID ' + mySID + '</p>');
+                            $('#scores').html('<p class="center">Scores for SID ' + theForm.sid.value + '</p>');
                             var scTab = $('<table class="dataTable"/>');
                             var rt = data.split('\n');
                             $.each(rt, function(i, r) {
-                                  if (!r.match('#') && (r.match(mySID.toString()) || r.match('Set'))) {
+                                  if (r.match(reg)) {
                                       row = $('<tr />');
-                                      $.each(r.replace(/ +/gm,' ').replace(/^\s*SID\s*/gi,'').replace(reg,'').split(' '), function(j, el) {
-                                           $('<td />' ).html(el).appendTo(row);
+                                      $.each( r.replace(reg,'')
+                                               .replace(/NaN/,'----')
+                                               .replace(/\s+/gm,' ')
+                                               .split(' '), function(j, el) {
+                                                                  if(el) {$('<td />' ).html(el).appendTo(row);}
                                       });
                                       row.appendTo(scTab);
                                   }
@@ -1072,7 +1063,7 @@ function getGrades(theForm) {
                        .fail(function() {
                             alert('failed to retrieve scores');
                             $('#scores').html('<p>Unable to retrieve scores for SID ' +
-                                              mySID.toString() + ' at this time.</p>')
+                                              theForm.sid.value + ' at this time.</p>')
                                         .css('visibility', 'visible');
                        });
             }
@@ -1877,7 +1868,7 @@ function setExtraInputs(theForm) {
               if (qType == 'select-one') {
                   resp = qVal.filter(':selected').val();
               } else if (qType == 'select-multiple') {
-                  resp = parseMultiple('#' + i.toString);
+                  resp = parseMultiple('Q' + i.toString);
               } else if (qType == 'text' || qType == 'textarea') {
                   resp = qVal.val();
               } else if (qType == 'radio') {
@@ -2258,11 +2249,12 @@ function writeProblemSetHead(sn) {
     }
 }
 
-function writeProblemSetBody() {
-    theChapter = parent.theChapter;
+function writeProblemSetBody( ch, title ) {
+    var theChapter = parent.theChapter;
+    var assNum = ch ? ch : assignmentNumbers[theChapter];
     try {
          var qStr = '<form id="labletForm" method="POST" accept-charset="UTF-8">' +
-               hiddenInput('formname', 'SticiGuiSet' + assignmentNumbers[theChapter] ) +
+               hiddenInput('formname', 'SticiGuiSet' + assNum ) +
                hiddenInput('lastName','') +
                hiddenInput('firstName','') +
                hiddenInput('email','') +
@@ -2279,12 +2271,13 @@ function writeProblemSetBody() {
                hiddenInput('showWrongAfterSubmits','') +
                hiddenInput('extrainfo','');
    } catch(e) {
-         alert('Exception in writeProblemSetBody ' + e + ' theChapter ' + theChapter);
+         alert('Exception in writeProblemSetBody ' + e);
    }
     document.writeln(qStr);
     setRequiredInputs(document.forms[0]);
+    title = title ? title : assignmentTitles[assignmentNumbers[theChapter]][1];
     qStr = '<h1><a id="firstContent"></a><a href="../index.htm" target="_new">SticiGui</a>: ' +
-           assignmentTitles[assignmentNumbers[theChapter]][1] + '</h1>';
+            title + '</h1>';
     document.writeln(qStr);
     pushAssignmentOpened();
     return(true);

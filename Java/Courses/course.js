@@ -16,7 +16,7 @@ var course;                        // course designation
 var cRoot = "Java/Courses/";       // relative root for course management
 var semester = "Summer 2012";      // semester
 var courseName;                    // English name of course
-var scoreBase = "../../../cgi-bin/scores.dat?";
+var scoreBase = "../../../cgi-bin/scores6.dat?";
 var queryBase = "http://statistics.berkeley.edu/cgi-bin/querygrade5?";
 var courses = [
                ["0","s2-x","Statistics 2.1x, Spring 2013, UC Berkeley","stark","Profs P.B. Stark and A. Adhikari","",5,4],
