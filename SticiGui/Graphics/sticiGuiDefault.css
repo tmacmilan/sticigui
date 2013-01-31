@@ -825,6 +825,13 @@ div.histogram {
   margin-right: auto;
 }
 
+div.scatterplot {
+  width: 640px;
+  height: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /*   PRINTING   */
 
 @media print {
@@ -847,32 +854,4 @@ div.histogram {
     margin-bottom: 1em;
     display: inline;
   }
-}
-
-#calc {
-  width: 400px;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-#calc table {
-  margin-left: 0;
-  margin-right: 0;
-  border-spacing: 0px;
-}
-#calc input[type="text"] {
-  width: 395px;
-  margin-left: auto;
-  margin-right: auto;
-}
-#calc input[type="button"] {
-  width: 100%;
-  font-size: 12px;
-  margin: 0 0 0 0;
-}
-#calc {
-  margin-left: auto;
-  margin-right: auto;
-}
-#calc td {
-  width: 75px;
 }

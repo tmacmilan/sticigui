@@ -5,7 +5,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "30 January 2013 17:37 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -155,6 +155,8 @@
     GMAT, change the variables using the drop-down menus at the top of the figure.
 </p>
 
+<div class="figure">
+
 <script language="JavaScript1.8" type="text/javascript"><!--
     var qStr = 'The GMAT data with a button to view SD<sub>X</sub> and SD<sub>Y</sub>.';
     writeFigureCaption(qStr);
@@ -162,21 +164,27 @@
 </script>
 
 <p class="figure">
-    <applet code="Bivariate.class" codebase="../../Java/"
-       align="baseline" width="640" height="380" archive="PbsGui.zip">
-    <param name="addPoints" value="false">
-    <param name="files" value="./Data/gmat.dat">
-    <param name="graphAveButton" value="false">
-    <param name="regressButtons" value="false">
-    <param name="sdButton" value="true">
-    <param name="sdLineButton" value="false">
-    <param name="showR" value="false">
-    <param name="showSDs" value="true">
-    <param name="Xinit" value="Verbal GMAT">
-    <param name="Yinit" value="Quant. GMAT">
-    You need Java to see this.
-    </applet>
+<div id="chart2" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('chart2', {
+    addPoints: false,
+    files: ['../../Java/Data/gmat.dat.json'],
+    graphAveButton: false,
+    regressButton: false,
+    residualsButton: false,
+    sdButton: true,
+    sdLineButton: false,
+    showR: false,
+    showSDs: true,
+    Xinit: "Verbal GMAT",
+    Yinit: "Quant. GMAT"
+  });
+});
+</script>
 </p>
+
+</div>
 
 <p>
     The cloud of points in the scatterplot tilts slightly upward towards the right.
@@ -271,24 +279,30 @@
     set defined by restricting some of the variables to various ranges.
 </p>
 
-<script language="JavaScript1.8" type="text/javascript"><!--
+<div class="figure">
+    <script language="JavaScript1.8" type="text/javascript"><!--
     var qStr = 'A histogram superposed with a histogram of a subset of the data.';
     writeFigureCaption(qStr);
 // -->
 </script>
 
 <p class="figure">
-    <applet code="HistHiLite.class" codebase="../../Java/"
-         align="baseline" width="640" height="380" archive="PbsGui.zip">
-    <param name="binControl" value="false">
-    <param name="bins" value="15">
-    <param name="files" value="./Data/gmat.dat">
-    <param name="nFiles" value="1">
-    <param name="restrict" value="true">
-    <param name="univariateStats" value="true">
-    You need Javato see this.
-    </applet>
+<div id="hist" class="histogram"></div>
+<script>
+  jQuery(function() {
+    new Stici_HistHiLite('hist', {
+      data: ['../../Java/Data/gmat.dat.json'],
+      restrict: true,
+      changeNumBins: false,
+      bins: 15,
+      showUnivariateStats: true,
+      showNormalButton: false
+    });
+  });
+</script>
 </p>
+
+</div>
 
 <p>
     Use the drop-down menu at the top of

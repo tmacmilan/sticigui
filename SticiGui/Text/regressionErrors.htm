@@ -396,15 +396,18 @@ var fStr = '<p>Let the data be pairs ' +
 </script>
 
 <p class="figure">
-    <applet code="HistHiLite.class" codebase="../../Java/" align="middle"
-       width="620" height="320" archive="PbsGui.zip">
-    <param name="bins" value="50">
-    <param name="files" value="./Data/gmat.dat">
-    <param name="normalControls" value="false">
-    <param name="restrict" value="true">
-    <param name="univariateStats" value="true">
-    You need Java to see this.
-    </applet>
+<div id="hist" class="histogram"></div>
+<script>
+  jQuery(function() {
+    new Stici_HistHiLite('hist', {
+      data: ['../../Java/Data/gmat.dat.json'],
+      restrict: true,
+      bins: 50,
+      showNormalButton: false,
+      showUnivariateStats: true
+    });
+  });
+</script>
 </p>
 </div>
 
