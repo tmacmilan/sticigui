@@ -825,6 +825,13 @@ div.histogram {
   margin-right: auto;
 }
 
+div.scatterplot {
+  width: 640px;
+  height: 380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /*   PRINTING   */
 
 @media print {

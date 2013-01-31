@@ -181,19 +181,24 @@
 </script>
 
 <p class="figure">
-    <applet code="Bivariate.class" codebase="../../Java/" align="baseline"
-            width="640" height="380" archive="PbsGui.zip">
-        <param name="addPoints" value="false" />
-        <param name="files" value="./Data/gmat.dat" />
-        <param name="graphAveButton" value="true" />
-        <param name="regressButtons" value="false" />
-        <param name="sdButton" value="true" />
-        <param name="sdLineButton" value="true" />
-        <param name="showGraphOfAve" value="true" />
-        <param name="showSdLine" value="true" />
-        <param name="Xinit" value="Verbal GMAT" />
-        <param name="Yinit" value="Quant. GMAT" />You need Java to see this.
-    </applet>
+<div id="chart2" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('chart2', {
+    addPoints: false,
+    files: ['../../Java/Data/gmat.dat.json'],
+    graphAveButton: true,
+    regressButton: false,
+    residualsButton: false,
+    sdButton: true,
+    sdLineButton: true,
+    showGraphOfAve: true,
+    showSdLine: true,
+    Xinit: "Verbal GMAT",
+    Yinit: "Quant. GMAT"
+  });
+});
+</script>
 </p>
 </div>
 
@@ -372,23 +377,25 @@
 </script>
 
 <p class="figure">
-    <applet code="Bivariate.class" codebase="../../Java/" align="baseline"
-      width="640" height="380" archive="PbsGui.zip">
-    <param name="addPoints" value="false" />
-    <param name="files" value="./Data/gmat.dat" />
-    <param name="graphAveButton" value="true" />
-    <param name="regressButton" value="true" />
-    <param name="regressButtons" value="false" />
-    <param name="residualsButton" value="false" />
-    <param name="sdButton" value="true" />
-    <param name="sdLineButton" value="true" />
-    <param name="showGraphOfAve" value="true" />
-    <param name="showRegress" value="true" />
-    <param name="showSdLine" value="true" />
-    <param name="Xinit" value="Verbal GMAT" />
-    <param name="Yinit" value="Quant. GMAT" />
-    You need Java to see this.
-    </applet>
+<div id="chart4" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('chart4', {
+    addPoints: false,
+    files: ['../../Java/Data/gmat.dat.json'],
+    graphAveButton: true,
+    regressButton: true,
+    residualsButton: false,
+    sdButton: true,
+    sdLineButton: true,
+    showGraphOfAve: true,
+    showRegress: true,
+    showSdLine: true,
+    Xinit: "Verbal GMAT",
+    Yinit: "Quant. GMAT"
+  });
+});
+</script>
 </p>
 </div>
 

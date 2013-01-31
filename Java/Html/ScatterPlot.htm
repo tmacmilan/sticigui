@@ -37,21 +37,20 @@
 
 <p align="center">
 
-<applet code="Bivariate.class" align="baseline" width="800"
-
-   height="600" archive="PbsGui.zip" codebase=".." >
-
-   <param name="addPoints" value="true">
-
-   <param name="files" value="./Data/cities.dat,./Data/cities47.dat,./Data/gmat.dat,./Data/ccv.dat">
-
-   <param name="urlBox" value="true">
-
-   <param name="sdButtons" value="true">
-
-   You need Java to see this.
-
-</applet>
+<div id="chart" style="width: 800px; height: 600px"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('chart', {
+    addPoints: true,
+    files: ['../../Java/Data/cities.dat.json',
+            '../../Java/Data/cities47.dat.json',
+            '../../Java/Data/gmat.dat.json',
+            '../../Java/Data/ccv.dat.json'],
+    urlBox: true,
+    sdButtons: true
+  });
+});
+</script>
 
 </p>
 

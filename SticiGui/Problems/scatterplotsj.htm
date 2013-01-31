@@ -26,23 +26,27 @@
     labInstrSetUp('SeEd',cNum);
 // -->
 </script>
+<link rel="stylesheet" type="text/css" href="../Graphics/sticiGuiDefault.css"/>
 </head>
 
 <body >
 
 
 <p align="center">
-<applet code="Bivariate.class" codebase="../../Java/"
-     align="middle" width="600" height="300" archive="PbsGui.zip">
-     <param name="addPoints" value="false">
-     <param name="files" value="./Data/p6-1990.dat">
-     <param name="graphAveButton" value="false">
-     <param name="regressButtons" value="false">
-     <param name="sdLineButton" value="false">
-     <param name="showNormal" value="false">
-     <param name="showR" value="false">
-     You need Java to see this.
-</applet>
+<div id="scatter" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('scatter', {
+    addPoints: false,
+    files: ['../../Java/Data/p6-1990.dat.json'],
+    graphAveButton: false,
+    regressButton: false,
+    residualsButton: false,
+    sdLineButton: false,
+    showR: true
+  });
+});
+</script>
 </p>
 
 <p align="center">&nbsp;</p>

@@ -215,19 +215,23 @@
 
 <p class="figure">
 <a id="gmat_scatterplot"></a>
-<applet code="Bivariate.class" codebase="../../Java/" align="baseline" width="640"
-    height="380" archive="PbsGui.zip">
-    <param name="addPoints" value="false">
-    <param name="files" value="./Data/gmat.dat">
-    <param name="graphAveButton" value="false">
-    <param name="regressButtons" value="false">
-    <param name="sdButton" value="false">
-    <param name="sdLineButton" value="false">
-    <param name="showR" value="false">
-    <param name="Xinit" value="Verbal GMAT">
-    <param name="Yinit" value="Quant. GMAT">
-    You need Java to see this.
-</applet>
+<div id="scatter1" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('scatter1', {
+    addPoints: false,
+    files: ['../../Java/Data/gmat.dat.json'],
+    graphAveButton: false,
+    regressButton: false,
+    residualsButton: false,
+    sdButton: false,
+    sdLineButton: false,
+    showR: false,
+    Xinit: "Verbal GMAT",
+    Yinit: "Quant. GMAT"
+  });
+});
+</script>
 </p>
 
 </div>
@@ -703,16 +707,22 @@
            '<td headers="col1">total of all the above</td>' +
            '</tr></table>' +
            '</center></div><p class="figure">' +
-           '<applet code="Bivariate.class" codebase="../../Java/" align="baseline" ' +
-           'width="640" height="380" archive="PbsGui.zip">' +
-           '<param name="addPoints" value="false">' +
-           '<param name="files" value="./Data/p60-1990.dat">' +
-           '<param name="graphAveButton" value="false">' +
-           '<param name="regressButtons" value="false">' +
-           '<param name="sdButton" value="false">' +
-           '<param name="sdLineButton" value="false">' +
-           '<param name="showR" value="false">You need Java to see this.' +
-           '</applet></p><p><span class="qSpan">Identify the attributes of the ' +
+           '<div id="scatter2" class="scatterplot"></div>' +
+           '<script>' +
+           'jQuery(function() {' +
+           '  new Stici_Scatterplot(\'scatter2\', {' +
+           '    addPoints: false,' +
+           '    files: [\'../../Java/Data/p60-1990.dat.json\'],' +
+           '    graphAveButton: false,' +
+           '    regressButton: false,' +
+           '    residualsButton: false,' +
+           '    sdButton: false,' +
+           '    sdLineButton: false,' +
+           '    showR: false,' +
+           '  });' +
+           '});' +
+           '</sc'+'ript>' +
+           '</p><p><span class="qSpan">Identify the attributes of the ' +
            'scatterplots of the following pairs of variables:</span></p>' +
            '<div align="center"><center><table class="dataTable"><tr> ' +
            '<td><span class="qSpan">9-12th grade/1000</span>' +

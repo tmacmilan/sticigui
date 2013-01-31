@@ -157,20 +157,24 @@
 </script>
 
 <p class="figure">
-    <applet code="Bivariate.class" codebase="../../Java/"
-       align="baseline" width="640" height="380" archive="PbsGui.zip">
-    <param name="addPoints" value="false">
-    <param name="files" value="./Data/gmat.dat">
-    <param name="graphAveButton" value="false">
-    <param name="regressButtons" value="false">
-    <param name="sdButton" value="true">
-    <param name="sdLineButton" value="false">
-    <param name="showR" value="false">
-    <param name="showSDs" value="true">
-    <param name="Xinit" value="Verbal GMAT">
-    <param name="Yinit" value="Quant. GMAT">
-    You need Java to see this.
-    </applet>
+<div id="chart2" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('chart2', {
+    addPoints: false,
+    files: ['../../Java/Data/gmat.dat.json'],
+    graphAveButton: false,
+    regressButton: false,
+    residualsButton: false,
+    sdButton: true,
+    sdLineButton: false,
+    showR: false,
+    showSDs: true,
+    Xinit: "Verbal GMAT",
+    Yinit: "Quant. GMAT"
+  });
+});
+</script>
 </p>
 
 <p>

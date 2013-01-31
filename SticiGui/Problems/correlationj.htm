@@ -23,20 +23,26 @@
 <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
 <script type="text/javascript" src="../../Java/sticigui.js"></script>
 <link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../Graphics/sticiGuiDefault.css"/>
 </head>
 
 <body >
 
 <p align="center">
-<applet code="Bivariate.class" codebase="../../Java/"
-   align="middle" width="700" height="300" archive="PbsGui.zip">
-  <param name="addPoints" value="false">
-  <param name="files" value="./Data/housing-1990.dat">
-  <param name="graphAveButton" value="true">
-  <param name="regressButtons" value="false">
-  <param name="sdLineButton" value="false">
-  <param name="showR" value="true">
-</applet>
+<div id="chart" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('chart', {
+    addPoints: false,
+    files: ['../../Java/Data/housing-1990.dat.json'],
+    graphAveButton: true,
+    regressButton: false,
+    residualsButton: false,
+    sdLineButton: false,
+    showR: true
+  });
+});
+</script>
 </p>
 
 
