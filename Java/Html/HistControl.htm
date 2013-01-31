@@ -38,25 +38,19 @@
 
 
 <p align="center">
-
-    <applet code="HistHiLite.class" align="baseline" width="640"
-
-        height="440" archive="PbsGui.zip" codebase=".." >
-
-        <param name="files" value="./Data/ccv.dat,./Data/cities.dat,./Data/gmat.dat">
-
-        <param name="nFiles" value="3">
-
-        <param name="restrict" value="true">
-
-        <param name="normalControls" value="true">
-
-        <param name="univariateStats" value="true">
-
-        You need Java to see this.
-
-    </applet>
-
+<div id="hist" class="histogram"></div>
+<script>
+  jQuery(function() {
+    new Stici_HistHiLite('hist', {
+      data: ['../../Java/Data/ccv.dat.json',
+             '../../Java/Data/cities.dat.json',
+             '../../Java/Data/gmat.dat.json'],
+      restrict: true,
+      showNormalButton: true,
+      showUnivariateStats: true
+    });
+  });
+</script>
 </p>
 
 

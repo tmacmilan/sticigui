@@ -292,16 +292,19 @@ jQuery(function() {
 </script>
 
 <p class="figure">
-    <applet code="HistHiLite.class" codebase="../../Java/" align="baseline"
-       width="640" height="380" archive="PbsGui.zip">
-    <param name="binControl" value="false" />
-    <param name="bins" value="15" />
-    <param name="files" value="./Data/gmat.dat" />
-    <param name="nFiles" value="1" />
-    <param name="restrict" value="true" />
-    <param name="univariateStats" value="true" />
-    You need Java to see this.
-    </applet>
+<div id="hist" class="histogram"></div>
+<script>
+  jQuery(function() {
+    new Stici_HistHiLite('hist', {
+      data: ['../../Java/Data/gmat.dat.json'],
+      restrict: true,
+      bins: 15,
+      changeNumBins: false,
+      showNormalButton: false,
+      showUnivariateStats: true
+    });
+  });
+</script>
 </p>
 </div>
 
