@@ -1085,7 +1085,7 @@ function spawnProblem(theForm,setName,relPath) {
             var sstr =  crypt('sid' + theForm.sid.value, theForm.sid.value) + '=';
             if (ck.indexOf(sstr) < 0){
                 var rs = (theForm.sid.value).toString().replace(/[^0-9]/g, '7');
-                if (rs.length < 10){
+                while (rs.length < 10){
                      rs += rs;
                 }
                 randSeed = parseInt(rs.substr(0,Math.min(10,rs.length)));

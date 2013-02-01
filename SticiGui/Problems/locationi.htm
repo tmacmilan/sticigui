@@ -2,7 +2,7 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "31 January 2013 14:37 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -330,11 +330,9 @@
 </div>
 
 
-<div class="indent">
 <h3>
     Part III
 </h3>
-</div>
 
 
 
@@ -476,10 +474,14 @@
 </script>
 </div>
 
-<div id="hist" class="histogram">
+<div class="figure">
+  <p class="figure">
+    <div id="hist" class="histogram">
+    </div>
+  </p>
 </div>
 
-<script>
+<script language="JavaScript1.8" type="text/javascript" ><!-->
 jQuery(function() {
   new Stici_HistHiLite('hist', {
     changeNumBins: false,
@@ -489,12 +491,9 @@ jQuery(function() {
     showUnivariateStats: false
   });
 });
-</script>
-
-<script language="JavaScript1.8" type="text/javascript" ><!--
-    var histNum = document.applets.length - 1;
 // -->
 </script>
+
 
 <script language="JavaScript1.8" type="text/javascript" ><!--
     writeProblemSetFooter();
