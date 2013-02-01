@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/1/29/2330'; // modification date and time
+var irGradeModTime = '2013/2/01/1045'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -119,7 +119,7 @@ var assignmentTitles = [
                          ],
                          ['Regression Diagnostics, Errors in Regression',
                           'Regression diagnostics and regression errors: residual plots, ' +
-			            'regression fallacy, rms error of regression',
+			                        'regression fallacy, rms error of regression',
                           'regressionErrors',
                           'regressionDiagnostics,regressionErrors'
                          ],
@@ -285,8 +285,8 @@ var bigPi = '3141592653';
 var rmin = 2.3e-308;            // for numerical analysis
 var eps = 2.3e-16;              // ditto
 var maxIterations = 100;        // default iteration limit for iterative algorithms
-var maxSubmits = 5;             // max submissions of each homework
-var showWrongAfterSubmits = 4;  // show which answers are wrong after this many submissions
+var maxSubmits;                 // max submissions of each homework
+var showWrongAfterSubmits;      // show which answers are wrong after this many submissions
 var showQMarks = true;          // show labeling of each question answer area
 var continueLab;
 var htmStuff;
@@ -1117,8 +1117,8 @@ function spawnProblem(theForm,setName,relPath) {
             lablet.dFile = dFile;
             lablet.course = course;
             lablet.teacher = teacher;
-            lablet.maxSubmits = maxSubmits;
-            lablet.showWrongAfterSubmits = showWrongAfterSubmits;
+            lablet.maxSubmits = assign[setName][3] ? assign[setName][3]: maxSubmits ;
+            lablet.showWrongAfterSubmits = assign[setName][4] ? assign[setName][4]: showWrongAfterSubmits;
             lablet.formname = setName;
             lablet.theChapter = setName;
             lablet.assignmentname = setName;
