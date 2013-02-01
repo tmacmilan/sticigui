@@ -715,8 +715,8 @@ function startProblem(q) {  // writes html to start a problem, numbered q
     } else {
         ref = "Exercise&nbsp;" + chStr + q.toString();
     }
-    var linkStr = 'Q-' + q.toString();
-    var s = '<a id="' + linkStr + '"/><p>&nbsp;</p><p><strong>' + ref + '.</strong>';
+    var linkStr = 'P-' + q.toString();
+    var s = '<a id="' + linkStr + '"></a><p>&nbsp;</p><p><strong>' + ref + '.</strong>';
     return(s);
 }
 
@@ -757,7 +757,7 @@ function qCheckString(q) {
 
 function areaExercise(rows,cols,q,ca) {
   // text input area of "size" size, id q, and appropriate onChange()
-    var s = '<br><textarea rows="' + rows + '" cols="' + cols + ' id="' + q + '" class="' + q + '" ';
+    var s = '<br><textarea rows="' + rows + '" cols="' + cols + '" id="' + q + '" name="' + q + '" class="' + q + '" ';
     if (ca == null || ca ) {
         s += 'onChange="checkAnswer(id,value);"';
     }
@@ -2141,7 +2141,7 @@ function writeProblemSetFooter() {
         qStr += '<input type="reset" id="reset" value="Clear Form" />';
     }
     qStr += '</center></div><p>&nbsp;</p></form>' +
-            '<form method="POST" accept-charset="UTF-8">' + hiddenInput('contents',''); + '</form>';
+            '<form method="POST" accept-charset="UTF-8">' + hiddenInput('contents',' '); + '</form>';
     document.writeln(qStr);
     writeMiscFooter(false);
     return(true);
