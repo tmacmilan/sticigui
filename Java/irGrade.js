@@ -1569,8 +1569,6 @@ function labletSubmit(theForm) {
              var s = collectResponses(theForm,true,true);
              document.forms[1].elements['contents'].value = crypt(s,bigPi);
              document.forms[1].submit();
-     // DEBUG
-             console.log(crypt(s,bigPi));
          });
          OK = true;
      } else {
