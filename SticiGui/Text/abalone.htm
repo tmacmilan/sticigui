@@ -6,7 +6,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "4 February 2013 16:57 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -121,24 +121,25 @@ Here is a plot of the commercial landings (annual catch in pounds):
 </script>
 
 <p class="figure">
-<applet code="Correlation.class" codebase="../../Java/"
-     align="baseline" width="600" archive="PbsGui.zip" height="400">
-    <param name="title" value="Commercial Red Abalone Landings by year (lbs), 1975-1994">
-    <param name="x" value="1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,
-               1987,1988,1989,1990,1991,1992,1993,1994">
-    <param name="y" value="742769,739621,537450,489147,439469,516731,430315,431285,
+<div id="scatterplot1" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('scatterplot1', {
+    addPoints: false,
+    title: "Commercial Red Abalone Landings by year (lbs), 1975-1994",
+    x: [1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,
+               1987,1988,1989,1990,1991,1992,1993,1994],
+    y: [742769,739621,537450,489147,439469,516731,430315,431285,
                231210,299759,388782,263302,391278,324835,469407,379143,328466,
-               452901,428749,309478">
-    <param name="regressButtons" value="false">
-    <param name="sdButton" value="false">
-    <param name="sdLineButton" value="false">
-    <param name="showNBar" value="false">
-    <param name="showR" value="false">
-    <param name="showRBar" value="false">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-    You need Java to see this.
-</applet>
+               452901,428749,309478],
+    graphAveButton: false,
+    regressButton: true,
+    residualsButton: true,
+    sdButton: true,
+    sdLineButton: false
+  });
+});
+</script>
 </p>
 </div>
 
@@ -188,23 +189,24 @@ Here is a plot of the commercial landings (annual catch in pounds):
 </script>
 
 <p class="figure">
-<applet code="Correlation.class" codebase="../../Java/"
-     align="baseline" width="600" archive="PbsGui.zip" height="400">
-    <param name="title" value="Licensed Commercial Divers by year, 1975-1994">
-    <param name="x" value="1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,
-               1987,1988,1989,1990,1991,1992,1993,1994">
-    <param name="y" value="392,397,272,198,154,174,173,174,167,161,129,127,129,119,
-               125,124,123,117,124,116">
-    <param name="regressButtons" value="false">
-    <param name="sdButton" value="false">
-    <param name="sdLineButton" value="false">
-    <param name="showNBar" value="false">
-    <param name="showR" value="false">
-    <param name="showRBar" value="false">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-     You need Java to see this.
-</applet>
+<div id="scatterplot2" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('scatterplot2', {
+    addPoints: false,
+    title: "Licensed Commercial Divers by year, 1975-1994",
+    x: [1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,
+               1987,1988,1989,1990,1991,1992,1993,1994],
+    y: [392,397,272,198,154,174,173,174,167,161,129,127,129,119,
+               125,124,123,117,124,116],
+    graphAveButton: false,
+    regressButton: true,
+    residualsButton: true,
+    sdButton: true,
+    sdLineButton: false
+  });
+});
+</script>
 </p>
 </div>
 
@@ -224,21 +226,25 @@ versus number of divers:
 // -->
 </script>
 <p class="figure">
-<applet code="Correlation.class" codebase="../../Java/"
-     align="baseline" width="600" archive="PbsGui.zip" height="400">
-    <param name="title" value="Abalone Landings (100,000 pounds) versus No. Divers">
-    <param name="x" value="392,397,272,198,154,174,173,174,167,161,129,127,129,119,125,
-           124,123,117,124,116">
-    <param name="y" value="7.42769,7.39621,5.37450,4.89147,4.39469,5.16731,4.30315,4.31285,
+<div id="scatterplot3" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('scatterplot3', {
+    addPoints: false,
+    title: "Abalone Landings (100,000 pounds) versus No. Divers",
+    x: [392,397,272,198,154,174,173,174,167,161,129,127,129,119,125,
+           124,123,117,124,116],
+    y: [7.42769,7.39621,5.37450,4.89147,4.39469,5.16731,4.30315,4.31285,
           2.31210,2.99759,3.88782,2.63302,3.91278,3.24835,4.69407,3.79143,3.28466,
-          4.52901,4.28749,3.09478">
-    <param name="sdButton" value="false">
-    <param name="sdLineButton" value="false">
-    <param name="showNBar" value="false">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-    You need Java to see this.
-</applet>
+          4.52901,4.28749,3.09478],
+    graphAveButton: false,
+    regressButton: true,
+    residualsButton: true,
+    sdButton: true,
+    sdLineButton: false
+  });
+});
+</script>
 </p>
 </div>
 
@@ -356,21 +362,25 @@ period of time. The following plot shows the CPUE for the two decades 1975-1994.
 </script>
 
 <p class="figure">
-<applet code="Correlation.class" codebase="../../Java/"
-     align="baseline" width="600" archive="PbsGui.zip" height="400">
-    <param name="title" value="Catch per unit effort by year, 1975-1994">
-    <param name="x" value="1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,
-               1987,1988,1989,1990,1991,1992,1993,1994">
-    <param name="y" value="1894.82,1863.03,1975.92,2470.44,2853.69,2969.72,2487.37,2478.65,
+<div id="scatterplot4" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('scatterplot4', {
+    addPoints: false,
+    title: "Catch per unit effort by year, 1975-1994",
+    x: [1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,
+               1987,1988,1989,1990,1991,1992,1993,1994],
+    y: [1894.82,1863.03,1975.92,2470.44,2853.69,2969.72,2487.37,2478.65,
                1384.49,1861.86,3013.81,2073.24,3033.16,2729.71,3755.26,3057.60,
-               2967.17,4301.05,3841.84,2964.35">
-    <param name="sdButton" value="false">
-    <param name="sdLineButton" value="false">
-    <param name="showNBar" value="false">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-    You need Java to see this.
-</applet>
+               2967.17,4301.05,3841.84,2964.35],
+    graphAveButton: false,
+    regressButton: true,
+    residualsButton: true,
+    sdButton: true,
+    sdLineButton: false
+  });
+});
+</script>
 </p>
 </div>
 
