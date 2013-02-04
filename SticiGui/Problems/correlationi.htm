@@ -96,28 +96,25 @@ jQuery(function() {
 // -->
 </script>
 
-  <div align="center"><center><p>
-  <applet code="Correlation.class" codebase="../../Java/" align="baseline"
-  width="600" height="320" name="q2applet" archive="PbsGui.zip">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-    <param name="n" value="50">
-    <param name="r" value="1">
-    <param name="regressButtons" value="false">
-    <param name="sdButton" value="false">
-    <param name="sdLineButton" value="false">
-    <param name="showR" value="false">
-    <param name="title" value="Guess r">You need Java to see this
-  </applet>
-<script language="JavaScript1.8" type="text/javascript" ><!--
-  var appNum = document.applets.length - 1;
-  sectionContext += 'document.applets[' + appNum.toString() + '].setR(' +
-                     r2.toString() + ');\n';
-  // -->
+<p align="center">
+<div id="chart2" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('chart2', {
+    addPoints: false,
+    graphAveButton: false,
+    n: 50,
+    r: 1,
+    regressButton: false,
+    residualsButton: false,
+    sdButton: false,
+    sdLineButton: false,
+    showR: false,
+    title: "Guess r",
+  });
+});
 </script>
 </p>
-</center>
-</div>
 </div>
 
 
