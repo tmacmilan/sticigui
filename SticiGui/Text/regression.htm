@@ -7,7 +7,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "4 February 2013 00:07 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -111,7 +111,7 @@
 // -->
 </script>
 
-<p align="center">
+<p class="figure">
 <div id="chart1" class="scatterplot"></div>
 <script>
 jQuery(function() {
@@ -357,7 +357,8 @@ jQuery(function() {
     <a id="regression_line"></a>The Regression Line
 </h2>
 
-<p class="video"> <iframe width="420" height="315" src="http://www.youtube.com/embed/EPrAKgawSnY?start=735&end=915" frameborder="0" allowfullscreen></iframe>
+<p class="video"> 
+    <iframe width="420" height="315" src="http://www.youtube.com/embed/EPrAKgawSnY?start=735&end=915" frameborder="0" allowfullscreen></iframe>
 </p>
 
 <p>
@@ -661,7 +662,8 @@ jQuery(function() {
   using the Regression Line
 </h2>
 
-<p class="video"> <iframe width="420" height="315" src="http://www.youtube.com/embed/EPrAKgawSnY?start=915&end=3025" frameborder="0" allowfullscreen></iframe>
+<p class="video"> 
+    <iframe width="420" height="315" src="http://www.youtube.com/embed/EPrAKgawSnY?start=915&end=3025" frameborder="0" allowfullscreen></iframe>
 </p>
 
 <p>
@@ -992,6 +994,30 @@ jQuery(function() {
                'whenever you re-visit or reload the page.</p>';
     document.writeln(qStr);
     listToTable(header,lists,"standard","center");
+// -->
+</script>
+
+<p class="figure">
+<div id="chart5" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('chart5', {
+    addPoints: false,
+    graphAveButton: false,
+    sdButton: false,
+    sdLineButton: false,
+    title: "Fictitious IQs of Wives vs. Husbands",
+    regressButton: false,
+    residualsButton: false,
+    x: husIQ,
+    y: wifIQ
+  });
+});
+</script>
+</p>
+
+
+<script language="JavaScript1.8" type="text/javascript"><!--
     var qStr = '<p>The point of averages of these data is (' + doubleToStr(aveHus,3) +
         ', ' + doubleToStr(aveWif,3) + '), the SD of the husbands\' IQs is ' +
         doubleToStr(sdHus,3) + ', and the SD of the wives\' IQs is ' +
@@ -1135,23 +1161,6 @@ jQuery(function() {
 // -->
 </script>
 
-<p align="center">
-<div id="chart5" class="scatterplot"></div>
-<script>
-jQuery(function() {
-  new Stici_Scatterplot('chart5', {
-    addPoints: false,
-    graphAveButton: false,
-    sdButton: false,
-    sdLineButton: false,
-    title: "Fictitious IQs of Wives vs. Husbands",
-    regressButton: false,
-    x = hisIQ,
-    y = wifIQ
-  });
-});
-</script>
-</p>
 </div>
 
 <p>
