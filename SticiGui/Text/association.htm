@@ -448,8 +448,6 @@ jQuery(function() {
 </div>
 
 <div class="problem">
-<p align="center">
-<div id="chart1" class="scatterplot"></div>
 <script language="JavaScript1.8" type="text/javascript"><!---
     document.writeln(startProblem(pCtr++));
 // set up hetero/homo and linear/nonlinear data, outlier...; plot; ask questions.
@@ -487,7 +485,11 @@ jQuery(function() {
         k+= "&f";
     }
     writeSelectExercise(true,qCtr++,opt,k);
-
+// -->
+</script>
+<p align="center">
+<div id="chart1" class="scatterplot"></div>
+<script>
     jQuery(function() {
       new Stici_Scatterplot('chart1', {
         addPoints: false,
@@ -502,10 +504,9 @@ jQuery(function() {
         title: "Faux Data"
       });
     });
-// -->
 </script>
 </p>
-</div>
+
 </div>
 
 <h2><a id="post_hoc"></a>
