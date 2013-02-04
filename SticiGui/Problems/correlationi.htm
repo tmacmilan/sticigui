@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W2C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
@@ -66,7 +66,7 @@ jQuery(function() {
     addPoints: false,
     graphAveButton: false,
     n: 100,
-    r: 1,
+    r: r1,
     regressButton: false,
     residualsButton: false,
     sdButton: false,
@@ -104,7 +104,7 @@ jQuery(function() {
     addPoints: false,
     graphAveButton: false,
     n: 50,
-    r: 1,
+    r: r2,
     regressButton: false,
     residualsButton: false,
     sdButton: false,
@@ -284,15 +284,12 @@ jQuery(function() {
 <p align="center">
 <div id="chart3" class="scatterplot"></div>
 <script>
-x = [1,2,3]
-y = [1,2,3]
-
 jQuery(function() {
   new Stici_Scatterplot('chart3', {
     addPoints: false,
     graphAveButton: false,
-    x: x,
-    y: y,
+    x: data1[0],
+    y: data1[1],
     regressButton: false,
     residualsButton: false,
     sdButton: true,
@@ -322,15 +319,12 @@ jQuery(function() {
 <p align="center">
 <div id="chart4" class="scatterplot"></div>
 <script>
-x = [1,2,3]
-y = [1,2,3]
-
 jQuery(function() {
   new Stici_Scatterplot('chart4', {
     addPoints: false,
     graphAveButton: false,
-    x: x,
-    y: y,
+    x: data2[0],
+    y: data2[1],
     regressButton: false,
     residualsButton: false,
     sdButton: true,
@@ -360,15 +354,12 @@ jQuery(function() {
 <p align="center">
 <div id="chart5" class="scatterplot"></div>
 <script>
-x = [1,2,3]
-y = [1,2,3]
-
 jQuery(function() {
   new Stici_Scatterplot('chart5', {
     addPoints: false,
     graphAveButton: false,
-    x: x,
-    y: y,
+    x: data3[0],
+    y: data3[1],
     regressButton: false,
     residualsButton: false,
     sdButton: true,
