@@ -5,7 +5,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "4 February 2013 00:37 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -228,37 +228,33 @@ jQuery(function() {
 // -->
 </script>
 
-<p class="figure">
-<div id="hist1" class="scriptlet"></div>
-<applet code="Correlation.class" codebase="../../Java/" align="baseline"
-    width="600" height="320" name="q1applet" archive="PbsGui.zip">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-    <param name="x" value="1,2,3">
-    <param name="y" value="0,3,4">
-    <param name="regressButtons" value="true">
-    <param name="showResiduals" value="true">
-    <param name="sdButton" value="false">
-    <param name="sdLineButton" value="false">
-    <param name="showR" value="true">
-    <param name="title" value="Heteroscedastic Residual Plot">
-    You need Java to see this
-</applet>
 <script language="JavaScript1.8" type="text/javascript"><!--
     var examplePoints = 100;
     var parms = [["polynomial", .5, rand.next()], 8, 5];
     var data1 = fakeBivariateData(examplePoints,parms[0],
           parms[1],parms[2]);
-    var appNum = (document.applets.length - 1).toString();
-//    $(document).ready(function() {
-//          sticiHistHilite('hist1', data1[0].join(),data1[1].join());
-//    });
-    sectionContext += 'document.applets[' + appNum + '].' +
-              'setVariables(data1[0].join(),data1[1].join() );\n' +
-              'document.applets[' + appNum + '].showPlot();\n';
-
 // -->
 </script>
+
+<p class="figure">
+<div id="resid1" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('resid1', {
+    addPoints: false,
+    graphAveButton: false,
+    sdButton: false,
+    sdLineButton: false,
+  //  title: "",
+    regressButton: false,
+    residualsButton: true,
+    showResiduals: true,
+    x: data1[0],
+    y: data1[1]
+  });
+});
+</script>
+</p>
 </p>
 </div>
 
