@@ -340,24 +340,28 @@ var fStr = '<p>Let the data be pairs ' +
     if (none) aVal += "e";
     if (aVal.lastIndexOf('&') == aVal.length - 1) aVal = aVal.substring(0, aVal.length - 1);
     writeSelectExercise(true,qCtr++,opt,aVal);
-    var qStr = '</p><p class="figure"><applet code="Correlation.class" ' +
-           'codebase="../../Java/" align="baseline" width="600" height="320" ' +
-           'name="q6Applet" archive="PbsGui.zip"><param name="addPoints" value="false">' +
-           '<param name="graphAveButton" value="false">' +
-           '<param name="sdButton" value="false">' +
-           '<param name="sdLineButton" value="false">' +
-           '<param name="title" value="Fake Weight v. Height Data">' +
-           '<param name="regressButtons" value="true">' +
-           '<param name="showR" value="true">' +
-           '<param name="x" value="1,2,4"><param name="y" value="1,3,5">' +
-           'You need Java to see this.</applet></p>';
-    document.writeln(qStr);
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum + '].' +
-              'setVariables(data6[0].join(),data6[1].join() );\n' +
-              'document.applets[' + appNum + '].showPlot();\n';
 // -->
 </script>
+
+<p align="center">
+<div id="chart1" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('chart1', {
+    addPoints: false,
+    graphAveButton: false,
+    sdButton: false,
+    sdLineButton: false,
+    title: "Fake Weight v. Height Data",
+    regressButtons: true,
+    showR: true,
+    x: data6[0],
+    y: data6[1]
+  });
+});
+</script>
+</p>
+
 </div>
 
 <h2>
