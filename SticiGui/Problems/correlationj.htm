@@ -30,13 +30,14 @@
 
 <body >
 
-<p align="center">
+<div class="figure">
+<p class="figure">
 <div id="chart" class="scatterplot"></div>
 <script>
 jQuery(function() {
   new Stici_Scatterplot('chart', {
     addPoints: false,
-    files: ['../../Java/Data/housing-1990.dat.json'],
+    files: ['../../Java/Data/housing-1990.json'],
     graphAveButton: true,
     regressButton: false,
     residualsButton: false,
@@ -46,9 +47,12 @@ jQuery(function() {
 });
 </script>
 </p>
+</div>
 
+<p>&nbsp;</p>
 
-<p align="center">
+<div class="figure">
+<p class="figure">
   <div id="calc" class="calculator">
   </div>
 
@@ -59,6 +63,7 @@ jQuery(function() {
   });
   </script>
 </p>
+</div>
 
 <script language="JavaScript1.8" type="text/javascript" ><!--
     writeMiscFooter(false);

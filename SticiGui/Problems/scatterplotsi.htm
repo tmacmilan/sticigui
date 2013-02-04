@@ -2,7 +2,7 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "2 February 2013 10:37 PST";
+	pageModDate = "3 February 2013 11:47 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -380,6 +380,7 @@ jQuery(function() {
     y: y,
     regressButton: false,
     sdButton: false,
+    residualsButton: false,
     sdLineButton: false,
     showR: false,
     title: "Faux Dataset 1",
@@ -430,6 +431,7 @@ jQuery(function() {
     x: x,
     y: y,
     regressButton: false,
+    residualsButton: false,
     sdButton: false,
     sdLineButton: false,
     showR: false,
@@ -481,6 +483,7 @@ jQuery(function() {
     x: x,
     y: y,
     regressButton: false,
+    residualsButton: false,
     sdButton: false,
     sdLineButton: false,
     showR: false,
@@ -492,24 +495,6 @@ jQuery(function() {
 </div>
 
 
-<div class="figure">
-<p class="figure">
-<div id="scatter" class="scatterplot"></div>
-<script>
-jQuery(function() {
-  new Stici_Scatterplot('scatter', {
-    addPoints: false,
-    files: ['../../Java/Data/p6-1990.dat.json'],
-    graphAveButton: false,
-    regressButton: false,
-    residualsButton: false,
-    sdLineButton: false,
-    showR: true
-  });
-});
-</script>
-</p>
-</div>
 
 <p>&nbsp;</p>
 

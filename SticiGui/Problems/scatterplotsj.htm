@@ -32,13 +32,14 @@
 <body >
 
 
-<p align="center">
+<div class="figure">
+<p class="figure">
 <div id="scatter" class="scatterplot"></div>
 <script>
 jQuery(function() {
   new Stici_Scatterplot('scatter', {
     addPoints: false,
-    files: ['../../Java/Data/p6-1990.dat.json'],
+    files: ['../../Java/Data/p6-1990.json'],
     graphAveButton: false,
     regressButton: false,
     residualsButton: false,
@@ -48,10 +49,12 @@ jQuery(function() {
 });
 </script>
 </p>
+</div>
 
-<p align="center">&nbsp;</p>
+<p>&nbsp;</p>
 
-<p align="center">
+<div class="figure">
+<p class="figure">
   <div id="hist" class="histogram">
   </div>
 
@@ -60,15 +63,20 @@ jQuery(function() {
     new Stici_HistHiLite('hist', {
       changeNumBins: false,
       bins: 30,
-      data: ['../../Java/Data/p6-1990.dat.json'],
+      data: ['../../Java/Data/p6-1990.json'],
       showNormalButton: false,
       showUnivariateStats: true
     });
   });
   </script>
 </p>
+</div>
 
-<p align="center">
+<p>&nbsp;</p>
+
+
+<div class="figure">
+  <p class="figure">
   <div id="calc" class="calculator">
   </div>
 
@@ -79,6 +87,7 @@ jQuery(function() {
   });
   </script>
 </p>
+</div>
 
 <script language="JavaScript1.8" type="text/javascript" ><!--
     writeMiscFooter(false);
