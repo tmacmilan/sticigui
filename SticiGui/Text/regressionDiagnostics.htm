@@ -208,7 +208,8 @@ jQuery(function() {
     Reading Residual Plots
 </h2>
 
-<p class="video"> <iframe width="420" height="315" src="http://www.youtube.com/embed/EPrAKgawSnY?start=3958&end=4204" frameborder="0" allowfullscreen></iframe>
+<p class="video"> 
+    <iframe width="420" height="315" src="http://www.youtube.com/embed/EPrAKgawSnY?start=3958&end=4204" frameborder="0" allowfullscreen></iframe>
 </p>
 
 <p>
@@ -242,11 +243,11 @@ jQuery(function() {
 jQuery(function() {
   new Stici_Scatterplot('resid1', {
     addPoints: false,
-    graphAveButton: false,
+    graphAveButton: true,
     sdButton: false,
     sdLineButton: false,
-  //  title: "",
-    regressButton: false,
+  //  title: "Heteroscedastic data",
+    regressButton: true,
     residualsButton: true,
     showResiduals: true,
     x: data1[0],
@@ -254,7 +255,6 @@ jQuery(function() {
   });
 });
 </script>
-</p>
 </p>
 </div>
 
@@ -302,18 +302,22 @@ jQuery(function() {
 
 
 <p class="figure">
-<applet code="Correlation.class" codebase="../../Java/" align="baseline"
-    width="600" height="380" archive="PbsGui.zip">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-    <param name="regressButtons" value="true">
-    <param name="sdLineButton" value="false">
-    <param name="showResiduals" value="true">
-    <param name="title" value="Nonlinearly associated data">
-    <param name="x" value="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,
+<div id="resid2" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('resid2', {
+    addPoints: false,
+    graphAveButton: true,
+    sdButton: false,
+    sdLineButton: false,
+  //  title: "Nonlinearly associated data",
+    regressButton: true,
+    residualsButton: true,
+    showResiduals: true,
+    x: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,
                26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,
-               48,49,50">
-    <param name="y" value="1.3648462,2.4493555,2.4686836,3.1937691,4.5300116,4.1035171,
+               48,49,50],
+    y: [1.3648462,2.4493555,2.4686836,3.1937691,4.5300116,4.1035171,
               4.7296546,4.1827321,4.7415191,4.5860516,4.6978422,5.0302679,
               4.8101506,4.6254892,3.9367077,3.7839850,2.8874823,2.8867729,
               3.3807606,3.0995626,2.8559447,2.2024342,2.9366545,3.1528946,
@@ -321,9 +325,10 @@ jQuery(function() {
               5.6797091,6.2004392,6.4514583,8.1304136,8.0355230,8.1702298,
               8.2398647,7.0043573,8.8214607,8.0677759,7.5286017,6.8350082,
               7.4065463,7.8839126,6.8542513,6.7049488,5.9683663,6.1649185,
-              4.9026613,5.7249926">
-    You need Java to see this.
-</applet>
+              4.9026613,5.7249926]
+  });
+});
+</script>
 </p>
 </div>
 
@@ -350,29 +355,30 @@ jQuery(function() {
 // -->
 </script>
 
-<p class="figure">
-<applet code="Correlation.class" codebase="../../Java/" align="baseline"
-    width="600" height="320" name="q2applet" archive="PbsGui.zip">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-    <param name="x" value="1,2,3">
-    <param name="y" value="0,3,4">
-    <param name="regressButtons" value="true">
-    <param name="showResiduals" value="true">
-    <param name="sdButton" value="false">
-    <param name="sdLineButton" value="false">
-    <param name="showR" value="true">
-    <param name="title" value="Nonlinear, Heteroscedastic Data">
-    You need Java to see this
-</applet>
+
 <script language="JavaScript1.8" type="text/javascript"><!--
     var parms = [["polynomial", .5, rand.next(),-.5,.25], 8, 5];
     var data2 = fakeBivariateData(examplePoints,parms[0], parms[1],parms[2]);
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum + '].' +
-              'setVariables(data2[0].join(),data2[1].join() );\n' +
-              'document.applets[' + appNum + '].showPlot();\n';
 // -->
+</script>
+
+<p class="figure">
+<div id="resid3" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('resid3', {
+    addPoints: false,
+    graphAveButton: true,
+    sdButton: false,
+    sdLineButton: false,
+  //  title: "",
+    regressButton: true,
+    residualsButton: true,
+    showResiduals: true,
+    x: data2[0],
+    y: data2[1]
+  });
+});
 </script>
 </p>
 </div>
@@ -479,20 +485,6 @@ jQuery(function() {
 // -->
 </script>
 
-<p class="figure">
-    <applet code="Correlation.class" codebase="../../Java/" align="baseline"
-         width="600" height="320" name="q4applet" archive="PbsGui.zip">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-    <param name="x" value="1,2,3">
-    <param name="y" value="0,3,4">
-    <param name="regressButtons" value="false">
-    <param name="sdButton" value="false">
-    <param name="sdLineButton" value="false">
-    <param name="showR" value="false">
-    <param name="title" value="Impossible residual plot: something's wrong">
-    You need Java to see this
-    </applet>
 <script language="JavaScript1.8" type="text/javascript"><!--
     var randSign = rand.next();
     if (randSign > 0.5) {
@@ -503,11 +495,26 @@ jQuery(function() {
     var parms = [["polynomial", 5*randSign], 1, 5];
     var data4 = fakeBivariateData(examplePoints,parms[0],
         parms[1],parms[2]);
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum + '].' +
-              'setVariables(data4[0].join(),data4[1].join() );\n' +
-              'document.applets[' + appNum + '].showPlot();\n';
 // -->
+</script>
+
+<p class="figure">
+<div id="resid4" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('resid4', {
+    addPoints: false,
+    graphAveButton: true,
+    sdButton: false,
+    sdLineButton: false,
+ //   title: "Impossible residual plot: something's wrong",
+    regressButton: true,
+    residualsButton: true,
+    showResiduals: true,
+    x: data2[0],
+    y: data2[1]
+  });
+});
 </script>
 </p>
 </div>
@@ -522,31 +529,33 @@ jQuery(function() {
 // -->
 </script>
 
-<p class="figure">
-<applet code="Correlation.class" codebase="../../Java/" align="baseline"
-     width="600" height="320" name="q3applet" archive="PbsGui.zip">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-    <param name="x" value="1,2,3">
-    <param name="y" value="0,3,4">
-    <param name="regressButtons" value="false">
-    <param name="sdButton" value="false">
-    <param name="sdLineButton" value="false">
-    <param name="showR" value="false">
-    <param name="title" value="Impossible residual plot: something's wrong">
-    You need Java to see this
-</applet>
 <script language="JavaScript1.8" type="text/javascript"><!--
     var parms = [["polynomial", 10*(1+rand.next()), 5*rand.next()], 1, 5];
     var data3 = fakeBivariateData(examplePoints,parms[0], parms[1],parms[2]);
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum + '].' +
-              'setVariables(data3[0].join(),data3[1].join() );\n' +
-              'document.applets[' + appNum + '].showPlot();\n';
 // -->
+</script>
+
+<p class="figure">
+<div id="resid5" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('resid5', {
+    addPoints: false,
+    graphAveButton: true,
+    sdButton: false,
+    sdLineButton: false,
+//    title: "Impossible residual plot: something's wrong",
+    regressButton: true,
+    residualsButton: true,
+    showResiduals: true,
+    x: data3[0],
+    y: data3[1]
+  });
+});
 </script>
 </p>
 </div>
+
 
 
 <p>
@@ -758,20 +767,29 @@ jQuery(function() {
     document.writeln(qStr);
     writeSelectExercise(true,qCtr++,opt,aVal);
     document.writeln('</p>');
-    var qStr = '</p><p class="figure"><applet code="Correlation.class" ' +
-           'codebase="../../Java/" align="baseline" width="600" height="320" ' +
-           'name="q5applet" archive="PbsGui.zip"><param name="addPoints" value="false">' +
-           '<param name="graphAveButton" value="false"><param name="x" value="1,2,3">' +
-           '<param name="y" value="0,3,4"><param name="regressButtons" value="false">' +
-           '<param name="sdButton" value="false"><param name="sdLineButton" value="false">' +
-           '<param name="showR" value="false">' +
-           '<param name="title" value="Exercise: reading residual plots">' +
-           'You need Java to see this</applet></p>';
-    document.writeln(qStr);
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum + '].' +
-              'setVariables(data5[0].join(),data5[1].join() );\n' +
-              'document.applets[' + appNum + '].showPlot();\n';
+// -->
+</script>
+
+<p class="figure">
+<div id="resid6" class="scatterplot"></div>
+<script>
+jQuery(function() {
+  new Stici_Scatterplot('resid6', {
+    addPoints: false,
+    graphAveButton: true,
+    sdButton: false,
+    sdLineButton: false,
+ //   title: "Impossible residual plot: something's wrong",
+    regressButton: true,
+    residualsButton: true,
+    showResiduals: true,
+    x: data5[0],
+    y: data5[1]
+  });
+});
+</script>
+</p>
+</div>
 // -->
 </script>
 </div>
