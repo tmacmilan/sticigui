@@ -281,28 +281,28 @@ jQuery(function() {
 // -->
 </script>
 
-<div align="center"><center><p>
-<applet code="Correlation.class" codebase="../../Java/" align="baseline" width="600"
-             height="320" name="q3applet" archive="PbsGui.zip">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-    <param name="x" value="1,2,3">
-    <param name="y" value="1,2,3">
-    <param name="regressButtons" value="false">
-    <param name="sdButton" value="true">
-    <param name="sdLineButton" value="false">
-    <param name="showR" value="true">
-    <param name="title" value="Faux Dataset 1">You need Java to see this
-  </applet> </p>
-</center>
-</div>
-<script language="JavaScript1.8" type="text/javascript" ><!--
-    var appNum = document.applets.length - 1;
-    sectionContext += 'document.applets[' + appNum.toString() +
-                      '].setVariables(data1[0].join(),data1[1].join() );\n' +
-                      'document.applets[' + appNum.toString() + '].showPlot();\n';
-// -->
+<p align="center">
+<div id="chart3" class="scatterplot"></div>
+<script>
+x = [1,2,3]
+y = [1,2,3]
+
+jQuery(function() {
+  new Stici_Scatterplot('chart3', {
+    addPoints: false,
+    graphAveButton: false,
+    x: x,
+    y: y,
+    regressButton: false,
+    residualsButton: false,
+    sdButton: true,
+    sdLineButton: false,
+    showR: true,
+    title: "Faux Dataset 1",
+  });
+});
 </script>
+</p>
 </div>
 
 
