@@ -6,7 +6,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "4 February 2013 15:37 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -341,26 +341,21 @@
     qStr = ' shows the corresponding scatterplot:</p>';
     document.writeln(qStr);
     writeFigureCaption('Scatterplot of Fake Weight v. Height Data');
-    var qStr = '<div class="figure"><p class="figure">' +
-         '<applet code="Correlation.class" codebase="../../Java/" ' +
-           'align="baseline" width="400" height="320" name="randDataApplet" ' +
-           'archive="PbsGui.zip" VIEWASTEXT> <param name="addPoints" value="false">' +
-        '<param name="graphAveButton" value="false">' +
-        '<param name="sdButton" value="false">' +
-        '<param name="sdLineButton" value="false">' +
-        '<param name="title" value="Fake Weight vs. Height Data">' +
-        '<param name="regressButtons" value="false">' +
-        '<param name="showR" value="false">' +
-        '<param name="x" value="1,2,3">' +
-        '<param name="y" value="1,2,3">' +
-        'You need Java to see this.' +
-        '</applet></p></div>';
+    var qStr = '<div class="figure"><p class="figure"><div id="correlation1" class="scatterplot"></div></p></div>';
     document.writeln(qStr);
-    var appNum = (document.applets.length - 1).toString();
-/*    sectionContext += 'document.applets[' + appNum +
-              '].setVariables("' +  fh.join() + '","' + fw.join() +
-              '");\n' + 'document.applets[' + appNum + '].showPlot();\n';
-*/
+    jQuery(function() {
+        new Stici_Scatterplot('correlation1', {
+        //  title: "",
+            x: fh,
+            y: fw,
+            addPoints: false,
+            graphAveButton: false,
+            regressButton: false,
+            residualsButton: false,
+            sdButton: false,
+            sdLineButton: false
+        });
+     });
     var qStr = '<p>The point of averages of these data is (' +
         roundToDig(avefh,2).toString() + ', ' + roundToDig(avefw,2).toString() +
         '). The SD of the heights is ' + roundToDig(sdfh,2).toString() +
@@ -548,24 +543,23 @@
     document.writeln(qStr);
     var header = new Array("Temp. (&deg;F)","Rain (in.)");
     listToTable(header,lists,"standard","center");
-    var qStr = '</p><p>Here is the corresponding scatterplot:</p><p class="figure">' +
-           '<applet code="Correlation.class" codebase="../../Java/" ' +
-           'align="baseline" width="600" height="320" name="randDataApplet" ' +
-           'archive="PbsGui.zip"><param name="addPoints" value="false">' +
-           '<param name="graphAveButton" value="false">' +
-           '<param name="sdButton" value="false">' +
-           '<param name="sdLineButton" value="false">' +
-           '<param name="title" value="Fictitious Temperature and Rain Data">' +
-           '<param name="regressButtons" value="false">' +
-           '<param name="showR" value="false"><param name="x" value="1,2,3">' +
-           '<param name="y" value="1,2,3">You need Java to see this</applet>';
+    var qStr = '</p><p>Here is the corresponding scatterplot:</p><div class="figure"><p class="figure">' +
+           '<div id="correlation2" class="scatterplot"></div></p></div>';
     document.writeln(qStr);
-    var appNum = (document.applets.length - 1).toString();
-/*    sectionContext += 'document.applets[' + appNum + '].' +
-              'setVariables(temp.join().toString(), rain.join().toString());\n' +
-              'document.applets[' + appNum + '].showPlot();\n';
-*/
-    var qStr = '</p><p><span class="qSpan">Computed from the data (not read from the ' +
+    jQuery(function() {
+        new Stici_Scatterplot('correlation2', {
+            title: "Fictitious Temperature and Rain Data",
+            x: temp,
+            y: rain,
+            addPoints: false,
+            graphAveButton: false,
+            regressButton: false,
+            residualsButton: false,
+            sdButton: false,
+            sdLineButton: false
+        });
+    });     
+    var qStr = '<p><span class="qSpan">Computed from the data (not read from the ' +
            'scatterplot), the point of averages of these data is (';
     document.writeln(qStr);
     writeTextExercise(5,qCtr++,numToRange(aveTemp,.05));
@@ -722,7 +716,7 @@
 jQuery(function() {
   new Stici_Scatterplot('chart3', {
     addPoints: false,
-    files: ['../../Java/Data/gmat.json'],
+    files: ['../../Java/Data/aveGmat.json'],
     graphAveButton: false,
     regressButton: false,
     residualsButton: false,
