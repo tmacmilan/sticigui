@@ -322,23 +322,23 @@
 </p>
 
 <p align="center">
-<applet code="Correlation.class" codebase="../../Java/" align="baseline" width="600"
-    height="320" name="randDataApplet" archive="PbsGui.zip">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-    <param name="x" value="1,2,3">
-    <param name="y" value="1,2,3">
-    <param name="regressButtons" value="false">
-    <param name="sdButton" value="false">
-    <param name="sdLineButton" value="false">
-    <param name="title" value="Fictitious IQs of Wives vs. Husbands">You need Java to see this
-</applet>
-<script language="JavaScript1.8" type="text/javascript" ><!--
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum.toString() +
-                      '].setVariables((husIQ.join().toString()),wifIQ.join().toString()); ' +
-                      'document.applets[' + appNum + '].showPlot();';
-// -->
+<div id="chart1" class="scatterplot"></div>
+<script>
+x = husIQ
+y = wifIQ
+
+jQuery(function() {
+  new Stici_Scatterplot('chart1', {
+    addPoints: false,
+    graphAveButton: false,
+    x: x,
+    y: y,
+    regressButtons: false,
+    sdButton: false,
+    sdLineButton: false,
+    title: "Fictitious IQs of Wives vs. Husbands",
+  });
+});
 </script>
 </p>
 
