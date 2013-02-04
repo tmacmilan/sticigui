@@ -299,24 +299,24 @@ jQuery(function() {
     coefficient in the applet.)</p>
 
 <p align="center">
-  <applet code="Correlation.class" codebase="../../Java/"
-        align="baseline" width="600" height="320" name="q3Applet" archive="PbsGui.zip">
-    <param name="addPoints" value="false">
-    <param name="graphAveButton" value="false">
-    <param name="sdButton" value="false">
-    <param name="sdLineButton" value="false">
-    <param name="title" value="Faux Price per share vs. Earnings Data">
-    <param name="regressButtons" value="true">
-    <param name="showR" value="true">
-    <param name="x" value="1,2,4">
-    <param name="y" value="1,3,5">You need Java to see this
-  </applet>
-<script language="JavaScript1.8" type="text/javascript" ><!--
-    var appNum = document.applets.length - 1;
-    sectionContext += 'document.applets[' + appNum.toString()  +
-                      '].setVariables(data3[0].join(),data3[1].join() );\n' +
-                      'document.applets[' + appNum.toString() + '].showPlot();\n';
-// -->
+<div id="chart3" class="scatterplot"></div>
+<script>
+x = data3[1]
+y = data3[1]
+
+jQuery(function() {
+  new Stici_Scatterplot('chart3', {
+    addPoints: false,
+    graphAveButton: false,
+    sdButton: false,
+    sdLineButton: false,
+    title: "Faux Price per share vs. Earnings Data",
+    regressButtons: true,
+    showR: true,
+    x: x,
+    y: y
+  });
+});
 </script>
 </p>
 
