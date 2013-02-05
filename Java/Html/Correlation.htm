@@ -36,15 +36,30 @@
 
 
 
-<p align="center">
+<div class="figure">
+	<p class="figure">
+		<div id="scatterplot1" class="scatterplot"></div>
 
-<APPLET archive="PbsGui.zip" codebase=".."  code="Correlation.class" WIDTH=470 HEIGHT=380>
 
-  You need Java to see this.
-
-</APPLET>
+<script language="JavaScript1.8" type="text/javascript"><!--
+jQuery(function() {
+  new Stici_Scatterplot('scatterplot1', {
+    addPoints: true,
+    n: 50,
+    r: 0.5,
+    graphAveButton: true,
+    regressButton: true,
+    residualsButton: true,
+    sdButton: true,
+    sdLineButton: true,
+    showGraphOfAve: true,
+    showSdLine: true
+  });
+});
+</script>
 
 </p>
+</div>
 
 
 
