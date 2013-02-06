@@ -1563,7 +1563,7 @@ function labletSubmit(theForm) {
          setExtraInputs(theForm);
          pushAssignmentClosed(theForm.elements['score'].value);
          jsonIterationCount = 0;
-         waitForJsonRequest(function() {    //ssanders: Have to wait, because the submit() replaces the DOM/JS
+         waitForJsonRequest(function() {    // wait, because submit() replaces the DOM/JS
              setSubmitCookie(setNum.toString(),theForm,false);
              document.forms[1].action = graderActionURL;
              var s = collectResponses(theForm,true,true);
@@ -1883,7 +1883,7 @@ function setExtraInputs(theForm) {
               if (sp) {
                     nRight++;
               }
-              questionsAndAnswers[i] = sp; 
+              questionsAndAnswers[i] = sp;
         } catch(e) {
               console.log('Error in irGrade.setExtraInputs() for Q ' + i + ': ' + e);
         }
