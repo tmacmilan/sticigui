@@ -111,7 +111,7 @@
     var qStr = 'Consider a different probability model for disk failure: all disks have the ' +
                'same probability of failure in the next year, ' + roundToDig(100*failProb, 1) +
                '%, but failures might be dependent. ' +
-               '<span class="qSpan">What is the smallest possible chance that two more ' +
+               '<span class="qSpan">What is the smallest possible chance that two or more ' +
                'of the three disks fail in the next year?</span>';
     document.writeln(qStr);
     writeTextExercise(20,qCtr++,"0:0.0000001");
@@ -121,7 +121,7 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     var qStr = '<span class="qSpan">According to this revised model, what is the largest ' +
-               'possible chance that two more of the three disks fail in the next year?</span>';
+               'possible chance that two or more of the three disks fail in the next year?</span>';
     document.writeln(qStr);
     writeTextExercise(20,qCtr++,numToRange(failProb));
 // -->
