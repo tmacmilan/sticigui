@@ -1,8 +1,9 @@
 [
-          ["counting-c79-s13"              , "01/30/2013  00:10:00 GMT-8:00",    "ready", "automatic"],
-          ["quiz-c79-week2"                , "02/01/2013  12:10:00 GMT-8:00",    "ready", "automatic", 1, 1],
-          ["probabilityPhilosophy"         , "02/05/2013  00:10:00 GMT-8:00",    "ready", "automatic"],
-          ["quiz-c79-week3"                , "02/05/2013  12:10:00 GMT-8:00",    "ready", "automatic", 1, 1]
+          ["counting-c79-s13"              , "05/30/2013  00:10:00 GMT-8:00",    "ready", "automatic"],
+          ["quiz-c79-week2"                , "05/01/2013  12:10:00 GMT-8:00",    "ready", "automatic", 1, 1],
+          ["probabilityPhilosophy"         , "05/05/2013  00:10:00 GMT-8:00",    "ready", "automatic"],
+          ["quiz-c79-week3"                , "05/05/2013  12:10:00 GMT-8:00",    "ready", "automatic", 1, 1],
+          ["probability-c79-s13"           , "05/12/2013  00:10:00 GMT-8:00",    "ready", "automatic"]
 ]
 
 

@@ -2,8 +2,8 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "6 February 2013 08:37 PST";
-	// copyright (c) 2013 by P.B. Stark, statistics.berkeley.edu/~stark, and D.A. Wagner
+	pageModDate = "7 February 2013 12:37 PST";
+	// copyright (c) 2013 by P.B. Stark (statistics.berkeley.edu/~stark) and D.A. Wagner (http://www.cs.berkeley.edu/~daw/)
     // All rights reserved.
 // -->
 </script>
@@ -31,7 +31,8 @@
 
 <body >
 <script language="JavaScript1.8" type="text/javascript"><!--
-    writeProblemSetBody();
+    writeProblemSetBody(3, "Probability and Expected Value");
+);
 // -->
 </script>
 
@@ -54,7 +55,7 @@
                '<span class="qSpan">According to this model, if I have a computer with two hard disks, ' +
                'what is the probability that neither disk fails in the next year?</span>';
     document.writeln(qStr);
-    writeTextExercise(20,qCtr++,numToRange((1-failProb)^2);
+    writeTextExercise(20,qCtr++,numToRange((1-failProb)^2));
 // -->
 </script>
 </p>
@@ -95,13 +96,13 @@
                'Terabyte hard disks (a total of 1.5 Terabytes of storage, so the cost of ' +
                'reliability is only 1.5x, not 2x). The good news is that if any one hard ' +
                'disk fails, all your data remains accessible. However, if 2 or more hard ' +
-               'disks fail, you are hosed.' +
+               'disks fail, you are hosed. ' +
                '<span class="qSpan">According to the model in which every disk has chance ' +
                roundToDig(100*failProb, 1) + '% of failure in next year and failures are independent, ' +
                'what is the chance that you\'re hosed at some point in the next year, i.e., ' +
                'that 2 or more of the 3 hard disks fail in the next year?</span>';
     document.writeln(qStr);
-    writeTextExercise(20,qCtr++,numToRange(binomialTail(3,failProb,2));
+    writeTextExercise(20,qCtr++,numToRange(binomialTail(3,failProb,2)));
 // -->
 </script>
 </p>
@@ -110,7 +111,7 @@
     var qStr = 'Consider a different probability model for disk failure: all disks have the ' +
                'same probability of failure in the next year, ' + roundToDig(100*failProb, 1) +
                '%, but failures might be dependent. ' +
-               <span class'qSpan">What is the smallest possible chance that two more ' +
+               '<span class="qSpan">What is the smallest possible chance that two more ' +
                'of the three disks fail in the next year?</span>';
     document.writeln(qStr);
     writeTextExercise(20,qCtr++,"0:0.0000001");
@@ -119,7 +120,7 @@
 </p>
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
-    var qStr = '<span class'qSpan">According to this revised model, what is the largest ' +
+    var qStr = '<span class="qSpan">According to this revised model, what is the largest ' +
                'possible chance that two more of the three disks fail in the next year?</span>';
     document.writeln(qStr);
     writeTextExercise(20,qCtr++,numToRange(failProb));
@@ -133,42 +134,38 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
   document.writeln(startProblem(pCtr++));
-// -->
-</script>
-<span class="qSpan">
-The California lottery can be played in many different ways,
-but the simplest version (Daily 3 Straight) works like this.
-When you buy a lottery ticket, you pick a three-digit number
-(from 000 to 999).
-The lottery then randomly draws a random three-digit number,
-with all possibilities equally likely.
-If they draw your random number, you win; otherwise, you lose.
-In practice, the amount you win if your number comes up varies,
-but for this homework let's assume that you win exactly $550
-if your number appears and $0 otherwise.
-What is the expected value of your winnings (in dollars), if you play once?
-</span>
-<script language="JavaScript1.8" type="text/javascript" ><!--
-  writeTextExercise(20,qCtr++,numToRange(550.0/1000.0));
+  var payOff = 10*listOfRandInts(1, 51, 60)[0];
+  var possible = 1000;
+  var qStr = 'The California lottery can be played in many different ways, ' +
+             'but the simplest version (Daily 3 Straight) works like this: ' +
+             'When you buy a lottery ticket, you pick a three-digit number ' +
+             '(from 000 to 999). The lottery then draws a random three-digit number, ' +
+             'with all possibilities equally likely. If they draw your random number, ' +
+             'you win; otherwise, you lose. In practice, the amount you win if your ' +
+             'number comes up varies, but for this homework let\'s assume that you win ' +
+             'exactly $' + roundToDig(payOff, 0) + ' if your number appears and $0 otherwise. ' +
+             '<span class="qSpan">What is the expected value of your winnings (in dollars), ' +
+             'if you play once?</span>';
+  document.writeln(qStr);
+  writeTextExercise(20,qCtr++,numToRange(payOff/possible));
   document.writeln('</p>');
 // -->
 </script>
 </p>
 <p>
-Assume you decide to play the Daily 3 Straight California lottery,
-as mentioned above.
-It costs $1 to buy a lottery ticket.
-<span class="qSpan">
-Is this a good buy?
-</span>
 <script language="JavaScript1.8" type="text/javascript" ><!--
-  var opt = ["Yes, if you play many times, you'll probably make a net profit.",
-     "No, if you play many times, you'll probably lose money overall.",
-     "Neutral, if you play many times, you'll approximately break even.",
-     "There's not enough information to answer the question."
-  ];
-  writeRadioExercise(qCtr++,opt,'b');
-  document.writeln('</p>');
+   var qStr = 'Assume you decide to play the Daily 3 Straight California lottery, ' +
+              'as described above. It costs $1 to buy a lottery ticket. ' +
+              '<span class="qSpan">Is this a good deal?</span>';
+   document.writeln(qStr);
+   var rawOpt = ["Yes, if you play many times, you'll probably make a net profit.",
+                 "No, if you play many times, you'll probably lose money overall.",
+                 "Neutral, if you play many times, you'll approximately break even.",
+                 "There's not enough information to answer the question."
+                ];
+   var optPerm = randPermutation(rawOpt, 'inverse');
+   var opt = optPerm[0];
+   writeSelectExercise(false,qCtr++,opt,alphabet[optPerm[1][1]]);
 // -->
 </script>
 </p>
@@ -180,41 +177,44 @@ Is this a good buy?
 <div class="problem">
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
-  document.writeln(startProblem(pCtr++));
-// -->
-</script>
-Here's a game.
-Alice and Bob each roll a fair, six-sided die.
-If Alice's die comes up with a number higher than Bob's,
-Bob loses and he gets nothing.
-If Bob's number comes up higher, or if they tie, Bob wins $5 from Alice.
-<span class="qSpan">What is the expected value of Bob's winnings,
-if he plays this game once?
-</span>
-<script language="JavaScript1.8" type="text/javascript" ><!--
-  writeTextExercise(20,qCtr++,numToRange(5*21/36));
-  document.writeln('</p>');
+   document.writeln(startProblem(pCtr++));
+   var bux = listOfDistinctRandInts(2, 3, 7).sort(numberLessThan);
+   var pWin = 21/36;
+   var qStr = 'Here\'s a game. Alice and Bob each roll a fair, six-sided die. ' +
+              'If Alice\'s die comes up with a number higher than Bob\'s, Bob loses ' +
+              'and he gets nothing. If Bob\'s number comes up higher, or if they tie, ' +
+              'Bob wins $' + bux[1] + ' from Alice. <span class="qSpan">What is the ' +
+              'expected value of Bob\'s winnings, if he plays this game once?</span>';
+   document.writeln(qStr);
+   writeTextExercise(20,qCtr++,numToRange(bux[1]*pWin));
 // -->
 </script>
 </p>
-<span class="qSpan">
-Suppose Alice charges Bob $3 (up front) for the
-privilege of playing this game with her.
-Is this game a good deal for Bob?
-</span>
+<p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
-  var opt = ["Yes, if Bob can play this game many times he'll tend to make money.",
-     "No, if Bob plays this game many times he'll tend to lose money.",
-     "Neutral, if Bob plays this game many times he'll tend to break even.",
-     "There's not enough information to answer the question."
-  ];
-  writeRadioExercise(qCtr++,opt,'b');
-  document.writeln('</p>');
+   var qStr = 'Suppose Alice charges Bob $' + bux[0] + ' (up front) for the ' +
+              'privilege of playing this game with her. <span class="qSpan">Is this ' +
+              'game a good deal for Bob?<span>';
+   document.writeln(qStr);
+   var rawOpt = ["Yes, if Bob can play this game many times he'll tend to make money.",
+                 "No, if Bob plays this game many times he'll tend to lose money.",
+                 "Neutral, if Bob plays this game many times he'll tend to break even.",
+                 "There's not enough information to answer the question."
+                ];
+   var optPerm = randPermutation(rawOpt, 'inverse');
+   var opt = optPerm[0];
+   var eWin = pWin*bux[1] - bux[0];
+   var inx = 2;
+   if (eWin > 0) {
+      inx = 0;
+   } else if (inx < 0) {
+      inx = 1;
+   }
+   writeSelectExercise(false,qCtr++,opt,alphabet[optPerm[1][inx]]);
 // -->
 </script>
 </p>
 </div>
-
 
 
 <script language="JavaScript1.8" type="text/javascript" ><!--

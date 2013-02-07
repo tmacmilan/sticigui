@@ -1,15 +1,18 @@
 [
-          ["counting-c79-s13",
+         ["counting-c79-s13",
             ["<a href=\"../Text/counting.htm\">SticiGui: counting</a>"]
           ],
           ["quiz-c79-week2",
-            ["How to Lie with Statistics"]
+            ["Rates and Probabilities"]
           ],
           ["probabilityPhilosophy",
             ["<a href=\"../Text/probabilityPhilosophy.htm\">SticiGui: philosophy of probability</a>"]
           ],
-          ["sets",
-            ["<a href=\"../Text/sets.htm\">SticiGui: set theory</a>"]
+          ["quiz-c79-week3",
+            ["Rules of Probability"]
+          ],
+          ["probability-c79-s13",
+            ["<a href=\"../Text/probabilityPhilosophy.htm\">SticiGui: axioms of probability</a>, <a href=\"../Text/expectation.htm\">expectation</a>"]
           ],
           ["probabilityAxioms",
             ["<a href=\"../Text/probabilityPhilosophy.htm\">SticiGui: axioms of probability</a>"]
