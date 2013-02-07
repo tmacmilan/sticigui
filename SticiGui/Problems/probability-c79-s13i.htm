@@ -2,8 +2,8 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
-	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
+	pageModDate = "6 February 2013 08:37 PST";
+	// copyright (c) 2013 by P.B. Stark, statistics.berkeley.edu/~stark, and D.A. Wagner
     // All rights reserved.
 // -->
 </script>
@@ -41,91 +41,88 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-// -->
-</script>
-<span class="qSpan">We talked in class about the challenges of
-data loss in computer systems due to hard disk failure.
-Assume that every hard disk has a
-<span class="math">0.003</span> probability of failing in the
-next year, and whether one hard disk fails is independent of whether
-the other hard disks fail.
-If I have a computer with two hard disks,
-what is the probability that neither one fails in the next year?
-</span>
-<script language="JavaScript1.8" type="text/javascript" ><!--
-    writeTextExercise(20,qCtr++,numToRange(0.997*0.997));
-    document.writeln('</p>');
-// -->
-</script>
-</p>
-</div>
-
-<div class="problem">
-<p>
-<script language="JavaScript1.8" type="text/javascript" ><!--
-    document.writeln(startProblem(pCtr++));
-// -->
-</script>
-<span class="qSpan">If I have a computer with two hard disks,
-what is the probability that at least of them fails in the next year?
-</span>
-<script language="JavaScript1.8" type="text/javascript" ><!--
-    writeTextExercise(20,qCtr++,numToRange(1.0-(0.997*0.997)));
-    document.writeln('</p>');
+    var failProb = listOfRandInts(1, 1, 5)[0]/1000;
+    var qStr = 'We talked in class about the challenges of data loss in computer ' +
+               'systems due to hard disk failure. As we discussed, disk failure rates ' +
+               'depend on the type of disk and the way the disk is used, and there are ' +
+               'reasons disk failures are not independent. However, consider a probability ' +
+               'model for disk failures disk failures in which failures are like independent ' +
+               'tosses of a single coin: whether a disk fails in a given year has the same ' +
+               'probability for all disks, and failures are independent. Assume that every hard ' +
+               'disk has a ' + roundToDig(100*failProb, 1) + '% chance of failing in the next ' +
+               'year (that is, the chance the coin lands heads is ' + roundToDig(100*failProb, 2) + '%.' +
+               '<span class="qSpan">According to this model, if I have a computer with two hard disks, ' +
+               'what is the probability that neither disk fails in the next year?</span>';
+    document.writeln(qStr);
+    writeTextExercise(20,qCtr++,numToRange((1-failProb)^2);
 // -->
 </script>
 </p>
-</div>
-
-<div class="problem">
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
-    document.writeln(startProblem(pCtr++));
-// -->
-</script>
-<span class="qSpan">Back in 1987, three Berkeley researchers
-came up with a method for dealing with hard disk failure (called RAID).
-In its simplest form, the idea is this: buy two hard disks, and store
-each file on both disks (in duplicate).
-This way, if one hard disk fails, you can still get all your data;
-however, if both hard disks fail, you're hosed.
-What is the probability that you're hosed at some point in the next
-year, i.e., that both hard disks fail in the next year?
-</span>
-<script language="JavaScript1.8" type="text/javascript" ><!--
-    writeTextExercise(20,qCtr++,numToRange(0.003*0.003));
-    document.writeln('</p>');
+    var qStr = '<span class="qSpan">According to this model, if I have a computer with two hard ' +
+               'disks, what is the probability that at least one of those disks fails in the next ' +
+               'year?</span>';
+    document.writeln(qStr);
+    writeTextExercise(20,qCtr++,numToRange(1-(1-failProb)^2));
 // -->
 </script>
 </p>
-</div>
-
-<div class="problem">
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
-    document.writeln(startProblem(pCtr++));
+    var qStr = 'Back in 1987, three Berkeley researchers came up with a ' +
+               'method for dealing with hard disk failure (called RAID). ' +
+               'In its simplest form, the idea is this: buy two hard disks, and store ' +
+               'every file on both disks (in duplicate). This way, if one hard disk ' +
+               'fails, you can still get all your data; however, if both hard disks fail, ' +
+               'you\'re hosed. ' +
+               '<span class="qSpan">According to the model in which every disk has chance ' +
+               roundToDig(100*failProb, 1) + '% of failure in next year and failures are independent, ' +
+               'what is the probability that you\'re hosed at some point in the next year, i.e., ' +
+               'that both hard disks fail in the next year?</span>';
+    document.writeln(qStr);
+    writeTextExercise(20,qCtr++,numToRange(failProb^2));
 // -->
 </script>
-<span class="qSpan">One disadvantage of the simple RAID scheme
-mentioned above is that, if I have 1 Terabyte of data, I need to buy
-two 1 Terabyte hard disks (double the storage), which costs me twice as
-much as no redundancy.
-So, the Berkeley researchers came up with a more clever scheme, which has
-the following property: if I have 1 Terabyte of data, I need to buy
-three 0.5 Terabyte hard disks (a total of 1.5 Terabytes of storage,
-so the cost of reliability is only 1.5x, not 2x).
-The good news is that if any one hard disk fails, all your data
-remains accessible.
-However, if 2 or more hard disks fail, you are hosed.
-What is the probability that you're hosed at some point in the next
-year, i.e., that 2 or more of the 3 hard disks fail in the next year?
-(Assume, as before, that each hard disk has a
-<span class="math">0.003</span> probability of failing in the
-next year, and hard disk failures occur independently.)
-</span>
+</p>
+<p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
-    writeTextExercise(20,qCtr++,numToRange(3*0.003*0.003*0.997+0.003*0.003*0.003));
-    document.writeln('</p>');
+    var qStr = 'One disadvantage of the simple RAID scheme mentioned above is that, ' +
+               'if I have 1 Terabyte of data, I need to buy two 1 Terabyte hard disks ' +
+               '(double the storage), which costs me twice as much as no redundancy. ' +
+               'So, the Berkeley researchers came up with a more clever scheme, which has ' +
+               'the following property: if I have 1 Terabyte of data, I need to buy three 0.5 ' +
+               'Terabyte hard disks (a total of 1.5 Terabytes of storage, so the cost of ' +
+               'reliability is only 1.5x, not 2x). The good news is that if any one hard ' +
+               'disk fails, all your data remains accessible. However, if 2 or more hard ' +
+               'disks fail, you are hosed.' +
+               '<span class="qSpan">According to the model in which every disk has chance ' +
+               roundToDig(100*failProb, 1) + '% of failure in next year and failures are independent, ' +
+               'what is the chance that you\'re hosed at some point in the next year, i.e., ' +
+               'that 2 or more of the 3 hard disks fail in the next year?</span>';
+    document.writeln(qStr);
+    writeTextExercise(20,qCtr++,numToRange(binomialTail(3,failProb,2));
+// -->
+</script>
+</p>
+<p>
+<script language="JavaScript1.8" type="text/javascript" ><!--
+    var qStr = 'Consider a different probability model for disk failure: all disks have the ' +
+               'same probability of failure in the next year, ' + roundToDig(100*failProb, 1) +
+               '%, but failures might be dependent. ' +
+               <span class'qSpan">What is the smallest possible chance that two more ' +
+               'of the three disks fail in the next year?</span>';
+    document.writeln(qStr);
+    writeTextExercise(20,qCtr++,numToRange(failProb);
+// -->
+</script>
+</p>
+<p>
+<script language="JavaScript1.8" type="text/javascript" ><!--
+    var qStr = '<span class'qSpan">According to this revised model, what is the largest ' +
+               'possible chance that two more of the three disks fail in the next year?</span>';
+    document.writeln(qStr);
+    writeTextExercise(20,qCtr++,numToRange(3*failProb);
 // -->
 </script>
 </p>
