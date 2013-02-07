@@ -113,7 +113,7 @@
                <span class'qSpan">What is the smallest possible chance that two more ' +
                'of the three disks fail in the next year?</span>';
     document.writeln(qStr);
-    writeTextExercise(20,qCtr++,numToRange(failProb);
+    writeTextExercise(20,qCtr++,"0:0.0000001");
 // -->
 </script>
 </p>
@@ -122,12 +122,11 @@
     var qStr = '<span class'qSpan">According to this revised model, what is the largest ' +
                'possible chance that two more of the three disks fail in the next year?</span>';
     document.writeln(qStr);
-    writeTextExercise(20,qCtr++,numToRange(3*failProb);
+    writeTextExercise(20,qCtr++,numToRange(failProb));
 // -->
 </script>
 </p>
 </div>
-
 
 
 <div class="problem">
@@ -155,18 +154,11 @@ What is the expected value of your winnings (in dollars), if you play once?
 // -->
 </script>
 </p>
-</div>
-
-<div class="problem">
 <p>
-<script language="JavaScript1.8" type="text/javascript" ><!--
-  document.writeln(startProblem(pCtr++));
-// -->
-</script>
-<span class="qSpan">
 Assume you decide to play the Daily 3 Straight California lottery,
 as mentioned above.
 It costs $1 to buy a lottery ticket.
+<span class="qSpan">
 Is this a good buy?
 </span>
 <script language="JavaScript1.8" type="text/javascript" ><!--
@@ -191,13 +183,12 @@ Is this a good buy?
   document.writeln(startProblem(pCtr++));
 // -->
 </script>
-<span class="qSpan">
 Here's a game.
 Alice and Bob each roll a fair, six-sided die.
 If Alice's die comes up with a number higher than Bob's,
 Bob loses and he gets nothing.
 If Bob's number comes up higher, or if they tie, Bob wins $5 from Alice.
-What is the expected value of Bob's winnings,
+<span class="qSpan">What is the expected value of Bob's winnings,
 if he plays this game once?
 </span>
 <script language="JavaScript1.8" type="text/javascript" ><!--
@@ -206,14 +197,6 @@ if he plays this game once?
 // -->
 </script>
 </p>
-</div>
-
-<div class="problem">
-<p>
-<script language="JavaScript1.8" type="text/javascript" ><!--
-  document.writeln(startProblem(pCtr++));
-// -->
-</script>
 <span class="qSpan">
 Suppose Alice charges Bob $3 (up front) for the
 privilege of playing this game with her.
