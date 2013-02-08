@@ -45,17 +45,17 @@
     var failProb = listOfRandInts(1, 1, 5)[0]/1000;
     var qStr = 'We talked in class about the challenges of data loss in computer ' +
                'systems due to hard disk failure. As we discussed, disk failure rates ' +
-               'depend on the type of disk and the way the disk is used, and there are ' +
+               'depend on the type of disk and the way the disk is used, and in practice there are ' +
                'reasons disk failures are not independent. However, consider a probability ' +
                'model for disk failures in which failures are like independent ' +
                'tosses of a single coin: whether a disk fails in a given year has the same ' +
                'probability for all disks, and failures are independent. Assume that every hard ' +
                'disk has a ' + roundToDig(100*failProb, 1) + '% chance of failing in the next ' +
-               'year (that is, the chance the coin lands heads is ' + roundToDig(100*failProb, 2) + '%.' +
+               'year (that is, the chance the coin lands heads is ' + roundToDig(100*failProb, 2) + '%. ' +
                '<span class="qSpan">According to this model, if I have a computer with two hard disks, ' +
                'what is the probability that neither disk fails in the next year?</span>';
     document.writeln(qStr);
-    writeTextExercise(20,qCtr++,numToRange((1-failProb)^2));
+    writeTextExercise(20,qCtr++,numToRange((1-failProb)*(1-failProb)));
 // -->
 </script>
 </p>
@@ -65,7 +65,7 @@
                'disks, what is the probability that at least one of those disks fails in the next ' +
                'year?</span>';
     document.writeln(qStr);
-    writeTextExercise(20,qCtr++,numToRange(1-(1-failProb)^2));
+    writeTextExercise(20,qCtr++,numToRange(1-(1-failProb)*(1-failProb)));
 // -->
 </script>
 </p>
@@ -82,7 +82,7 @@
                'what is the probability that you\'re hosed at some point in the next year, i.e., ' +
                'that both hard disks fail in the next year?</span>';
     document.writeln(qStr);
-    writeTextExercise(20,qCtr++,numToRange(failProb^2));
+    writeTextExercise(20,qCtr++,numToRange(failProb*failProb));
 // -->
 </script>
 </p>
