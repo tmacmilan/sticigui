@@ -2,7 +2,7 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "7 February 2013 12:37 PST";
+	pageModDate = "7 February 2013 21:40 PST";
 	// copyright (c) 2013 by P.B. Stark (statistics.berkeley.edu/~stark) and D.A. Wagner (http://www.cs.berkeley.edu/~daw/)
     // All rights reserved.
 // -->
@@ -32,7 +32,6 @@
 <body >
 <script language="JavaScript1.8" type="text/javascript"><!--
     writeProblemSetBody(3, "Probability and Expected Value");
-);
 // -->
 </script>
 
@@ -50,8 +49,8 @@
                'model for disk failures in which failures are like independent ' +
                'tosses of a single coin: whether a disk fails in a given year has the same ' +
                'probability for all disks, and failures are independent. Assume that every hard ' +
-               'disk has a ' + roundToDig(100*failProb, 1) + '% chance of failing in the next ' +
-               'year (that is, the chance the coin lands heads is ' + roundToDig(100*failProb, 2) + '%. ' +
+               'disk has a ' + roundToDig(100*failProb, 2) + '% chance of failing in the next ' +
+               'year (that is, the chance the coin lands heads is ' + roundToDig(100*failProb, 2) + '%). ' +
                '<span class="qSpan">According to this model, if I have a computer with two hard disks, ' +
                'what is the probability that neither disk fails in the next year?</span>';
     document.writeln(qStr);
@@ -183,7 +182,7 @@
    var qStr = 'Here\'s a game. Alice and Bob each roll a fair, six-sided die. ' +
               'If Alice\'s die comes up with a number higher than Bob\'s, Bob loses ' +
               'and he gets nothing. If Bob\'s number comes up higher, or if they tie, ' +
-              'Bob wins $' + bux[1] + ' from Alice. <span class="qSpan">What is the ' +
+              'Bob wins $' + roundToDig(bux[1], 1) + ' from Alice. <span class="qSpan">What is the ' +
               'expected value of Bob\'s winnings, if he plays this game once?</span>';
    document.writeln(qStr);
    writeTextExercise(20,qCtr++,numToRange(bux[1]*pWin));
@@ -192,7 +191,7 @@
 </p>
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
-   var qStr = 'Suppose Alice charges Bob $' + bux[0] + ' (up front) for the ' +
+   var qStr = 'Suppose Alice charges Bob $' + roundToDig(bux[0],1) + ' (up front) for the ' +
               'privilege of playing this game with her. <span class="qSpan">Is this ' +
               'game a good deal for Bob?<span>';
    document.writeln(qStr);
@@ -207,7 +206,7 @@
    var inx = 2;
    if (eWin > 0) {
       inx = 0;
-   } else if (inx < 0) {
+   } else if (eWin < 0) {
       inx = 1;
    }
    writeSelectExercise(false,qCtr++,opt,alphabet[optPerm[1][inx]]);
