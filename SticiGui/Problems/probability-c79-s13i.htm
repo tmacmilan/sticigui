@@ -55,7 +55,7 @@
                '<span class="qSpan">According to this model, if I have a computer with two hard disks, ' +
                'what is the probability that neither disk fails in the next year?</span>';
     document.writeln(qStr);
-    writeTextExercise(20,qCtr++,numToRange((1-failProb)^2));
+    writeTextExercise(20,qCtr++,numToRange((1-failProb)*(1-failProb)));
 // -->
 </script>
 </p>
@@ -65,7 +65,7 @@
                'disks, what is the probability that at least one of those disks fails in the next ' +
                'year?</span>';
     document.writeln(qStr);
-    writeTextExercise(20,qCtr++,numToRange(1-(1-failProb)^2));
+    writeTextExercise(20,qCtr++,numToRange(1-(1-failProb)*(1-failProb)));
 // -->
 </script>
 </p>
@@ -82,7 +82,7 @@
                'what is the probability that you\'re hosed at some point in the next year, i.e., ' +
                'that both hard disks fail in the next year?</span>';
     document.writeln(qStr);
-    writeTextExercise(20,qCtr++,numToRange(failProb^2));
+    writeTextExercise(20,qCtr++,numToRange(failProb*failProb));
 // -->
 </script>
 </p>
