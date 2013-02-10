@@ -307,7 +307,7 @@
     var qStr = '<span class="qSpan">The scatterplot of Native against Total shows a ';
     document.writeln(qStr);
     var opt=["homoscedastic","heteroscedastic"];
-    writeSelectExercise(false,qCtr++,opt,"b"); 
+    writeSelectExercise(false,qCtr++,opt,"b");
     qStr = 'pattern.</span></p>';
     document.writeln(qStr);
 // -->
@@ -358,7 +358,7 @@
     }
     if (parms[thePermutation[0]][2] < 2) {
         k +="&e";
-    } else { 
+    } else {
         k+= "&f";
     }
     writeSelectExercise(true,qCtr++,opt,k);
@@ -370,8 +370,8 @@
 <div id="chart1" class="scatterplot"></div>
 <script>
 jQuery(function() {
-  var x = data1[0]
-  var y = data1[1]
+  var x = data1[0];
+  var y = data1[1];
 
   new Stici_Scatterplot('chart1', {
     addPoints: false,
@@ -410,7 +410,7 @@ jQuery(function() {
     }
     if (parms[thePermutation[1]][2] < 2) {
          k +="&e";
-    } else { 
+    } else {
          k+= "&f";
     }
     writeSelectExercise(true,qCtr++,opt,k);

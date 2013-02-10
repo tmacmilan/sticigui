@@ -2,7 +2,7 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "9 February 2013 20:45 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -117,20 +117,19 @@
 <p class="figure">
 <div id="chart1" class="scatterplot"></div>
 <script>
-x = data1[0]
-y = data1[1]
-
 jQuery(function() {
   new Stici_Scatterplot('chart1', {
     addPoints: false,
     graphAveButton: false,
-    x: x
-    y: y
-    regressButton: true,
+    x: data1[0],
+    y: data1[1],
     sdButton: false,
     sdLineButton: false,
-    showR: false,
-    title: "Problem 1: reading residual plots"
+    residualsButton: false,
+    regressButton: false,
+    showResiduals: false,
+    showR: true,
+    title: "Problem 1: interpret this residual plot"
   });
 });
 </script>
@@ -199,20 +198,18 @@ jQuery(function() {
 <p align="center">
 <div id="chart2" class="scatterplot"></div>
 <script>
-x = data2[0]
-y = data2[1]
-
 jQuery(function() {
   new Stici_Scatterplot('chart2', {
     addPoints: false,
     graphAveButton: false,
-    x: x
-    y: y
-    regressButton: true,
+    x: data2[0],
+    y: data2[1],
+    regressButton: false,
+    residualsButton: false,
     sdButton: false,
     sdLineButton: false,
-    showR: false,
-    title: Problem 2: reading residual plots,
+    showR: true,
+    title: "Problem 2: interpret this residual plot",
   });
 });
 </script>
@@ -298,27 +295,27 @@ jQuery(function() {
 </script> (Use this figure in your calculations, not the value of the correlation
     coefficient in the applet.)</p>
 
-<p align="center">
+<div class="figure">
+<p class="figure">
 <div id="chart3" class="scatterplot"></div>
 <script>
-x = data3[1]
-y = data3[1]
-
 jQuery(function() {
   new Stici_Scatterplot('chart3', {
     addPoints: false,
     graphAveButton: false,
     sdButton: false,
     sdLineButton: false,
+    residualButton: true,
     title: "Faux Price per share vs. Earnings Data",
     regressButton: true,
     showR: true,
-    x: x,
-    y: y
+    x: data3[0],
+    y: data3[1]
   });
 });
 </script>
 </p>
+</div>
 
 
 <!-- ==================================START PROBLEM==================================== -->
@@ -326,7 +323,7 @@ jQuery(function() {
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
     var qStr = '<span class="qSpan">The regression line estimate of the price ' +
-               'per share of a company whose annual earnings per share is $' + 
+               'per share of a company whose annual earnings per share is $' +
                 predEarn.toString() + ' is $</span>';
     document.writeln(qStr);
     writeTextExercise(8,qCtr++,numToRange(predPrice));
@@ -341,7 +338,7 @@ jQuery(function() {
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
     var qStr = '<span class="qSpan">Estimating the price per share of a company whose ' +
-               'annual earnings per share is $' + predEarn.toString() + 
+               'annual earnings per share is $' + predEarn.toString() +
                ' is</span>';
     document.writeln(qStr);
     var opt=["interpolation","extrapolation"];
@@ -360,7 +357,7 @@ jQuery(function() {
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
     var qStr = '<span class="qSpan">The regression estimate of the price per share ' +
-               'of a company whose annual earnings per share is $' + predEarn.toString() + 
+               'of a company whose annual earnings per share is $' + predEarn.toString() +
                ' is </span>';
     document.writeln(qStr);
     var opt=["reliable","unreliable"];
