@@ -240,7 +240,6 @@ function Stici_HistHiLite(container_id, params) {
       return y;
     };
     var yScale = null;
-    // TODO(jmeady): Include height in yScale.
     for (i = 0; i < width; i++) {
       if ((yScale === null || normalCurveY(i) > yScale) &&
           !isNaN(normalCurveY(i)))
@@ -543,7 +542,6 @@ function Stici_HistHiLite(container_id, params) {
       self.dataSelect = jQuery('<select/>').change(self.reloadData);
       self.variableSelect = jQuery('<select/>').change(function() {
         refreshFromExternalData();
-        updateVariableRestrictionControls();
         self.reloadChart();
       });
 
@@ -822,17 +820,28 @@ function Stici_HistHiLite(container_id, params) {
     if (!self.options.restrict)
       return;
     self.restrictedVariable.html(self.variableSelect.html());
-    self.restrictedVariable.val(self.variableSelect.val());
-    self.restrictUpper.val(self.binEnds.max());
-    self.restrictLower.val(self.binEnds.min());
+    self.restrictedVariable.val((parseInt(self.variableSelect.val(), 10) + 1) %
+                                 self.variableSelect.children().length);
+    var dat = jQuery.map(self.dataValues, function(values) {
+      return parseFloat(values[self.restrictedVariable.val()]);
+    });
+    self.restrictUpper.val(dat.max());
+    self.restrictLower.val(dat.min());
   }
   function updateRestrictedData() {
+    var info = 'n=' + self.data.length;
+    info += '&nbsp;&nbsp;&nbsp;';
+    info += 'Mean=' + self.mu.toFixed(3);
+    info += '&nbsp;&nbsp;&nbsp;';
+    info += 'SD=' + self.sd.toFixed(3);
     self.restrictedData = jQuery.map(self.dataValues, function(values) {
-      return parseFloat(values[self.restrictedVariable.val()]);
+      return [[
+        parseFloat(values[self.variableSelect.val()]),
+        parseFloat(values[self.restrictedVariable.val()])]];
     });
     if (self.restrictUpperEnable.is(':checked')) {
       self.restrictedData = jQuery.grep(self.restrictedData, function(o) {
-        if (o <= self.restrictUpper.val())
+        if (o[1] <= self.restrictUpper.val())
           return true;
         else
           return false;
@@ -840,12 +849,15 @@ function Stici_HistHiLite(container_id, params) {
     }
     if (self.restrictLowerEnable.is(':checked')) {
       self.restrictedData = jQuery.grep(self.restrictedData, function(o) {
-        if (o >= self.restrictLower.val())
+        if (o[1] >= self.restrictLower.val())
           return true;
         else
           return false;
       });
     }
+    self.restrictedData = jQuery.map(self.restrictedData, function(o) {
+      return o[0];
+    });
     if (!self.restrictUpperEnable.is(':checked') &&
         !self.restrictLowerEnable.is(':checked')) {
       self.restrictedCounts = null;
@@ -855,19 +867,14 @@ function Stici_HistHiLite(container_id, params) {
         self.restrictedCounts = null;
       self.restrictedMu = mean(self.restrictedData);
       self.restrictedSd = sd(self.restrictedData);
-      var info = 'n=' + self.data.length;
-      info += '&nbsp;&nbsp;&nbsp;';
-      info += 'Mean=' + self.mu.toFixed(3);
-      info += '&nbsp;&nbsp;&nbsp;';
-      info += 'SD=' + self.sd.toFixed(3);
       info += '&nbsp;&nbsp;&nbsp;';
       info += 'Subset: n=' + self.restrictedData.length;
       info += '&nbsp;&nbsp;&nbsp;';
       info += 'Mean=' + self.restrictedMu.toFixed(3);
       info += '&nbsp;&nbsp;&nbsp;';
       info += 'SD=' + self.restrictedSd.toFixed(3);
-      self.additionalInfo.html(info);
     }
+    self.additionalInfo.html(info);
     redrawChart();
   }
   // Helper function that is called whenever any of the area overlay
@@ -920,6 +927,335 @@ function Stici_HistHiLite(container_id, params) {
 
   initControls();
   this.reloadData();
+}
+
+// Javascript rewrite of
+// http://statistics.berkeley.edu/~stark/Java/Html/NormHiLite.htm
+//
+// Author: James Eady <jeady@berkeley.edu>
+//
+// container_id: the CSS ID of the container to create the curve (and
+//               controls) in.
+// params: A javascript object with various parameters to customize the chart.
+//  // Default distributions. Options are 'normal', 'chi-square', and
+//  // 'Student-t'.
+//  - distribution: 'normal'
+//
+//  // Distribution mean.
+//  - mean: 0
+//
+//  // Distribution standard deviation.
+//  - SD: 1
+//
+//  // Chi-square degrees of freedom
+//  - df: 2
+//
+//  // Default hi-lit area.
+//  - hiLiteLo: 0
+//  - hiLiteHi: 0
+
+function Stici_NormHiLite(container_id, params) {
+  var self = this;
+
+  if (!params instanceof Object) {
+    console.error('Stici_NormHiLite params should be an object');
+    return;
+  }
+
+  // Configuration option defaults.
+  this.options = {
+    distribution: 'normal',
+    mean: 0,
+    SD: 1,
+    df: 2,
+    hiLiteLo: 0,
+    hiLiteHi: 0
+  };
+
+  // For debugging: Warn of user params that are unknown.
+  jQuery.each(params, function(key) {
+    if (typeof(self.options[key]) == 'undefined')
+      console.warn('Stici_NormHiLite: Unknown key \'' + key + '\'');
+  });
+
+  // Override options with anything specified by the user.
+  jQuery.extend(this.options, params);
+
+  // jQuery object containing the entire chart.
+  this.container = jQuery('#' + container_id);
+
+  this.df = self.options.df;
+
+  // Object that contains the parameters for the selected distribution.
+  this.distribution = null;
+  if (this.options.distribution == 'normal') {
+    this.distribution = {
+      lo: function() { return -5; },
+      hi: function() { return 5; },
+      y: function(x) {
+        return normPdf(self.options.mean, self.options.SD, x);
+      },
+      area: function(lo, hi) {
+        return normCdf(hi) - normCdf(lo);
+      }
+    };
+  } else if (this.options.distribution == 'Student-t') {
+    this.distribution = {
+      lo: function() { return -6; },
+      hi: function() { return 6; },
+      y: function(x) {
+        return tPdf(self.df, x);
+      },
+      area: function(lo, hi) {
+        return tCdf(self.df, hi) - tCdf(self.df, lo);
+      }
+    };
+  } else if (this.options.distribution == 'chi-square') {
+    this.distribution = {
+      lo: function() { return 0; },
+      hi: function() { return 6 * self.df; },
+      y: function(x) {
+        return chi2Pdf(self.df, x);
+      },
+      area: function(lo, hi) {
+        return chi2Cdf(self.df, hi) - chi2Cdf(self.df, lo);
+      }
+    };
+  } else {
+    console.error('Stici_NormHiLite: Unknown distribution specified.');
+    this.container.text('Unknown distributions specified.');
+    return;
+  }
+
+  // Various handles to important jQuery objects.
+  this.chartDiv = null;
+  this.overlayDiv = null;  // Used for the area selection feature.
+  this.normalOverlayDiv = null;
+  this.areaFromInput = null;
+  this.areaFromSlider = null;
+  this.areaToInput = null;
+  this.areaToSlider = null;
+  this.areaInfoDiv = null;
+  this.additionalInfo = null;
+
+  this.reloadChart = function() {
+    redrawChart();
+
+    if (self.options.hiLiteLo === null) {
+      self.areaFromSlider.slider('option', 'value', self.distribution.lo());
+      self.areaFromInput.val(self.distribution.lo());
+    } else {
+      self.areaFromSlider.slider('option', 'value', self.options.hiLiteLo);
+      self.areaFromInput.val(self.options.hiLiteLo);
+    }
+    if (self.options.hiLiteHi === null) {
+      self.areaToSlider.slider('option', 'value', self.distribution.lo());
+      self.areaToInput.val(self.distribution.lo());
+    } else {
+      self.areaToSlider.slider('option', 'value', self.options.hiLiteHi);
+      self.areaToInput.val(self.options.hiLiteHi);
+    }
+  };
+  function redrawChart() {
+    self.areaFromSlider.slider('option', 'min', self.distribution.lo());
+    self.areaFromSlider.slider('option', 'max', self.distribution.hi());
+    self.areaToSlider.slider('option', 'min', self.distribution.lo());
+    self.areaToSlider.slider('option', 'max', self.distribution.hi());
+
+    var i;
+    self.chartDiv.children().remove();
+    var normalChartDiv = jQuery('<div/>').addClass('chart_box');
+    self.overlayDiv = normalChartDiv.clone().addClass('overlay');
+    self.normalOverlayDiv = jQuery('<div/>').addClass('chart_box');
+    self.chartDiv.append(normalChartDiv);
+    self.chartDiv.append(self.overlayDiv);
+    self.chartDiv.append(self.normalOverlayDiv);
+
+    // Background calculations.
+    var width = self.overlayDiv.width();
+    var height = self.overlayDiv.height();
+    var graphWidth = self.distribution.hi() - self.distribution.lo();
+
+    function remappedY(d) {
+      var remappedD = (d / width) * graphWidth + self.distribution.lo();
+      return self.distribution.y(remappedD);
+    }
+    var yScale = 0;
+    for(i = 0; i < width; i++)
+      yScale = Math.max(yScale, remappedY(i));
+    yScale /= (height - 1);
+
+    var curve =
+      d3.svg.line()
+        .x(function(d) {return d;})
+        .y(function(d) {
+          return height - (remappedY(d) / yScale);
+        });
+    d3.select(normalChartDiv.get(0)).append('svg')
+      .append('path')
+      .data([d3.range(0, width)])
+      .attr('d', curve);
+
+    var overlayCurve =
+      d3.svg.line()
+        .x(function(d, i) {
+          return d;
+        })
+        .y(function(d, i) {
+          if (i === 0 || i == width + 1)
+            return height;
+          return height - (remappedY(d) / yScale);
+        });
+    var overlayDat = [0].concat(d3.range(0, width), [width]);
+    d3.select(self.overlayDiv.get(0)).append('svg')
+      .append('path')
+      .data([overlayDat])
+      .attr('d', overlayCurve);
+    self.overlayDiv.css('clip', 'rect(0px, 0px, ' + height + 'px, 0px)');
+
+    // Draw the axis
+    var axisSvg = d3.select(normalChartDiv.get(0))
+                .append('svg')
+                .attr('class', 'axis');
+    var axisScale =
+      d3.scale.linear()
+              .domain([self.distribution.lo(), self.distribution.hi()])
+              .range([0, width]);
+    var axis = d3.svg.axis().scale(axisScale).orient('bottom');
+    axisSvg.append('g').call(axis);
+
+    refreshSelectedAreaOverlay();
+  }
+
+  // Initializes the chart controls. Adds the sliders, input fields, etc.
+  function initControls() {
+    // Create html for basic structure:
+    // top_controls -> stici_chart -> area_info -> botom_controls.
+    var o = jQuery('<div/>').addClass('stici').addClass('stici_normhilite');
+    self.container.append(o);
+    var top = jQuery('<div/>').addClass('top_controls');
+    o.append(top);
+    self.chartDiv = jQuery('<div/>')
+                      .addClass('stici_chart')
+                      .addClass('chart_box');
+    o.append(self.chartDiv);
+    self.areaInfoDiv = jQuery('<div/>')
+                         .addClass('area_info');
+    o.append(self.areaInfoDiv);
+    var bottom = jQuery('<div/>').addClass('bottom_controls');
+    o.append(bottom);
+
+    var rowHeight = 30;  // px
+    var topOffset = 0;
+    var bottomOffset = 0;
+    function appendHeaderRow(o) {
+      top.append(o);
+      topOffset += rowHeight;
+    }
+    function appendFooterRow(o) {
+      bottom.append(o);
+      bottomOffset += rowHeight;
+    }
+    function createAreaSelectControls() {
+      var row = jQuery('<div/>');
+
+      // Area from input/slider.
+      self.areaFromInput = jQuery('<input type="text" />').change(function() {
+        self.areaFromSlider.slider('value', self.areaFromInput.val());
+      });
+      var updateAreaFromInput = function() {
+        self.areaFromInput.val(self.areaFromSlider.slider('value'));
+        refreshSelectedAreaOverlay();
+      };
+      self.areaFromSlider = jQuery('<span/>').addClass('slider').slider({
+        change: updateAreaFromInput,
+        slide: updateAreaFromInput,
+        step: 0.001
+      });
+      row.append('Lower endpoint: ').append(self.areaFromInput)
+                                .append(self.areaFromSlider);
+
+      // Area to input/slider.
+      self.areaToInput = jQuery('<input type="text" />').change(function() {
+        self.areaToSlider.slider('value', self.areaToInput.val());
+      });
+      var updateAreaToInput = function() {
+        self.areaToInput.val(self.areaToSlider.slider('value'));
+        refreshSelectedAreaOverlay();
+      };
+      self.areaToSlider = jQuery('<span/>').addClass('slider').slider({
+        change: updateAreaToInput,
+        slide: updateAreaToInput,
+        step: 0.001
+      });
+      row.append(' Upper endpoint: ').append(self.areaToInput).append(self.areaToSlider);
+
+      appendFooterRow(row);
+    }
+
+    function createDegreesOfFreedom() {
+      var row = jQuery('<div/>');
+
+      dfInput = jQuery('<input type="text" />').change(function() {
+        dfSlider.slider('value', dfInput.val());
+      });
+      var updateDfInput = function() {
+        self.df = dfSlider.slider('value');
+        dfInput.val(dfSlider.slider('value'));
+        redrawChart();
+        refreshSelectedAreaOverlay();
+      };
+      dfSlider = jQuery('<span/>').addClass('slider').slider({
+        change: updateDfInput,
+        slide: updateDfInput,
+        step: 1,
+        min: 1,
+        max: 350
+      });
+      row.append(' Degrees of Freedom: ').append(dfInput).append(dfSlider);
+      dfSlider.slider('value', self.df);
+
+      appendFooterRow(row);
+    }
+
+    createAreaSelectControls();
+    if (self.options.distribution != 'normal')
+      createDegreesOfFreedom();
+    var additionalInfoDiv = jQuery('<div/>').addClass('additional_info');
+    self.additionalInfo = jQuery('<p/>');
+    additionalInfoDiv.append(self.additionalInfo);
+    appendFooterRow(additionalInfoDiv);
+
+    // Set vertical positions based upon available controls.
+    self.areaInfoDiv.css('bottom', bottomOffset + 'px');
+    top.css('height', topOffset + 'px');
+    bottom.css('height', bottomOffset + 'px');
+    self.chartDiv.css('margin-bottom', (bottomOffset + 15) + 'px');
+    self.chartDiv.css('margin-top', (topOffset) + 'px');
+  }
+  // Helper function that is called whenever any of the area overlay
+  // sliders or inputs are changed.
+  function refreshSelectedAreaOverlay() {
+    var lower = parseFloat(self.areaFromSlider.slider('value'));
+    var upper = parseFloat(self.areaToSlider.slider('value'));
+    var scale = self.chartDiv.width() /
+      (self.distribution.hi() - self.distribution.lo());
+    var left = (lower - self.distribution.lo()) * scale;
+    var right = (upper - self.distribution.lo()) * scale;
+    self.overlayDiv.css('clip',
+                        'rect(0px,' +
+                              right + 'px,' +
+                              self.chartDiv.height() + 'px,' +
+                              left + 'px)');
+    var p = self.distribution.area(lower, upper);
+    p *= 100;
+    var text = 'Selected area: ' + p.fix(2) + '%';
+
+    self.areaInfoDiv.html(text);
+  }
+
+  initControls();
+  this.reloadChart();
 }
 
 // Javascript rewrite of
@@ -2367,6 +2703,9 @@ Number.prototype.fix = function(n) { // beware: do not use for long arrays
   return parseFloat(this.toFixed(n));
 };
 
+var rmin = 2.3e-308;
+var eps = 2.3e-16;
+
 // ============================================================================
 // ========================= STATISTICAL SUBROUTINES ==========================
 
@@ -3101,6 +3440,20 @@ function betaInv( p,  a,  b) {
      }
 }
 
+function gammaPdf(x, a, b) {
+  var ans = Math.NaN;
+  if (a <= 0 || b <= 0) {
+    ans = Math.NaN;
+  } else if (x > 0) {
+    ans = Math.exp((a-1)*Math.log(x)-(x/b)-lnGamma(a)-a*Math.log(b));
+  } else if (x === 0 && a < 1) {
+    ans = Math.POSITIVE_INFINITY;
+  } else if (x === 0 && a == 1) {
+    ans = 1/b;
+  }
+  return(ans);
+}
+
 function lnGamma(x) {
 /*  natural ln(gamma(x)) without computing gamma(x)
     P.B. Stark
@@ -3237,6 +3590,12 @@ function tCdf(df, x) { // cdf of Student's t distribution with df degrees of fre
     return(ans);
 }
 
+function tPdf(df, x) {
+  var d = Math.floor(df);
+  return(Math.exp(lnGamma((d+1)/2) - lnGamma(d/2))/
+         ( Math.sqrt(d*Math.PI)*Math.pow((1+x*x/d),(d+1)/2)) );
+}
+
 function tInv(p, df ) { // inverse Student-t distribution with
                                               // df degrees of freedom
     var z;
@@ -3313,6 +3672,14 @@ function betaGuts( x, a, b) { // guts of the incomplete beta function
 function chi2Cdf(df,  x) {
     var p =  (df == Math.floor(df)) ? gammaCdf(x,df/2,2) : Number.NaN;
     return(p);
+}
+
+function chi2Pdf(df, x) {
+  if (x <= 0) {
+    return(0.0);
+  } else {
+    return(gammaPdf(x, Math.floor(df)/2, 2));
+  }
 }
 
 function chi2Inv( p, df ) { // kluge for chi-square quantile function.
@@ -4545,6 +4912,290 @@ function distCalc(container_id, params) {
         self.theDisplay.val((100*prob).toFixed(self.options.digits-3)+'%');
     }
 
+}
+
+// Javascript implementation of venn diagram for sticigui. No params are
+// currently available.
+function Stici_Venn(container_id, params) {
+  var self = this;
+
+  this.env = jQuery('#' + container_id);
+  var app = jQuery('<div/>',{id:container_id + 'app'}).addClass('stici_venn');
+  this.env.append(app);
+
+  this.container = jQuery('<div/>',{id:container_id + 'container'}).addClass('container');
+  this.container.css('width',(this.env.width() - 160) + 'px');
+  this.container.css('height', (this.env.height() - 60) + 'px');
+  var buttons = jQuery('<div/>',{id:container_id + 'buttons'}).addClass('buttons');
+  var scrollbars = jQuery('<div/>',{id:container_id + 'scrollbars'}).addClass('scrollbars');
+
+  app.append(self.container);
+  app.append(buttons);
+  app.append(scrollbars);
+
+  var s_outline, a_outline, b_outline;
+  var a_fill, b_fill, ab_fill;
+  var ab_text, a_or_b_text;
+
+  var button_args = [
+    ['A', function () {
+      a_fill.addClass('selected');
+    }],
+
+    ['A<sup>c</sup>', function () {
+      s_outline.addClass('selected');
+      a_fill.addClass('opaque');
+    }],
+
+    ['B', function () {
+      b_fill.addClass('selected');
+    }],
+
+    ['B<sup>c</sup>', function () {
+      s_outline.addClass('selected');
+      b_fill.addClass('opaque');
+    }],
+
+    ['A or B', function () {
+      a_fill.addClass('selected');
+      b_fill.addClass('selected');
+    }],
+
+    ['AB', function () {
+      ab_fill.addClass('selected');
+    }],
+
+    ['AB<sup>c</sup>', function () {
+      a_fill.addClass('selected');
+      ab_fill.addClass('opaque');
+    }],
+
+    ['A<sup>c</sup>B', function () {
+      b_fill.addClass('selected');
+      ab_fill.addClass('opaque');
+    }],
+
+    ['S', function () {
+      s_outline.addClass('selected');
+    }],
+
+    ['{}', function () {
+    }]
+  ];
+  $.each(button_args, function(i, button_arg) {
+    var button_name = button_arg[0];
+    var button_action = button_arg[1];
+    var button = jQuery('<div/>').addClass('button');
+    buttons.append(button);
+    var inp = jQuery('<input/>',{type:'radio',name:'buttons'});
+    var label = jQuery('<label/>').click(function() {inp.prop('checked', true);});
+    button.click(function() {
+      inp.prop('checked', true);
+      a_outline.removeClass('selected opaque');
+      b_outline.removeClass('selected opaque');
+      a_fill.removeClass('selected opaque');
+      b_fill.removeClass('selected opaque');
+      ab_fill.removeClass('selected opaque');
+      s_outline.removeClass('selected opaque');
+      button_action();
+    });
+    label.html(button_name);
+    button.append(inp);
+    button.append(label);
+  });
+  function createPercentControl(letter, size) {
+    var sb = jQuery('<div/>',{id:container_id + 'psb' + letter}).addClass('scrollbar');
+    var lbl = jQuery('<label/>').attr('for', container_id + 'sb'+letter);
+    lbl.html('P(' + letter + ') (%)');
+    var idFunc1 = "$('#" + container_id + "sb" + letter + "').val(this.value)";
+    var idFunc2 = "$('#" + container_id + "sb" + letter + "t').val(this.value)";
+    var input = jQuery('<input/>', {
+      type: 'text',
+      id: container_id + 'sb'+letter+'t',
+      onkeyup: idFunc1,
+      value: size,
+      size: 2
+    });
+    var input2 = jQuery('<input/>', {
+      type: 'range',
+      id: container_id + 'sb'+letter,
+      onchange: idFunc2,
+      min: 1,
+      max: 100,
+      step: 1,
+      value: size,
+      style: 'width: 92px'
+    });
+
+    sb.append(lbl);
+    sb.append(input);
+    sb.append(input2);
+
+    scrollbars.append(sb);
+  }
+  createPercentControl('A', 30);
+  createPercentControl('B', 20);
+
+  var infoDiv = jQuery('<div/>').addClass('info');
+  ab_text = jQuery('<p/>');
+  a_or_b_text = jQuery('<p/>');
+  infoDiv.append(ab_text).append(a_or_b_text);
+  scrollbars.append(infoDiv);
+
+  var scaleFactorX = 0.3;
+  var scaleFactorY = 0.3;
+
+  // Synchronizes fill positions so that the outline is always visible on the A
+  // and B boxes, and the intersection area is synchronized.
+  function syncPositions() {
+    // Make sure everything stays in bounds.
+    var ax_offset = a_outline.offset().left + a_outline.width() -
+      (s_outline.offset().left + s_outline.width());
+    if (ax_offset > 0)
+      a_outline.css('left', (a_outline.position().left - ax_offset) + 'px');
+    var ay_offset = a_outline.offset().top + a_outline.height() -
+      (s_outline.offset().top + s_outline.height());
+    if (ay_offset > 0)
+      a_outline.css('top', (a_outline.position().top - ay_offset) + 'px');
+    var bx_offset = b_outline.offset().left + b_outline.width() -
+      (s_outline.offset().left + s_outline.width());
+    if (bx_offset > 0)
+      b_outline.css('left', (b_outline.position().left - bx_offset) + 'px');
+    var by_offset = b_outline.offset().top + b_outline.height() -
+      (s_outline.offset().top + s_outline.height());
+    if (by_offset > 0)
+      b_outline.css('top', (b_outline.position().top - by_offset) + 'px');
+    if (a_outline.position().left < s_outline.position().left)
+      a_outline.css('left', s_outline.position().left + 'px');
+    if (a_outline.position().top < s_outline.position().top)
+      a_outline.css('top', s_outline.position().top + 'px');
+    if (b_outline.position().left < s_outline.position().left)
+      b_outline.css('left', s_outline.position().left + 'px');
+    if (b_outline.position().top < s_outline.position().top)
+      b_outline.css('top', s_outline.position().top + 'px');
+
+    // Synchronize the fills with the outlines.
+    a_fill.css('left', a_outline.css('left'));
+    a_fill.css('top', a_outline.css('top'));
+    a_fill.css('width', a_outline.css('width'));
+    a_fill.css('height', a_outline.css('height'));
+
+    b_fill.css('left', b_outline.css('left'));
+    b_fill.css('top', b_outline.css('top'));
+    b_fill.css('width', b_outline.css('width'));
+    b_fill.css('height', b_outline.css('height'));
+
+    // Calculate the intersection.
+    var a_x = a_outline.position().left;
+    var a_y = a_outline.position().top;
+    var a_w = a_outline.width();
+    var a_h = a_outline.height();
+    var b_x = b_outline.position().left;
+    var b_y = b_outline.position().top;
+    var b_w = b_outline.width();
+    var b_h = b_outline.height();
+    if (a_x + a_w < b_x || b_x + b_w < a_x ||
+        a_y + a_h < b_y || b_y + b_h < a_y) {
+      ab_fill.css('display', 'none');
+    } else {
+      ab_fill.css('display', '');
+      var x1 = Math.max(a_x, b_x);
+      var y1 = Math.max(a_y, b_y);
+      ab_fill.css('left', x1 + 'px');
+      ab_fill.css('top', y1 + 'px');
+      var x2 = Math.min(a_x + a_w, b_x + b_w);
+      var y2 = Math.min(a_y + a_h, b_y + b_h);
+      ab_fill.css('width', (x2 - x1) + 'px');
+      ab_fill.css('height', (y2 - y1) + 'px');
+    }
+
+    var s_area = s_outline.width() * s_outline.height();
+    var p_a = a_fill.width() * a_fill.height() / s_area;
+    var p_b = b_fill.width() * b_fill.height() / s_area;
+    var p_ab = ab_fill.width() * ab_fill.height() / s_area;
+    if (ab_fill.css('display') == 'none')
+      p_ab = 0;
+    ab_text.text('P(AB): ' + (100 * p_ab).fix(1) + '%');
+    a_or_b_text.text('P(A or B): ' + (100 * (p_a + p_b - p_ab)).fix(1) + '%');
+  }
+
+  function draw() {
+
+    s_outline = jQuery('<div/>').addClass('box').addClass('S');
+    s_outline.css('left', '10px');
+    s_outline.css('top', '10px');
+    s_outline.css('width', (self.container.width() - 20) + 'px');
+    s_outline.css('height', (self.container.height() - 20) + 'px');
+    s_outline.text('S');
+    self.container.append(s_outline);
+
+    var rectX = self.container.width() / 2 - 50;
+    var rectY = self.container.height() / 2 - 25;
+
+    a_fill = jQuery('<div/>').addClass('box').addClass('A').addClass('fill');
+    a_outline = jQuery('<div/>').addClass('box').addClass('A').addClass('outline');
+    a_outline.css('left', (rectX - 32) + 'px');
+    a_outline.css('top', (rectY - 16) + 'px');
+    a_outline.css('width', (s_outline.width() * scaleFactorX) + 'px');
+    a_outline.css('height', (s_outline.height() * scaleFactorY) + 'px');
+    a_outline.text('A');
+
+    b_fill = jQuery('<div/>').addClass('box').addClass('B').addClass('fill');
+    b_outline = jQuery('<div/>').addClass('box').addClass('B').addClass('outline');
+    b_outline.css('left', (rectX + 32) + 'px');
+    b_outline.css('top', (rectY + 16) + 'px');
+    b_outline.css('width', (s_outline.width() * scaleFactorX) + 'px');
+    b_outline.css('height', (s_outline.height() * scaleFactorY) + 'px');
+    b_outline.text('B');
+
+    ab_fill = jQuery('<div/>').addClass('box').addClass('AB').addClass('fill');
+    self.container.append(a_fill);
+    self.container.append(b_fill);
+    self.container.append(ab_fill);
+    self.container.append(a_outline);
+    self.container.append(b_outline);
+    a_outline.draggable({
+      containment: s_outline,
+      drag: syncPositions,
+      stop: syncPositions
+    });
+    b_outline.draggable({
+      containment: s_outline,
+      drag: syncPositions,
+      stop: syncPositions
+    });
+    syncPositions();
+
+    function updateSizes() {
+      // ratio = width / height
+      // area = width * height
+      // width = area / height
+      // width = ratio * height
+      // width * width = area * ratio
+      // height = area / width
+      var ratio = s_outline.width() / s_outline.height();
+      var s_area = s_outline.width() * s_outline.height();
+      var a_p = $('#' + container_id + 'sbA').val() / 100;
+      var a_area = s_area * a_p;
+      var a_width = Math.sqrt(a_area * ratio);
+      var a_height = a_area / a_width;
+      a_outline.width(a_width + 'px');
+      a_outline.height(a_height + 'px');
+      var b_p = $('#' + container_id + 'sbB').val() / 100;
+      var b_area = s_area * b_p;
+      var b_width = Math.sqrt(b_area * ratio);
+      var b_height = b_area / b_width;
+      b_outline.width(b_width + 'px');
+      b_outline.height(b_height + 'px');
+      syncPositions();
+    }
+    $('#' + container_id + 'sbA').change(updateSizes);
+    $('#' + container_id + 'sbB').change(updateSizes);
+    $('#' + container_id + 'sbAt').change(updateSizes);
+    $('#' + container_id + 'sbBt').change(updateSizes);
+    updateSizes();
+  }
+  draw();
 }
 
 (function(){
