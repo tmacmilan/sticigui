@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<script language="JavaScript1.8" type="text/javascript"><!--
+	pageModDate = "28 January 2013 08:37 PST";
+	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
+    // All rights reserved.
+// -->
+</script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="../../Java/sticigui.js"></script>
+<link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
+<link href="../../SticiGui/Graphics/sticiGuiDefault.css" rel="stylesheet" type="text/css" />
+
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
+
+<script language="JavaScript1.8" type="text/javascript"><!--
+    var cNum = "conditioning";
+    labSetUp("SeEd",cNum);
+// -->
+</script>
+</head>
+
+<body >
+<script language="JavaScript1.8" type="text/javascript"><!--
+    writeProblemSetBody();
+// -->
+</script>
+
+
+<h2>
+    Conditional Probability, Multiplication Rule, Independence,
+    and Bayes' Rule
+</h2>
+
+
+<!-- ==================================START PROBLEM==================================== -->
+<div class="problem">
+<script language="JavaScript1.8" type="text/javascript" ><!--
+    document.writeln(startProblem(pCtr++));
+    var theCards = ["spade","seven","face card","two or a nine","heart or a diamond"];
+    var which = (listOfDistinctRandInts(2,0,theCards.length-1));
+    var pVec = [1/4, 1/13, 3/13, 2/13, 1/2];
+    var pCondition = [[12/51, 1/13, 12/52, 2/13, 26/51 ],
+                      [  1/4, 3/51, 12/51, 8/51, 1/2 ],
+                      [  1/4, 4/51, 11/51, 8/51, 1/2 ],
+                      [  1/4, 4/51, 12/51, 7/51, 1/2 ],
+                      [13/51, 4/52, 12/52, 2/13, 25/51]
+                     ];
+    var aVal = [[ 'a', 'c', 'c', 'c', 'a' ],
+                [ 'c', 'a', 'a', 'a', 'c' ],
+                [ 'c', 'a', 'a', 'a', 'c' ],
+                [ 'c', 'a', 'a', 'a', 'c' ],
+                [ 'a', 'c', 'c', 'c', 'a' ]
+               ];
+    var fromTop = (listOfRandInts(1,2,20))[0];
+    var opt = ["no","cannot be determined without knowing other cards","yes"];
+    var qStr = '<span class="qSpan">The chance that the top card in a well shuffed deck is a ' +
+               theCards[which[0]] + ' is </span>';
+    document.writeln(qStr);
+    writeTextExercise(10,qCtr++,numToRange(pVec[which[0]]));
+    qStr = '</p><p><span class="qSpan">The chance that the ' + ordinals[fromTop] +
+           ' card from the top of the deck is a ' + theCards[which[1]] + ' is </span>';
+    document.writeln(qStr);
+    writeTextExercise(10,qCtr++,numToRange(pVec[which[1]]));
+    qStr = '</p><p><span class="qSpan">The chance that the top card in the deck is a ' +
+            theCards[which[0]] + ' given that the ' + ordinals[fromTop] +
+            ' card from the top is a ' + theCards[which[1]] + ' is </span>';
+    document.writeln(qStr);
+    writeTextExercise(10,qCtr++,numToRange(pCondition[which[1]][which[0]]));
+    qStr = '</p><p><span class="qSpan">Are the events that the top card is a ' +
+           theCards[which[0]] + ' and that the ' + ordinals[fromTop] +
+           ' card is a ' + theCards[which[1]] + ' independent?</span>';
+    document.writeln(qStr);
+    writeSelectExercise(false,qCtr++,opt,aVal[which[1]][which[0]]);
+    document.writeln('</p>');
+// -->
+</script>
+</div>
+
+<!-- ==================================START PROBLEM==================================== -->
+<div class="problem">
+<script language="JavaScript1.8" type="text/javascript" ><!--
+    document.writeln(startProblem(pCtr++));
+    var pHit = roundToDig((listOfRandInts(1,1,4))[0]/10,1);
+    var nThrows = (listOfRandInts(1,5,10))[0];
+    var aVal = numToRange(1- Math.pow(1-pHit,nThrows));
+    var qStr = 'A mechanical dart thrower throws darts independently each time, ' +
+               'with probability ' + roundToDig(100*pHit,0) + '% of hitting the ' +
+               'bullseye in each attempt. <span class="qSpan">The chance that the ' +
+               'dart thrower hits the bullseye at least once in ' + nThrows.toString() +
+               ' attempts is</span> ';
+    document.writeln(qStr);
+    writeTextExercise(6,qCtr++,aVal);
+    document.writeln('</p>');
+// -->
+</script>
+</div>
+
+
+<!-- ==================================START PROBLEM==================================== -->
+<div class="problem">
+<script language="JavaScript1.8" type="text/javascript" ><!--
+    document.writeln(startProblem(pCtr++));
+    var theInts = (listOfDistinctRandInts(4,1,9)).sort(numberLessThan);
+    var pGood = roundToDig(theInts[2]/10,1);
+    var pSayBadBad = roundToDig(theInts[1]/10,1);
+    var pSayBadGood = roundToDig(theInts[0]/10,1);
+    var pGoodSayGood =pGood*(1-pSayBadGood)/(pGood*(1-pSayBadGood) + (1-pGood)*(1-pSayBadBad));
+    var aVal = numToRange(pGoodSayGood);
+    var qStr = 'Suppose that of all used cars of a particular year, make, and model, ' +
+               (roundToDig(100 - 100*pGood,0)).toString() + '% have bad brakes. ' +
+               'You are considering buying a used car of this year, make, and model. ' +
+               'You take the car to a mechanic to have the brakes checked. ' +
+               'The mechanic is not infallible: the chance that the mechanic will correctly ' +
+               'report that a car with bad brakes has bad brakes is ' +
+               roundToDig(100*pSayBadBad,0).toString() + '%, and the chance that the mechanic ' +
+               'will erroneously report that a car with good brakes has bad brakes is ' +
+               roundToDig(100*pSayBadGood,0).toString() + '%. <span class="qSpan">' +
+               'Assuming that the car you take to the mechanic is selected &quot;at random&quot; ' +
+               'from the population of cars of that year, make, and model, the chance that the ' +
+               'car\'s brakes are good given that the mechanic says its brakes are good is </span>';
+    document.writeln(qStr);
+    writeTextExercise(6,qCtr++,aVal);
+    document.writeln('</p>');
+// -->
+</script>
+</div>
+
+<!-- ==================================START PROBLEM==================================== -->
+<div class="problem">
+<script language="JavaScript1.8" type="text/javascript" ><!--
+    document.writeln(startProblem(pCtr++));
+    var qStr = 'About 2 million Americans pass through airport security screening ' +
+               'each day, before getting on the plane. ' +
+               'Suppose that the airport screening process ' +
+               'is 99.9% accurate: in other words, 99.9% of terrorists will be ' +
+               'correctly flagged as part of the screening process, and ' +
+               'only 0.1% of non-terrorist passengers will be ' +
+               'flagged by the screening process.  Suppose that 5 terrorists ' +
+               'fly and pass through security screening each day. ' +
+               '<span class="qSpan">Under these assumptions, ' +
+               'if we select a passenger at random, ' +
+               'and they are flagged by the screening process, what is the ' +
+               'probability that they are a terrorist? ' +
+               'In other words, what fraction of passengers who are flagged ' +
+               'by the screening process are terrorists?</span>';
+    document.writeln(qStr);
+    writeTextExercise(6,qCtr++,0.00249);
+    document.writeln('</p>');
+// -->
+</script>
+</div>
+
+<script language="JavaScript1.8" type="text/javascript" ><!--
+    writeProblemSetFooter();
+// -->
+</script>
+</body>
+</html>
