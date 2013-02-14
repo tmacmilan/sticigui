@@ -6,7 +6,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "13 February 2013 16:57 PST";
+	pageModDate = "14 February 2013 16:57 PST";
 	// copyright (c) 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -91,6 +91,9 @@
    Transmission routes: feed (primary), maternal (rare but possible), contact (no evidence but not impossible).
    Cattle most susceptible before they are two years old.
    Incubation period on the order of 5&ndash;7 years.
+   Also thought to occur &quot;in the wild&quot; (sporadically) at some rate
+   in cattle (type H BSE, thought to be genetic) as well as in humans (CJD) and other species (e.g., scrapie in
+   sheep and chronic wasting disease in deer and elk).
 </p>
 
 <p>
@@ -105,7 +108,7 @@
 </p>
 
 <p>
-   BSE has been found in the U.S., but no infected cattle were found between 19?? and 2012, when
+   BSE has been found in the U.S., but no infected cattle were found between 2006 and 2012, when
    an (asymptomatic) infected dairy cow was discovered at a processing plant.
 </p>
 
@@ -188,11 +191,63 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
 </p>
 
 <p>
-   Rate in herd as a whole: did not condition on the right thing.
-   Also used stale data.
+   According to Dr. Cox, at that time the Canadian government tested about
+   <span class="math">\(2769 + 4000 + 1300 = 8069\)</span> cattle and found
+   3 with BSE, a rate of 0.037%.
+   The cattle are not a random sample, however: Canada targeted animals thought
+   to have higher risk of BSE.
+   In Europe, the incidence in &quot;high-risk&quot; was about 60 times higher than
+   in the general herd.
+   Cox estimated that the rate in the Canadian herd is about 5.5 per million.
+   He said that if imports resumed, the U.S. would import about 1.7 million cattle per year.
+   On that basis, he concludes that the U.S. should expect to import about
+   <span class="math">\( 5.5 \times 1.7 = 9.35\)</span> infected cattle per year.
 </p>
 
+<p>
+   Cox says there is a greater than 99% chance of importing at least one infected cow per year
+   if the infection rate is even 3 per million in the Canadian herd.
+   Where does this number come from?
+</p>
+
+<p>
+    Imagine tossing a biased coin that has chance <span class="math">\(p\)</span> of landing heads
+    <span class="math">\(n\)</span> times, independently.
+    If <span class="math">\(p\)</span> is very small and <span class="math">\(n\)</span> is very large,
+    the chance that the coin lands heads at least once is about <span class="math">\(100\% - e^{-np}\)</span>.
+    Using this approximation, if all Canadian cattle had the same chance of being infected
+    and we imported 1.7million randomly, the chance at least one would be infected is
+    about <span class="math">\(100\% - e^{-5.5\times3} = 99.4\%\)</span>.
+</p>
+
+<p>
+   Using similar logic, Cox estimates that there would be about 72 servings of infected beef in the
+   U.S. as a result of importing Canadian cattle.
+   This number comes from multiplying 3.6 BSE-positives per million cattle times a 1% rate
+   of failing to remove all the infective material times a billion pounds of beef times
+   two servings per pound.
+   He estimates that about 40% of those servings would be consumed by
+   individuals &quot;susceptible&quot; to vCJD.
+   (He does not say where 40% comes from.)
+   From that he estimates that there would be about <span class="math">\(72 \times 0.4 = 28.8\)</span>
+   human infections of vCJD per year.
+</p>
+
+<p>
+   Moreover, he estimates that the chance of at least one such infection per year is essentially
+   100%.
+   Where does that number come from?
+   Again, if we view infections as if they resulted from independent tosses of
+   a coin with a fixed chance 40% of heads, the chance of getting at least one head in 72 tosses
+   would be <span class="math">\(100\% - 60\%^72\)</span>, which is essentially 100%.
+
 <h3>A closer look</h3>
+
+<p>
+   Let's think about Dr. Cox's numbers and assumptions.
+
+
+</p>
 
 <p>
    Rates of detection versus infection.
@@ -202,9 +257,7 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
    No evidence that feed ban didn't work.
 </p>
 
-
-
-<h2>Does heterogeneity help or hurt?</h2>
+<h3>Does heterogeneity help or hurt?</h3>
 
 <p>
    Dr. Cox argues that violations of his assumptions would only make matters worse.
@@ -259,15 +312,18 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
    months old, under the proposed regulations).
 </p>
 
-<p>
-   Canadian case traced to animal protein source; culling.
+<div class="figure">
+<p class="figure">
+  <img src="http://www.cdc.gov/ncidod/dvrd/bse/images/cases_in_north_america_2012.gif" />
+  <br />Source:  <a href="http://www.cdc.gov/ncidod/dvrd/bse/">Centers for Disease Control</a>
 </p>
+</div>
 
 
 <h2>Some comparisons</h2>
 
 <p>
-   Total cases worldwide, 1996&ndash;2009, according to CDC:
+   217 total cases worldwide, 1996&ndash;2009, according to CDC:
 </p>
 
 <blockquote cite="http://www.cdc.gov/ncidod/dvrd/vcjd/factsheet_nvcjd.htm">
@@ -285,14 +341,19 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
 </blockquote>
 
 <p>
+   There was another case in Canada in 2011, apparently contracted elsewhere.
+</p>
+
+<p>
   The CDC estimates that annually about 3,000 people in the U.S. die from foodborne illnesses.
   <a href="http://www.cdc.gov/foodborneburden/index.html">http://www.cdc.gov/foodborneburden/index.html</a>
 </p>
 
 <p>
-   Total infected cattle found in Canada through 2011: 19.
-   Total in the U.S. through 2012: 4.
-   Total in the U.K.
+   Total infected cattle found in Canada through 2012: 19, of which 2 were identified as H-Type BSE.
+   Total in the U.S. through 2012: 4, of which at least 3 were identified to be H-Type BSE.
+   Total in the U.K. through 2010: 184,500 in more than 35,000 herds.
+   At the peak in early 1993, there were over 1,000 new cases per week in the U.K.
    <a href="http://www.cdc.gov/ncidod/dvrd/bse/">http://www.cdc.gov/ncidod/dvrd/bse/</a>
 </p>
 
