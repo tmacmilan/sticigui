@@ -71,7 +71,8 @@ var chapterTitles = [
                                'zTest'],
                          ['The Multinomial Distribution and the Chi-Squared Test for Goodness of Fit',
                                'chiSquare'],
-                         ['A Case Study in Natural Resource Legislation','abalone']
+                         ['A Case Study in Natural Resource Legislation','abalone'],
+                         ['A Case Study in Risk Assessment: Bovine Spongiform Encephalopathy','bse']
                     ];
 var assignmentTitles = [
                          ['Have you read the syllabus and instructions?', // topic

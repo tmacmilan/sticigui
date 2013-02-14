@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:pref="http://www.w3.org/2002/Math/preference"
+      pref:renderer="css">
+
+<head>
+<script language="JavaScript1.8" type="text/javascript"><!--
+	pageModDate = "13 February 2013 16:57 PST";
+	// copyright (c) 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
+    // All rights reserved.
+// -->
+</script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script>
+
+<script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="../../Java/sticigui.js"></script>
+<link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
+<link href="../../SticiGui/Graphics/sticiGuiDefault.css" rel="stylesheet" type="text/css" />
+
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
+
+<script language="JavaScript1.8" type="text/javascript"><!--
+    var cNum = "bse";
+    writeChapterHead('SeEd',cNum);
+// -->
+</script>
+</head>
+
+<body>
+
+<script language="JavaScript1.8" type="text/javascript"><!--
+    writeChapterNav('..');
+    writeChapterTitle();
+// -->
+</script>
+
+<form method="POST">
+
+<h1>Case Study: Transmissible Spongiform Encephalopathy (TSE)</h1>
+
+<p>
+   There are a variety of such diseases in mammals, including
+   scrapie (sheep), kuru (humans, Papua New Guinea, from eating human brains),
+   <a href="http://www.ncbi.nlm.nih.gov/pubmedhealth/PMH0001792/">Creutzfeldt-Jakob Disease</a> (CJD),
+   variant CJD,
+   Chronic Wasting Disease (deer, elk),
+   Feline Spongiform Encephalopathy,
+   Bovine Spongiform Encephalopathy (BSE, discovered in 1986).
+   TSEs are invariably fatal.
+   They cause lesions and Causes lesions and holes in the brain,
+   leaving the brain looking sponge-like&mdash;hence &quot;spongiform.&quot;
+   Incubation period varies, but generally years in large mammals (like cows and us).
+   But once symptoms appear, incapacitation and death follow
+   relatively quickly.
+</p>
+
+<p>
+   TSE is transmissible (by definition).
+   There's a genetic component to the susceptibility and the incubation time, and a possibility
+   that infection can be passed from mother to offspring.
+   (The &quot;natural&quot; CJD also runs in families, apparently due to genetics, not infection.)
+   Whatever the causative agent is, it replicates in the &quot;host.&quot;
+   It is not a virus or bacteria.
+   It is quite hard to &quot;denature&quot;: it survives heat, radiation, etc.
+   It alters the three-dimensional structure (folding) of a kind of protein, prion (pRP).
+   Thought to be in fact the same protein it affects, but abnormally folded.
+   According to one theory, the natural form unfolds periodically; if the abnormal form
+   is present, it guides the unfolded protein into the wrong configuration.
+   This cascades.
+</p>
+
+<p>
+   The infectious agent is concentrated in the brain and some other tissues (CNS, distal ileum in cattle).
+</p>
+
+<p>
+   BSE transmissible to cats, dogs, goats, deer, mice, pigs, monkeys.
+   Unusual for infectious agents to be able to cross &quot;species barriers.&quot;
+</p>
+
+<p>
+   Transmission routes: feed (primary), maternal (rare but possible), contact (no evidence but not impossible).
+   Cattle most susceptible before they are two years old.
+   Incubation period on the order of 5&ndash;7 years.
+</p>
+
+<p>
+   There was a BSE epidemic in the United Kingdom, starting around 1986.
+   It was eventually controlled, but millions of cattle were infected, and millions were culled from the herd
+   as a preventive measure.
+</p>
+
+<p>
+   A number of people contracted vCJD from eating infected cattle.
+   vCJD is generally fatal within a year of showing symptoms.
+</p>
+
+<p>
+   BSE has been found in the U.S., but no infected cattle were found between 19?? and 2012, when
+   an (asymptomatic) infected dairy cow was discovered at a processing plant.
+</p>
+
+<div class="video">
+<p class="figure">
+<object width="420" height="245" id="msnbc1aea4d" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=10,0,0,0">
+<param name="movie" value="http://www.msnbc.msn.com/id/32545640" />
+<param name="FlashVars" value="launch=47165694^370^135510&amp;width=420&amp;height=245" />
+<param name="allowScriptAccess" value="always" /><param name="allowFullScreen" value="true" />
+<param name="wmode" value="transparent" />
+<embed name="msnbc1aea4d" src="http://www.msnbc.msn.com/id/32545640" width="420"
+height="245" FlashVars="launch=47165694^370^135510&amp;width=420&amp;height=245"
+allowscriptaccess="always" allowFullScreen="true" wmode="transparent" type="application/x-shockwave-flash"
+pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash"></embed>
+</object>
+</p>
+</div>
+
+<div class="video">
+<p class="figure">
+<iframe id="kaltura_player_1360814204" height="360" width="640" style="border: 0px solid #ffffff;"
+src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/3775332/st_cache/43533?referer=http://abcnews.go.com/WNT/video/mad-cow-disease-closer-farm-16215829&amp;autoPlay=false&amp;addThis.playerSize=392x221&amp;freeWheel.siteSectionId=nws_offsite&amp;closedCaptionActive=true&amp;addThis.playerSize=640x360&amp;closedCaptionsOverPlayer.fontsize=18">Unfortunately your browser does not support IFrames.
+</iframe>
+</p>
+</div>
+
+<div class="video">
+<p class="figure">
+<iframe width="420" height="315" src="http://www.youtube.com/embed/KUompqk3FJs" frameborder="0" allowfullscreen>
+</iframe>
+</p>
+</div>
+
+<div class="video">
+<p class="figure">
+<iframe width="420" height="315" src="http://www.youtube.com/embed/PksK-mw_DG4" frameborder="0" allowfullscreen>
+</iframe>
+</p>
+</div>
+
+<div class="video">
+<p class="figure">
+<object width="425px" height="360px" >
+<param name="allowFullScreen" value="true"/>
+<param name="wmode" value="transparent"/>
+<param name="movie" value="http://mediaservices.myspace.com/services/media/embed.aspx/m=106762493,t=1,mt=video"/>
+<embed src="http://mediaservices.myspace.com/services/media/embed.aspx/m=106762493,t=1,mt=video" width="425" height="360" allowFullScreen="true" type="application/x-shockwave-flash" wmode="transparent">
+</embed>
+</object>
+</p>
+</div>
+
+<h2>The ban on importing Canadian beef and cattle</h2>
+
+<p>
+   In May 2003, a BSE-infected beef cow was discovered in Alberta, Canada.
+   The U.S. Department of Agriculture banned imports of Canadian cattle and beef in response.
+   In November 2003 the U.S. Department of Agriculture proposed allowing beef and cattle less than 30 months
+   old to be imported, with special restrictions on how they are slaughtered and their intestines are disposed
+   of (the distal ileum, part of the small intestine, can contain a concentration of the infectious agent).
+   <a href="http://www.gpo.gov/fdsys/pkg/FR-2003-11-04/pdf/03-27611.pdf">
+   http://www.gpo.gov/fdsys/pkg/FR-2003-11-04/pdf/03-27611.pdf</a>
+</p>
+
+<p>
+   The Ranchers-Cattlemen Action Legal Fund (R-CALF) sued the federal government to
+   keep out Canadian cattle, citing public health concerns.
+   An expert witness, Dr. Louis Anthony Cox, wrote declarations on their behalf, estimating that
+   opening the border would result in about 11 infected cattle being introduced into the U.S. each year.
+   I analyzed Dr. Cox's analysis (and portions of the Federal Register and the epidemiological literature
+   and studies by various european government agencies) on behalf of the U.S.D.A. and came to rather
+   different conclusions.
+</p>
+
+
+<h2>Does heterogeneity help or hurt?</h2>
+
+<p>
+   Four cows in Canada, two with BSE.
+   Select two at random.
+   \(P(\mbox{at least one has BSE}) = 3/4 \).
+</p>
+
+<p>
+   Four cows, two in British Columbia, two in Alberta.
+   One in each province has BSE.
+   Select one from each province at random.
+   \(P(\mbox{at least one has BSE}) = 3/4 \).
+</p>
+
+<p>
+   Four cows, two in British Columbia, two in Alberta.
+   Two in Alberta have BSE; none in BC does.
+   Select one from each province at random.
+   \(P(\mbox{at least one has BSE}) = 1 \).
+</p>
+
+<p>
+   Four cows, two in British Columbia, two in Alberta.
+   Two in Alberta have BSE; none in BC does.
+   Select two (i.e., both) from BC.
+   \(P(\mbox{at least one has BSE}) = 0 \).
+</p>
+
+<p>
+   Four cows, two over 5 years old, two under 2 years old.
+   The older two have BSE; the younger two do not.
+   Select two (i.e., both) younger cows.
+   \(P(\mbox{at least one has BSE}) = 0 \).
+</p>
+
+<h2>Surveillance</h2>
+
+<p>
+   U.S. tests 40,000 cattle per year.
+   Suppose the tests were of randomly selected cattle (every animal equally likely to be selected).
+   Suppose all the tests are negative.
+   What can we say about the prevalence of BSE in the U.S. herd?
+   40,000 is a tiny fraction of cattle&mdash;is it too few?
+</p>
+
+<p>
+   If the prevalence were 1%, what would the chance of at least one positive test result be?
+</p>
+
+<p class="math">
+   \(P(\mbox{at least one positive}) = 100\% - P(\mbox{all negative}) = 100\% - (99\%)^{40,000} \approx 100\%. \)
+</p>
+
+<p>
+   Even if the prevalence were 0.01% (one in ten thousand), the chance of at least one positive test would be
+</p>
+
+<p class="math">
+   \(100\% - (99.99\%)^{40,000} \approx 98.2\%.\)
+</p>
+
+<p>
+  Other Foodborne and Waterborne Risks.
+</p>
+
+ <ul>
+       <li> Amoebiasis (diarrhea, fever) </li>
+       <li> Salmonellosis (diarrhea, cramps, dehydration) </li>
+       <li> E.~coli (diarrhea, dehydration) </li>
+       <li> Campylobacteriosis (dysentery, fever: I was hospitalized with this) </li>
+       <li> Cholera (rapidly fatal: nausea, cramps, hypovolemic shock) </li>
+       <li> Streptococcus (I spent 4.5 months bedridden, on IV antibiotics) </li>
+       <li> Giardiasis (diarrhea, bloating. Yep, I've had that, too) </li>
+       <li> Legionellosis (a friend's mother died of this) </li>
+       <li> Leptospirosis  (meningitis, liver damage, kidney failure) </li>
+       <li> Cryptosporidiosis (cramps, nausea, vomiting) </li>
+       <li> Botulism (double vision, vomiting, diarrhea, respiratory failure, death) </li>
+       <li> Aflatoxin </li>
+       <li> Typhoid fever </li>
+       <li> Vibrio </li>
+       <li> SARS </li>
+       <li> Hepatitis A </li>
+       <li> Polio </li>
+       <li> Polyomavirus infection </li>
+ </ul>
+
+<h2>
+   Who benefits? Who suffers? Who pays?
+</h2>
+
+<p>
+   Why did R-CALF litigate?
+   Do you think it's a question of public health?
+</p>
+
+</form>
+
+<script language="JavaScript1.8" type="text/javascript"><!--
+    writeChapterFooter();
+// -->
+</script>
+</body>
+</html>
