@@ -221,14 +221,14 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
    to have higher risk of BSE.
    In Europe, the incidence in &quot;high-risk&quot; was about 60 times higher than
    in the general herd.
-   Cox estimated that the rate in the Canadian herd is about 5.5 per million.
+   Dr. Cox estimated that the rate in the Canadian herd is about 5.5 per million.
    He said that if imports resumed, the U.S. would import about 1.7 million cattle per year.
    On that basis, he concludes that the U.S. should expect to import about
    <span class="math">\( 5.5 \times 1.7 = 9.35\)</span> infected cattle per year.
 </p>
 
 <p>
-   Cox says there is a greater than 99% chance of importing at least one infected cow per year
+   Dr. Cox says there is a greater than 99% chance of importing at least one infected cow per year
    if the infection rate is even 3 per million in the Canadian herd.
    Where does this probability come from?
 </p>
@@ -239,12 +239,12 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
     If <span class="math">\(p\)</span> is very small and <span class="math">\(n\)</span> is very large,
     the chance that the coin lands heads at least once is about <span class="math">\(100\% - e^{-np}\)</span>.
     Using this approximation, if all Canadian cattle had the same chance of being infected
-    and we imported 1.7million randomly, the chance at least one would be infected is
+    and we imported 1.7 million randomly, the chance at least one would be infected is
     about <span class="math">\(100\% - e^{-5.5\times3} = 99.4\%\)</span>.
 </p>
 
 <p>
-   Using similar logic, Cox estimates that there would be about 72 servings of infected beef in the
+   Using similar logic, Dr. Cox estimates that there would be about 72 servings of infected beef in the
    U.S. as a result of importing Canadian cattle.
    This number comes from multiplying 3.6 BSE-positives per million cattle times a 1% rate
    of failing to remove all the infective material times a billion pounds of beef times
@@ -263,6 +263,12 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
    Again, if we view infections as if they resulted from independent tosses of
    a coin with a fixed chance 40% of heads, the chance of getting at least one head in 72 tosses
    would be <span class="math">\(100\% - 60\%^72\)</span>, which is essentially 100%.
+   Alternatively, if we view infections as if they resulted from two billion independent tosses of
+   a coin, one toss per half pound of beef: If the coin lands heads, the half pound is contaminated
+   with infected SRM and is fed to a susceptible person.
+   The chance the coin lands heads is the same for every half pound:
+   <span class="math">\(0.0000036 \times 0.01 \times 0.4 = 0.000000144\%\)</span>.
+</p>
 
 <h3>A closer look</h3>
 
@@ -282,12 +288,12 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
 
 <p>
    Dr. Cox assumes that if imports resumed, the U.S. would bring in 1.7 million head of cattle per year.
-   The National Cattlemen's Beef association estimated the number fo be 900,000, and the U.S.D.A. estimated it
+   The National Cattlemen's Beef association estimated the number to be 900,000, and the U.S.D.A. estimated it
    to be 1.4 million.
 </p>
 
 <p>
-   Meat and other tissue&mdash;except the tonsils and distal ilium&mdash;are rarely infectious until at least
+   Meat and other tissue&mdash;except the tonsils and distal ileum&mdash;are rarely infectious until at least
    32 months after exposure.
    The regulations would require slaughter before the animal reached 30 months of age.
    Meat has never been found to be infectious.
@@ -301,17 +307,42 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
 </p>
 
 <p>
+   Dr. Cox ignored the rules that would govern imports when he assessed the risk.
+   Most importantly, he ignored the restriction that cattle must be slaughtered before they are 30 months old.
+   That restriction has a profound effect on the risk.
+   Animals that young would have been born substantially after the feed ban (and Canada's feed ban was
+   a good one).
+   Hence, they pose little risk beyond the extremely low rate of &quot;sporadic&quot; (naturally occurring)
+   cases.
+   In the extremely rare event that such a young animal is infected, because the incubation time for
+   the disease is so long, the amount of infectious agent would be low: infectivity grows very slowly at first.
+   And even that small amount of infectious agent would be removed largely, if not completely, because it
+   is concentrated in specific high-risk material (SRM: nervous tissue, distil ileum, tonsils, etc.).
+   While it is impossible to quantify the risk without making unrealistic assumptions with no basis
+   in the data, it is clear that the risk is very, very small.
+   This is an example of &quot;defense in depth.&quot;
+</p>
+
+<p>
    Rates are not probabilities.
    If some event has a probability, then in repeated trials, the fraction of times it
    occurs tends to converge to the probability.
    But just because something has a rate does not mean it is the result of a random
    process.
-   In Cox's argument, he invents a probability model to turn an estimated rate of BSE in the Canadian
+   Dr. Cox invents a probability model to turn an estimated rate of BSE in the Canadian
    herd into an estimated probability that one or more infected animals will be imported.
+   In his model, whether an animal is infected is like whether a coin lands heads,
+   all animals share a single coin, and all tosses of that coin are independent.
    He does something similar to estimate the chance that at least one person will be infected with vCJD
    as a result.
-   However, his model has no basis in fact, and actually contradicts the existing data.
+   But this model has no basis in fact, and actually contradicts the existing data for Canada, the U.K.,
+   France, and Switzerland: cases cluster in space and time, because they are linked through
+   contaminated food sources. Hence the tosses are not independent.
+   And it is as if different animals have different coins, because their exposures differ&mdash;especially
+   those born before a feed ban compared to those born after a feed ban.
 </p>
+
+
 
 <h3>Does heterogeneity help or hurt?</h3>
 
@@ -374,6 +405,20 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
   <br />Source:  <a href="http://www.cdc.gov/ncidod/dvrd/bse/">Centers for Disease Control</a>
 </p>
 </div>
+
+<h3>Must a risk assessment come up with a number?</h3>
+
+<p>
+   Part of Dr. Cox's argument is that the U.S.D.A. assessment of risk was inadequate because it didn't
+   put a number on the risk.
+   Dr. Cox put a number on the risk, a number that is large (more than a 99% risk of importing at least one
+   infected cow per year, essential certainty of infecting at least one person with vCJD per year).
+   Notwithstanding the fact that he plugged the wrong numbers into the formulae he was using,
+   we have seen that the formulae depended on some rather stylized assumptions about how
+   animals are infected, imported, slaughtered, and distributed to susceptible consumers.
+   Independent tosses of the same coin in a large number of trials is central to his approach.
+   Where does this come from?
+</p>
 
 
 <h2>Some comparisons</h2>
