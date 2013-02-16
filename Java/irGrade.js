@@ -120,7 +120,7 @@ var assignmentTitles = [
                          ],
                          ['Regression Diagnostics, Errors in Regression',
                           'Regression diagnostics and regression errors: residual plots, ' +
-			                        'regression fallacy, rms error of regression',
+                                 'regression fallacy, rms error of regression',
                           'regressionErrors',
                           'regressionDiagnostics,regressionErrors'
                          ],
