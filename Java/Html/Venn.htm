@@ -25,6 +25,14 @@
     writeChapterHead('SeEd','','Venn Diagrams and Probability: 2 Sets',true,'../../SticiGui');
 // -->
 </script>
+<style>
+#venn {
+  width: 480px;
+  height: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
 </head>
 
 <body >
@@ -38,11 +46,12 @@
 
 <p align="center">
 
-<APPLET code="Venn.class" WIDTH=480 HEIGHT=340 archive="PbsGui.zip" codebase=".." >
-
-   You need Java to see this.
-
-</APPLET>
+<div id="venn"></div>
+<script type="text/javascript">
+jQuery(function() {
+  new Stici_Venn('venn');
+});
+</script>
 
 </p>
 

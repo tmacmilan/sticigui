@@ -16,6 +16,7 @@
 
 
 
+<link href="../../SticiGui/Graphics/sticiGuiDefault.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../../Java/sticigui.js"></script>
 <link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
@@ -31,10 +32,14 @@
 <body >
 
 <p align="center">
-<applet code="Venn.class" codebase="../../Java/"
-     align="baseline" width="600" height="280" archive="PbsGui.zip">
-     You need Java to see this.
-</applet> </p>
+
+<div id="venn" class="venn_diagram"></div>
+<script type="text/javascript">
+jQuery(function() {
+  new Stici_Venn('venn');
+});
+</script>
+</p>
 <p align="center">
   <div id="calc" class="calculator">
   </div>

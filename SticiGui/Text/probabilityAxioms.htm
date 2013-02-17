@@ -1382,10 +1382,12 @@
 </script>
 
 <p class="figure">
-    <applet code="Venn.class" width="400" height="320" align="baseline"
-     codebase="../../Java/" archive="PbsGui.zip">
-    You need Java to see this.
-    </applet>
+<div id="venn" class="venn_diagram"></div>
+<script type="text/javascript">
+jQuery(function() {
+  new Stici_Venn('venn');
+});
+</script>
 </p>
 </div>
 
