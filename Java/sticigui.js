@@ -2707,7 +2707,7 @@ function Stici_Scatterplot(container_id, params) {
 }
 
 /* script stat_utils: statistical functions, vector functions, linear algebra
-  
+
    copyright (c) 1997-2013. P.B. Stark, statistics.berkeley.edu/~stark
    Version 1.0
 
@@ -3933,6 +3933,20 @@ function binomialInv(n, p, pt) { // binomial percentile function
     return(t);
 }
 
+function binomialLowerCL(n, x, cl, inc) {
+    p = x/n;
+    if (x > 0) {
+        f = binomialTail(n, p, x-1);
+        while (f >= 1-cl) {
+            p = p - inc;
+            f = binomialTail(n, p, x-1);
+        }
+    } else {
+        p = 0;
+    }
+    return(p);
+}
+
 function multinomialCoef(list, n) { // multinomial coefficient.
 // WARNING:  not very stable algorithm; avoid for large n.
     var val = 0;
@@ -5143,14 +5157,32 @@ function Stici_Venn(container_id, params) {
       ab_fill.css('height', (y2 - y1) + 'px');
     }
 
+    // Calculate P(AB) and P(A or B)
     var s_area = s_outline.width() * s_outline.height();
-    var p_a = a_fill.width() * a_fill.height() / s_area;
-    var p_b = b_fill.width() * b_fill.height() / s_area;
-    var p_ab = ab_fill.width() * ab_fill.height() / s_area;
-    if (ab_fill.css('display') == 'none')
+    var p_a = a_fill.width() * a_fill.height() / s_area * 100;
+    var p_b = b_fill.width() * b_fill.height() / s_area * 100;
+    var p_ab = ab_fill.width() * ab_fill.height() / s_area * 100;
+    var p_a_or_b = (p_a + p_b - p_ab);
+    if ((ab_fill.position().left == a_outline.position().left &&
+         ab_fill.position().top == a_outline.position().top &&
+         ab_fill.width() == a_outline.width() &&
+         ab_fill.height() == a_outline.height()) ||
+        (ab_fill.position().left == b_outline.position().left &&
+         ab_fill.position().top == b_outline.position().top &&
+         ab_fill.width() == b_outline.width() &&
+         ab_fill.height() == b_outline.height())) {
+      p_ab = Math.min($('#' + container_id + 'sbA').val(),
+                      $('#' + container_id + 'sbB').val());
+      p_a_or_b = Math.max($('#' + container_id + 'sbA').val(),
+                          $('#' + container_id + 'sbB').val());
+    }
+    if (ab_fill.css('display') == 'none') {
       p_ab = 0;
-    ab_text.text('P(AB): ' + (100 * p_ab).fix(1) + '%');
-    a_or_b_text.text('P(A or B): ' + (100 * (p_a + p_b - p_ab)).fix(1) + '%');
+      p_a_or_b = parseFloat($('#' + container_id + 'sbA').val()) +
+                 parseFloat($('#' + container_id + 'sbB').val());
+    }
+    ab_text.text('P(AB): ' + p_ab.fix(1) + '%');
+    a_or_b_text.text('P(A or B): ' + p_a_or_b.fix(1) + '%');
   }
 
   function draw() {
