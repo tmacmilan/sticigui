@@ -88,7 +88,8 @@
 </p>
 
 <p>
-   The transmission routes for BSE include contaminated feed (by far the dominant route), maternal (the calf of an infected cow may become infected;
+   The transmission routes for BSE include contaminated feed (by far the dominant route), maternal
+   (the calf of an infected cow may become infected;
    there is some evidence that this occurs, but the evidence is weak), and through contact with infected animals (there is no evidence
    that this occurs, but it cannot be ruled out completely).
    Cattle are most susceptible to BSE before they are two years old.
@@ -236,18 +237,29 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
 
 <p>
    Dr. Cox says there is a greater than 99% chance of importing at least one infected cow per year
-   if the infection rate is even 3 per million in the Canadian herd.
+   if the infection rate is even 3 per million in the Canadian herd (not as high as his original estimate of
+   5.5 per million).
    Where does this probability come from?
 </p>
 
 <p>
     Imagine tossing a biased coin that has chance <span class="math">\(p\)</span> of landing heads,
     <span class="math">\(n\)</span> times, with all tosses independent of each other.
-    If <span class="math">\(p\)</span> is very small and <span class="math">\(n\)</span> is very large,
-    the chance that the coin lands heads at least once is about <span class="math">\(100\% - e^{-np}\)</span>.
-    Using this approximation, if all Canadian cattle had the same chance of being infected
-    and we imported 1.7 million randomly, the chance at least one would be infected is
-    about <span class="math">\(100\% - e^{-5.5\times3} = 99.4\%\)</span>.
+    The chance that the coin lands heads at least once is
+    <span class="math">\((1-p)^n\)</span>.
+    If Dr. Cox's estimates of the rate and of the number of cattle to be imported were right,
+    if importing an infectious animal were like a coin toss,
+    if the tosses were all independent, and if the chance the coin lands heads were the same for every animal,
+    then the chance of importing at least one infectious animal would be
+    <span class="math">\((1-0.000003)^{1,700,000} \approx 99.4\%\)</span>.
+<script language="JavaScript1.8" type="text/javascript"><!--
+    var fStr = 'Because <span class="math">\\(p\\)</span> is very small and <span class="math">\\(n\\)</span> ' +
+               'is very large, there is a convenient approximation: the chance is about ' +
+               '<span class="math">\\(100\\% - e^{-np} = 100\\% - e^{-3\\times 1.7} = 99.4\\%\\)</span>. ' +
+               'This comes from the &quot;Poisson distribution&quot; referred to in the declarations in the case.';
+    writeFootnote(fCtr++, fCtr.toString(), fStr);
+// -->
+</script>
 </p>
 
 <p>
@@ -371,7 +383,8 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
    One in each province has BSE.
    Select one from each province at random.
    \(P(\mbox{at least one has BSE}) = 3/4 \).
-   This situation is still homogeneous: we have two strata, BC and Alberta, but the rates
+   This situation is still homogeneous: we have two <a class="glossRef" href="gloss.htm#stratum">strata</a>,
+   BC and Alberta, but the rates
    in the two strata are equal.
 </p>
 
@@ -404,12 +417,6 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
    months old, under the proposed regulations).
 </p>
 
-<div class="figure">
-<p class="figure">
-  <img src="http://www.cdc.gov/ncidod/dvrd/bse/images/cases_in_north_america_2012.gif" />
-  <br />Source:  <a href="http://www.cdc.gov/ncidod/dvrd/bse/">Centers for Disease Control</a>
-</p>
-</div>
 
 <h3>Must a risk assessment come up with a number?</h3>
 
@@ -448,13 +455,33 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
    To claim that something is like a coin toss is a very strong assumption:
    May things have two possibilities, but are not random like coin tosses.
    A store can be open or closed; a light can be on or off; a mushroom can be poisonous or safe; a cow can have BSE or not.
-   The fact that we might not know which of the two possibilities holds does mean that it is determined as if by tossing
-   a coin.
+   The fact that we might not know which of the two possibilities holds does not
+   mean that it is determined as if by tossing a coin.
 </p>
 
+<h2>What happened?</h2>
 
+<p>
+   R-CALF won an injunction in trial court, but the 9th Circuit Court of Appeals overturned the
+   injunction and imports of Canadian beef and cattle resumed.
+   A number of BSE-infected animals have been found in North America&mdash;both the U.S. and Canada&mdash;but the
+   number remains small and there has been no epidemic on either side of the border.
+</p>
 
-<h2>Some comparisons</h2>
+<div class="figure">
+<p class="figure">
+  <img src="http://www.cdc.gov/ncidod/dvrd/bse/images/cases_in_north_america_2012.gif" />
+  <br />Source:  <a href="http://www.cdc.gov/ncidod/dvrd/bse/">Centers for Disease Control</a>
+</p>
+</div>
+
+<p>
+   The total number of infected cattle found in Canada through 2012 is 19, of which 2 were identified as H-Type BSE.
+   The total in the U.S. through 2012 is 4, of which at least 3 were identified to be H-Type BSE.
+   The total in the U.K. through 2010 is 184,500 in more than 35,000 herds.
+   At the peak in early 1993, there were over 1,000 new cases per week in the U.K.
+   <a href="http://www.cdc.gov/ncidod/dvrd/bse/">http://www.cdc.gov/ncidod/dvrd/bse/</a>
+</p>
 
 <p>
    There have been 217 cases of vCJD worldwide, 1996&ndash;2009, according to CDC:
@@ -476,6 +503,11 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
 
 <p>
    There was another case in Canada in 2011, apparently contracted elsewhere.
+   As of this writing, the numerous cases of BSE and vCJD that Dr. Cox said were inevitable
+   (100% probability of at least one infectious cow imported per year, and 100% probability of
+   at least one vCJD infection as a result) have not materialized.
+   BSE and vCJD have long incubation periods, but it has been ten years since imports resumed&mdash;somewhat longer than
+   the incubation period in cattle, and comparable to the incubation period for vCJD in humans.
 </p>
 
 <p>
@@ -483,19 +515,13 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
   <a href="http://www.cdc.gov/foodborneburden/index.html">http://www.cdc.gov/foodborneburden/index.html</a>
 </p>
 
-<p>
-   Total infected cattle found in Canada through 2012: 19, of which 2 were identified as H-Type BSE.
-   Total in the U.S. through 2012: 4, of which at least 3 were identified to be H-Type BSE.
-   Total in the U.K. through 2010: 184,500 in more than 35,000 herds.
-   At the peak in early 1993, there were over 1,000 new cases per week in the U.K.
-   <a href="http://www.cdc.gov/ncidod/dvrd/bse/">http://www.cdc.gov/ncidod/dvrd/bse/</a>
-</p>
 
 <h2>Surveillance</h2>
 
 <p>
-   U.S. tests about 40,000 cattle per year.
-   Suppose the tests were of randomly selected cattle (every animal equally likely to be selected).
+   The U.S. tests about 40,000 cattle per year for BSE.
+   Suppose the tests were of randomly selected cattle (every animal equally likely to be selected&mdash;this is not true because
+   many of the tests are targeted at &quot;high risk&quot; groups of cattle).
    Suppose all the test results are negative.
    What can we say about the prevalence of BSE in the U.S. herd?
    40,000 is a tiny fraction of cattle&mdash;is it too few?
@@ -510,12 +536,22 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
 </p>
 
 <p>
-   Even if the prevalence were 0.01% (one in ten thousand), the chance of at least one positive test would be
+   Even if the prevalence of infected cattle were 0.0075% (75 per million), the chance of at least one positive test would be
 </p>
 
 <p class="math">
-   \(100\% - (99.99\%)^{40,000} \approx 98.2\%.\)
+   \(100\% - (99.999925\%)^{40,000} \approx 95\%.\)
 </p>
+
+<p>
+   As of January 2013, there were estimated to be roughly 90 million head of cattle in the U.S..
+   A rate of 0.0075% would be 6,750 cattle in total.
+   Do you think testing 40,000 head of cattle selected at random would be an adequate level of surveillance for BSE?
+   To screen for BSE in the U.S. herd, would you select cattle at random, or would you target high-risk groups?
+   What groups do you consider high risk?
+   Which do you think matters more, the absolute number of infected cattle, or the percentage of cattle that are infected?
+</p>
+
 
 <p>
   Other Foodborne and Waterborne Risks.
@@ -523,24 +559,44 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
 
  <ul>
        <li> Amoebiasis (diarrhea, fever) </li>
-       <li> Salmonellosis (diarrhea, cramps, dehydration) </li>
-       <li> E.~coli (diarrhea, dehydration) </li>
-       <li> Campylobacteriosis (dysentery, fever: I was hospitalized with this) </li>
+       <li> Aspergillis flavus, Aspergillus parasiticus (liver damage, liver cancer, coma, death)</li>
+       <li> Bacillus cereus (cramps, diarrhea, nausea)</li>
+       <li> Campylobacter jejuni (dysentery, bloody feces, fever: I was hospitalized with this) </li>
        <li> Cholera (rapidly fatal: nausea, cramps, hypovolemic shock) </li>
-       <li> Streptococcus (I spent 4.5 months bedridden, on IV antibiotics) </li>
-       <li> Giardiasis (diarrhea, bloating. Yep, I've had that, too) </li>
-       <li> Legionellosis (a friend's mother died of this) </li>
-       <li> Leptospirosis  (meningitis, liver damage, kidney failure) </li>
+       <li> Clostridium botulinum (vomiting, diarrhea, blurred vision, double vision, possible respiratory failure and death) </li>
+       <li> Clostridium perfringens (intense abdominal cramps, diarrhea)</li>
        <li> Cryptosporidiosis (cramps, nausea, vomiting) </li>
-       <li> Botulism (double vision, vomiting, diarrhea, respiratory failure, death) </li>
-       <li> Aflatoxin </li>
-       <li> Typhoid fever </li>
-       <li> Vibrio </li>
-       <li> SARS </li>
-       <li> Hepatitis A </li>
-       <li> Polio </li>
-       <li> Polyomavirus infection </li>
+       <li> Cyclospora cayetanensis (diarrhea weight loss, cramps, nausea, vomiting) </li>
+       <li> E. coli (diarrhea, dehydration) </li>
+       <li> E. coli O157:H7 (severe diarrhea, bloody feces, abdominal pain, vomiting, possible kidney failure and death)</li>
+       <li> Giardia (diarrhea, bloating. Yep, I've had that, too) </li>
+       <li> Hepatitis A (diarrhea, jaundice, fever, headache, nausea, abdominal pain) </li>
+       <li> Legionella (a friend's mother died of this) </li>
+       <li> Leptospirosis  (meningitis, liver damage, kidney failure) </li>
+       <li> Listeria monocytogenes (fever, muscle aches, nausea, diarrhea, bacteremia, meningitis, premature delivery, stillbirth)</li>
+       <li> Norovirus (nausea, vomiting, abdominal cramps, diarrhea, fever, headache) </li>
+       <li> Polyomavirus </li>
+       <li> Poliomyelitis </li>
+       <li> Salmonella (diarrhea, cramps, dehydration) </li>
+       <li> Salmonella typhi (fever, weakness, rash, stomach pain, headache, loss of appetite, death)</li>
+       <li> SARS virus (cough, difficulty breathing, fever, chills, aches, death) </li>
+       <li> Shigella (abdominal cramps, fever, diarrhea, bloody feces) </li>
+       <li> Staphylococcus aureus (sudden severe nausea and vomiting, abdominal cramps, diarrhea, fever. My father nearly died of
+               this: he contracted meningitis from it and it infected his aortic valve, necessitating valve replacement surgery) </li>
+       <li> Streptococcus (as a result of a Streptococcus viridans infection, I contracted bacteremia and osteomyelitis; I
+                          was hospitalized twice and spent 4.5 months bedridden on IV antibiotics) </li>
+       <li> Vibrio parahaemolyticus (diarrhea, bloody feces, abdominal cramps, nausea, vomiting, fever) </li>
+       <li> Vibrio vulnificus (vomiting, diarrhea, abdominal pain, bacteremia, fever, subdermal bleeding, ulcers requiring surgery, death) </li>
  </ul>
+ <p>
+    Source: various, including
+    <a href="http://www.fda.gov/food/resourcesforyou/consumers/ucm103263.htm">http://www.fda.gov/food/resourcesforyou/consumers/ucm103263.htm</a>,
+    <a href="http://www.fda.gov/downloads/Food/FoodSafety/FoodborneIllness/FoodborneIllnessFoodbornePathogensNaturalToxins/BadBugBook/UCM297627.pdf">
+    http://www.fda.gov/downloads/Food/FoodSafety/FoodborneIllness/FoodborneIllnessFoodbornePathogensNaturalToxins/BadBugBook/UCM297627.pdf
+    </a>,
+    <a href="http://www.cdc.gov/nczved/divisions/dfbmd/diseases/typhoid_fever/">http://www.cdc.gov/nczved/divisions/dfbmd/diseases/typhoid_fever/</a>,
+    <a hrf="http://www.ncbi.nlm.nih.gov/pubmedhealth/PMH0004460/">http://www.ncbi.nlm.nih.gov/pubmedhealth/PMH0004460/</a>.
+
 
 <h2>
    Who benefits? Who suffers? Who pays?
@@ -548,8 +604,12 @@ src="http://cdnapi.kaltura.com/index.php/kwidget/wid/0_0u96b22d/uiconf_id/377533
 
 <p>
    Why did R-CALF litigate?
-   Do you think it's a question of public health?
+   Do you think it was primarily a question of public health and the health of the U.S. herd?
+   What effect does opening the border to import Canadian cattle and beef have on
+   the economics of beef and beef production, even if no BSE is imported?
 </p>
+
+
 
 </form>
 
