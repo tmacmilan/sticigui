@@ -2,7 +2,7 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "16 February 2013 11:51 PST";
+	pageModDate = "17 February 2013 21:51 PST";
 	// copyright 2013 by P.B. Stark statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -37,8 +37,9 @@
 
 
 
-<p>
+
 <div class="problem">
+<p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
 // -->
@@ -46,57 +47,36 @@
 <p>
         Part of the argument in the R-CALF BSE case is over whether an analysis of risk must be
         quantitative&mdash;end up with a number&mdash;to be a sound basis for decisions.
-        Dr. Cox argued that risk analyses must be quantitative to be reasonable, and came up
-        with probabilities for various things, such as the chance that at least one BSE-infected
-        animal would be imported each year and the chance that at least one person would be infected
-        by vCJD each year as a result.
-</p>
-<p>
-        Prof. Stark argued that risk analyses can be scientifically sound and provide a good basis for
-        decisions without necessarily producing any numbers.  Moreover, Stark argued that this is more
-        reasonable than producing a number when producing a number would require unreasonable assumptions.
-        Prof. Stark claimed that Dr. Cox's assumptions were unreasonable: Dr. Cox's calculations amount to
-        assuming that every time an animal is to be imported, a coin is tossed.  If the coin lands
-        heads, a BSE-infectious animal is imported; if the coin lands tails, a BSE-free animal is
-        imported. Every time an animal is imported, the same coin is tossed (the chance of heads
-        is the same), and all the tosses are independent.
-</p>
-
-<p>
-       The questions below are about &quot;classical&quot; BSE, which is transmitted through contaminated
-       feed (and possibly from mother to child), not about &quot;sporadic&quot; or atypical BSE (L type and H type),
-       which is incredibly rare.
 </p>
 
 <p>
 <script language="JavaScript1.8" type="text/javascript"><!--
-     var qStr ='<span class="qSpan">Is it reasonable to assume ' +
-               'that whether any particular imported animal is infectious is like a coin toss? ' +
-               'Why or why not?</span>';
+     var qStr ='<span class="qSpan">Give at least one reason that it might not be reasonable to ' +
+               'give a quantitative estimate of risk.</span>';
      document.writeln(qStr);
      writeAreaExercise(10,50,qCtr++,'?');
 // -->
 </script>
 </p>
+</div>
 
+
+
+<div class="problem">
 <p>
 <script language="JavaScript1.8" type="text/javascript"><!--
-     var qStr ='<span class="qSpan">Suppose it is reasonable to assume that whether ' +
-               'any particular imported animal is infectious is like a coin toss. Is it reasonable to assume that ' +
-               'the chance the coin lands heads is the same for every animal? Why or why not?</span>';
+     document.writeln(startProblem(pCtr++));
+     var numTested = 1000*listOfRandInts(1,5,15)[0];
+     var cl = listOfRandInts(1, 90, 99)[0]
+     var qStr ='Suppose that the U.S. tests ' + commify(numTested) + ' cattle for BSE each year, selected at random (with replacement). ' +
+               '<span class="qSpan">On the assumption that the BSE test is perfect (no false positives or false negatives), ' +
+               'what is the smallest rate of BSE-infected cattle in the U.S. herd for which ' +
+               'this level of surveillance would give at least a ' + cl.toString() + '% chance of finding at least ' +
+               'one BSE-infected animal?</span>';
      document.writeln(qStr);
-     writeAreaExercise(10,50,qCtr++,'?');
-// -->
-</script>
-</p>
-
-<p>
-<script language="JavaScript1.8" type="text/javascript"><!--
-     var qStr ='<span class="qSpan">Suppose it is reasonable to assume that whether ' +
-               'any particular imported animal is infectious is like a coin toss. Is it reasonable to assume ' +
-               'that the tosses are independent for different animals? Why or why not?</span>';
-     document.writeln(qStr);
-     writeAreaExercise(10,50,qCtr++,'?');
+     var minP = 1 - Math.pow(1-cl/100,1/numTested);
+console.log(minP.toString())
+     writeTextExercise(10,qCtr++,numToRange(minP));
 // -->
 </script>
 </p>
