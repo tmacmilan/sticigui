@@ -2,8 +2,8 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "17 February 2013 21:51 PST";
-	// copyright (c) 2013 by P.B. Stark statistics.berkeley.edu/~stark.
+	pageModDate = "22 February 2013 21:51 PST";
+	// copyright (c) 2013 by P.B. Stark statistics.berkeley.edu/~stark and J. Sekhon.
     // All rights reserved.
 // -->
 </script>
@@ -22,7 +22,7 @@
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
 
 <script language="JavaScript1.8" type="text/javascript"><!--
-    var cNum = "week5";
+    var cNum = "week6";
     labSetUp("SeEd",cNum);
 // -->
 </script>
@@ -31,7 +31,7 @@
 
 <body >
 <script language="JavaScript1.8" type="text/javascript"><!--
-    writeProblemSetBody(24, "Week 5 Reading Quiz");
+    writeProblemSetBody(25, "Week 6 Reading Quiz");
 // -->
 </script>
 
@@ -45,16 +45,50 @@
 // -->
 </script>
 <p>
-        Part of the argument in the R-CALF BSE case is over whether an analysis of risk must be
-        quantitative&mdash;end up with a number&mdash;to be a sound basis for decisions.
+       Problem 1.
+A) Chlorination of drinking water
+
+B) Supplemental food programmes for women, infants and children
+
+C) AZT therapy for people with AIDS
+
+D) Colonoscopy for colorectal cancer screening for people over 40+
+
+E) Intensive car for acute respiratory failure
+
+Answer: (D) Colonoscopy for colorectal cancer screening for people over 40+
+
+
+
+Problem 2. In an experiment Daniel Kahneman and Jack Knetsch where trying to find out how much people were willing to pay to clean up a lake after being prompted by a number at the beginning. What was the larger number they tried as a prompt?
+
+A) $25
+
+B) $2000
+
+C) $500
+
+D) $200
+
+E) $700
+
+Answer: D: $200
 </p>
 
 <p>
 <script language="JavaScript1.8" type="text/javascript"><!--
-     var qStr ='<span class="qSpan">Give at least one reason that it might not be reasonable to ' +
-               'give a quantitative estimate of risk.</span>';
+     var qStr ='<span class="qSpan">Which of the following things costs more per expected ' +
+               'life saved in the United States?</span>';
      document.writeln(qStr);
-     writeAreaExercise(10,50,qCtr++,'?');
+     var rawOpt = [ "Chlorination of drinking water",
+                    "Supplemental food programmes for women, infants and children",
+                    "AZT therapy for people with AIDS",
+                    "Colonoscopy for colorectal cancer screening for people over 40",
+                    "Intensive care for acute respiratory failure"
+                  ];
+     var optPerm = randPermutation(rawOpt,'inverse');
+     var opt = optPerm[0];
+     writeSelectExercise(false, qCtr++, opt, alphabet[optPerm[1][3]]);
 // -->
 </script>
 </p>
@@ -66,21 +100,18 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript"><!--
      document.writeln(startProblem(pCtr++));
-     var numTested = 1000*listOfRandInts(1,5,15)[0];
-     var cl = listOfRandInts(1, 90, 99)[0]
-     var qStr ='Suppose that the U.S. tests ' + commify(numTested) + ' cattle for BSE each year, selected at random (with replacement). ' +
-               '<span class="qSpan">On the assumption that the BSE test is perfect (no false positives or false negatives), ' +
-               'what is the smallest rate of BSE-infected cattle in the U.S. herd for which ' +
-               'this level of surveillance would give at least a ' + cl.toString() + '% chance of finding at least ' +
-               'one BSE-infected animal?</span>';
+     var qStr ='Daniel Kahneman and Jack Knetsch conducted an experiment to see ' +
+               'how much people were willing to pay to clean up a lake. The experiment involved ' +
+               'prompting people with a number before asking them what they were willing to pay. ' +
+               '<span class="qSpan">What was the larger number Kahneman and Knetsch used as a prompt?</span>';
      document.writeln(qStr);
-     var minP = 1 - Math.pow(1-cl/100,1/numTested);
-console.log(minP.toString())
-     writeTextExercise(10,qCtr++,numToRange(minP));
+     var rawOpt = ['$25','$2000','$500','$200','$700'];
+     var optPerm = randPermutation(rawOpt,'inverse');
+     var opt = optPerm[0];
+     writeSelectExercise(false, qCtr++, opt, alphabet[optPerm[1][3]]);
 // -->
 </script>
 </p>
-
 </div>
 
 <div class="problem">
