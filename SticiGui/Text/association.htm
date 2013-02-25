@@ -98,26 +98,26 @@
     We augmented measures of location for single variables by measures of spread,
     and we shall do the same for pairs of variables.
     A measure of the horizontal spread is the <a class="glossRef" href="gloss.htm#sd">SD</a> of the variable
-    plotted on the horizontal or x axis.
-    We shall write this as \( SD_X \).
-    Similarly, the SD of the variable plotted on the vertical or y axis is a measure of the
+    plotted on the horizontal or <span class="math">\(x\)</span> axis.
+    We shall write this as <span class="math">\( SD_X \)</span>.
+    Similarly, the <span class="math">\(SD\)</span> of the variable plotted on the vertical or <span class="math">\(y\)</span> axis is a measure of the
     vertical spread.
-    We'll write this as \( SD_Y \).
+    We'll write this as <span class="math">\( SD_Y \)</span>.
 </p>
 <p>
-  The SD is a measure of the scatter in a list.
-  The typical deviation of the x coordinate of a point from the mean of the x coordinates is
-  \( SD_X \).
-  The typical deviation of the y coordinate of a point from the mean of the y
-  coordinates is \( SD_X \).
-  We know from Chebychev's inequality that, for example, the x coordinates of at
-  least 75% of the points will be within \( \pm SD_X \) of the x coordinate of the
+  The <span class="math">\(SD\)</span> is a measure of the scatter in a list.
+  The typical deviation of the <span class="math">\(x\)</span> coordinate of a point from the mean of the <span class="math">\(x\)</span> coordinates is
+  <span class="math">\( SD_X \)</span>.
+  The typical deviation of the <span class="math">\(y\)</span> coordinate of a point from the mean of the y
+  coordinates is <span class="math">\( SD_X \)</span>.
+  We know from Chebychev's inequality that, for example, the <span class="math">\(x\)</span> coordinates of at
+  least 75% of the points will be within <span class="math">\( \pm SD_X \)</span> of the <span class="math">\(x\)</span> coordinate of the
   <a class="glossRef" href="gloss.htm#point_of_averages">point of averages</a>, and that the
-  y coordinates of at least 75% of the points will be within  \( \pm 2 \times SD_Y \) of the
-  y coordinate of the point of averages.
-  However, in narrow ranges of x (vertical slices), the scatter in y might
-  typically be smaller than \( SD_Y \), and in narrow ranges of y (horizontal slices),
-  the scatter in x might typically be smaller than \( SD_X \).
+  <span class="math">\(y\)</span> coordinates of at least 75% of the points will be within  <span class="math">\( \pm 2 \times SD_Y \)</span> of the
+  <span class="math">\(y\)</span> coordinate of the point of averages.
+  However, in narrow ranges of <span class="math">\(x\)</span> (vertical slices), the scatter in <span class="math">\(y\)</span> might
+  typically be smaller than <span class="math">\( SD_Y \)</span>, and in narrow ranges of <span class="math">\(y\)</span> (horizontal slices),
+  the scatter in <span class="math">\(x\)</span> might typically be smaller than <span class="math">\( SD_X \)</span>.
   If so, the two variables are <a class="glossRef" href="gloss.htm#association">associated</a>.
 </p>
 
@@ -125,15 +125,15 @@
     If individuals with larger than average values of one variable tend to have larger
     than average values of the other, and individuals with smaller than average values
     of one variable tend to have smaller than average values of the other, the scatter
-    of the values of Y in vertical slices through the scatterplot will be smaller than
-    \( SD_Y \).
+    of the values of <span class="math">\(Y\)</span> in vertical slices through the scatterplot will be smaller than
+    <span class="math">\( SD_Y \)</span>.
     Such a scatterplot shows <em>positive</em>
     <a class="glossRef" href="gloss.htm#association">association</a>.
     If individuals with larger than average values of one variable tend to have
     smaller than average values of the other, and individuals with smaller than
     average values of one variable tend have larger than average values of the other,
-    the scatter of the values of Y in vertical slices through the scatterplot also will
-    be smaller than \( SD_Y \); this is called <em>negative association</em>.
+    the scatter of the values of <span class="math">\(Y\)</span> in vertical slices through the scatterplot also will
+    be smaller than <span class="math">\( SD_Y \)</span>; this is called <em>negative association</em>.
     Positive and negative associations are examples of <em>linear association</em>;
     variables can be associated <em>nonlinearly</em> as well.
 </p>
@@ -144,9 +144,9 @@
 // -->
 </script>
     is the scatterplot of the GMAT data again, but this time with four new lines:
-    two vertical lines at the mean value of X, plus and minus the SD of X, the
-    variable plotted on the horizontal axis; \( SD_X \), and two horizontal
-    lines at the mean value of Y, plus and minus the SD of Y, the variable plotted
+    two vertical lines at the mean value of <span class="math">\(X\)</span>, plus and minus the <span class="math">\(SD\)</span> of <span class="math">\(X\)</span>, the
+    variable plotted on the horizontal axis; <span class="math">\( SD_X \)</span>, and two horizontal
+    lines at the mean value of <span class="math">\(Y\)</span>, plus and minus the <span class="math">\(SD\)</span> of <span class="math">\(Y\)</span>, the variable plotted
     on the vertical axis.
     There is also a new button, labeled &quot;No SDs.&quot;
     Click the button.
@@ -159,7 +159,7 @@
 <div class="figure">
 
 <script language="JavaScript1.8" type="text/javascript"><!--
-    var qStr = 'The GMAT data with a button to view \\( SD_X \\) and \\( SD_Y \\).';
+    var qStr = 'The GMAT data with a button to view <span class="math">\\( SD_X \\)</span> and <span class="math">\\( SD_Y \\)</span>.';
     writeFigureCaption(qStr);
 // -->
 </script>
@@ -201,34 +201,34 @@ jQuery(function() {
     For example, the student with the highest Quantitative GMAT score didn't do nearly
     as well on the Verbal GMAT as many other students, and the student with the lowest
     Quantitative GMAT score did above average on the Verbal portion of the exam.
-    The overall vertical scatter in the scatterplot, SDy, is the SD of the Quantitative
+    The overall vertical scatter in the scatterplot, SDy, is the <span class="math">\(SD\)</span> of the Quantitative
     GMAT scores, which is about 6.77.
     Now consider just those students whose Verbal GMAT scores are between 43 and 45
     (there are 77 such students).
-    The SD of the Quantitative GMAT scores of those students was only about 5.91, rather less
-    than the overall SD of the Quantitative GMAT scores, because there is an association
+    The <span class="math">\(SD\)</span> of the Quantitative GMAT scores of those students was only about 5.91, rather less
+    than the overall <span class="math">\(SD\)</span> of the Quantitative GMAT scores, because there is an association
     between the variables.
     If we took other &quot;slices&quot; through the data&mdash;other narrow ranges of
-    Verbal GMAT&mdash;we would typically find something similar: the SD of the Quantitative
+    Verbal GMAT&mdash;we would typically find something similar: the <span class="math">\(SD\)</span> of the Quantitative
     GMAT scores for students whose Verbal GMAT scores are in narrow ranges tends to be
-    a bit smaller than the overall SD of the Quantitative GMAT scores.
+    a bit smaller than the overall <span class="math">\(SD\)</span> of the Quantitative GMAT scores.
 </p>
 
 <p>
     Two variables are <em>associated</em> if knowing the value of one of them tells us
     something about the value of the other.
-    Slightly more precisely, X and Y are associated if the SD of the values of Y of points
-    whose X coordinates are in a narrow range of values (a vertical slice through the
-    scatterplot) is smaller than the overall SD of Y, or if the SD of the values of X of
-    points whose Y coordinates are in a narrow range of values (horizontal slice through
-    the scatterplot) is smaller than the overall SD of X.
+    Slightly more precisely, <span class="math">\(X\)</span> and <span class="math">\(Y\)</span> are associated if the <span class="math">\(SD\)</span> of the values of <span class="math">\(Y\)</span> of points
+    whose <span class="math">\(X\)</span> coordinates are in a narrow range of values (a vertical slice through the
+    scatterplot) is smaller than the overall <span class="math">\(SD\)</span> of <span class="math">\(Y\)</span>, or if the <span class="math">\(SD\)</span> of the values of <span class="math">\(X\)</span> of
+    points whose <span class="math">\(Y\)</span> coordinates are in a narrow range of values (horizontal slice through
+    the scatterplot) is smaller than the overall <span class="math">\(SD\)</span> of <span class="math">\(X\)</span>.
     In
 <script language="JavaScript1.8" type="text/javascript"><!--
     citeFig(figCtr-1);
 // -->
 </script>
-    the SD of values of Quantitative GMAT in narrow ranges of Verbal
-    GMAT is about 5% smaller than the overall SD of Quantitative GMAT: They are associated,
+    the <span class="math">\(SD\)</span> of values of Quantitative GMAT in narrow ranges of Verbal
+    GMAT is about 5% smaller than the overall <span class="math">\(SD\)</span> of Quantitative GMAT: They are associated,
     but only weakly.
 </p>
 
@@ -336,9 +336,9 @@ jQuery(function() {
     For each class interval, the shorter bin is plotted in front, so you can see the height
     of every bin for both the original data and the restricted data.
     The bottom line of the tool, after the List Data button, shows the number of individuals
-    in the full data set (913), the mean of their first-year MBA GPAs (3.1088), the SD of
+    in the full data set (913), the mean of their first-year MBA GPAs (3.1088), the <span class="math">\(SD\)</span> of
     their first-year MBA GPAs (0.492), the number of individuals in the restricted data
-    set (59), the mean of just their first-year MBA GPAs (3.5167), and the SD of just their
+    set (59), the mean of just their first-year MBA GPAs (3.5167), and the <span class="math">\(SD\)</span> of just their
     first-year MBA GPAs (0.3853).
 </p>
 
@@ -368,7 +368,7 @@ jQuery(function() {
 <p>
     The blue histogram remains as it was, but the green histogram is that of the first-year
     MBA GPAs of just those 82 students whose undergraduate GPA was between 2.6 and 2.8.
-    In the last line of the tool, you can see that the SD of the first-year MBA GPAs of
+    In the last line of the tool, you can see that the <span class="math">\(SD\)</span> of the first-year MBA GPAs of
     the students in this slice is larger (0.5489) than that of the entire group of
     913 students (0.492).
     That is the case in many such slices through the scatterplot, so the association is weak.
@@ -642,12 +642,12 @@ jQuery(function() {
    Two variables are <a class="glossRef" href="gloss.htm#association">associated</a>
     if the scatter of one variable in <em>slices</em> defined by restricting the other
     variable to a small range is generally less than the overall scatter of the first variable.
-    (A <em>vertical slice</em> is a set of points with x coordinates that are in a
+    (A <em>vertical slice</em> is a set of points with <span class="math">\(x\)</span> coordinates that are in a
     restricted range.
-    A <em>horizontal slice</em> is a set of points with y coordinates that are in a
+    A <em>horizontal slice</em> is a set of points with <span class="math">\(y\)</span> coordinates that are in a
     restricted range.
-    Vertical scatter is the <a class="glossRef" href="gloss.htm#sd">SD</a> of the y coordinates of a
-    collection of points; horizontal scatter is the SD of the x coordinates of a
+    Vertical scatter is the <a class="glossRef" href="gloss.htm#sd">SD</a> of the <span class="math">\(y\)</span> coordinates of a
+    collection of points; horizontal scatter is the <span class="math">\(SD\)</span> of the <span class="math">\(x\)</span> coordinates of a
     collection of points.)
 </p>
 
