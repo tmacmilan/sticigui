@@ -16,6 +16,7 @@
 <script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script>
 
 <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -104,7 +105,7 @@
 
 <p>
     We assume there is some <em>domain of discourse</em>, a <em>universal set</em> or <em>universe</em>
-    <span class="math"><strong>S</strong></span>.
+    <span class="math">\( \mathbf{S} \)</span>.
     (This corresponds to <a class="glossRef" href="gloss.htm#outcome_space">outcome space</a> 
     in a random experiment.)
     The universe contains all the &quot;things&quot; that can belong to categories.
@@ -112,49 +113,49 @@
 </p>
 
 <p>
-    Suppose <span class="math">A</span> and <span class="math">B</span> are sets.
+    Suppose <span class="math">\(A\)</span> and <span class="math">\(B\)</span> are sets.
     We will be concerned with statements like &quot;every element of 
-    <span class="math">A</span> is an element of <span class="math">B</span>,&quot; which we might 
-    write as &quot;every <span class="math">A</span> is a <span class="math">B</span>&quot; or
-    &quot;all <span class="math">A</span> are <span class="math">B</span>.&quot;
-    Of course, that is just what it means for <span class="math">A</span> to be a subset of
-    <span class="math">B</span>: <span class="math">A&sub;B</span>.
-    An example: If <span class="math">A</span> comprises all ravens and 
-    <span class="math">B</span> comprises all birds,
-    then <span class="math">A&sub;B</span> could be pronounced
+    <span class="math">\(A\)</span> is an element of <span class="math">\(B\)</span>,&quot; which we might 
+    write as &quot;every <span class="math">\(A\)</span> is a <span class="math">\(B\)</span>&quot; or
+    &quot;all <span class="math">\(A\)</span> are <span class="math">\(B\)</span>.&quot;
+    Of course, that is just what it means for <span class="math">\(A\)</span> to be a subset of
+    <span class="math">\(B\)</span>: <span class="math">\(A \subset B\)</span>.
+    An example: If <span class="math">\(A\)</span> comprises all ravens and 
+    <span class="math">\(B\)</span> comprises all birds,
+    then <span class="math">\(A \subset B\)</span> could be pronounced
     <span class="example">everything that is a raven is a bird</span>,
     <span class="example">every raven is a bird</span>, or
     <span class="example">all ravens are birds</span>.
 </p>
 
 <p>
-    Another categorical statement is the denial of &quot;all <span class="math">A</span> are 
-    <span class="math">B</span>,&quot; namely, &quot;some <span class="math">A</span> are not
-    <span class="math">B</span>.&quot;
-    That is just what it means for <span class="math">A</span> not to be a subset of
-    <span class="math">B</span>: <span class="math">A&nsub;B</span>.
+    Another categorical statement is the denial of &quot;all <span class="math">\(A\)</span> are 
+    <span class="math">\(B\)</span>,&quot; namely, &quot;some <span class="math">\(A\)</span> are not
+    <span class="math">\(B\)</span>.&quot;
+    That is just what it means for <span class="math">\(A\)</span> not to be a subset of
+    <span class="math">\(B\)</span>: <span class="math">\(A \not\subset B\)</span>.
     An example is <span class="example">some birds are not ravens</span>.
     Note that <span class="example">some birds are not ravens</span> is not equivalent to
-    <span class="example">some ravens are not birds</span>:  <span class="math">A&nsub;B</span>
-    is not the same as <span class="math">B&nsub;A</span>.
+    <span class="example">some ravens are not birds</span>:  <span class="math">\(A \not\subset B\)</span>
+    is not the same as <span class="math">\(B \not\subset A\)</span>.
 </p>
 
 <p>
-    Interestingly, the two statements, <span class="math">A&sub;B</span> and <span class="math">A&nsub;B</span>,
-    have a fundamental difference:  it can be true that <span class="math">A&sub;B</span> even if 
-    <span class="math">A</span> has no elements and <span class="math">B</span> has no elements,
+    Interestingly, the two statements, <span class="math">\(A \subset B\)</span> and <span class="math">\(A \not\subset B\)</span>,
+    have a fundamental difference:  it can be true that <span class="math">\(A \subset B\)</span> even if 
+    <span class="math">\(A\)</span> has no elements and <span class="math">\(B\)</span> has no elements,
     because the empty set is a subset of every set.
     For example, it is true that all immortal ravens are pink birds, because there are no immortal ravens.
 </p>
 
 <p>
-    In contrast, if <span class="math">A&nsub;B</span>, <span class="math">A</span> must have elements,
-    at least one of which is in <span class="math">B<sup>c</sup></span>.
+    In contrast, if <span class="math">\(A \not\subset B\)</span>, <span class="math">\(A\)</span> must have elements,
+    at least one of which is in <span class="math">\(B^c\)</span>.
     For instance, it is not true that some immortal ravens are not pink birds, because that would require 
     there to be some immortal ravens.
-    Hence <span class="math">A&nsub;B</span> lets us deduce that neither <span class="math">A</span>
-    nor <span class="math">B<sup>c</sup></span> is empty: the relationship <span class="math">&nsub;</span> 
-    has <span class="termOfArt">existential import</span> while the relationship <span class="math">&sub;</span>
+    Hence <span class="math">\(A \not\subset B\)</span> lets us deduce that neither <span class="math">\(A\)</span>
+    nor <span class="math">\(B^c\)</span> is empty: the relationship <span class="math">\( \not\subset \)</span> 
+    has <span class="termOfArt">existential import</span> while the relationship <span class="math">\( \subset \)</span>
     does not.
 </p>
 
@@ -168,17 +169,17 @@
 
 <p>
     There are two other categorical statements, 
-    &quot;some <span class="math">A</span> are <span class="math">B</span>.&quot; and
-    &quot;no <span class="math">A</span> are <span class="math">B</span>.&quot;
+    &quot;some <span class="math">\(A\)</span> are <span class="math">\(B\)</span>.&quot; and
+    &quot;no <span class="math">\(A\)</span> are <span class="math">\(B\)</span>.&quot;
     The first can be rephrased as 
-    &quot;some <span class="math">A</span> are not non-<span class="math">B</span>,&quot;
-    that is, <span class="math">A&nsub;B<sup>c</sup></span>.
+    &quot;some <span class="math">\(A\)</span> are not non-<span class="math">\(B\)</span>,&quot;
+    that is, <span class="math">\(A \not\subset B^c\)</span>.
     An example would be <span class="example">some birds are ravens</span>; equivalently,
     <span class="example">not every bird is a non-raven</span>, or (even more geeky)
     <span class="example">birds are not a subset of non-ravens</span>.
     The second can be rephrased as
-    &quot;all <span class="math">A</span> are non-<span class="math">B</span>,&quot;
-    that is, <span class="math">A&sub;B<sup>c</sup></span>.
+    &quot;all <span class="math">\(A\)</span> are non-<span class="math">\(B\)</span>,&quot;
+    that is, <span class="math">\(A \subset B^c\)</span>.
     An example might be <span class="example">no invisible birds are ravens</span> or
     <span class="example">every invisible bird is a non-raven</span>.
 </p>
@@ -187,9 +188,9 @@
     Later in this chapter we will look at other ways of expressing these four categorical relationships:
     (i) all A are B, (ii) some A are not B, (iii) some A are B, (iv) all A are not B.
     As just illustrated, the statements with the word <em>some</em> imply that something (a member of
-    <span class="math">A</span>, at least) exists&mdash;they have
+    <span class="math">\(A\)</span>, at least) exists&mdash;they have
     existential import.
-    The statements with <em>all</em> do not imply that <span class="math">A</span> has any elements: they have
+    The statements with <em>all</em> do not imply that <span class="math">\(A\)</span> has any elements: they have
     no existential import.
 </p>
 
@@ -199,85 +200,87 @@
     document.writeln(citeLinkChapter('sets') + ', ');
 // -->
 </script>
-    that one way to specify a set <span class="math">A &sub;<strong>S</strong></span> is
-    to list its members: <span class="math">A = { a, b, c }</span>.
-    Another way is to find something that is true for members of the set <span class="math">A</span>
-    but false for all other elements of <span class="math"><strong>S</strong></span>.
-    Then we can identify <span class="math">A</span> as the those members of
-    <span class="math"><strong>S</strong></span> for which that thing&mdash;called a 
+    that one way to specify a set <span class="math">\(A \subset \mathbf{S} \)</span> is
+    to list its members: <span class="math">\(A = \{ a, b, c \}\)</span>.
+    Another way is to find something that is true for members of the set <span class="math">\(A\)</span>
+    but false for all other elements of <span class="math">\(\mathbf{S}\)</span>.
+    Then we can identify <span class="math">\(A\)</span> as the those members of
+    <span class="math">\(\mathbf{S}\)</span> for which that thing&mdash;called a 
     <em>predicate function</em> or <em>membership function</em>&mdash;is true.
 </p>
 
 <p>
-    For example, in the definition <span class="math">A = {all animals that are birds}</span>,
+    For example, in the definition <span class="math">\(A = \text{{all animals that are birds}}\)</span>,
     the thing that is true for the members of the set is that they are birds.
     That is, the name of the category of things, &quot;birds&quot; is essentially the membership 
     function: the function that is true for birds and false for everything else.
 </p>
 
+
 <p>
-    For instance, if <span class="math"><strong>S</strong></span> is the set of all numbers,
+    For instance, if <span class="math">\(\mathbf{S}\)</span> is the set of all numbers,
     we could write the set of even numbers as 
-    <span class="math">{x&isin;<strong>S</strong>: x/2 is an integer}</span>.
+    <span class="math">\( \{x \in \mathbf{S} : \frac{x}{2} \text{is an integer}\}\)</span>.
     The colon is pronounced &quot;such that.&quot;
     This expression means &quot;the set of all
-    numbers <span class="math">x</span> such that when you divide <span class="math">x</span> by
-    <span class="math">2</span>, the result is an integer.
-    The membership function here is <span class="math">x/2 is an integer</span>, which is true
-    if <span class="math">x</span> is an even number and false otherwise.
+    numbers <span class="math">\(x\)</span> such that when you divide <span class="math">\(x\)</span> by
+    <span class="math">\(2\)</span>, the result is an integer.
+    The membership function here is <span class="math">\( \frac{x}{2} \text{ is an integer}\)</span>, which is true
+    if <span class="math">\(x\)</span> is an even number and false otherwise.
     In general, to specify a set by its membership function, we use an expression like 
-    <span class="math">{x&isin;<strong>S</strong>: (the membership function is true for x)}</span>.
+    <span class="math">\(\{x \in \mathbf{S} : \text{(the membership function is true for x)}\}\)</span>.
 </p>
+
 
 <div class="indent">
 <p class="inline">
-    The membership function of a set <span class="math">A</span>
-    is like an oracle: you bring it an element <span class="math">x</span>
-    of <span class="math"><strong>S</strong></span> and the membership function says,
+    The membership function of a set <span class="math">\(A\)</span>
+    is like an oracle: you bring it an element <span class="math">\(x\)</span>
+    of <span class="math">\(\mathbf{S}\)</span> and the membership function says,
     &quot;yes, this is an element of 
-    <span class="math">A</span>,&quot; or &quot;no, this is not an element of 
-    <span class="math">A</span>.&quot;
+    <span class="math">\(A\)</span>,&quot; or &quot;no, this is not an element of 
+    <span class="math">\(A\)</span>.&quot;
     It assigns the value &quot;true&quot; or the value &quot;false&quot; to elements of 
-    <span class="math"><strong>S</strong></span>, according to whether they are elements of 
-    <span class="math">A</span>.
-    If <span class="math">P()</span> is the membership function for the set <span class="math">A</span>,
-    then <span class="math">A = { x&isin;<strong>S</strong>: P(x)}</span>.
+    <span class="math">\(\mathbf{S}\)</span>, according to whether they are elements of 
+    <span class="math">\(A\)</span>.
+    If <span class="math">\(P()\)</span> is the membership function for the set <span class="math">\(A\)</span>,
+    then <span class="math">\(A = \{ x \in \mathbf{S} : P(x)\}\)</span>.
 <script language="JavaScript1.8" type="text/javascript"><!--
     var fStr = 'Strictly speaking, we might write ' +
-               '<span class="math">A = { x&isin;<strong>S</strong>: P(x) = true}</span>, ' +
+               '<span class="math">\\(A = \\{ x \\in \\mathbf{S} : P(x) = true\\}\\)</span>, ' +
                'but there\'s a limit even to my pointy-headedness.';
     writeFootnote(fCtr++, fCtr.toString(), fStr);
 // -->
 </script>
-    When <span class="math"><strong>S</strong></span> is clear from context, we can omit it from the
+    When <span class="math">\(\mathbf{S}\)</span> is clear from context, we can omit it from the
     notation and just write  <span class="math">A = {x: P(x)}</span>. 
 <script language="JavaScript1.8" type="text/javascript"><!--
-    var fStr = 'In these expressions, <span class="math">x</span> is just a placeholder (variable) that ' +
-               'stands for a generic element of <span class="math"><strong>S</strong></span>. ' +
+    var fStr = 'In these expressions, <span class="math">\\(x\\)</span> is just a placeholder (variable) that ' +
+               'stands for a generic element of <span class="math">\\(\\mathbf{S}\\)</span>. ' +
                'We could use a different symbol instead, as long as we use it consistently. ' +
-               'For instance, <span class="math">{x&isin;<strong>S</strong>: P(x)}</span> is exactly the ' +
-               'same set as <span class="math">{z&isin;<strong>S</strong>: P(z)}</span>. ' +
-               'However, the expression <span class="math">A = {x&isin;<strong>S</strong>: P(z)}</span> ' +
-               'is different: in it, the condition <span class="math">P(z)</span> has nothing to do with ' +
-               'the element <span class="math">x</span>: the occurrence of the variable ' +
-               '<span class="math">z</span> is &quot;free.&quot;  Depending on whether&mdash;for that ' +
-               'particular <span class="math">z</span>&mdash;<span class="math">P(z)</span> happens to be ' +
-               'true or false, either every element of <span class="math"><strong>S</strong></span> is ' +
-               'in the subset or no element of <span class="math"><strong>S</strong></span> is in the subset. </p>' +
+               'For instance, <span class="math">\\(\\{ x \\in \\mathbf{S}: P(x)\\}\\)</span> is exactly the ' +
+               'same set as <span class="math">\\(\\{z \\in \\mathbf{S} : P(z)\\}\\)</span>. ' +
+               'However, the expression <span class="math">\\(A = \\{x \\in \\mathbf{S}: P(z)\\}\\)</span> ' +
+               'is different: in it, the condition <span class="math">\\(P(z)\\)</span> has nothing to do with ' +
+               'the element <span class="math">\\(x\\)</span>: the occurrence of the variable ' +
+               '<span class="math">\\(z\\)</span> is &quot;free.&quot;  Depending on whether&mdash;for that ' +
+               'particular <span class="math">\\(z\\)</span>&mdash;<span class="math">\\(P(z)\\)</span> happens to be ' +
+               'true or false, either every element of <span class="math">\\(\\mathbf{S}\\)</span> is ' +
+               'in the subset or no element of <span class="math">\\(\\mathbf{S}\\)</span> is in the subset. </p>' +
                '<p><p>A slightly more concrete example might help. Suppose that the domain of discourse ' +
-               'is the positive integers <span class="math"><strong>S</strong> = {0, 1, 2, 3, &hellip;}</span>. ' +
-               'The set <span class="math">E</span> of even positive integers could be written in many ways, ' +
+               'is the positive integers <span class="math">\\(\\mathbf{S} = \\{0, 1, 2, 3, \\ldots \\}\\)</span>. ' +
+               'The set <span class="math">\\(E\\)</span> of even positive integers could be written in many ways, ' +
                'including :</p>' +
-               '<p class="math">E = { 0, 2, 4, 6, 8, &hellip; }.</p><p class="math"> ' +
-               'E = { j&isin;<strong>S</strong>: there is some k&isin;<strong>S</strong> for which j = 2k}.</p> ' +
-               '<p class="math">E = { j&isin;<strong>S</strong>: j/2&isin;<strong>S</strong>}.</p>' +
-               '<p>In the second of these, the predicate function is <span class="math">P(j) = there is some ' +
-               'k&isin;<strong>S</strong> for which j = 2k</span>. That is true if and only if ' +
-               '<span class="math">j</span> is an even positive integer.  The variables ' +
-               '<span class="math">j</span> and <span class="math">k</span> are placeholders.  Any other two ' +
+               '<p class="math">\\(E = \\{ 0, 2, 4, 6, 8, \\ldots \\}\\).</p><p class="math"> ' +
+               '\\(E = \\{ j \\in \\mathbf{S}: \\text{ there is some k } \\in \\mathbf{S} \\text{ for which } j = 2k\\}\\).</p> ' +
+               '<p class="math">\\(E = \\{ j \\in \\mathbf{S}: \\frac{j}{2} \\in \\mathbf{S}}\\).</p>' +
+               '<p>In the second of these, the predicate function is <span class="math">\\(P(j) = \\text{ there is some ' +
+               'k } \\in \\mathbf{S} \\text{ for which } j = 2k\\)</span>. That is true if and only if ' +
+               '<span class="math">\\(j\\)</span> is an even positive integer.  The variables ' +
+               '<span class="math">\\(j\\)</span> and <span class="math">\\(k\\)</span> are placeholders.  Any other two ' +
                'letters could have been used instead. But note that ' +
-               '<span class="math">{ j&isin;<strong>S</strong>: there is some k&isin;<strong>S</strong> ' +
-               'for which k = 2m}</span> is quite different, because the variable <span class="math">m</span> ' +
+               '<span class="math">\\(\\{ j \\in \\mathbf{S}: \\text{there is some } k \\in \\mathbf{S} ' +
+               '\\text{ for which } k = 2m\\}\\)</span> is quite different, because the variable <span class="math">\\(m\\)</span> ' +
                'occurs free.</p>';
     writeFootnote(fCtr++, fCtr.toString(), fStr);
 // -->
@@ -291,19 +294,20 @@
     A set is equivalent to its membership function:  if you know one, you know the other.
 <script language="JavaScript1.8" type="text/javascript"><!--
     var fStr = 'We\'ve already seen how a predicate function determines a set.  The other way around ' +
-               'is straightforward, too: if <span class="math">A</span> is a set, the function ' +
-               '<span class="math">A(x) = {true, if x&isin;A; false, if x&notin;A}</span> lets ' +
+               'is straightforward, too: if <span class="math">\\(A\\)</span> is a set, the function ' +
+               '<span class="math">\\(A(x) = \\{\\text{true, if } x \\in A \\text{; false, if } x \\notin A\\}\\)</span> lets ' +
                'us write <span class="math">A = { x: A(x)}.';
     writeFootnote(fCtr++, fCtr.toString(), fStr);
 // -->
 </script>
+   
     Because of that equivalence, we will often use the same symbol to denote a set and its membership
     function.
-    For instance, unadorned, <span class="math">A</span> might denote a set of elements of
-    <span class="math"><strong>S</strong></span>, while with parentheses, <span class="math">A()</span>
-    might denote a function that assigns the value &quot;true&quot; to elements of <span class="math">A</span>
-    and the value &quot;false&quot; to all other elements of <span class="math"><strong>S</strong></span>:
-    <span class="math">A = {x: A(x)}</span>.
+    For instance, unadorned, <span class="math">\(A\)</span> might denote a set of elements of
+    <span class="math">\(\mathbf{S}\)</span>, while with parentheses, <span class="math">\(A()\)</span>
+    might denote a function that assigns the value &quot;true&quot; to elements of <span class="math">\(A\)</span>
+    and the value &quot;false&quot; to all other elements of <span class="math">\(\mathbf{S}\)</span>:
+    <span class="math">\(A = \\{x: A(x)\\}\)</span>.
 </p>
 </div>
 
@@ -316,22 +320,22 @@
 // -->
 </script>
     suppose the domain of discourse 
-    <span class="math"><strong>S</strong></span> is birds.
-    Black birds comprise a subset of <span class="math"><strong>S</strong></span>.
-    Let <span class="math">B</span> be the class of black birds:
+    <span class="math">\(\mathbf{S}\)</span> is birds.
+    Black birds comprise a subset of <span class="math">\(\mathbf{S}\)</span>.
+    Let <span class="math">\(B\)</span> be the class of black birds:
 </p> 
 </div>  
 
 <p class="math">
-    B = { x&isin;<strong>S</strong> : x is black}.
+    \(B = \{ x \in \mathbf{S} : \text{x is black}\}\).
 </p>
 
 <p>
-    Let <span class="math">R</span> denote the set of ravens, a different class of birds. 
+    Let <span class="math">\(R\)</span> denote the set of ravens, a different class of birds. 
 </p>
 
 <p class="math">
-    R = { x&isin;<strong>S</strong> : x is a raven}.
+    \(R = \{ x \in \mathbf{S} : \text{x is a raven}\}\).
 </p>
 
 <p>
@@ -352,10 +356,10 @@
 
 <div class="indent">
 <p class="inline">
-   We shall be concerned with statements like &quot;every element of <span class="math">A</span> is
-   an element of <span class="math">B</span>&quot; 
+   We shall be concerned with statements like &quot;every element of <span class="math">\(A\)</span> is
+   an element of <span class="math">\(B\)</span>&quot; 
    (informally, &quot;all A are B,&quot; &quot;every A is a B&quot;), 
-   &quot;some element of <span class="math">B</span> is not an element of <span class="math">A</span>&quot;
+   &quot;some element of <span class="math">\(B\)</span> is not an element of <span class="math">\(A\)</span>&quot;
    (informally, &quot;some B are not A,&quot; &quot;not all B are A,&quot;
     &quot;not every B is an A&quot;), and the like.
    As discussed more below, <em>every</em> and <em>all</em> do not presuppose that there are any.
@@ -372,32 +376,32 @@
 </div>
 
 <p>
-   The symbol <span class="math">&forall;</span> means <em>every</em> or <em>all</em>.
+   The symbol <span class="math">\(\forall\)</span> means <em>every</em> or <em>all</em>.
    It is called the <em>universal quantifier</em>.
    For instance, the statement <span class="example">all ravens are black (birds)</span> could be
    symbolized as:
 </p>
 
 <p class="math">
-   &forall; x&isin;<strong>S</strong>, if x&isin;R then x&isin;B.
+   \(\forall \; x \in \mathbf{S} \text{, if x} \in \text{R then x} \in B\).
 </p>
 
 <p>
-   We could also write simply <span class="math">R&sub;B</span>.
+   We could also write simply <span class="math">\(R \subset B\)</span>.
    Here is the corresponding Venn diagram:
 </p>
 
 <div class="venn">
-   <div class="vennCaption">Venn Diagram for <span class="math">All R are B</div>
-   <div class="vennUniverse left"><span class="math"><strong>S</strong></span></div>
-   <div class="rect60x70_center blue right"><span class="math">B</span></div>
-   <div class="rect40x50_center_high yellow left" ><span class="math">R</span>&nbsp;</div>
+   <div class="vennCaption">Venn Diagram for <span class="math">\(\\text{All R are B}\)</div>
+   <div class="vennUniverse left"><span class="math">\(\mathbf{S}\)</span></div>
+   <div class="rect60x70_center blue right"><span class="math">\(B\)</span></div>
+   <div class="rect40x50_center_high yellow left" ><span class="math">\(R\)</span>&nbsp;</div>
 </div>
 
 <p>
    Note that <span class="example">all ravens are black birds</span> is quite different from
-   <span class="example">all black birds are ravens</span>: <span class="math">R&sub;B</span> is
-   not the same as <span class="math">B&sub;R</span>.
+   <span class="example">all black birds are ravens</span>: <span class="math">\(R \subset B\)</span> is
+   not the same as <span class="math">\(B \subset R\)</span>.
 </p>
 
 <p>
@@ -406,31 +410,31 @@
 </p>
 
 <p class="math">
-   &forall; x&isin;<strong>S</strong>, if x&isin;R then x&notin;B.
+   \( \ \; x \in \mathbf{S} \text{, if x} \in \text{R then } x \notin B.\)
 </p>
 
 <p>
-   We could also write simply <span class="math">R&cap;B={}</span>; that is, <span class="math">R</span>
-   and <span class="math">B</span> are <a class="glossRef" href="gloss.htm#disjoint">disjoint</a>.
+   We could also write simply <span class="math">\(R \cap B=\{\}\)</span>; that is, <span class="math">\(R\)</span>
+   and <span class="math">\(B\)</span> are <a class="glossRef" href="gloss.htm#disjoint">disjoint</a>.
    Here is the corresponding Venn diagram:
 </p>
 
 <div class="venn">
-   <div class="vennCaption">Venn Diagram for <span class="math">No R is B</div>
-   <div class="vennUniverse left"><span class="math"><strong>S</strong></span></div>
-   <div class="rect40x50_left blue left"><span class="math">B</span></div>
-   <div class="rect40x50_right yellow right" ><span class="math">R</span>&nbsp;</div>
+   <div class="vennCaption">Venn Diagram for <span class="math">\(\text{No R is B}\)</div>
+   <div class="vennUniverse left"><span class="math">\(\mathbf{S}\)</span></div>
+   <div class="rect40x50_left blue left"><span class="math">\(B\)</span></div>
+   <div class="rect40x50_right yellow right" ><span class="math">\(R\)</span>&nbsp;</div>
 </div>
 
 <p>
    Here, in contrast, <span class="example">no ravens are black birds</span> describes the
    same state of the world as <span class="example">no black birds are ravens</span>:
-   <span class="math">R&cap;B={}</span> if and only if <span class="math">B&cap;R={}</span>.
+   <span class="math">\(R \cap B=\{\}\)</span> if and only if <span class="math">\(B \cap R=\{\}\)</span>.
 </p>
 
 
 <p>
-   The symbol <span class="math">&exist;</span> means <em>there exists</em>, 
+   The symbol <span class="math">\( \exists \)</span> means <em>there exists</em>, 
    <em>some</em> or <em>at least one</em>.
    It is called the <em>existential quantifier</em>.
    <em>Some</em> means at least one, but not necessarily all.
@@ -439,43 +443,43 @@
 </p>
 
 <p class="math">
-   &exist; x&isin;<strong>S</strong>: x&isin;R and x&isin;B.
+  \( \exists \; x \in \mathbf{S} : x \in R \text{ and } x \in B.\)
 <p>
 
 <p>
-   We could write <span class="math">R&cap;B &ne; {}</span> (something is both in
-   <span class="math">R</span> and in <span class="math">B</span>: there is a black raven),
-   <span class="math">R&nsub;B<sup>c</sup></span> (not every element of <span class="math">R</span> 
-   is not in <span class="math">B</span>: not every raven is non-black), or
-   <span class="math">B&nsub;R<sup>c</sup></span>  (not every element of <span class="math">B</span> 
-   is not in <span class="math">R</span>: not every black thing is a non-raven).
+   We could write <span class="math">\(R \cap B \neq \{\}\)</span> (something is both in
+   <span class="math">\(R\)</span> and in <span class="math">\(B\)</span>: there is a black raven),
+   <span class="math">\(R \not\subset B^c\)</span> (not every element of <span class="math">\(R\)</span> 
+   is not in <span class="math">\(B\)</span>: not every raven is non-black), or
+   <span class="math">\(B \not\subset R^c\)</span>  (not every element of <span class="math">\(B\)</span> 
+   is not in <span class="math">\(R\)</span>: not every black thing is a non-raven).
    Here is a Venn diagram illustrating the situation.
 </p>
 
 <div class="venn">
-   <div class="vennCaption">Venn Diagram for <span class="math">Some R is B</span>.</div>
-   <div class="vennUniverse left"><span class="math"><strong>S</strong></span></div>
-   <div class="rect60x70_center blue left"><span class="math">B</span></div>
-   <div class="rect40x50_right_high yellow right"><span class="math">R</span>&nbsp;</div>
-   <div class="rect28x50_right green right"><p class="math"><span class="math">&middot; x&isin;R&cap;B</span></p></div>
+   <div class="vennCaption">Venn Diagram for <span class="math">\(\text{Some R is B}\)</span>.</div>
+   <div class="vennUniverse left"><span class="math">\(\mathbf{S}\)</span></div>
+   <div class="rect60x70_center blue left"><span class="math">\(B\)</span></div>
+   <div class="rect40x50_right_high yellow right"><span class="math">\(R\)</span>&nbsp;</div>
+   <div class="rect28x50_right green right"><p class="math"><span class="math">\( \bullet x \in R \cap B\)</span></p></div>
 </div>
 
 <p>
    The statement <span class="example">some ravens are black birds</span> describes the same
    situation as <span class="example">some black birds are ravens</span>: 
-   <span class="math">R&nsub;B<sup>c</sup></span> if and only if 
-   <span class="math">B&nsub;R<sup>c</sup></span>.
-   Both conditions are true exactly when the intersection of <span class="math">R</span> and 
-   <span class="math">B</span> has at least one element.
+   <span class="math">\(R \not\subset B^c\)</span> if and only if 
+   <span class="math">\(B \not\subset R^c\)</span>.
+   Both conditions are true exactly when the intersection of <span class="math">\(R\)</span> and 
+   <span class="math">\(B\)</span> has at least one element.
 </p>
 
 <p>
-   Let <span class="math">Y = { x&isin;<strong>S</strong> : x is yellow}</span> be the
+   Let <span class="math">\(Y = \{ x \in \mathbf{S} : \text{x is yellow}\}\)</span> be the
    set of yellow birds.
    The assertion that no ravens are yellow could be written 
-   <span class="math">R&cap;Y = {}</span> (no bird is both a raven and yellow),
-   <span class="math">R&sub;Y<sup>c</sup></span> (every raven is non-yellow), or
-   <span class="math">Y&sub;R<sup>c</sup></span> (every yellow bird is a non-raven).
+   <span class="math">\(R \cap Y = \{\}\)</span> (no bird is both a raven and yellow),
+   <span class="math">\(R \subset Y^c\)</span> (every raven is non-yellow), or
+   <span class="math">\(Y \subset R^c\)</span> (every yellow bird is a non-raven).
 </p>
 
 <p>
@@ -484,28 +488,28 @@
    But for the fact that the set could be empty, that is true.
    However, if the set in question is empty, something can be true for all of its elements and yet
    not true for at least one of its elements.
-   This is an important difference between <span class="math">&exist;</span> and
-   <span class="math">&forall;</span>: the former asserts that something exists, while the latter
+   This is an important difference between <span class="math">\(\exists\)</span> and
+   <span class="math">\(\forall\)</span>: the former asserts that something exists, while the latter
    can be satisfied even if nothing exists.
 </p>
 
 <p>
    Here is an example.
-   Let the universe be the set <span class="math"><strong>S</strong></span> of animals.
+   Let the universe be the set <span class="math">\(\mathbf{S}\)</span> of animals.
    Let us suppose that unicorns do not exist.
-   Let <span class="math">U</span> be the set of animals that are unicorns.
-   Let <span class="math">E</span> be the set of animals that lay eggs.
+   Let <span class="math">\(U\)</span> be the set of animals that are unicorns.
+   Let <span class="math">\(E\)</span> be the set of animals that lay eggs.
    Consider the assertion <span class="example">All unicorns lay eggs</span>.
    In symbols, we could write that as 
 </p>
 
 <p class="math">
-   &forall; x&isin;<strong>S</strong>, if x&isin;U then x&isin;E.
+   \( \forall \; x \in \mathbf{S} \text{, if } x \in U \text{ then } x \in E.\)
 </p>
 
 <p>
-   Equivalently, it is the assertion <span class="math">U&sub;E</span>.
-   Since there are no unicorns, <span class="math">U</span> is the empty set, and the assertion that
+   Equivalently, it is the assertion <span class="math">\(U \subset E\)</span>.
+   Since there are no unicorns, <span class="math">\(U\)</span> is the empty set, and the assertion that
    all unicorns lay eggs is true.
 </p>
 
@@ -515,49 +519,49 @@
 </p>
 
 <p class="math">
-   &exist; x&isin;<strong>S</strong>: x&isin;U and x&isin;E.
+   \( \exists \; x \in \mathbf{S}: x \in U \text{ and } x \in E.\)
 </p>
 
 <p>
-   Equivalently, it is the assertion <span class="math">U &cap; E &ne; {}</span> or
-   <span class="math">U&nsub;E<sup>c</sup></span>.
-   Since there are no unicorns, <span class="math">U</span> is the empty set, which is
-   a subset of every set, including <span class="math">E<sup>c</sup></span>; similarly
-   <span class="math">U &cap; E</span> is also the empty set, and the assertion that
+   Equivalently, it is the assertion <span class="math">\(U \cap E \neq \{\}\)</span> or
+   <span class="math">\(U \not\subset E^c\)</span>.
+   Since there are no unicorns, <span class="math">\(U\)</span> is the empty set, which is
+   a subset of every set, including <span class="math">\(E^c\)</span>; similarly
+   <span class="math">\(U \cap E\)</span> is also the empty set, and the assertion that
    some unicorns lay eggs is false.
 </p>
 
 <p>
    The assertion <span class="example">no unicorns lay eggs</span> can be written 
-   <span class="math">  &forall; x&isin;<strong>S</strong>, if x&isin;U then x&notin;E</span>,
-   or <span class="math">U&sub;E<sup>c</sup></span>.
+   <span class="math">\( \forall \; x \in \mathbf{S} \text{, if x} \in U \text{ then } x \notin E\)</span>,
+   or <span class="math">\(U \subset E^c\)</span>.
    Since there are no unicorns, this assertion is true.
    The assertion <span class="example">some unicorns do not lay eggs</span> can be written
-   <span class="math">&exist; x&isin;<strong>S</strong>: x&isin;U and x&notin;E</span>,
-   <span class="math">U &cap; E<sup>c</sup> &ne; {}</span>, or 
-   <span class="math">U &nsub; E</span>
-   This assertion is false&mdash;it must be because <span class="math">U</span> is empty.
+   <span class="math">\( \exists \; x \in \mathbf{S}: x \in U \text{ and } x \notin E\)</span>,
+   <span class="math">\(U \cap E^c \neq \{\}\)</span>, or 
+   <span class="math">\(U \not\subset E\)</span>
+   This assertion is false&mdash;it must be because <span class="math">\(U\)</span> is empty.
 </p>
 
 <p>
    Here is a more mathematical explanation. 
-   Suppose that the set <span class="math">A</span> is empty.
+   Suppose that the set <span class="math">\(A\)</span> is empty.
    Consider the assertion 
-   <span class="math">&forall; x&isin;<strong>S</strong>, if x&isin;A then x&isin;B</span>.
-   That is equivalent to the assertion that <span class="math">A&sub;B</span>, which is true because
-   the empty set <span class="math">{}</span> is a subset of every set, including,
-   in particular, <span class="math">B</span>.
+   <span class="math">\( \forall \; x \in \mathbf{S} \text{, if } x \in A \text{ then } x \in B\)</span>.
+   That is equivalent to the assertion that <span class="math">\(A \subset B\)</span>, which is true because
+   the empty set <span class="math">\(\{\}\)</span> is a subset of every set, including,
+   in particular, <span class="math">\(B\)</span>.
 </p>
 
 <p>
    Now consider the assertion
-   <span class="math">&exist; x&isin;<strong>S</strong>: x&isin;A and x&isin;B</span>.
-   That is equivalent to the assertion that <span class="math">A &cap; B &ne; {}</span> and
-   to the assertion <span class="math">A&nsub;B<sup>c</sup></span>.
-   The assertion is false if the set <span class="math">A</span> is empty.
-   It is true that every element of the set <span class="math">A</span> is an element of the set 
-   <span class="math">B</span>, and yet there is nothing that is an element of the set 
-   <span class="math">A</span> and also an element of the set <span class="math">B</span>.
+   <span class="math">\( \exists \; x \in \mathbf{S} : x \in A \text{ and } x \in B\)</span>.
+   That is equivalent to the assertion that <span class="math">\(A \cap B \neq \{\}\)</span> and
+   to the assertion <span class="math">\(A \not\subset B^c\)</span>.
+   The assertion is false if the set <span class="math">\(A\)</span> is empty.
+   It is true that every element of the set <span class="math">\(A\)</span> is an element of the set 
+   <span class="math">\(B\)</span>, and yet there is nothing that is an element of the set 
+   <span class="math">\(A\)</span> and also an element of the set <span class="math">\(B\)</span>.
 </p>
 
 
@@ -573,85 +577,86 @@
 </p>
 
 <p>
-   Suppose we have two categories, <span class="math">A</span> and <span class="math">B</span>, subsets of
-   a domain of discourse <span class="math"><strong>S</strong></span>.
-   We can express six categorical relations between <span class="math">A</span> and <span class="math">B</span>.
+   Suppose we have two categories, <span class="math">\(A\)</span> and <span class="math">\(B\)</span>, subsets of
+   a domain of discourse <span class="math">\(\mathbf{S}\)</span>.
+   We can express six categorical relations between <span class="math">\(A\)</span> and <span class="math">\(B\)</span>.
    The relations can be written using universal and existential quantifiers, or using set notation:
 </p>
 
 <ul class="compact">
    <li>  
-      <span class="math">Every A is a B</span>;&nbsp; <span class="math">All A are B</span>. <br />
-      <span class="math"> &forall; x, if x&isin;A then x&isin;B.</span><br />
-      <span class="math">A&sub;B.</span>     
+      <span class="math">\(\text{Every A is a B}\)</span>;&nbsp; <span class="math">\(\text{All A are B}\)</span>. <br />
+      <span class="math">\(\forall \; x \text{, if }x \in A \text{ then } x \in B.\)</span><br />
+      <span class="math">\(A \subset B.\)</span>     
 <div class="venn">
-   <div class="vennUniverse left"><span class="math"><strong>S</strong></span></div>
-   <div class="rect60x70_center blue right"><span class="math">B</span></div>
-   <div class="rect40x50_center_high yellow left" ><span class="math">A</span>&nbsp;</div>
+   <div class="vennUniverse left"><span class="math">\(\mathbf{S}\)</span></div>
+   <div class="rect60x70_center blue right"><span class="math">\(B\)</span></div>
+   <div class="rect40x50_center_high yellow left" ><span class="math">\(A\)</span>&nbsp;</div>
 </div>
    </li>
 
    <li>       
-       <span class="math">Every B is an A</span>;&nbsp; <span class="math">All B are A</span>.<br />
-       <span class="math"> &forall; x, if x&isin;B then x&isin;A.</span><br />
-       <span class="math">B&sub;A.</span>   
+       <span class="math">\(\text{Every B is an A}\)</span>;&nbsp; <span class="math">\(\text{All B are A}\)</span>.<br />
+       <span class="math">\(\forall \; x \text{, if } x \in B \text{ then } x \in A.\)</span><br />
+       <span class="math">\(B \subset A.\)</span>   
 <div class="venn">
-   <div class="vennUniverse left"><span class="math"><strong>S</strong></span></div>
-   <div class="rect60x70_center blue right"><span class="math">A</span></div>
-   <div class="rect40x50_center_high yellow left" ><span class="math">B</span>&nbsp;</div>
+   <div class="vennUniverse left"><span class="math">\(\mathbf{S}\)</span></div>
+   <div class="rect60x70_center blue right"><span class="math">\(A\)</span></div>
+   <div class="rect40x50_center_high yellow left" ><span class="math">\(B\)</span>&nbsp;</div>
 </div>
     </li>
 
     <li>       
-       <span class="math">No A is a B</span>;&nbsp; 
-       <span class="math">No B is an A</span>.<br />
-       <span class="math">&forall; x, if x&isin;A then x&notin;B.</span><br />
-       <span class="math">A&sub;B<sup>c</sup>.</span>   
+       <span class="math">\(\text{No A is a B}\)</span>;&nbsp; 
+       <span class="math">\(\text{No B is an A}\)</span>.<br />
+       <span class="math">\(\forall \; x \text{, if } x \in A \text{then } x \notin B.\)</span><br />
+       <span class="math">\(A \subset B^c\)</span>   
 <div class="venn">
-   <div class="vennUniverse left"><span class="math"><strong>S</strong></span></div>
-   <div class="rect40x50_left blue left"><span class="math">A</span></div>
-   <div class="rect40x50_right yellow right" ><span class="math">B</span>&nbsp;</div>
+   <div class="vennUniverse left"><span class="math">\(\mathbf{S}\)</span></div>
+   <div class="rect40x50_left blue left"><span class="math">\(A\)</span></div>
+   <div class="rect40x50_right yellow right" ><span class="math">\(B\)</span>&nbsp;</div>
 </div>
    </li>
      
    <li>
-       <span class="math">Some A is a B</span>;&nbsp; 
-       <span class="math">Some B is an A</span>.<br />
-       <span class="math">&exist; x: x&isin;A and x&isin;B.</span><br />
-       <span class="math">A &cap; B &ne; {}.</span><br />
-       <span class="math">A&nsub;B<sup>c</sup>.</span>
+       <span class="math">\(\text{Some A is a B}\)</span>;&nbsp; 
+       <span class="math">\(\text{Some B is an A}\)</span>.<br />
+       <span class="math">\(\exists\; x : x \in A \text{ and } x \in B.\)</span><br />
+       <span class="math">\(A \cap B \neq \{\}.\)</span><br />
+       <span class="math">\(A \not\subset B^c.\)</span>
 <div class="venn">
-   <div class="vennUniverse left"><span class="math"><strong>S</strong></span></div>
-   <div class="rect60x70_center blue left"><span class="math">B</span></div>
-   <div class="rect40x50_right_high yellow right"><span class="math">A</span>&nbsp;</div>
-   <div class="rect28x50_right green right"><p class="math"><span class="math">&middot; 
-           x&isin;A&cap;B</span></p></div>
+   <div class="vennUniverse left"><span class="math">\(\mathbf{S}\)</span></div>
+   <div class="rect60x70_center blue left"><span class="math">\(B\)</span></div>
+   <div class="rect40x50_right_high yellow right"><span class="math">\(A\)</span>&nbsp;</div>
+   <div class="rect28x50_right green right"><p class="math"><span class="math">\(\bullet x \in A \cap B\)</span></p></div>
+
+
 </div>
    </li>
  
    <li>
-       <span class="math">Some A is not a B</span>;&nbsp; <span class="math">Not all A are B</span>.<br />
-       <span class="math">&exist; x: x&isin;A and x&notin;B.</span><br />
-       <span class="math">A &cap; B<sup>c</sup> &ne; {}.</span><br />
-       <span class="math">A&nsub;B.</span>
+       <span class="math">\(\text{Some A is not a B}\)</span>;&nbsp; <span class="math">\(\text{Not all A are B}\)</span>.<br />
+       <span class="math">\(\exists\; x: x \in A \text{ and } x \notin B.\)</span><br />
+       <span class="math">\(A \cap B^c \neq \{\}.\)</span><br />
+       <span class="math">\(A \not\subset B.\)</span>
 <div class="venn">
-   <div class="vennUniverse left"><span class="math"><strong>S</strong></span></div>
-   <div class="rect70x70_left blue left"><span class="math">A</span><p class="left"><span class="math">&middot; 
-           x&isin;A&cap;B<sup>c</sup></span></p></div>
-   <div class="rect40x50_right_high yellow right"><span class="math">B</span>&nbsp;</div>
+   <div class="vennUniverse left"><span class="math">\(\mathbf{S}\)</span></div>
+   <div class="rect70x70_left blue left"><span class="math">\(A\)</span><p class="left"><span class="math">\(\bullet 
+           x \in A \cap B^c\)</span></p></div>
+   <div class="rect40x50_right_high yellow right"><span class="math">\(B\)</span>&nbsp;</div>
    <div class="rect24x50_right green right"></div>
 </div>   </li>
           
    <li>
-       <span class="math">Some B is not an A</span>;&nbsp; <span class="math">Not all B are A</span>.<br />
-       <span class="math">&exist; x: x&isin;B and x&notin;A.</span><br />
-       <span class="math">B &cap; A<sup>c</sup> &ne; {}</span>.<br />
-       <span class="math">B&nsub;A.</span>
+       <span class="math">\(\text{Some B is not an A}\)</span>;&nbsp; <span class="math">\(\text{Not all B are A}\)</span>.<br />
+       <span class="math">\(\exists\; x: x \in B \text{ and } x \notin A.\)</span><br />
+       <span class="math">\(B \cap A^c \neq \{\}\)</span>.<br />
+       <span class="math">\(B \not\subset A.\)</span>
 <div class="venn">
-   <div class="vennUniverse left"><span class="math"><strong>S</strong></span></div>
-   <div class="rect70x70_left blue left"><span class="math">B</span><p class="left"><span class="math">&middot; 
-           x&isin;A<sup>c</sup>&cap;B</span></p></div>
-   <div class="rect40x50_right_high yellow right"><span class="math">A</span>&nbsp;</div>
+   <div class="vennUniverse left"><span class="math">\(\mathbf{S}\)</span></div>
+   <div class="rect70x70_left blue left"><span class="math">\(B\)</span><p class="left"><span class="math">\(\bullet
+           x \in A^c \cap B\)</span></p></div>
+   <div class="rect40x50_right_high yellow right"><span class="math">\(A\)</span>&nbsp;</div>
    <div class="rect24x50_right green right"></div>
 </div>
    </li>
@@ -665,36 +670,37 @@
 <p>
    There is more than one way to express any quantified assertion.
    For example, 
-   <span class="example">some <span class="math">A</span> is not a <span class="math">B</span></span>
+   <span class="example">some <span class="math">\(A\)</span> is not a <span class="math">\(B\)</span></span>
    can also be written 
-   <span class="example">not all <span class="math">A</span> are <span class="math">B</span></span>,
-   <span class="example"><span class="math">A &cap; B<sup>c</sup> &ne; {}</span></span> and
-   <span class="example"><span class="math">A&nsub;B</span></span>.
+   <span class="example">not all <span class="math">\(A\)</span> are <span class="math">\(B\)</span></span>,
+   <span class="example"><span class="math">\(A \cap B^c \neq \{\}\)</span></span> and
+   <span class="example"><span class="math">\(A \not\subset B\)</span></span>.
    As you read this chapter, draw Venn diagrams to represent each assertion.
    Use the Venn diagram to help you find other, equivalent assertions.
-   If the diagram involves <span class="math">A</span> and <span class="math">B</span>, think about the relationship
-   between <span class="math">A<sup>c</sup></span> and <span class="math">B</span>, between  
-   <span class="math">A</span> and <span class="math">B<sup>c</sup></span>,
-   and between <span class="math">A<sup>c</sup></span> and <span class="math">B<sup>c</sup></span>.
+   If the diagram involves <span class="math">\(A\)</span> and <span class="math">\(B\)</span>, think about the relationship
+   between <span class="math">\(A^c\)</span> and <span class="math">\(B\)</span>, between  
+   <span class="math">\(A\)</span> and <span class="math">\(B^c\)</span>,
+   and between <span class="math">\(A^c\)</span> and <span class="math">\(B^c\)</span>.
 </p>
+
 
 <p>
    For instance, here is the Venn diagram for <span class="example">every A is a B</span>:
 </p>
 
 <div class="venn">
-   <div class="vennCaption">Venn Diagram for <span class="math">All A are B</div>
-   <div class="vennUniverse left"><span class="math"><strong>S</strong></span></div>
-   <div class="rect60x70_center blue right"><span class="math">B</span></div>
-   <div class="rect40x50_center_high yellow left" ><span class="math">A</span>&nbsp;</div>
+   <div class="vennCaption">Venn Diagram for <span class="math">\(\text{All A are B}\)</div>
+   <div class="vennUniverse left"><span class="math">\(\mathbf{S}\)</span></div>
+   <div class="rect60x70_center blue right"><span class="math">\(B\)</span></div>
+   <div class="rect40x50_center_high yellow left" ><span class="math">\(A\)</span>&nbsp;</div>
 </div>
 
 <p>
    In the diagram, the area that represents 
-   <span class="math">A</span> is entirely contained in the area that represents <span class="math">B</span>.
-   The area that represents the complement of <span class="math">B</span> is entirely contained in the area that 
-   represents the complement of <span class="math">A</span>.
-   No part of <span class="math">A</span> is in the complement of <span class="math">B</span>.
+   <span class="math">\(A\)</span> is entirely contained in the area that represents <span class="math">\(B\)</span>.
+   The area that represents the complement of <span class="math">\(B\)</span> is entirely contained in the area that 
+   represents the complement of <span class="math">\(A\)</span>.
+   No part of <span class="math">\(A\)</span> is in the complement of <span class="math">\(B\)</span>.
    The relationship <span class="example">every A is a B</span> is mathematically equivalent to the 
    relationship <span class="example">every non-B is a non-A</span> and to the relationship
    <span class="example">no A is a non-B</span>.
@@ -704,13 +710,14 @@
    Similarly, here is the Venn diagram for <span class="example">some A are B</span>:
 </p>
 
+
 <div class="venn">
-   <div class="vennCaption">Venn Diagram for <span class="math">Some A are B</div>
-   <div class="vennUniverse left"><span class="math"><strong>S</strong></span></div>
-   <div class="rect60x70_center blue left"><span class="math">B</span></div>
-   <div class="rect40x50_right_high yellow right"><span class="math">A</span>&nbsp;</div>
-   <div class="rect28x50_right green right"><p class="math"><span class="math">&middot; 
-           x&isin;A&cap;B</span></p></div>
+   <div class="vennCaption">Venn Diagram for <span class="math">\(\text{Some A are B}\)</div>
+   <div class="vennUniverse left"><span class="math">\(\mathbf{S}\)</span></div>
+   <div class="rect60x70_center blue left"><span class="math">\(B\)</span></div>
+   <div class="rect40x50_right_high yellow right"><span class="math">\(A\)</span>&nbsp;</div>
+   <div class="rect28x50_right green right"><p class="math"><span class="math">\(\bullet 
+           x \in A \cap B\)</span></p></div>
 </div> 
 
 <p>
@@ -760,12 +767,12 @@
     }
     qSentence += '.</span>';           
     var quantOpt = [
-                      '<span class="math">&forall;x, if x&isin;A then x&isin;B</span>',
-                      '<span class="math">&exist;x: x&isin;A and x&isin;B</span>',
-                      '<span class="math">&forall;x, if x&isin;B then x&isin;A</span>',
-                      '<span class="math">&exist;x: x&isin;A and x&notin;B</span>',
-                      '<span class="math">&forall;x, if x&isin;A then x&notin;B</span>',
-                      '<span class="math">&exist;x: if x&isin;B and x&notin;A</span>'
+                      '<span class="math">\\(\\forall \\;x \\text{, if } x \\in A \\text{ then } x \\in B\\)</span>',
+                      '<span class="math">\\(\\exists \\; x : x \\in A \\text{ and } x \\in B\\)</span>',
+                      '<span class="math">\\(\\forall \\; x \\text{, if } x \\in B \\text{ then } x \\in A\\)</span>',
+                      '<span class="math">\\(\\exists \\; x : x \\in A \\text{ and } x \\notin B\\)</span>',
+                      '<span class="math">\\(\\forall \\; x \\text{, if } x \\in A \\text{ then } x \\notin B\\)</span>',
+                      '<span class="math">\\(\\exists \\; x : \\text{ if } x \\in B \\text{ and } x \\notin A\\)</span>'
                    ];
     if (!verbFirst) {
          if (whichFirst == 0) {
@@ -808,9 +815,9 @@
              }
          }
     }
-    var qStr = 'Let the domain of discourse <span class="math"><strong>S</strong></span> be animals. ' +
-               'Let <span class="math">A</span> be ' + nouns[whichNoun] + 
-               ' and let <span class="math">B</span> be animals that ' + verbs[whichVerb] + '. ' +
+    var qStr = 'Let the domain of discourse <span class="math">\\(\\mathbf{S}\\)</span> be animals. ' +
+               'Let <span class="math">\\(A\\)</span> be ' + nouns[whichNoun] + 
+               ' and let <span class="math">\\(B\\)</span> be animals that ' + verbs[whichVerb] + '. ' +
                '<span class="qSpan">In quantifier notation, what is the sentence ' + qSentence + '</span>';
     document.writeln(qStr);
     writeSelectExercise(false, qCtr++, quantOpt, aVal);
@@ -820,6 +827,7 @@
 </div>
 
 <!-- ================================= START PROBLEM =================================== -->
+
 
 <div class="problem">
 <script language="JavaScript1.8" type="text/javascript"><!--
@@ -859,12 +867,12 @@
     }
     qSentence += '.</span>';           
     var quantOpt = [
-                      '<span class="math">A&sub;B</span>',
-                      '<span class="math">A&nsub;B<sup>c</sup></span>',
-                      '<span class="math">B&sub;A</span>',
-                      '<span class="math">A&nsub;B</span>',
-                      '<span class="math">A&sub;B<sup>c</sup></span>',
-                      '<span class="math">A<sup>c</sup>&nsub;B<sup>c</sup></span>'
+                      '<span class="math">\\(A \\subset B\\)</span>',
+                      '<span class="math">\\(A \\not\\subset B^c\\)</span>',
+                      '<span class="math">\\(B \\subset A\\)</span>',
+                      '<span class="math">\\(A \\not\\subset B\\)</span>',
+                      '<span class="math">\\(A \\subset B^c\\)</span>',
+                      '<span class="math">\\(A^c \\not\\subset B^c\\)</span>'
                    ];
     if (!verbFirst) {
          if (whichFirst == 0) {
@@ -907,9 +915,9 @@
              }
          }
     }
-    var qStr = 'Let the domain of discourse <span class="math"><strong>S</strong></span> be people. ' +
-               'Let <span class="math">A</span> be ' + nouns[whichNoun] + 
-               ' and let <span class="math">B</span> be people who ' + verbs[whichVerb] + '. ' +
+    var qStr = 'Let the domain of discourse <span class="math">\\(\\mathbf{S}\\)</span> be people. ' +
+               'Let <span class="math">\\(A\\)</span> be ' + nouns[whichNoun] + 
+               ' and let <span class="math">\\(B\\)</span> be people who ' + verbs[whichVerb] + '. ' +
                '<span class="qSpan">In set notation, what is the sentence ' + qSentence + '</span>';
     document.writeln(qStr);
     writeSelectExercise(false, qCtr++, quantOpt, aVal);
@@ -927,41 +935,41 @@
     var negs = [' ',' not '];
     var whichQuant = listOfRandInts(1,0,quants.length-1)[0];
     var whichNeg = listOfRandInts(1,0,negs.length-1)[0]
-    var qSentence = '<span class="example">' + quants[whichQuant] + ' <span class="math">A</span> are ' +
-                    negs[whichNeg] + ' <span class="math">B</span>?</span>'; 
+    var qSentence = '<span class="example">' + quants[whichQuant] + ' <span class="math">\\(A\\)</span> are ' +
+                    negs[whichNeg] + ' <span class="math">\\(B\\)</span>?</span>'; 
     var qStr = '<span class="qSpan">Identify all the expressions that are equivalent to ' +
                qSentence + '</span> (select all that apply).';
     document.writeln(qStr);
     var quantOpt = [
                       [ // 0, 1, 2
-                       '<span class="math">A&sub;B</span>',
-                       '<span class="math">B<sup>c</sup>&sub;A<sup>c</sup></span>',
-                       '<span class="math">A&cap;B<sup>c</sup> = {}</span>'
+                       '<span class="math">\\(A \\subset B\\)</span>',
+                       '<span class="math">\\(B^c \\subset A^c\\)</span>',
+                       '<span class="math">\\(A \\cap B^c = \\{\\}\\)</span>'
                       ],
                       [ // 3, 4, 5
-                       '<span class="math">A&nsub;B<sup>c</sup></span>',
-                       '<span class="math">B&nsub;A<sup>c</sup></span>',
-                       '<span class="math">A&cap;B &ne; {}</span>'
+                       '<span class="math">\\(A \\not\\subset B^c\\)</span>',
+                       '<span class="math">\\(B \\not\\subset A^c\\)</span>',
+                       '<span class="math">\\(A \\cap B \\neq \\{\\}\\)</span>'
                       ],
                       [ // 6, 7, 8
-                       '<span class="math">B&sub;A</span>',
-                       '<span class="math">A<sup>c</sup>&sub;B<sup>c</sup></span>',
-                       '<span class="math">A<sup>c</sup>&cap;B = {}</span>'
+                       '<span class="math">\\(B \\subset A\\)</span>',
+                       '<span class="math">\\(A^c \\subset B^c\\)</span>',
+                       '<span class="math">\\(A^c \\cap B = \\{\\}\\)</span>'
                       ],
                       [ // 9, 10, 11
-                       '<span class="math">A&nsub;B</span>',
-                       '<span class="math">B<sup>c</sup>&nsub;A<sup>c</sup></span>',
-                       '<span class="math">A&cap;B<sup>c</sup> &ne; {}</span>'
+                       '<span class="math">\\(A \\not\\subset B\\)</span>',
+                       '<span class="math">\\(B^c \\not\\subset A^c\\)</span>',
+                       '<span class="math">\\(A \\cap B^c \\neq \\{\\}\\)</span>'
                       ],
                       [ // 12, 13, 14
-                       '<span class="math">A&sub;B<sup>c</sup></span>',
-                       '<span class="math">B&sub;A<sup>c</sup></span>',
-                       '<span class="math">A&cap;B = {}</span>'
+                       '<span class="math">\\(A \\subset B^c\\)</span>',
+                       '<span class="math">\\(B \\subset A^c\\)</span>',
+                       '<span class="math">\\(A \\cap B = \\{\\}\\)</span>'
                       ],
                       [ // 15, 16, 17
-                       '<span class="math">A<sup>c</sup>&nsub;B<sup>c</sup></span>',
-                       '<span class="math">B&nsub;A</span>',
-                       '<span class="math">A<sup>c</sup>&cap;B &ne; {}</span>'
+                       '<span class="math">\\(A^c \\not\\subset B^c\\)</span>',
+                       '<span class="math">\\(B \\not\\subset A\\)</span>',
+                       '<span class="math">\\(A^c \\cap B \\neq \\{\\}\\)</span>'
                       ]
                    ];
     var lookup = new Array();
@@ -1009,29 +1017,29 @@
 <div class="problem">
 <script language="JavaScript1.8" type="text/javascript"><!--
     document.writeln(startProblem(pCtr++));
-    var  never = ['Some <span class="math">A</span> are not <span class="math">A</span>.',
-                  'Not all <span class="math">A</span> are <span class="math">A</span>.',
-                  'Some <span class="math">A</span> are <span class="math">B</span>, and no ' +
-                         '<span class="math">B</span> are <span class="math">A</span>.',
-                  'Not all <span class="math">A</span> are <span class="math">B</span>, and no ' +
-                         '<span class="math">A</span> are not <span class="math">B</span>.',
-                  '<span class="math">A&sub;B</span> and <span class="math">A&nsub;B</span>.',
+    var  never = ['Some <span class="math">\\(A\\)</span> are not <span class="math">\\(A\\)</span>.',
+                  'Not all <span class="math">\\(A\\)</span> are <span class="math">\\(A\\)</span>.',
+                  'Some <span class="math">\\(A\\)</span> are <span class="math">\\(B\\)</span>, and no ' +
+                         '<span class="math">\\(B\\)</span> are <span class="math">\\(A\\)</span>.',
+                  'Not all <span class="math">\\(A\\)</span> are <span class="math">\\(B\\)</span>, and no ' +
+                         '<span class="math">\\(A\\)</span> are not <span class="math">\\(B\\)</span>.',
+                  '<span class="math">\\(A \\subset B\\)</span> and <span class="math">\\(A \\not\\subset B\\)</span>.',
                  ];
-    var  canBe = ['All <span class="math">A</span> are not <span class="math">A</span>.',
-                  '<span class="math">A&cap;A<sup>c</sup> = A</span>.',
-                  '<span class="math">A&cup;A<sup>c</sup> = A</span>.',
-                  '<span class="math">A&cup;A<sup>c</sup> &sub; A</span>.',
-                  '<span class="math">A&cup;A<sup>c</sup> &nsub; A</span>.',
-                  '<span class="math">A&sub;B</span> and <span class="math">B&sub;A</span>.',
-                  '<span class="math">A&sub;B</span> and <span class="math">B&nsub;A</span>.',
+    var  canBe = ['All <span class="math">\\(A\\)</span> are not <span class="math">\\(A\\)</span>.',
+                  '<span class="math">\\(A \\cup A^c = A\\)</span>.',
+                  '<span class="math">\\(A \\cup A^c = A\\)</span>.',
+                  '<span class="math">\\(A \\cup A^c \\subset A\\)</span>.',
+                  '<span class="math">\\(A \\cup A^c \\not\\subset A\\)</span>.',
+                  '<span class="math">\\(A \\subset B\\)</span> and <span class="math">\\(B \\subset A\\)</span>.',
+                  '<span class="math">\\(A \\subset B\\)</span> and <span class="math">\\(B \\not\\subset A\\)</span>.',
                  ];
-    var always = ['<span class="math">A&cap;A<sup>c</sup> = {}.</span>',
-                  '<span class="math">A&cup;A<sup>c</sup> = <strong>S</strong>.</span>',
-                  'No <span class="math">A</span> are not <span class="math">A</span>.',
-                  'For any <span class="math">x</span>, either <span class="math">x</span> is in ' +
-                        '<span class="math">A</span> or <span class="math">x</span> is not in ' +
-                        '<span class="math">A</span>.',
-                  '<span class="math">A&sub;B</span> or <span class="math">A&nsub;B</span>.'
+    var always = ['<span class="math">\\A \\cap A^c = \\{\\}.\\)</span>',
+                  '<span class="math">\\(A \\cup A^c = \\mathbf{S}.\\)</span>',
+                  'No <span class="math">\\(A\\)</span> are not <span class="math">\\(A\\)</span>.',
+                  'For any <span class="math">\\(x\\)</span>, either <span class="math">\\(x\\)</span> is in ' +
+                        '<span class="math">\\(A\\)</span> or <span class="math">\\(x\\)</span> is not in ' +
+                        '<span class="math">\\(A\\)</span>.',
+                  '<span class="math">\\(A \\subset B\\)</span> or <span class="math">\\(A \\not\\subset B\\)</span>.'
                  ];
     var which = listOfDistinctRandInts(3,0,2);
     var stmt = new Array(3);
@@ -1146,29 +1154,29 @@
 
 <ul>
    <li>
-   <span class="math">A&sub;B</span>
+   <span class="math">\(A \subset B\)</span>
    </li>
    <li>
-   <span class="math">B&sub;C</span>
+   <span class="math">\(B \subset C\)</span>
    </li>
    <li>
-   Therefore, <span class="math">A&sub;C</span>
+   Therefore, <span class="math">\( A \subset C\)</span>
    </li>
 </ul>
 
 <p>
-   where <span class="math">A</span> is ravens,  <span class="math">B</span> is birds and
-    <span class="math">C</span> is things that are mortal.
+   where <span class="math">\(A\)</span> is ravens,  <span class="math">\(B\)</span> is birds and
+    <span class="math">\(C\)</span> is things that are mortal.
    The logic is valid because the subset relationship is <em>transitive</em>: if 
-   <span class="math">A&sub;B</span> and <span class="math">B&sub;C</span> it is necessarily
-   true that <span class="math">A&sub;C</span>, as illustrated by the following Venn diagram:
+   <span class="math">\(A \subset B\)</span> and <span class="math">\(B \subset C\)</span> it is necessarily
+   true that <span class="math">\(A \subset C\)</span>, as illustrated by the following Venn diagram:
 </p>
 
 <div class="venn">
    <div class="vennUniverse"></div>
-   <div class="rect60x70_center blue left"><span class="math">C</span></div>
-   <div class="rect40x50_center_high yellow right"><span class="math">B</span>&nbsp;</div>
-   <div class="rect20x30_center green center"><p class="math"><span class="math">A</span></p></div>
+   <div class="rect60x70_center blue left"><span class="math">\(C\)</span></div>
+   <div class="rect40x50_center_high yellow right"><span class="math">\(B\)</span>&nbsp;</div>
+   <div class="rect20x30_center green center"><p class="math"><span class="math">\(A\)</span></p></div>
 </div>
 
 <p>
@@ -1206,14 +1214,15 @@
 </ul>
 
 <p>
-   In set notation, if we take <span class="math">A</span> to represent ravens, 
-   <span class="math">B</span> to represent black birds, and <span class="math">C</span> to represent
+   In set notation, if we take <span class="math">\(A\)</span> to represent ravens, 
+   <span class="math">\(B\)</span> to represent black birds, and <span class="math">\(C\)</span> to represent
    swans, the argument is:
 </p>
 
+
 <div class="indent">
 <p class="math" class="inline">
-   <span class="math">A&nsub;B<sup>c</sup>.  C&nsub;B<sup>c</sup>.  Therefore, A&nsub;C<sup>c</sup>.</span>
+   <span class="math">\(A \not\subset B^c.\; C \not\subset B^c. \text{ Therefore, } A \not\subset C^c.\)</span>
 <script language="JavaScript1.8" type="text/javascript"><!--
     var fStr = 'In other words, not every raven is non-black; not every swan is non-black; therefore, ' +
                'not every raven is a non-swan.';
@@ -1229,22 +1238,22 @@
 
 <div class="venn">
    <div class="vennUniverse"></div>
-   <div class="rect60x70_center blue left"><span class="math">B</span></div>
-   <div class="rect40x50_right_high yellow right"><span class="math">A</span>&nbsp;
-         <p align="left"><span class="math">&middot;a&isin;B&cap;A</span></p></div>
+   <div class="rect60x70_center blue left"><span class="math">\(B\)</span></div>
+   <div class="rect40x50_right_high yellow right"><span class="math">\(A\)</span>&nbsp;
+         <p align="left"><span class="math">\(\bullet a \in B \cap A\)</span></p></div>
    <div class="rect28x50_right"></div>
-   <div class="rect40x50_left_high green left"><span class="math">C</span>
-     <p align="right"><span class="math">&middot;c&isin;B&cap;C</span></p></div>
+   <div class="rect40x50_left_high green left"><span class="math">\(C\)</span>
+     <p align="right"><span class="math">\(\bullet c \in B \cap C\)</span></p></div>
    <div class="rect11x50_left_high"></div>
 </div>
 
 <p>
-   In this Venn diagram, <span class="math">a</span> is a black raven and <span class="math">c</span> is
+   In this Venn diagram, <span class="math">\(a\)</span> is a black raven and <span class="math">\(c\)</span> is
    a black swan.
    The diagram shows that both can exist 
-   (that is, <span class="math">A&nsub;B<sup>c</sup></span> and 
-    <span class="math">C&nsub;B<sup>c</sup></span>) 
-   and still <span class="math">A&cap;C = {}</span>: there might not be
+   (that is, <span class="math">\(A \not\subset B^c\)</span> and 
+    <span class="math">\(C \no\subset B^c\)</span>) 
+   and still <span class="math">\(A \cap C = \{\}\)</span>: there might not be
    any &quot;raven-swans.&quot;
    The truth of the assumptions does not guarantee that the conclusion is true, so the argument is invalid.
 </p>
@@ -1268,7 +1277,7 @@
 </p>
 
 <p class="math">
-   4 &times; 2 &times; 4 &times; 2 &times; 4 = 256
+   \(4 \times 2 \times 4 \times 2 \times 4 = 256\)
 </p>
 
 <p>
@@ -1289,57 +1298,57 @@
    the <a class="glossRef" href="gloss.htm#minor_premise">minor premise</a>
    is second and the conclusion is third.
    The <a class="glossRef" href="gloss.htm#major_term">major term</a>
-   is <span class="math">P</span> (predicate of the conclusion) , the 
-   <a class="glossRef" href="gloss.htm#middle_term">middle term</a> is <span class="math">M</span> (middle)
-    and the <a class="glossRef" href="gloss.htm#minor_term">minor term</a> is <span class="math">S</span> 
+   is <span class="math">\(P\)</span> (predicate of the conclusion) , the 
+   <a class="glossRef" href="gloss.htm#middle_term">middle term</a> is <span class="math">\(M\)</span> (middle)
+    and the <a class="glossRef" href="gloss.htm#minor_term">minor term</a> is <span class="math">\(S\)</span> 
    (subject of the conclusion).
 </p>
 
 <ol>
    <li>
-       <span class="math">All M are P.     All S are M.  Therefore, all S are P.</span>
+       <span class="math">\(\text{All M are P.     All S are M.  Therefore, all S are P.}\)</span>
    </li>
    <li>
-       <span class="math">All M are P.     Some M are S.  Therefore, some S are P.</span>
+       <span class="math">\(\text{All M are P.     Some M are S.  Therefore, some S are P.}\)</span>
    </li>
    <li>
-       <span class="math">All M are P.     Some S are M.  Therefore, some S are P.</span>
+       <span class="math">\(\text{All M are P.     Some S are M.  Therefore, some S are P.}\)</span>
    </li>
    <li>
-       <span class="math">All P are M.     Not all S are M. Therefore, not all S are P.</span>
+       <span class="math">\(\text{All P are M.     Not all S are M. Therefore, not all S are P.}\)</span>
    </li>
    <li>
-       <span class="math">All P are M.     No M are S.  Therefore, no S are P.</span>
+       <span class="math">\(\text{All P are M.     No M are S.  Therefore, no S are P.}\)</span>
    </li>
    <li>
-       <span class="math">All P are M.     No S are M.  Therefore, no S are P.</span>       
+       <span class="math">\(\text{All P are M.     No S are M.  Therefore, no S are P.}\)</span>       
    </li>
    <li>
-       <span class="math">No P are M.      All S are M.  Therefore, no S are P.</span>
+       <span class="math">\(\text{No P are M.      All S are M.  Therefore, no S are P.}\)</span>
    </li>
    <li>
-       <span class="math">No M are P.      All S are M.  Therefore, no S are P.</span>
+       <span class="math">\(\text{No M are P.      All S are M.  Therefore, no S are P.}\)</span>
    </li>
    <li>
-       <span class="math">No P are M.      Some M are S.  Therefore, not all S are P.</span>
+       <span class="math">\(\text{No P are M.      Some M are S.  Therefore, not all S are P.}\)</span>
    </li>
    <li>
-       <span class="math">No P are M.      Some S are M.  Therefore, not all S are P.</span>
+       <span class="math">\(\text{No P are M.      Some S are M.  Therefore, not all S are P.}\)</span>
    </li>
    <li>
-       <span class="math">No M are P.      Some M are S.  Therefore, not all S are P.</span>
+       <span class="math">\(\text{No M are P.      Some M are S.  Therefore, not all S are P.}\)</span>
    </li>
    <li>
-       <span class="math">No M are P.      Some S are M.  Therefore, not all S are P.</span>
+       <span class="math">\(\text{No M are P.      Some S are M.  Therefore, not all S are P.}\)</span>
    </li>
    <li>
-       <span class="math">Some M are P.    All M are S.  Therefore, some S are P.</span>
+       <span class="math">\(\text{Some M are P.    All M are S.  Therefore, some S are P.}\)</span>
    </li>
    <li>
-       <span class="math">Some P are M.    All M are S.  Therefore, some S are P.</span>
+       <span class="math">\(\text{Some P are M.    All M are S.  Therefore, some S are P.}\)</span>
    </li>
    <li>
-       <span class="math">Not all M are P. All M are S.  Therefore, not all S are P.</span>
+       <span class="math">\(\text{Not all M are P. All M are S.  Therefore, not all S are P.}\)</span>
    </li>
 </ol>
 
@@ -1348,9 +1357,9 @@
 <p>
    Many of the syllogisms above differ in their language but not in the underlying mathematics.
    For instance, there is no mathematical difference between 
-   <span class="math">some S are M</span> and <span class="math">some M are S</span>, between
-   <span class="math">no M are P</span> and <span class="math">no P are M</span>, or between
-   <span class="math">no M are S</span> and <span class="math">no S are M</span>.
+   <span class="math">\(\text{some S are M}\)</span> and <span class="math">\(\text{some M are S}\)</span>, between
+   <span class="math">\(\text{no M are P}\)</span> and <span class="math">\(\text{no P are M}\)</span>, or between
+   <span class="math">\(\text{no M are S}\)</span> and <span class="math">\(\text{no S are M}\)</span>.
    So, of the 15 syllogisms above, 2 and 3 are the same; 5 and 6 are the same; 7 and 8 are the same;
    9, 10, 11 and 12 are the same; and 13 and 14 are the same.
 </p>
@@ -1635,22 +1644,22 @@
 </p>
 
 <p class="example">
-   All <span class="math">S</span> are <span class="math">P</span>.  
-   Some <span class="math">S</span> are <span class="math">M</span>. 
-   Therefore, some <span class="math">S</span> are <span class="math">P</span>.
+   All <span class="math">\(S\)</span> are <span class="math">\(P\)</span>.  
+   Some <span class="math">\(S\)</span> are <span class="math">\(M\)</span>. 
+   Therefore, some <span class="math">\(S\)</span> are <span class="math">\(P\)</span>.
 </p> 
 
 <p class="example">
-   Some <span class="math">A</span> are <span class="math">B</span>.  
-   All <span class="math">B</span> are <span class="math">C</span>.  
-   Therefore, there are <span class="math">A</span>s, <span class="math">B</span>s and 
-   <span class="math">C</span>s.
+   Some <span class="math">\(A\)</span> are <span class="math">\(B\)</span>.  
+   All <span class="math">\(B\)</span> are <span class="math">\(C\)</span>.  
+   Therefore, there are <span class="math">\(A\)</span>s, <span class="math">\(B\)</span>s and 
+   <span class="math">\(C\)</span>s.
 </p>
 
 <p class="example">
-   All <span class="math">A</span> are <span class="math">B</span>.  
-   <span class="math">x</span> is not <span class="math">B</span>.  
-   Therefore, <span class="math">x</span> is not <span class="math">A</span>.
+   All <span class="math">\(A\)</span> are <span class="math">\(B\)</span>.  
+   <span class="math">\(x\)</span> is not <span class="math">\(B\)</span>.  
+   Therefore, <span class="math">\(x\)</span> is not <span class="math">\(A\)</span>.
 </p>
 
 <p>
@@ -1754,12 +1763,12 @@
    out of a hat, a rabbit must first be put into the hat.
    The application of the conservation of rabbits principle to 
    categorical syllogisms says that if the conclusion is that something exists 
-   (some <span class="math">S</span> are <span class="math">P</span> or 
-   some <span class="math">S</span> are not <span class="math">P</span>), one of the premises must
-   guarantee that something exists (some <span class="math">P</span> are <span class="math">M</span>,
-   some <span class="math">M</span> are <span class="math">P</span>,
-   some <span class="math">S</span> are <span class="math">M</span>, or
-   some <span class="math">M</span> are <span class="math">S</span>).
+   (some <span class="math">\(S\)</span> are <span class="math">\(P\)</span> or 
+   some <span class="math">\(S\)</span> are not <span class="math">\(P\)</span>), one of the premises must
+   guarantee that something exists (some <span class="math">\(P\)</span> are <span class="math">\(M\)</span>,
+   some <span class="math">\(M\)</span> are <span class="math">\(P\)</span>,
+   some <span class="math">\(S\)</span> are <span class="math">\(M\)</span>, or
+   some <span class="math">\(M\)</span> are <span class="math">\(S\)</span>).
    Moreover, in a valid syllogism at most one premise says that something exists.
 <script language="JavaScript1.8" type="text/javascript"><!--
     var fStr = 'For instance, if the premises are <span class="example">Some P are (or are not) M. ' +
@@ -1787,15 +1796,15 @@
 <p class="inline">
    is not a valid syllogism&mdash;although it could be a logically valid argument.
 <script language="JavaScript1.8" type="text/javascript"><!--
-    var fStr = 'The example above, <span class="math">All S are P.  Some S are M.  ' +
-               'Therefore, some S are P.</span> is of this form.  It is valid and uses all its ' +
+    var fStr = 'The example above, <span class="math">\\(\\text{All S are P.  Some S are M.  ' +
+               'Therefore, some S are P.}\\)</span> is of this form.  It is valid and uses all its ' +
                'premises, but is not a categorical syllogism.  To prove the conclusion from the premises, ' +
-               'note that the first premise says <span class="math">S&sub;P</span>.  The second says ' +
-               '<span class="math">S&nsub;M<sup>c</sup></span>, from which it follows that ' +
-               '<span class="math">S &ne; {}</span>, i.e., <span class="nath">S</span> has at least one ' +
-               'element, which&mdash;the first premise tells us&mdash;is also in <span class="math">P</span>. ' +
-               'Hence, <span class="math">S&nsub;P<sup>c</sup></span>: some <span class="math">S</span> are ' +
-               '<span class="math">P</span>.';
+               'note that the first premise says <span class="math">\\(S \\subset P\\)</span>.  The second says ' +
+               '<span class="math">\\(S \\not\\subset M^c\\)</span>, from which it follows that ' +
+               '<span class="math">\\(S \\neq \\{\\}\\)</span>, i.e., <span class="math">\\(S\\)</span> has at least one ' +
+               'element, which&mdash;the first premise tells us&mdash;is also in <span class="math">\\(P\\)</span>. ' +
+               'Hence, <span class="math">\\(S \\not\\subset P^c\\)</span>: some <span class="math">\\(S\\)</span> are ' +
+               '<span class="math">\\(P\\)</span>.';
     writeFootnote(fCtr++, fCtr.toString(), fStr);
 // -->
 </script>
@@ -1804,8 +1813,8 @@
     var fStr = 'A syllogism that can be put in standard form is valid if it satisfies the rule that at most one ' +
                'premise has existential import, and also the following four rules: </p><ol> ' +
                '<li>The middle term must be &quot;distributed,&quot;: one or both of the premises must ' +
-                  'say that something is true for all <span class="math">M</span> or for ' +
-                  'no <span class="math">M</span>.</li>' +
+                  'say that something is true for all <span class="math">\\(M\\)</span> or for ' +
+                  'no <span class="math">\\(M\\)</span>.</li>' +
                '<li>If the minor term is distributed in the conclusion, it must be distributed in the ' +
                   'minor premise.</li>' +
                '<li>At least one premise must affirm something.  (<em>all are</em> or <em>some are</em>.)</li>' +
@@ -1822,19 +1831,19 @@
 </p>
 
 <p class="math">
-   All A are B.  No B are C.  Therefore, no A are C.
+   \(\text{All A are B.  No B are C.  Therefore, no A are C.}\)
 </p>
 
 <p>
-   Since the conclusion is <span class="math">no A are C</span>, the major term is <span class="math">C</span>
-   and the minor term is <span class="math">A</span>.
+   Since the conclusion is <span class="math">\(\text{no A are C}\)</span>, the major term is <span class="math">\(C\)</span>
+   and the minor term is <span class="math">\(A\)</span>.
    To put this in standard form we would put the major premise (the one involving the major term,
-   <span class="math">C</span>) first.
+   <span class="math">\(C\)</span>) first.
    Thus, in standard form, this is the eighth valid syllogism above:
 </p>
 
 <p class="math">
-   No M are P.      All S are M.  Therefore, no S are P.
+   \(\text{No M are P.      All S are M.  Therefore, no S are P.}\)
 </p>
 
 <p>
@@ -1842,22 +1851,22 @@
 </p>
 
 <p class="math">
-   All A are B.  Some A are C.  Therefore, some B are C.
+   \(\text{All A are B.  Some A are C.  Therefore, some B are C.}\)
 </p>
 
 <p>
-   This syllogism asserts that the set <span class="math">A&cap;B</span> has at least one element, so
+   This syllogism asserts that the set <span class="math">\(A \cap B\)</span> has at least one element, so
    the syllogism has existential import.
-   Since the conclusion is <span class="math">some B are C</span>, the major term is 
-   <span class="math">C</span>
-   and the minor term is <span class="math">B</span>.
+   Since the conclusion is <span class="math">\(\text{some B are C}\)</span>, the major term is 
+   <span class="math">\(C\)</span>
+   and the minor term is <span class="math">\(B\)</span>.
    To put this in standard form we would put the major premise (the one involving the major term,
-   <span class="math">C</span>) first.
+   <span class="math">\(C\)</span>) first.
    In standard form, this is thus the thirteenth valid syllogism above:
 </p>
 
 <p class="math">
-   Some M are P.    All M are S.  Therefore, some S are P.
+   \(\text{Some M are P.    All M are S.  Therefore, some S are P.}\)
 </p>
 
 <p>
@@ -1865,28 +1874,28 @@
 </p>
 
 <p class="math">
-   All A are B.  All A are C.  Therefore, all B are C.
+   \(\text{All A are B.  All A are C.  Therefore, all B are C.}\)
 </p>
 
 <p>
-   Since the conclusion is <span class="math">all B are C</span>, the major term is 
-   <span class="math">C</span>
-   and the minor term is <span class="math">B</span>.
+   Since the conclusion is <span class="math">\(\text{all B are C}\)</span>, the major term is 
+   <span class="math">\(C\)</span>
+   and the minor term is <span class="math">\(B\)</span>.
    To put this in standard form we would put the major premise (the one involving the major term,
-   <span class="math">C</span>) first.
+   <span class="math">\(C\)</span>) first.
    In standard form, this is thus:
 </p>
 
 <p class="math">
-   All M are P.    All M are S.  Therefore, all S are P.
+   \(\text{All M are P.    All M are S.  Therefore, all S are P.}\)
 </p>
 
 <p>
    This is not one of the 15 valid syllogisms; it is not valid.
    It is easy to construct a counterexample.
-   For instance, let <span class="math">A</span> stand for human beings,
-   <span class="math">B</span> for animals and
-   <span class="math">C</span> for vertebrates.
+   For instance, let <span class="math">\(A\)</span> stand for human beings,
+   <span class="math">\(B\)</span> for animals and
+   <span class="math">\(C\)</span> for vertebrates.
    It is true that all humans are animals and that all humans are vertebrates.
    It does not follow that all animals are vertebrates&mdash;and they are not.
 </p>
@@ -1904,66 +1913,66 @@
     var fStr = 'We have already established that seven of the fifteen valid syllogisms are redundant. ' +
        'That leaves us with the following eight syllogisms, which we shall reduce further: ' +
        '</p><ol>' +
-       '<li><span class="math">M&sub;P.  S&sub;M.  Therefore, S&sub;P.</span></li>' +
-       '<li><span class="math">M&sub;P. M&nsub;S<sup>c</sup>. Therefore, S&nsub;P<sup>c</sup></span></li>' +
-       '<li><span class="math">P&sub;M.   S&nsub;M. Therefore, S&nsub;P.</span></li>' +
-       '<li><span class="math">P&sub;M.  M&sub;S<sup>c</sup>. Therefore, S&sub;P<sup>c</sup>.</span></li>' +
-       '<li><span class="math">P&sub;M<sup>c</sup>.  S&sub;M.  Therefore, S&sub;P<sup>c</sup>.</span></li>' +
-       '<li><span class="math">P&sub;M<sup>c</sup>.  M&nsub;S<sup>c</sup> Therefore, S&nsub;P.</span></li>' +
-       '<li><span class="math">M&nsub;P<sup>c</sup>, M&sub;S. Therefore, S&nsub;P<sup>c</sup>.</span></li>' +
-       '<li><span class="math">M&nsub;P. M&sub;S.  Therefore, S&nsub;P.</span></li>' +
+       '<li><span class="math">\\(M \\subset P.  S \\subset M.  \\text{Therefore, } S \\subset P.\\)</span></li>' +
+       '<li><span class="math">\\(M \\subset P. M \\not\\subset S^c. \\text{ \\text{Therefore, } S \\not\\subset P^c\\)</span></li>' +
+       '<li><span class="math">\\(P \\subset M.   S \\not\\subset M. \\text{Therefore, } S \\not\\subset P.\\)</span></li>' +
+       '<li><span class="math">\\(P \\subset M.  M \\subset S^c. \\text{Therefore, } S \\subset P^c.\\)</span></li>' +
+       '<li><span class="math">\\(P \\subset M^c.  S \\subset M.  \\text{Therefore, } S \\subset P^c.\\)</span></li>' +
+       '<li><span class="math">\\(P \\subset M^c.  M \\not\\subset S^c \\text{Therefore, } S \\not\\subset P.\\)</span></li>' +
+       '<li><span class="math">\\(M \\not\\subset P^c, M \\subset S. \\text{Therefore, } S \\not\\subset P^c.\\)</span></li>' +
+       '<li><span class="math">\\(M \\not\\subset P. M \\subset S.  \\text{Therefore, } S \\not\\subset P.\\)</span></li>' +
        '</ol><p>' +
        'We will now reduce this list to two syllogisms, from which the rest can be derived. ' +
        'One has no existential import&mdash;it does not conclude that anything exists. ' +
-       'The other does have existential import: it concludes that an element of <span class="math">S</span> ' +
-       'and an element of <span class="math">P<sup>c</sup></span> exist. ' +
+       'The other does have existential import: it concludes that an element of <span class="math">\\(S\\)</span> ' +
+       'and an element of <span class="math">\\(P^c\\)</span> exist. ' +
        'To show that there are really only two syllogisms, two identities from set theory ' +
        'are particularly useful: ' +
-     '</p><p class="math"> ' +
-       '(1) A&sub;B if and only if B<sup>c</sup>&sub;A<sup>c</sup>  ' +
-       '(every A is a B if and only if every non-B is a non-A) ' +
-     '</p><p class="math"> ' +
-       '(2) A&nsub;B if and only if B<sup>c</sup>&nsub;A<sup>c</sup>  ' +
-       '(some As are non-Bs if and only if some non-Bs are As) ' +
+     '</p><p class="math">\\( ' +
+       '(1) A \\subset B \\text{ if and only if } B^c \\subset A^c  ' +
+       '\\text{(every A is a B if and only if every non-B is a non-A)}\\) ' +
+     '</p><p class="math">\\( ' +
+       '(2) A \\not\\subset B \\text{ if and only if } B^c \\not\\subset A^c  ' +
+       '\\text{ (some As are non-Bs if and only if some non-Bs are As)}\\) ' +
      '</p><p> ' +
        'Consider the first syllogism in the list of eight: ' + 
-     '</p><p class="math"> ' +
-       'M&sub;P.  S&sub;M.  Therefore, S&sub;P. ' +
+     '</p><p class="math">\\( ' +
+       'M \\subset P.  S \\subset M.  \\text{Therefore, } S \\subset P. \\)' +
      '</p><p> ' +
        'If we apply the first identity to the first premise, it becomes ' +
-       '<span class="math">P<sup>c</sup>&sub;M<sup>c</sup></span>. ' +
-       'Now let us change variables, substituting <span class="math">Q</span> ' +
-       'for <span class="math">P<sup>c</sup></span>, and thus  ' +
-       '<span class="math">Q<sup>c</sup></span> for <span class="math">P</span>, ' +
+       '<span class="math">\\(P^c \\subset M^c\\)</span>. ' +
+       'Now let us change variables, substituting <span class="math">\\(Q\\)</span> ' +
+       'for <span class="math">\\(P^c\\)</span>, and thus  ' +
+       '<span class="math">\\(Q^c\\)</span> for <span class="math">\\(P\\)</span>, ' +
        'throughout the argument. ' +
        'That relabeling does not change the validity of the argument. ' +
        'The new argument is ' +
+     '</p><p class="math"> ' +
+       'Q \\subset M^c. S \\subset M.  \\text{Therefore, } S \\subset Q^c.  ' +
+       '(No Q are M. All S are M.  \\text{Therefore, } no S are Q.)\\) ' +
      '</p><p> ' +
-       'Q&sub;M<sup>c</sup>. S&sub;M.  Therefore, S&sub;Q<sup>c</sup>.  ' +
-       '(No Q are M. All S are M.  Therefore, no S are Q.) ' +
-     '</p><p> ' +
-       'But the letter <span class="math">Q</span> is a variable&mdash;a placeholder. ' +
+       'But the letter <span class="math">\\(Q\\)</span> is a variable&mdash;a placeholder. ' +
        'We can change it to any other letter that does not appear in the argument, without ' +
        'affecting the math. ' +
-       'So, we could change it to <span class="math">P</span>, for instance. ' +
+       'So, we could change it to <span class="math">\\(P\\)</span>, for instance. ' +
        'If we do, we get the fifth syllogism. ' +
        'Thus the first syllogism and the fifth syllogism are mathematically equivalent. ' +
      '</p><p> ' +
-       'Now consider the fourth syllogism, <span class="math">P&sub;M.   ' +
-       'M&sub;S<sup>c</sup>. Therefore, S&sub;P<sup>c</sup>.</span> ' +
+       'Now consider the fourth syllogism, <span class="math">\\(P \\subset M.   ' +
+       'M \\subset S^c. \\text{Therefore, } S \\subset P^c.\\)</span> ' +
        'By the first identity above, the second premise in this syllogism is ' +
-       'equivalent to S&sub;M<sup>c</sup>. ' +
+       'equivalent to <span class="math">S \\subset M^c.\\)</span> ' +
        'That makes the syllogism look like  ' +
-       '<span class="math">P&sub;M.   ' +
-       'S&sub;M<sup>c</sup>. Therefore, S&sub;P<sup>c</sup>.</span> ' +
+       '<span class="math">\\(P \\subset M.   ' +
+       'S \\subset M^c. \\text{Therefore, } S \\subset P^c.\\)</span> ' +
        'Let\'s use the relabeling trick we just used: ' +
-       'let <span class="math">Q = M<sup>c</sup></span>, ' +
-       'and <span class="math">Q<sup>c</sup> = M</span>. ' +
+       'let <span class="math">\\(Q = M^c\\)</span>, ' +
+       'and <span class="math">\\(Q^c = M\\)</span>. ' +
      '</p><p> ' +
        'With that change of variables, the fourth syllogism becomes  ' +
-       '<span class="math">P&sub;Q<sup>c</sup>.   ' +
-       'S&sub;Q. Therefore, S&sub;P<sup>c</sup>.</span> ' +
-       'Again, <span class="math">Q</span> is a placeholder, and we can change the  ' +
+       '<span class="math">\\(P \\subset Q^c.   ' +
+       'S \\subset Q. \\text{Therefore, } S \\subset P^c.\\)</span> ' +
+       'Again, <span class="math">\\(Q\\)</span> is a placeholder, and we can change the  ' +
        'symbol to any other symbol that does not appear in that ' +
        'expression&mdash;M, for instance. ' +
        'That gives the fifth syllogism. ' +
@@ -1972,77 +1981,77 @@
        'They are the syllogisms with no existential import; really there is only one. ' +
      '</p><p> ' +
        'Consider the second syllogism in the list of eight: ' +
-     '</p><p class="math"> ' +
-       'M&sub;P.   M&nsub;S<sup>c</sup>.  Therefore, S&nsub;P<sup>c</sup>. ' +
+     '</p><p class="math">\\( ' +
+       'M \\subset P.   M \\not\\subset S^c.  \\text{Therefore, } S \\not\\subset P^c.\\) ' +
      '</p><p> ' +
        'Apply the first identity to the first premise and the second identity to ' +
        'the second premise.  That gives ' +
-     '</p><p class="math"> ' +
-       'P<sup>c</sup>&sub;M<sup>c</sup>.   S&nsub;M<sup>c</sup>.  Therefore, S&nsub;P<sup>c</sup>. ' +
+     '</p><p class="math">\\( ' +
+       'P^c \\subset M^c.   S \\not\\subset M^c.  \\text{Therefore, } S \\not\\subset P^c.\\) ' +
      '</p><p> ' +
-       'Now let <span class="math">Q = P<sup>c</sup></span> (and <span class="math">Q<sup>c</sup> = P</span>) ' +
+       'Now let <span class="math">\\(Q = P^c\\)</span> (and <span class="math">\\(Q^c = P\\)</span>) ' +
        'throughout the argument. That gives ' +
-     '</p><p class="math"> ' +
-       'Q&sub;M<sup>c</sup>.   S&nsub;M<sup>c</sup>.  Therefore, S&nsub;Q. ' +
+     '</p><p class="math">\\( ' +
+       'Q \\subset M^c.   S \\not\\subset M^c.  \\text{Therefore, } S \\not\\subset Q. \\)' +
      '</p><p> ' +
-       'As before, <span class="math">Q</span> is just a placeholder, and we can change it to ' +
-       '<span class="math">P</span>, since <span class="math">P</span> does not appear in the argument. ' +
+       'As before, <span class="math">\\(Q\\)</span> is just a placeholder, and we can change it to ' +
+       '<span class="math">\\(P\\)</span>, since <span class="math">\\(P\\)</span> does not appear in the argument. ' +
        'That shows ' +
-     '</p><p class="math"> ' +
-       'P&sub;M<sup>c</sup>.   S&nsub;M<sup>c</sup>.  Therefore, S&nsub;P, ' +
+     '</p><p class="math">\\( ' +
+       'P \\subset M^c.   S \\not\\subset M^c.  \\text{Therefore, } S \\not\\subset P, \\)' +
      '</p><p> ' +
        'which is the sixth syllogism. ' +
        'Thus the second and sixth syllogisms are mathematically equivalent. ' +
      '</p><p> ' +
        'Consider the third syllogism, ' +
-       '<span class="math">P&sub;M.   S&nsub;M. Therefore, S&nsub;P.</span> ' +
+       '<span class="math">\\(P \\subset M.   S \\not\\subset M. \\text{Therefore, } S \\not\\subset P.\\)</span> ' +
        'If we apply the second identity above, the second premise becomes ' +
-       '<span class="math">M<sup>c</sup>&nsub;S<sup>c</sup>.</span> ' +
-       'Now let <span class="math">Q = M<sup>c</sup></span>, so that  ' +
-       '<span class="math">Q<sup>c</sup> = (M<sup>c</sup>)<sup>c</sup>) = M</span>. ' +
+       '<span class="math">\\(M^c \\not\\subset S^c.\\)</span> ' +
+       'Now let <span class="math">\\(Q = M^c\\)</span>, so that  ' +
+       '<span class="math">\\(Q^c = (M^c)^c) = M\\)</span>. ' +
        'Then the third syllogism becomes ' +
-     '</p><p class="math"> ' +
-       'P&sub;Q<sup>c</sup>. Q&nsub;S<sup>c</sup>.  Therefore, S&nsub;P. ' +
+     '</p><p class="math">\\( ' +
+       'P \\subset Q^c. Q \\not\\subset S^c.  \\text{Therefore, } S \\not\\subset P.\\) ' +
      '</p><p> ' +
-       'Again, <span class="math">Q</span> is just a placeholder.  ' +
+       'Again, <span class="math">\\(Q\\)</span> is just a placeholder.  ' +
        'We can change the letter to any other letter that does not appear in the syllogism, ' +
        'and that will not affect the mathematics. ' +
-       'For instance, we can change it to <span class="math">M</span>, and the result  ' +
+       'For instance, we can change it to <span class="math">\\(M\\)</span>, and the result  ' +
        'is mathematically identical. ' +
        'We find ' +
-     '</p><p class="math"> ' +
-       'P&sub;M<sup>c</sup>. M&nsub;S<sup>c</sup>.  Therefore, S&nsub;P. ' +
+     '</p><p class="math">\\( ' +
+       'P \\subset M^c. M \\not\\subset S^c.  \\text{Therefore, } S \\not\\subset P. \\)' +
        '</p><p> ' +
        'But that is exactly the sixth syllogism.  Thus the second, third and sixth syllogisms ' +
        'are mathematically equivalent. ' +
      '</p><p> ' +
        'Similarly, the seventh and eighth syllogism differ only in notation. ' +
-       'A change of variables that replaces <span class="math">P</span> by  ' +
-       '<span class="math">P<sup>c</sup></span> changes the seventh to the eighth, or back. ' +
+       'A change of variables that replaces <span class="math">\\(P\\)</span> by  ' +
+       '<span class="math">\\(P^c\\)</span> changes the seventh to the eighth, or back. ' +
      '</p><p> ' +
        'Finally, consider the third syllogism again: ' +
-     '</p><p class="math"> ' +
-       'P&sub;M.   S&nsub;M. Therefore, S&nsub;P. ' +
+     '</p><p class="math">\\( ' +
+       'P \\subset M.   S \\not\\subset M. \\text{Therefore, } S \\not\\subset P.\\) ' +
      '</p><p> ' +
        'Apply the second identity to the second premise and to the conclusion: ' +
-     '</p><p class="math"> ' +
-       'P&sub;M.   M<sup>c</sup>&nsub;S<sup>c</sup>. Therefore, P<sup>c</sup>&nsub;S<sup>c</sup>. ' +
+     '</p><p class="math">\\( ' +
+       'P \\subset M.   M^c \\not\\subset S^c. \\text{Therefore, } P^c \\not\\subset S^c.\\) ' +
      '</p><p> ' +
-       'Substitute <span class="math">Q</span> in place of <span class="math">P</span> and ' +
-       '<span class="math">R</span> in place of <span class="math">S</span>, throughout the ' +
+       'Substitute <span class="math">\\(Q\\)</span> in place of <span class="math">\\(P\\)</span> and ' +
+       '<span class="math">\\(R\\)</span> in place of <span class="math">\\(S\\)</span>, throughout the ' +
        'argument: ' +
-     '</p><p class="math"> ' +
-       'Q&sub;M.   M<sup>c</sup>&nsub;R<sup>c</sup>. Therefore, Q<sup>c</sup>&nsub;R<sup>c</sup>. ' +
+     '</p><p class="math">\\( ' +
+       'Q \\subset M.   M^c \\not\\subset R^c. \\text{Therefore, } Q^c \\not\\subset R^c.\\) ' +
      '</p><p> ' +
-       'The order of the premises does not matter (because <span class="math">A and B</span> ' +
-       'is logically equivalent to <span class="math">B and A</span>), so this is the same argument as ' +
-     '</p><p class="math"> ' +
-        'M<sup>c</sup>&nsub;R<sup>c</sup>.  Q&sub;M.   Therefore, Q<sup>c</sup>&nsub;R<sup>c</sup>. ' +
+       'The order of the premises does not matter (because <span class="math">\\(\\text{A and B} \\)</span> ' +
+       'is logically equivalent to <span class="math">\\(B and A\\)</span>), so this is the same argument as ' +
+     '</p><p class="math">\\( ' +
+        'M^c \\not\\subset R^c.  Q \\subset M.   \\text{Therefore, } Q^c \\not\\subset R^c. \\)' +
      '</p><p> ' +
-       'Now substitute <span class="math">P</span> for <span class="math">R</span> and ' +
-       '<span class="math">S</span> for <span class="math">Q</span> throughout the argument: ' +
-     '</p><p class="math"> ' +
-       'M<sup>c</sup>&nsub;P<sup>c</sup>.  S&sub;M.   Therefore, S<sup>c</sup>&nsub;P<sup>c</sup>. ' +
+       'Now substitute <span class="math">\\(P\\)</span> for <span class="math">\\(R\\)</span> and ' +
+       '<span class="math">\\(S\\)</span> for <span class="math">\\(Q\\)</span> throughout the argument: ' +
+     '</p><p class="math">\\( ' +
+       'M^c \\not\\subset P^c.  S \\subset M.   \\text{Therefore, } S^c \\not\\subset P^c.\\) ' +
      '</p><p>' +
        'But that is exactly the seventh syllogism! ' +
        'So, all five syllogisms with existential import are mathematically identical, and all three without ' +
@@ -2075,10 +2084,10 @@
 
 <ol>
    <li>
-       <span class="math">M&sub;P.  S&sub;M.  Therefore, S&sub;P.</span> 
-       (<span class="example">All <span class="math">M</span> are <span class="math">P</span>. 
-        All <span class="math">S</span> are <span class="math">M</span>. 
-        Therefore, all <span class="math">S</span> are <span class="math">P</span>.</span>) 
+       <span class="math">\(M \subset P.  S \subset M.  \text{Therefore, } S \subset P.\)</span> 
+       (<span class="example">All <span class="math">\(M\)</span> are <span class="math">\(P\)</span>. 
+        All <span class="math">\(S\)</span> are <span class="math">\(M\)</span>. 
+        Therefore, all <span class="math">\(S\)</span> are <span class="math">\(P\)</span>.</span>) 
 <script language="JavaScript1.8" type="text/javascript"><!--
     var fStr = 'An example: ' +
                'All birds are animals.  All ravens are birds.  Therefore, all ravens are animals.';
@@ -2088,38 +2097,38 @@
     Here is the corresponding Venn diagram:
 <div class="venn">
    <div class="vennUniverse"></div>
-   <div class="rect60x70_center blue left"><span class="math">P</span></div>
-   <div class="rect40x50_center_high yellow right"><span class="math">M</span>&nbsp;</div>
-   <div class="rect20x30_center green center"><p class="math"><span class="math">S</span></p></div>
+   <div class="rect60x70_center blue left"><span class="math">\(P\)</span></div>
+   <div class="rect40x50_center_high yellow right"><span class="math">\(M\)</span>&nbsp;</div>
+   <div class="rect20x30_center green center"><p class="math"><span class="math">\(S\)</span></p></div>
 </div>
    </li>
    <li>
-       <span class="math">P&sub;M.  S&nsub;M. Therefore, S&nsub;P.</span>
-       (<span class="example">All <span class="math">P</span> are <span class="math">M</span>. 
-        Some <span class="math">S</span> are not <span class="math">M</span>.  
-        Therefore, some <span class="math">S</span> are not <span class="math">P</span>.</span>)
+       <span class="math">\(P \subset M.  S \not\subset M. \text{Therefore, } S \not\subset P.\)</span>
+       (<span class="example">All <span class="math">\(P\)</span> are <span class="math">\(M\)</span>. 
+        Some <span class="math">\(S\)</span> are not <span class="math">\(M\)</span>.  
+        Therefore, some <span class="math">\(S\)</span> are not <span class="math">\(P\)</span>.</span>)
 <script language="JavaScript1.8" type="text/javascript"><!--
     var fStr = 'An example: ' +
                'All ravens are birds. Some animals are not birds. Therefore, some animals are not ravens. ' +
                'One could pick a different example to be canonical, such as ' +
-               '<p class="math">M&sub;P.  S&nsub;M<sup>c</sup>. Therefore, S&nsub;P<sup>c</sup>,</p> ' +
+               '<p class="math">\\(M \\subset P.  S \\not\\subset M^c. \\text{Therefore, } S \\not\\subset P^c\\),</p> ' +
                '<p>which looks more complicated as mathematics but is simpler in English:</p>' +
-               '<p class="center"><span class="example">All <span class="math">M</span> are ' +
-               '<span class="math">P</span>. ' +
-               'Some <span class="math">S</span> are <span class="math">M</span>. ' +
-               'Therefore, some <span class="math">S</span> are <span class="math">P</span>.</span></p>';
+               '<p class="center"><span class="example">All <span class="math">\\(M\\)</span> are ' +
+               '<span class="math">\\(P\\)</span>. ' +
+               'Some <span class="math">\\(S\\)</span> are <span class="math">\\(M\\)</span>. ' +
+               'Therefore, some <span class="math">\\(S\\)</span> are <span class="math">\\(P\\)</span>.</span></p>';
     writeFootnote(fCtr++, fCtr.toString(), fStr);
 // -->
 </script>
    Here is the corresponding Venn diagram:
 <div class="venn">
    <div class="vennUniverse"></div>
-   <div class="rect60x70_center yellow left"><span class="math">M</span></div>
+   <div class="rect60x70_center yellow left"><span class="math">\(M\)</span></div>
    <div class="rect40x50_right_high green left">
-           <span class="math">S</span>&nbsp;
-            <p align="right">&middot;<br /><span class="math">x</span></p>
+           <span class="math">\(S\)</span>&nbsp;
+            <p align="right">&middot;<br /><span class="math">\(x\)</span></p>
    </div>
-   <div class="rect40x30_left_high blue left"><span class="math">P</span></p></div>
+   <div class="rect40x30_left_high blue left"><span class="math">\(P\)</span></p></div>
    <div class="rect28x50_right"></div>
 </div>
    </li>
@@ -2133,10 +2142,10 @@
 </p>
 
 <p class="example">
-         <span class="math">A&sub;B</span> if and only if 
-          <span class="math">B<sup>c</sup>&sub;A<sup>c</sup></span> 
-         (every <span class="math">A</span> is a <span class="math">B</span> if and only if every 
-         non-<span class="math">B</span> is a non-<span class="math">A</span>)
+         <span class="math">\(A \subset B\)</span> if and only if 
+          <span class="math">\(B^c \subset A^c\)</span> 
+         (every <span class="math">\(A\)</span> is a <span class="math">\(B\)</span> if and only if every 
+         non-<span class="math">\(B\)</span> is a non-<span class="math">\(A\)</span>)
 </p>
 
 <p>
@@ -2144,10 +2153,10 @@
 </p>
 
 <p class="example">
-         <span class="math">A&nsub;B</span> if and only if 
-         <span class="math">B<sup>c</sup>&nsub;A<sup>c</sup></span>
-         (some <span class="math">A</span> are non-<span class="math">B</span> 
-         if and only if some non-<span class="math">B</span> are <span class="math">A</span>).
+         <span class="math">\(A \not\subset B\)</span> if and only if 
+         <span class="math">\(B^c \not\subset A^c\)</span>
+         (some <span class="math">\(A\)</span> are non-<span class="math">\(B\)</span> 
+         if and only if some non-<span class="math">\(B\)</span> are <span class="math">\(A\)</span>).
 </p>
 
 <p>
@@ -2169,28 +2178,28 @@
      These transformations amount to relabeling the Venn diagrams, simply changing the names of 
      categories.
      The argument remains valid&mdash;or invalid&mdash;as long as the labels are changed consistently.
-     For instance, suppose category <span class="math">A</span> is in the original argument.
-     We can change <span class="math">A</span> to <span class="math">Q</span> provided:
+     For instance, suppose category <span class="math">\(A\)</span> is in the original argument.
+     We can change <span class="math">\(A\)</span> to <span class="math">\(Q\)</span> provided:
 </p>
 
 <ul>
    <li> 
-        <span class="math">Q</span> does not currently appear in either premise or the conclusion, and
+        <span class="math">\(Q\)</span> does not currently appear in either premise or the conclusion, and
    </li>
    <li>
-        We change <span class="math">A</span> to <span class="math">Q</span> everywhere
-        <span class="math">A</span> appears in the argument: in the premises and in the conclusion.
-        (We must also change <span class="math">A<sup>c</sup></span>
-        to <span class="math">Q<sup>c</sup></span> everywhere <span class="math">A<sup>c</sup></span> 
+        We change <span class="math">\(A\)</span> to <span class="math">\(Q\)</span> everywhere
+        <span class="math">\(A\)</span> appears in the argument: in the premises and in the conclusion.
+        (We must also change <span class="math">\(A^c\)</span>
+        to <span class="math">\(Q^c\)</span> everywhere <span class="math">\(A^c\)</span> 
         appears.)
    </li>
 </ul>
 
 <p>
-    We could instead change <span class="math">A</span> to <span class="math">Q<sup>c</sup></span>
-    as long as <span class="math">Q</span> does not appear in the argument and we make the 
-    change everywhere, including changing <span class="math">A<sup>c</sup></span>
-    to <span class="math">Q</span> throughout.
+    We could instead change <span class="math">\(A\)</span> to <span class="math">\(Q^c\)</span>
+    as long as <span class="math">\(Q\)</span> does not appear in the argument and we make the 
+    change everywhere, including changing <span class="math">\(A^c\)</span>
+    to <span class="math">\(Q\)</span> throughout.
 </p>
    
 <p>
@@ -2212,9 +2221,9 @@
 </p>
 
 <p class="example">
-    All <span class="math">A</span> are <span class="math">B</span>. 
-    No <span class="math">B</span> are <span class="math">C</span>. 
-    Therefore, no <span class="math">A</span> are <span class="math">C</span>.
+    All <span class="math">\(A\)</span> are <span class="math">\(B\)</span>. 
+    No <span class="math">\(B\)</span> are <span class="math">\(C\)</span>. 
+    Therefore, no <span class="math">\(A\)</span> are <span class="math">\(C\)</span>.
 </p>
 
 <p>
@@ -2225,25 +2234,25 @@
 
 <p>
     The first problem we face is that this argument has a premise and a conclusion of the form 
-    <span class="example">no <span class="math">Q</span> are <span class="math">R</span></span>,
+    <span class="example">no <span class="math">\(Q\)</span> are <span class="math">\(R\)</span></span>,
     while every statement in the canonical syllogism is of the form
-    <span class="example">all <span class="math">Q</span> are <span class="math">R</span></span>.
+    <span class="example">all <span class="math">\(Q\)</span> are <span class="math">\(R\)</span></span>.
     How can we get the argument into that form?
 </p>
 
 <p>
     The simplest way to separate the abstract content from the words used to express the content is
     to use mathematical notation instead of words.    
-    Both <span class="example">no <span class="math">Q</span> are <span class="math">R</span></span>
-    and <span class="example">all <span class="math">Q</span> are <span class="math">R<sup>c</sup></span></span>
-    describe the same situation: <span class="math">Q&sub;R<sup>c</sup></math>.
-    (Moreover, that is the same condition as <span class="math">R&sub;Q<sup>c</sup></math>.)
+    Both <span class="example">no <span class="math">\(Q\)</span> are <span class="math">\(R\)</span></span>
+    and <span class="example">all <span class="math">\(Q\)</span> are <span class="math">\(R^c\)</span></span>
+    describe the same situation: <span class="math">\(Q \subset R^c\)</math>.
+    (Moreover, that is the same condition as <span class="math">\(R \subset Q^c\)</math>.)
     In set notation we have:
 </p>
 
 <p class="example">
-    <span class="math">A&sub;B</span>. <span class="math">B&sub;C<sup>c</sup></span>. 
-    Therefore, <span class="math">A&sub;C<sup>c</sup></span>.
+    <span class="math">\(A \subset B\)</span>. <span class="math">\(B \subset C^c\)</span>. 
+    Therefore, <span class="math">\(A \subset C^c\)</span>.
 </p>
 
 <p>
@@ -2252,22 +2261,22 @@
 </p>
 
 <p class="example">
-    <span class="math">B&sub;C<sup>c</sup></span>. <span class="math">A&sub;B</span>. 
-    Therefore, <span class="math">A&sub;C<sup>c</sup></span>.
+    <span class="math">\(B \subset C^c\)</span>. <span class="math">\(A \subset B\)</span>. 
+    Therefore, <span class="math">\(A \subset C^c\)</span>.
 </p>
 
 <p>
     We just need to match the categories in this argument to the major, minor and middle terms in the
     canonical syllogism:
-    let <span class="math">M = B</span>, <span class="math">P = C<sup>c</sup></span> and
-    <span class="math">S = A</span>.
+    let <span class="math">\(M = B\)</span>, <span class="math">\(P = C^c\)</span> and
+    <span class="math">\(S = A\)</span>.
     With these changes of variables, the syllogism becomes
 </p>
 
 <p class="example">
-    <span class="math">M&sub;P</span>. 
-    <span class="math">S&sub;M</span>.  
-    Therefore, <span class="math">S&sub;P</span>.
+    <span class="math">\(M \subset P\)</span>. 
+    <span class="math">\(S \subset M\)</span>.  
+    Therefore, <span class="math">\(S \subset P\)</span>.
 </p>
 
 <p>
@@ -2280,15 +2289,15 @@
 
 <div class="venn">
    <div class="vennUniverse"></div>
-   <div class="rect60x70_center blue left"><span class="math">C<sup>c</sup></span></div>
-   <div class="rect40x50_center_high yellow right"><span class="math">B</span>&nbsp;</div>
-   <div class="rect20x30_center green center"><p class="math"><span class="math">A</span></p></div>
+   <div class="rect60x70_center blue left"><span class="math">\(C^c\)</span></div>
+   <div class="rect40x50_center_high yellow right"><span class="math">\(B\)</span>&nbsp;</div>
+   <div class="rect20x30_center green center"><p class="math"><span class="math">\(A\)</span></p></div>
 </div>
 
 <p>
    This is exactly the Venn diagram for the first canonical syllogism, relabeled
-   as described (<span class="math">S = A</span>, <span class="math">M = B</span> and 
-    <span class="math">P = C<sup>c</sup></span>).
+   as described (<span class="math">\(S = A\)</span>, <span class="math">\(M = B\)</span> and 
+    <span class="math">\(P = C^c\)</span>).
 </p>
 
 </div>
@@ -2306,13 +2315,13 @@
 </p>
 
 <p class="example">
-   All <span class="math">A</span> are <span class="math">B</span>.  
-   Some <span class="math">A</span> are <span class="math">C</span>.  
-   Therefore, some <span class="math">B</span> are <span class="math">C</span>.
+   All <span class="math">\(A\)</span> are <span class="math">\(B\)</span>.  
+   Some <span class="math">\(A\)</span> are <span class="math">\(C\)</span>.  
+   Therefore, some <span class="math">\(B\)</span> are <span class="math">\(C\)</span>.
 </p>
 
 <p>
-   This argument asserts that the set <span class="math">B&cap;C</span> has at least one element, so
+   This argument asserts that the set <span class="math">\(B \cap C\)</span> has at least one element, so
    it has existential import.
    If it is valid, we should be able to transform it into the second canonical syllogism.
 </p>
@@ -2320,10 +2329,10 @@
 <p>
     <span class="example">Some are</span> means the same thing as <span class="example">not all are not</span>.
     For instance, the second premise,
-    <span class="example">some <span class="math">A</span> are <span class="math">C</span></span>
+    <span class="example">some <span class="math">\(A\)</span> are <span class="math">\(C\)</span></span>
     means the same thing as 
-    <span class="example">not all <span class="math">A</span> are <span class="math">C<sup>c</sup></span></span>;
-    i.e., <span class="math">A&nsub;C<sup>c</sup></span>.
+    <span class="example">not all <span class="math">\(A\)</span> are <span class="math">\(C^c\)</span></span>;
+    i.e., <span class="math">\(A \not\subset C^c\)</span>.
 </p>
 
 <p>
@@ -2333,9 +2342,9 @@
 </p>
 
 <p class="example">
-   <span class="math">A&sub;B</span>.  
-   <span class="math">A&nsub;C<sup>c</sup></span>.  
-   Therefore, <span class="math">B&nsub;C<sup>c</sup></span>.
+   <span class="math">\(A \subset B\)</span>.  
+   <span class="math">\(A \not\subset C^c\)</span>.  
+   Therefore, <span class="math">\(B \not\subset C^c\)</span>.
 </p> 
 
 <p>
@@ -2344,17 +2353,17 @@
 </p>
 
 <p class="example">
-     <span class="math">P&sub;M</span>.  <span class="math">S&nsub;M</span>. 
-     Therefore, <span class="math">S&nsub;P</span>.
+     <span class="math">\(P \subset M\)</span>.  <span class="math">\(S \not\subset M\)</span>. 
+     Therefore, <span class="math">\(S \not\subset P\)</span>.
 </p>
 
 <p>
     We are almost there.
     In the syllogism we are testing, the set that appears in both premises (and which must therefore
-    be the middle term), <span class="math">A</span>,
+    be the middle term), <span class="math">\(A\)</span>,
     is on the left hand side of both premises.
     In the second canonical syllogism, the set that appears in both premises, the middle term
-    <span class="math">M</span>, is on the right hand side of both premises.
+    <span class="math">\(M\)</span>, is on the right hand side of both premises.
     And in the canonical syllogism, the major term is on the right of the conclusion, while in
     the syllogism we are testing, the term that is not the middle term and occurs in the first premise is
     on the left of the conclusion.
@@ -2370,38 +2379,38 @@
 
 <ul>
    <li> 
-       <span class="math">Q<sup>c</sup>&sub;R<sup>c</sup></span> if and only if 
-       <span class="math">R&sub;Q</span>, and
+       <span class="math">\(Q^c \subset R^c\)</span> if and only if 
+       <span class="math">\(R \subset Q\)</span>, and
    </li>
    <li>
-      <span class="math">Q<sup>c</sup>&nsub;R<sup>c</sup></span> if and only if
-      <span class="math">R&nsub;Q</span>.
+      <span class="math">\(Q^c \not\subset R^c\)</span> if and only if
+      <span class="math">\(R \not\subset Q\)</span>.
    </li>
 </ul>
 
 <p>
    The first identity can be applied to the first premise of the argument we are testing
-   (which has &sub;).
-   The second identity can be applied to the second premise and the conclusion (both of which have &nsub;).
+   (which has  \subset ).
+   The second identity can be applied to the second premise and the conclusion (both of which have  \not\subset ).
    That changes the argument to:
 </p>
 
 <p class="example">
-   <span class="math">B<sup>c</sup>&sub;A<sup>c</sup></span>.  
-   <span class="math">C&nsub;A<sup>c</sup></span>.  
-   Therefore, <span class="math">C&nsub;B<sup>c</sup></span>.
+   <span class="math">\(B^c \subset A^c\)</span>.  
+   <span class="math">\(C \not\subset A^c\)</span>.  
+   Therefore, <span class="math">\(C \not\subset B^c\)</span>.
 </p> 
 <p>
     Now the correspondence between this and the second canonical syllogism is plain:
-    let <span class="math">P = B<sup>c</sup></span>,
-    <span class="math">M = A<sup>c</sup></span>,  and 
-    <span class="math">S = C</span>.
+    let <span class="math">\(P = B^c\)</span>,
+    <span class="math">\(M = A^c\)</span>,  and 
+    <span class="math">\(S = C\)</span>.
     With these changes of variables, the syllogism becomes
 </p>
 
 <p class="example">
-     <span class="math">P&sub;M</span>.  <span class="math">S&nsub;M</span>. 
-     Therefore, <span class="math">S&nsub;P</span>.
+     <span class="math">\(P \subset M\)</span>.  <span class="math">\(S \not\subset M\)</span>. 
+     Therefore, <span class="math">\(S \not\subset P\)</span>.
 </p>
 
 <p>
@@ -2415,12 +2424,12 @@
 
 <div class="venn">
    <div class="vennUniverse"></div>
-   <div class="rect60x70_center yellow left"><span class="math">A<sup>c</sup></span></div>
+   <div class="rect60x70_center yellow left"><span class="math">\(A^c\)</span></div>
    <div class="rect40x50_right_high green left">
-           <span class="math">C</span>&nbsp;
-            <p align="right">&middot;<br /><span class="math">x</span></p>
+           <span class="math">\(C\)</span>&nbsp;
+            <p align="right">&middot;<br /><span class="math">\(x\)</span></p>
    </div>
-   <div class="rect40x30_left_high blue left"><span class="math">B<sup>c</sup></span></p></div>
+   <div class="rect40x30_left_high blue left"><span class="math">\(B^c\)</span></p></div>
    <div class="rect28x50_right"></div>
 </div>
 
@@ -2464,28 +2473,28 @@
 <p>
      The first step is to express the syllogism using set notation.
      For instance, if a premise or conclusion is of the form 
-     <span class="example">every <span class="math">A</span> is a <span class="math">B</span></span>,
-     <span class="example">all <span class="math">A</span> are <span class="math">B</span></span>,
-     or <span class="example">no <span class="math">A</span> are not <span class="math">B</span></span>,
-     we would write that as <span class="math">A&sub;B</span>, or as 
-     <span class="math">B<sup>c</sup>&sub;A<sup>c</sup></span>.
+     <span class="example">every <span class="math">\(A\)</span> is a <span class="math">\(B\)</span></span>,
+     <span class="example">all <span class="math">\(A\)</span> are <span class="math">\(B\)</span></span>,
+     or <span class="example">no <span class="math">\(A\)</span> are not <span class="math">\(B\)</span></span>,
+     we would write that as <span class="math">\(A \subset B\)</span>, or as 
+     <span class="math">\(B^c \subset A^c\)</span>.
 </p>
 
 <p>
      If a premise or conclusion is of the form
-     <span class="example">no <span class="math">A</span> is a <span class="math">B</span></span>,
-     <span class="example">no <span class="math">A</span> are <span class="math">B</span></span>, or
-     <span class="example">every <span class="math">A</span> is not a <span class="math">B</span></span>,
-     we would write that as <span class="math">A&sub;B<sup>c</sup></span> or as 
-     <span class="math">B&sub;A<sup>c</sup></span>.
+     <span class="example">no <span class="math">\(A\)</span> is a <span class="math">\(B\)</span></span>,
+     <span class="example">no <span class="math">\(A\)</span> are <span class="math">\(B\)</span></span>, or
+     <span class="example">every <span class="math">\(A\)</span> is not a <span class="math">\(B\)</span></span>,
+     we would write that as <span class="math">\(A \sub B^c\)</span> or as 
+     <span class="math">\(B \subset A^c\)</span>.
 </p>
 
 <p>
      If a premise or conclusion is of the form
-     <span class="example">some <span class="math">A</span> is a <span class="math">B</span></span> or
-     <span class="example">some <span class="math">A</span> are <span class="math">B</span></span>,
-     we would write that as <span class="math">A&nsub;B<sup>c</sup></span> or as
-     <span class="math">B&nsub;A<sup>c</sup></span>.
+     <span class="example">some <span class="math">\(A\)</span> is a <span class="math">\(B\)</span></span> or
+     <span class="example">some <span class="math">\(A\)</span> are <span class="math">\(B\)</span></span>,
+     we would write that as <span class="math">\(A \not\subset B^c\)</span> or as
+     <span class="math">\(B \not\subset A^c\)</span>.
 </p>
 
 <p>
@@ -2495,39 +2504,39 @@
 
 <ul>
     <li>
-        <span class="math">A&sub;B</span> if and only if 
-        <span class="math">B<sup>c</sup>&sub;A<sup>c</sup></span>.  
+        <span class="math">\(A \subset B\)</span> if and only if 
+        <span class="math">\(B^c \subset A^c\)</span>.  
         (Complements reverse the subset relationship.)
     </li>
     <li>
-        <span class="math">A&nsub;B</span> if and only if 
-        <span class="math">B<sup>c</sup>&nsub;A<sup>c</sup></span>.  
+        <span class="math">\(A \not\subset B\)</span> if and only if 
+        <span class="math">\(B^c \not\subset A^c\)</span>.  
         (Complements reverse the non-subset relationship.)
     </li>
     <li>
-        If <span class="math">A&sub;B</span> and <span class="math">B&sub;C</span>, then 
-         <span class="math">A&sub;C</span>. 
+        If <span class="math">\(A \subset B\)</span> and <span class="math">\(B \subset C\)</span>, then 
+         <span class="math">\(A \subset C\)</span>. 
         (The subset relationship is <em>transitive</em>.)
 <script language="JavaScript1.8" type="text/javascript"> <!--
-   var fStr = '<span class="math">A&sub;B</span> means that if <span class="math">x&isin;A</span> ' +
-              'then <span class="math">x&isin;B</span>.  But <span class="math">B&sub;C</span> means ' +
-              'that if <span class="math">x&isin;B</span> then <span class="math">x&isin;C</span>. ' +
-              'So if <span class="math">x&isin;A</span> then <span class="math">x&isin;C</span>: ' +
-              '<span class="math">A&sub;B</span>.';
+   var fStr = '<span class="math">\\(A \\subset B\\)</span> means that if <span class="math">\\(x \\in A\\)</span> ' +
+              'then <span class="math">\\(x \\in B\\)</span>.  But <span class="math">\\(B \\subset C\\)</span> means ' +
+              'that if <span class="math">\\(x \\in B\\)</span> then <span class="math">\\(x \\in C\\)</span>. ' +
+              'So if <span class="math">\\(x \\in A\\)</span> then <span class="math">\\(x \\in C\\)</span>: ' +
+              '<span class="math">\\(A \\subset B\\)</span>.';
     writeFootnote(fCtr++, fCtr.toString(), fStr);
 // -->
 </script>    
     </li>
     <li>
-        If <span class="math">A&nsub;B</span> and <span class="math">C&sub;B</span>, then 
-         <span class="math">A&nsub;C</span>. (If something is not in a given set, it is not 
+        If <span class="math">\(A \not\subset B\)</span> and <span class="math">\(C \subset B\)</span>, then 
+         <span class="math">\(A \not\subset C\)</span>. (If something is not in a given set, it is not 
          in any subset of that set.)
 <script language="JavaScript1.8" type="text/javascript"> <!--
    var fStr = 'If there is some ' +
-              '<span class="math">x&isin;A</span> that is not in <span class="math">B</span>, then ' +
-              'that <span class="math">x</span> cannot be in a subset <span class="math">C</span> ' +
-              'of <span class="math">B</span> either, since every element of <span class="math">C</span> ' +
-              'is an element of <span class="math">B</span>.  Hence, <span class="math">A&nsub;C</span>. ' +
+              '<span class="math">\\(x \\in A\\)</span> that is not in <span class="math">\\(B\\)</span>, then ' +
+              'that <span class="math">\\(x\\)</span> cannot be in a subset <span class="math">\\(C\\)</span> ' +
+              'of <span class="math">\\(B\\)</span> either, since every element of <span class="math">\\(C\\)</span> ' +
+              'is an element of <span class="math">\\(B\\)</span>.  Hence, <span class="math">\\(A \\not\\subset C\\)</span>. ' +
               'By definition, a subset does not contain anything that is not in the set of which it is a subset.';
     writeFootnote(fCtr++, fCtr.toString(), fStr);
 // -->
@@ -2563,15 +2572,15 @@
 
 <p>
    The three categories in this argument are ravens, black animals, and animals that live in Antarctica.
-   Let's call them <span class="math">R</span>, <span class="math">B</span> and 
-   <span class="math">A</span>, respectively.
+   Let's call them <span class="math">\(R\)</span>, <span class="math">\(B\)</span> and 
+   <span class="math">\(A\)</span>, respectively.
    Then the argument is:
 <p>
 
 <p class="example">
-   All <span class="math">R</span> are <span class="math">B</span>.
-   No <span class="math">A</span> are <span class="math">B</span>.
-   Therefore, no <span class="math">R</span> are <span class="math">A</span>.
+   All <span class="math">\(R\)</span> are <span class="math">\(B\)</span>.
+   No <span class="math">\(A\)</span> are <span class="math">\(B\)</span>.
+   Therefore, no <span class="math">\(R\)</span> are <span class="math">\(A\)</span>.
 </p>
 
 <p>
@@ -2579,17 +2588,17 @@
 </p>
 
 <p class="math">
-   R&sub;B and B&sub;A<sup>c</sup>.
+   \(R \subset B and B \subset A^c.\)
 </p>
 
 <p>
-   The conclusion is <span class="math">R&sub;A<sup>c</sup></span>.
+   The conclusion is <span class="math">\(R \subset A^c\)</span>.
 </p>
 
 <p>
    But the subset relationship is transitive, so
-   if <span class="math">R&sub;B</span> and <span class="math">B&sub;A<sup>c</sup></span> then
-   <span class="math">R&sub;A<sup>c</sup></span>; therefore, this argument is valid.
+   if <span class="math">\(R \subset B\)</span> and <span class="math">\(B \subset A^c\)</span> then
+   <span class="math">\(R \subset A^c\)</span>; therefore, this argument is valid.
 </p>   
 </div>
 
@@ -2613,15 +2622,15 @@
 <p>
    The three categories in this argument are people, those who run 100-mile races in the mountains in bad
    weather, and crazy people.
-   Let's call them <span class="math">P</span>, <span class="math">R</span> and <span class="math">C</span>, 
+   Let's call them <span class="math">\(P\)</span>, <span class="math">\(R\)</span> and <span class="math">\(C\)</span>, 
    respectively.
    Then the argument is:
 <p>
 
 <p class="example">
-   Some <span class="math">P</span> are <span class="math">R</span>.
-   All <span class="math">R</span> are <span class="math">C</span>.
-   Therefore, some <span class="math">P</span> are <span class="math">C</span>.
+   Some <span class="math">\(P\)</span> are <span class="math">\(R\)</span>.
+   All <span class="math">\(R\)</span> are <span class="math">\(C\)</span>.
+   Therefore, some <span class="math">\(P\)</span> are <span class="math">\(C\)</span>.
 </p>
 
 <p>
@@ -2629,24 +2638,24 @@
 </p>
 
 <p class="math">
-   P&nsub;R<sup>c</sup> and R&sub;C.
+   \(P \not\subset R^c \text{ and } R \subset C.\)
 </p>
 
 <p>
-   The conclusion is <span class="math">P&nsub;C<sup>c</sup></span>.
+   The conclusion is <span class="math">\(P \not\subset C^c\)</span>.
 </p>
 
 <p>
-   Complements reverse the subset relationship, so <span class="math">R&sub;C</span> if and only if 
-   <span class="math">C<sup>c</sup>&sub;R<sup>c</sup></span>.
-   Thus, the second premise is equivalent to <span class="math">C<sup>c</sup>&sub;R<sup>c</sup></span>.
-   The first premise says there is some <span class="math">x&isin;P</span> that is not in
-   <span class="math">R<sup>c</sup></span>.  
+   Complements reverse the subset relationship, so <span class="math">\(R \subset C\)</span> if and only if 
+   <span class="math">\(C^c \subset R^c\)</span>.
+   Thus, the second premise is equivalent to <span class="math">\(C^c \subset R^c\)</span>.
+   The first premise says there is some <span class="math">\(x \in P\)</span> that is not in
+   <span class="math">\(R^c\)</span>.  
    But subsets are not bigger than the sets that contain them, so 
-   that <span class="math">x</span> cannot be in any subset of <span class="math">R<sup>c</sup></span>.
-   The second premise tells us that <span class="math">C<sup>c</sup>&sub;R<sup>c</sup></span>.
-   Hence <span class="math">x</span> is not in <span class="math">C<sup>c</sup></span>.
-   So, <span class="math">P&nsub;C<sup>c</sup></span>.
+   that <span class="math">\(x\)</span> cannot be in any subset of <span class="math">\(R^c\)</span>.
+   The second premise tells us that <span class="math">\(C^c \subset R^c\)</span>.
+   Hence <span class="math">\(x\)</span> is not in <span class="math">\(C^c\)</span>.
+   So, <span class="math">\(P \not\subset C^c\)</span>.
    The syllogism is valid.
 </p>
 </div>
@@ -2669,15 +2678,15 @@
 
 <p>
    The three categories in this argument are balls, approximately spherical objects, and planets.
-   Let's call them <span class="math">B</span>, <span class="math">S</span> and <span class="math">P</span>, 
+   Let's call them <span class="math">\(B\)</span>, <span class="math">\(S\)</span> and <span class="math">\(P\)</span>, 
    respectively.
    Then the argument is:
 <p>
 
 <p class="example">
-   All <span class="math">B</span> are <span class="math">S</span>.
-   All <span class="math">P</span> are <span class="math">S</span>.
-   Therefore, all <span class="math">B</span> are <span class="math">P</span>.
+   All <span class="math">\(B\)</span> are <span class="math">\(S\)</span>.
+   All <span class="math">\(P\)</span> are <span class="math">\(S\)</span>.
+   Therefore, all <span class="math">\(B\)</span> are <span class="math">\(P\)</span>.
 </p>
 
 <p>
@@ -2685,11 +2694,11 @@
 </p>
 
 <p class="math">
-   B&sub;S and P&sub;S.
+   \(B \subset S \text{ and } P \subset S.\)
 </p>
 
 <p>
-   The conclusion is <span class="math">B&sub;P</span>.
+   The conclusion is <span class="math">\(B \subset P\)</span>.
 </p>
 
 <p>
@@ -2701,9 +2710,9 @@
 
 <div class="venn">
    <div class="vennUniverse left"></div>
-   <div class="rect85x80_center blue right"><span class="math">S</span></div>
-   <div class="rect15x30_left yellow left" ><span class="math">B</span>&nbsp;</div>
-   <div class="rect40x50_center_high green left" ><span class="math">P</span>&nbsp;</div>
+   <div class="rect85x80_center blue right"><span class="math">\(S\)</span></div>
+   <div class="rect15x30_left yellow left" ><span class="math">\(B\)</span>&nbsp;</div>
+   <div class="rect40x50_center_high green left" ><span class="math">\(P\)</span>&nbsp;</div>
 </div>
 
 <p>
@@ -2731,15 +2740,15 @@
 
 <p>
    The three categories in this argument are statisticians, funny people, and comedians.
-   Let's call them <span class="math">S</span>, <span class="math">F</span> and <span class="math">C</span>, 
+   Let's call them <span class="math">\(S\)</span>, <span class="math">\(F\)</span> and <span class="math">\(C\)</span>, 
    respectively.
    Then the argument is:
 <p>
 
 <p class="example">
-   Some <span class="math">S</span> are <span class="math">F</span>.
-   No <span class="math">C</span> are <span class="math">S</span>.
-   Therefore, some <span class="math">C</span> are <span class="math">F<sup>c</sup></span>.
+   Some <span class="math">\(S\)</span> are <span class="math">\(F\)</span>.
+   No <span class="math">\(C\)</span> are <span class="math">\(S\)</span>.
+   Therefore, some <span class="math">\(C\)</span> are <span class="math">\(F^c\)</span>.
 </p>
 
 <p>
@@ -2747,11 +2756,11 @@
 </p>
 
 <p class="math">
-   S&nsub;F<sup>c</sup>.  C&sub;S<sup>c</sup>.
+   \(S \not\subset F^c.  C \subset S^c.\)
 </p>
 
 <p>
-   The conclusion is <span class="math">C&nsub;F</span>.
+   The conclusion is <span class="math">\(C \not\subset F\)</span>.
 </p>
 
 <p>
@@ -2761,10 +2770,10 @@
 
 <div class="venn">
    <div class="vennUniverse left"></div>
-   <div class="rect60x70_center blue left"><span class="math">F</span></div>
-   <div class="rect20x30_center_left yellow left" ><span class="math">C</span>&nbsp;</div>
-   <div class="rect40x50_right_high green left" ><span class="math">S</span>&nbsp;
-      <p class="left"><span class="math">&middot;x</span></p></div>
+   <div class="rect60x70_center blue left"><span class="math">\(F\)</span></div>
+   <div class="rect20x30_center_left yellow left" ><span class="math">\(C\)</span>&nbsp;</div>
+   <div class="rect40x50_right_high green left" ><span class="math">\(S\)</span>&nbsp;
+      <p class="left"><span class="math">\(\bullet x\)</span></p></div>
    <div class="rect28x50_right"></div>
 </div>
 
@@ -2930,16 +2939,18 @@
 </script>
 </div>
 
+<h1>Michelle</h1>
+
 <h2><a id="summary"></a>Summary</h2>
 <p>
     Categories can be viewed as sets.
-    To say that <span class="math">x</span> is in category <span class="math">A</span> is equivalent to
-    saying <span class="math">x</span> is in the set <span class="math">A</span>, 
-    i.e., <span class="math">x &isin; A</span>.
-    If <span class="math">x</span> is in the category <span class="math">A</span>, we say
-    <span class="math">x</span> is in <span class="math">A</span>, 
-    <span class="math">x</span> is an <span class="math">A</span>, or, least formally,
-    <span class="math">x</span> is <span class="math">A</span>.
+    To say that <span class="math">\(x\)</span> is in category <span class="math">\(A\)</span> is equivalent to
+    saying <span class="math">\(x\)</span> is in the set <span class="math">\(A\)</span>, 
+    i.e., <span class="math">\(x \in A\)</span>.
+    If <span class="math">\(x\)</span> is in the category <span class="math">\(A\)</span>, we say
+    <span class="math">\(x\)</span> is in <span class="math">\(A\)</span>, 
+    <span class="math">\(x\)</span> is an <span class="math">\(A\)</span>, or, least formally,
+    <span class="math">\(x\)</span> is <span class="math">\(A\)</span>.
 </p>
 
 <p>
@@ -2947,31 +2958,31 @@
     <em>all are</em> (every one is, none are not), <em>none is</em> (all are not), 
     <em>some are</em> (at least one is, not all are not)
     and <em>not all are</em> (some are not).
-    For instance, if <span class="math">A</span> consists of people who are over 100 years old and
-    <span class="math">B</span> consists of women, <span class="example">not all <span class="math">A</span>
-    are <span class="math">B</span></span> means not all people who are over 100 years old are women.
+    For instance, if <span class="math">\(A\)</span> consists of people who are over 100 years old and
+    <span class="math">\(B\)</span> consists of women, <span class="example">not all <span class="math">\(A\)</span>
+    are <span class="math">\(B\)</span></span> means not all people who are over 100 years old are women.
 </p>
 
 <p>
     These four relationships also can be expressed as set relations.
-    <span class="example">All <span class="math">A</span> are <span class="math">B</span></span>
-    is equivalent to  <span class="math">A&sub;B</span>.
-    <span class="example">No <span class="math">A</span> is <span class="math">B</span></span>
-    is equivalent to  <span class="math">A&sub;B<sup>c</sup></span>.
-    <span class="example">Some <span class="math">A</span> are <span class="math">B</span></span>
-    is equivalent to  <span class="math">A&nsub;B<sup>c</sup></span>.
-    <span class="example">Not all <span class="math">A</span> are <span class="math">B</span></span>
-    is equivalent to  <span class="math">A&nsub;B</span>.
+    <span class="example">All <span class="math">\(A\)</span> are <span class="math">\(B\)</span></span>
+    is equivalent to  <span class="math">\(A \subset B\)</span>.
+    <span class="example">No <span class="math">\(A\)</span> is <span class="math">\(B\)</span></span>
+    is equivalent to  <span class="math">\(A \subset B^c\)</span>.
+    <span class="example">Some <span class="math">\(A\)</span> are <span class="math">\(B\)</span></span>
+    is equivalent to  <span class="math">\(A \not\subset B^c\)</span>.
+    <span class="example">Not all <span class="math">\(A\)</span> are <span class="math">\(B\)</span></span>
+    is equivalent to  <span class="math">\(A \not\subset B\)</span>.
 </p>
 
 <p>
-    The empty set is a subset of every set, so <span class="math">A</span> can be a subset of 
-    <span class="math">B</span> or of <span class="math">B<sup>c</sup></span> even if <span class="math">A</span>
+    The empty set is a subset of every set, so <span class="math">\(A\)</span> can be a subset of 
+    <span class="math">\(B\)</span> or of <span class="math">\(B^c\)</span> even if <span class="math">\(A\)</span>
     has no elements.
-    That is, <span class="math">A&sub;B</span> does not imply that there exists anything in
-    <span class="math">A</span>.
-    In contrast, for <span class="math">A</span> <em>not</em> to be a subset of <span class="math">B</span>
-    or of <span class="math">B<sup>c</sup></span>, <span class="math">A</span> must have at least one element.
+    That is, <span class="math">\(A \subset B\)</span> does not imply that there exists anything in
+    <span class="math">\(A\)</span>.
+    In contrast, for <span class="math">\(A\)</span> <em>not</em> to be a subset of <span class="math">\(B\)</span>
+    or of <span class="math">\(B^c\)</span>, <span class="math">\(A\)</span> must have at least one element.
     Thus the relationships <em>some are</em> and <em>not all are</em> have 
     <span class="termOfArt">existential import</span>&mdash;they imply that the first set has at least
     one elements&mdash;while 
@@ -3025,9 +3036,9 @@
     <li>domain of discourse</li>
     <li>existential fallacy</li>
     <li>existential import</li>
-    <li>existential quantifier (<span class="math">&exist;</span>)</li>
-    <li>element, member (<span class="math">&isin;</span>)</li>
-    <li>intersection (<span class="math">&cap;</span>)</li>
+    <li>existential quantifier (<span class="math">\(\exists\)</span>)</li>
+    <li>element, member (<span class="math">\(\in\)</span>)</li>
+    <li>intersection (<span class="math">\(\cap\)</span>)</li>
     <li>major premise</li>
     <li>major term</li>
     <li>membership function</li>
@@ -3035,14 +3046,14 @@
     <li>minor premise</li>
     <li>minor term</li>
     <li>mutually exclusive, disjoint</li>
-    <li>not a subset (<span class="math">&nsub;</span>)</li>
+    <li>not a subset (<span class="math">\(\not\subset\)</span>)</li>
     <li>predicate function</li>
     <li>set</li>
-    <li>some (<span class="math">&exist;</span>)</li>
-    <li>subset (<span class="math">&sub;</span>)</li>
-    <li>union, (<span class="math">&cup;</span>)</li>
-    <li>universal quantifier (<span class="math">&forall;</span>)</li>
-    <li>universal set <span class="math"><strong>S</strong></span></li>
+    <li>some (<span class="math">\(\exists\)</span>)</li>
+    <li>subset (<span class="math">\(\subset\)</span>)</li>
+    <li>union, (<span class="math">\(\cup\)</span>)</li>
+    <li>universal quantifier (<span class="math">\(\forall\)</span>)</li>
+    <li>universal set <span class="math">\(\mathbf{S}\)</span></li>
 </ul>
 
 </form>
