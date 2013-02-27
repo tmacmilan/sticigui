@@ -393,10 +393,16 @@
     to the right of 1.645 standard units is 5%,
 <script language="JavaScript1.8" type="text/javascript"><!--
     var fStr = 'Here is the picture:</p><div class="figure"><p class="figure">' +
-           '<applet code="NormHiLite.class" codebase="../../Java/" align="baseline" ' +
-           'width="600" archive="PbsGui.zip" height="320">' +
-           '<param name="hiLiteLo" value="-10">' +
-           '<param name="hiLiteHi" value="1.645">You need Java to see this</applet></p></div>';
+           '<div id="normhilite1" class="curvehilite"></div>' +
+           '<script>' +
+           'jQuery(function() {' +
+           '  new Stici_NormHiLite(\'normhilite1\', {' +
+           '    hiLiteHi: -10,' +
+           '    hiLiteLo: 1.645' +
+           '  });' +
+           '});' +
+           '</sc'+'ript>' +
+           '</p></div>';
     writeFootnote(fCtr++, fCtr.toString(), fStr);
 // -->
 </script>

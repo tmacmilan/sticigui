@@ -1450,14 +1450,17 @@
 </script>
 
 <p class="figure">
-    <applet archive="PbsGui.zip" CODE="NormHiLite.class" WIDTH="640" HEIGHT="330"
-       codebase="../../Java">
-    <param name="distribution" value="Student-t">
-    <param name="df" value="25">
-    <param name="hiLiteLo" value="-1.96">
-    <param name="hiLiteHi" value="1.96">
-    You need Java to see this tool.
-    </applet>
+<div id="normhilite1" class="curvehilite"></div>
+<script>
+jQuery(function() {
+  new Stici_NormHiLite('normhilite1', {
+    hiLiteHi: 1.96,
+    hiLiteLo: -1.96,
+    distribution: "Student-t",
+    df: 25
+  });
+});
+</script>
 </p>
 
 <p>

@@ -18,6 +18,7 @@
 
 
 <script type="text/javascript" src="../../Java/sticigui.js"></script>
+<link rel="stylesheet" type="text/css" href="../Graphics/sticiGuiDefault.css"></script>
 <link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
 
@@ -51,10 +52,13 @@
 </p>
 
 <p align="center">
-    <applet code="NormHiLite.class" codebase="../../Java/" align="baseline"
-        width="620" height="280" archive="PbsGui.zip">
-      You need Java to see this.
-    </applet>
+<div id="normhilite1" class="curvehilite"></div>
+<script>
+jQuery(function() {
+  new Stici_NormHiLite('normhilite1', {
+  });
+});
+</script>
 </p>
 
 <p align="center">

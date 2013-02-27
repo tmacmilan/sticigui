@@ -1327,13 +1327,17 @@
 
 
 <p class="figure">
-    <applet code="NormHiLite.class" codebase="../../Java/"
-           align="baseline" width="620" height="300" archive="PbsGui.zip">
-    <param name="hiLiteHi" value="18">
-    <param name="hiLiteLo" value="7.8">
-    <param name="distribution" value="chi-square">
-    <param name="df" value="3">
-    </applet>
+<div id="normhilite1" class="curvehilite"></div>
+<script>
+jQuery(function() {
+  new Stici_NormHiLite('normhilite1', {
+    hiLiteHi: 18,
+    hiLiteLo: 7.8,
+    distribution: "chi-square",
+    df: 3
+  });
+});
+</script>
 </p>
 </div>
 

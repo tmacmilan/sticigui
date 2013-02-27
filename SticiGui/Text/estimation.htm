@@ -1729,11 +1729,16 @@
         'want to know what symmetric range of standard units gives an area under ' +
         'the normal curve equal to ' + pctCtn.toString() + '%:</p> ' +
         '<p class="figure"> ' +
-        '<applet code="NormHiLite.class" codebase="../../Java/" ' +
-        'align="baseline" width="600" archive="PbsGui.zip" height="320"> <param ' +
-        'name="hiLiteHi" value="' + zscore.toString() + '"> ' +
-        '<param name="hiLiteLo" value="' + (-zscore).toString() + '">You ' +
-        'need Java to see this. </applet></p> ' +
+        '<div id="normhilite1" class="curvehilite"></div>' +
+        '<script>' +
+        'jQuery(function() {' +
+        '  new Stici_NormHiLite(\'normhilite1\', {' +
+        '    hiLiteHi: ' + (zscore).toString() + ',' +
+        '    hiLiteLo: ' + (-zscore).toString() +
+        '  });' +
+        '});' +
+        '</sc'+'ript>' +
+        '</p> ' +
         '<p> Using the normal approximation, the chance that the sample percentage ' +
         'would be within &plusmn;' + zscore.toString() + 'SE of the population  ' +
         'percentage is about ' + pctCtn.toString() + '%. ' +

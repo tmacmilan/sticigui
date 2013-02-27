@@ -25,6 +25,14 @@
     writeChapterHead('SeEd','','Area Under the Chi-square Curve',true,'../../SticiGui');
 // -->
 </script>
+<style>
+#curvehilite {
+  width: 640px;
+  height: 330px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
 </head>
 
 <body >
@@ -38,14 +46,15 @@
 
 <p align="center">
 
-<applet archive="PbsGui.zip" codebase=".."  code="NormHiLite.class" WIDTH="640" HEIGHT="330">
-
-  <param name="df" value="2">
-
-  <param name="distribution" value="chi-square">You need Java to see this tool.
-
-</applet>
-
+<div id="curvehilite"></div>
+<script>
+jQuery(function() {
+  new Stici_NormHiLite('curvehilite', {
+    df: 2,
+    distribution: 'chi-square'
+  });
+});
+</script>
 </p>
 
 

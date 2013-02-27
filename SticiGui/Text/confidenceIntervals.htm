@@ -1036,12 +1036,15 @@
 
 <div class="figure">
 <p class="figure">
-    <applet code="NormHiLite.class" codebase="../../Java/"
-        align="baseline" width="600" height="280" archive="PbsGui.zip">
-    <param name="hiLiteHi" value="1.15">
-    <param name="hiLiteLo" value="-1.15">
-    You need Java to see this.
-    </applet>
+<div id="normhilite1" class="curvehilite"></div>
+<script>
+jQuery(function() {
+  new Stici_NormHiLite('normhilite1', {
+    hiLiteHi: 1.15,
+    hiLiteLo: -1.15,
+  });
+});
+</script>
 </p>
 </div>
 
@@ -1502,10 +1505,15 @@
         'Thus we can base our confidence interval ' +
         'on the normal curve. The area under the normal curve between &plusmn;' +
         hitStr + ' is ' + cl.toString() + '%:</p><p class="figure">' +
-        '<applet code="NormHiLite.class" codebase="../../Java/" ' +
-        'align="baseline" width="620" height="300" archive="PbsGui.zip">' +
-        '<param name="hiLiteHi" value="' + hitStr + '">' +
-        '<param name="hiLiteLo" value="-' + hitStr + '"></applet>' +
+         '<div id="normhilite2" class="curvehilite"></div>' +
+         '<script>' +
+         'jQuery(function() {' +
+         '  new Stici_NormHiLite(\'normhilite2\', {' +
+         '    hiLiteHi: ' + hitStr + ',' +
+         '    hiLiteLo: -' + hitStr +
+         '  });' +
+         '});' +
+         '</sc'+'ript>' +
         '</p><p>The confidence interval is thus </p><p class="math">' +
         '[' + pctStr + ' &minus; ' + hitStr + '&times;' + sStr + '/(' +
         samSize.toString() + ')<sup>&frac12;</sup>, ' +
@@ -1692,11 +1700,17 @@
            'reasonably accurate, and that the sample standard deviation should be close to ' +
            'the standard deviation of the population.  The area under the normal curve ' +
            'between &plusmn;' + ex3Lim.toString() + ' is ' + cl.toString() + '%:</p>' +
-           '<p class="figure"><applet code="NormHiLite.class" codebase="../../Java/" ' +
-           'align="baseline" width="600" height="280" archive="PbsGui.zip">' +
-           '<param name="hiLiteHi" value="' + ex3Lim.toString() + '">' +
-           '<param name="hiLiteLo" value="-' + ex3Lim.toString() + '">' +
-           'You need Java to see this.</applet></p>' +
+           '<p class="figure">' +
+           '<div id="normhilite3" class="curvehilite"></div>' +
+           '<script>' +
+           'jQuery(function() {' +
+           '  new Stici_NormHiLite(\'normhilite3\', {' +
+           '    hiLiteHi: ' + ex3Lim.toString() + ',' +
+           '    hiLiteLo: -' + ex3Lim.toString() +
+           '  });' +
+           '});' +
+           '</sc'+'ript>' +
+           '</p>' +
            '<p>Thus, an approximate ' + cl.toString() +
            '% confidence interval would be centered at the sample mean, and extend ' +
            'down and up by from the sample mean by ' + ex3Lim.toString() +
@@ -1763,11 +1777,17 @@
            'reasonably accurate, and the sample standard deviation should be close to ' +
            'the standard deviation of the population.  The area under the normal curve ' +
            'between &plusmn;' + ex4Lim.toString() + ' is ' + cl.toString() + '%:</p>' +
-           '<p class="figure"><applet code="NormHiLite.class" codebase="../../Java/" ' +
-           'align="baseline" width="600" height="280" archive="PbsGui.zip">' +
-           '<param name="hiLiteHi" value="' + ex4Lim.toString() + '">' +
-           '<param name="hiLiteLo" value="-' + ex4Lim.toString() + '">' +
-           'You need Java to see this.</applet></p><p>An approximate ' + cl.toString() +
+           '<p class="figure">' +
+           '<div id="normhilite4" class="curvehilite"></div>' +
+           '<script>' +
+           'jQuery(function() {' +
+           '  new Stici_NormHiLite(\'normhilite4\', {' +
+           '    hiLiteHi: ' + ex4Lim.toString() + ',' +
+           '    hiLiteLo: -' + ex4Lim.toString() +
+           '  });' +
+           '});' +
+           '</sc'+'ript>' +
+           '</p><p>An approximate ' + cl.toString() +
            '% confidence interval would thus be centered at the sample mean, and extend ' +
            'down and up by ' + ex4Lim.toString() + ' standard units.  The estimated ' +
            'standard error of the sample mean is </p><p class="math">' +

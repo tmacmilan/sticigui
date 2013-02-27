@@ -24,6 +24,14 @@
     writeChapterHead('SeEd','','Area Under Student\'s t Curve',true,'../../SticiGui');
 // -->
 </script>
+<style>
+#curvehilite {
+  width: 640px;
+  height: 330px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
 </head>
 
 <body >
@@ -36,15 +44,15 @@
 
 
 <p align="center">
-
-<applet archive="PbsGui.zip" CODE="NormHiLite.class" codebase=".." WIDTH="640" HEIGHT="330">
-
-  <param name="df" value="2">
-
-  <param name="distribution" value="Student-t">You need Java to see this tool.
-
-</applet>
-
+<div id="curvehilite"></div>
+<script>
+jQuery(function() {
+  new Stici_NormHiLite('curvehilite', {
+    df: 2,
+    distribution: "Student-t"
+  });
+});
+</script>
 </p>
 
 

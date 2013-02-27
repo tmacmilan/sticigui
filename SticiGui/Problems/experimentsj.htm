@@ -18,6 +18,7 @@
 
 <script type="text/javascript" src="../../Java/sticigui.js"></script>
 <link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
+<link href="../Graphics/sticiGuiDefault.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
 
 <script language="JavaScript1.8" type="text/javascript"><!--
@@ -32,18 +33,24 @@
 
 
 <p align="center">
-<applet code="NormHiLite.class" codebase="../../Java/" align="baseline"
-    width="700" height="280" archive="PbsGui.zip">
-    <param name="distributions" value="normal">
-    You need Java to see this.
-</applet>
+<div id="normhilite1" class="curvehilite"></div>
+<script>
+jQuery(function() {
+  new Stici_NormHiLite('normhilite1', {
+    distribution: 'normal'
+  });
+});
+</script>
 </p>
 <p align="center">
-<applet code="NormHiLite.class" codebase="../../Java/" align="baseline"
-    width="700" height="280" archive="PbsGui.zip">
-    <param name="distribution" value="Student-t">
-    You need Java to see this.
-</applet>
+<div id="normhilite2" class="curvehilite"></div>
+<script>
+jQuery(function() {
+  new Stici_NormHiLite('normhilite2', {
+    distribution: 'Student-t'
+  });
+});
+</script>
 </p>
 
 

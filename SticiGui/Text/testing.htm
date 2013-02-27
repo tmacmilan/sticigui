@@ -2276,11 +2276,16 @@
         '.</p><p>The chance that the vote would be this close or closer is the ' +
         'area under the normal curve between &plusmn;' + roundToDig(zScore,3).toString() +
         ', which is ' + roundToDig(100*pVal,2).toString() + '%:</p><p class="figure">' +
-        '<applet code="NormHiLite.class" codebase="../../Java/" align="baseline" ' +
-        'width="600" archive="PbsGui.zip" height="320">' +
-        '<param name="hiLiteLo" value="' + (-zScore).toString() + '">' +
-        '<param name="hiLiteHi" value="' + (zScore).toString() +
-        '">You need Java to see this</applet></p>';
+        '<div id="normhilite1" class="curvehilite"></div>' +
+        '<script>' +
+        'jQuery(function() {' +
+        '  new Stici_NormHiLite(\'normhilite1\', {' +
+        '    hiLiteHi: ' + (zScore).toString() + ',' +
+        '    hiLiteLo: ' + (-zScore).toString() +
+        '  });' +
+        '});' +
+        '</sc'+'ript>' +
+        '</p>';
     writeSolution(pCtr-1, ansStr);
 // -->
 </script>
