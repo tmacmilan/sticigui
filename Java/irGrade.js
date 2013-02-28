@@ -2101,13 +2101,13 @@ $(document).ready(function() {
          $('#chLink' + theChapter.toString()).css('color','#ffffff')
                                              .css('backgroundColor','#000000');
     } catch(e) {}
-    $("div.solution").css('display','block').css('visibility','hidden');
+    $("div.solution").css('display','block')
+                     .hide();
     $(".solLink").click(function() {
+                      $(this).parent().next().toggle();
                       if ($(this).text() == '[+Solution]') {
-                          $(this).parent().next().css('visibility','visible');
                           $(this).text('[-Solution]');
                       } else {
-                          $(this).parent().next().css('visibility','hidden');
                           $(this).text('[+Solution]');
                       }
                //       pushSolutionOpened($(this));  // for analytics
