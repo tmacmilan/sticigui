@@ -6,7 +6,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "28 February 2013 00:58 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -1730,14 +1730,6 @@
         'the normal curve equal to ' + pctCtn.toString() + '%:</p> ' +
         '<p class="figure"> ' +
         '<div id="normhilite1" class="curvehilite"></div>' +
-        '<script>' +
-        'jQuery(function() {' +
-        '  new Stici_NormHiLite(\'normhilite1\', {' +
-        '    hiLiteHi: ' + (zscore).toString() + ',' +
-        '    hiLiteLo: ' + (-zscore).toString() +
-        '  });' +
-        '});' +
-        '</sc'+'ript>' +
         '</p> ' +
         '<p> Using the normal approximation, the chance that the sample percentage ' +
         'would be within &plusmn;' + zscore.toString() + 'SE of the population  ' +
@@ -1793,6 +1785,12 @@
     writeTextExercise(8, qCtr++, numToRange(sam,0.1));
     document.writeln('</p>');
     writeSolution(pCtr-1,ansStr);
+    jQuery(function() {
+          new Stici_NormHiLite('normhilite1', {
+            hiLiteHi:  (zscore).toString(),
+            hiLiteLo:  (-zscore).toString()
+          });
+        });
 // -->
 </script>
 </p>

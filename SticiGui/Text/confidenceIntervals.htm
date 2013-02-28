@@ -1506,14 +1506,6 @@ jQuery(function() {
         'on the normal curve. The area under the normal curve between &plusmn;' +
         hitStr + ' is ' + cl.toString() + '%:</p><p class="figure">' +
          '<div id="normhilite2" class="curvehilite"></div>' +
-         '<script>' +
-         'jQuery(function() {' +
-         '  new Stici_NormHiLite(\'normhilite2\', {' +
-         '    hiLiteHi: ' + hitStr + ',' +
-         '    hiLiteLo: -' + hitStr +
-         '  });' +
-         '});' +
-         '</sc'+'ript>' +
         '</p><p>The confidence interval is thus </p><p class="math">' +
         '[' + pctStr + ' &minus; ' + hitStr + '&times;' + sStr + '/(' +
         samSize.toString() + ')<sup>&frac12;</sup>, ' +
@@ -1562,16 +1554,13 @@ jQuery(function() {
     document.writeln('</p>');
     var ex2df = samSize-1;
     var ex2Lim = hit;
-    var thisApplet1 = document.applets.length;
-    var setThisApplet = function(thisApplet1) {
-                           return function() {
-                              waitForAppletIterationCount = 0;
-                              waitForApplet(thisApplet1,
-                                            function(){/*document.applets[thisApplet1].setLimits((-ex2Lim).toString(),ex2Lim.toString())*/}
-                                           );
-                           }
-                        }
-    writeSolution(pCtr-1, ansStr, setThisApplet());
+    writeSolution(pCtr-1, ansStr, function() {});
+    jQuery(function() {
+           new Stici_NormHiLite('normhilite2', {
+             hiLiteHi:  hitStr,
+             hiLiteLo: -hitStr
+           });
+         });
 // -->
 </script>
 </div>
@@ -1702,14 +1691,6 @@ jQuery(function() {
            'between &plusmn;' + ex3Lim.toString() + ' is ' + cl.toString() + '%:</p>' +
            '<p class="figure">' +
            '<div id="normhilite3" class="curvehilite"></div>' +
-           '<script>' +
-           'jQuery(function() {' +
-           '  new Stici_NormHiLite(\'normhilite3\', {' +
-           '    hiLiteHi: ' + ex3Lim.toString() + ',' +
-           '    hiLiteLo: -' + ex3Lim.toString() +
-           '  });' +
-           '});' +
-           '</sc'+'ript>' +
            '</p>' +
            '<p>Thus, an approximate ' + cl.toString() +
            '% confidence interval would be centered at the sample mean, and extend ' +
@@ -1725,9 +1706,12 @@ jQuery(function() {
            roundToDig(samMean - width,3).toString() + ' points, ' +
            roundToDig(samMean + width,3).toString() + ' points ]</p> ';
     document.writeln(qStr);
-    ex3AppletNum = document.applets.length - 1;
-    sectionContext += '//document.applets[ex3AppletNum].' +
-              'setLimits((-ex3Lim).toString(),ex3Lim.toString());\n';
+    jQuery(function() {
+             new Stici_NormHiLite('normhilite3', {
+                hiLiteHi:  ex3Lim,
+                hiLiteLo: -ex3Lim
+             });
+           });
 // -->
 </script>
 </p>
@@ -1779,14 +1763,6 @@ jQuery(function() {
            'between &plusmn;' + ex4Lim.toString() + ' is ' + cl.toString() + '%:</p>' +
            '<p class="figure">' +
            '<div id="normhilite4" class="curvehilite"></div>' +
-           '<script>' +
-           'jQuery(function() {' +
-           '  new Stici_NormHiLite(\'normhilite4\', {' +
-           '    hiLiteHi: ' + ex4Lim.toString() + ',' +
-           '    hiLiteLo: -' + ex4Lim.toString() +
-           '  });' +
-           '});' +
-           '</sc'+'ript>' +
            '</p><p>An approximate ' + cl.toString() +
            '% confidence interval would thus be centered at the sample mean, and extend ' +
            'down and up by ' + ex4Lim.toString() + ' standard units.  The estimated ' +
@@ -1801,16 +1777,13 @@ jQuery(function() {
            'interval is </p><p class="math">[ ' +
            roundToDig(samMean - width,3).toString() + ' thousand hours, ' +
            roundToDig(samMean + width,3).toString() + ' thousand hours  ].</p> ';
-    var thisApplet2 = document.applets.length;
-    var setThisApplet = function(thisApplet2) {
-                           return function() {
-                              waitForAppletIterationCount = 0;
-                              waitForApplet(thisApplet2,
-                                            function(){document.applets[thisApplet2].setLimits((-ex4Lim).toString(),ex4Lim.toString())}
-                                           );
-                           }
-                        }
-    writeSolution(pCtr-1, ansStr, setThisApplet());
+    writeSolution(pCtr-1, ansStr, function(){} );
+    jQuery(function() {
+             new Stici_NormHiLite('normhilite4', {
+                 hiLiteHi: ex4Lim,
+                 hiLiteLo: -ex4Lim
+             });
+           });
 // -->
 </script>
 </div>
@@ -2137,17 +2110,6 @@ jQuery(function() {
         '%:</p><p class="figure">' +
         '<div id="hist2" class="histogram">' +
         '</div>' +
-        '<scr' + 'ipt>' +
-        'jQuery(function() {' +
-        '  new Stici_HistHiLite(\'hist2\', {' +
-        '    n: ' + nVal1.toString() + ',' +
-        '    p: 0.5,' +
-        '    hiLiteHi: ' + limHi.toString() + ',' +
-        '    hiLiteLo: ' + limLo.toString() + ',' +
-        '    showNormalButton: false' +
-        '  });' +
-        '});' +
-        '</scr'+'ipt>' +
         '</p>' +
         '<p>Thus the interval from the ' + ordinals[j] + ' smallest datum to the ' +
         ordinals[nVal1-j] + ' smallest datum is a ' +
@@ -2175,20 +2137,16 @@ jQuery(function() {
     var aVal = alphabet[nVal1 - j ];
     writeSelectExercise(false,qCtr++,opt,aVal);
     var qStr = '<span class="qSpan">datum.</span></p>';
-    var thisApplet3 = document.applets.length;
-    var setThisApplet = function(thisApplet3) {
-                           return function() {
-                              waitForAppletIterationCount = 0;
-                              waitForApplet(thisApplet3,
-                                            function(){document.applets[thisApplet3].setNP(nVal1, 0.5)}
-                                           );
-                              waitForAppletIterationCount = 0;
-                              waitForApplet(thisApplet3,
-                                            function(){document.applets[thisApplet3].setLimits(limLo.toString(),limHi.toString())}
-                                           );
-                           }
-                        }
-    writeSolution(pCtr-1, ansStr, setThisApplet());
+    writeSolution(pCtr-1, ansStr, function(){});
+    jQuery(function() {
+          new Stici_HistHiLite('hist2', {
+            n: nVal1.toString(),
+            p: 0.5,
+            hiLiteHi: limHi.toString(),
+            hiLiteLo: limLo.toString(),
+            showNormalButton: false
+          });
+        });
 // -->
 </script>
 </div>
