@@ -6,7 +6,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "27 February 2013 21:47 PST";
+	pageModDate = "28 February 2013 00:21 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -1058,14 +1058,6 @@ jQuery(function() {
          roundToDig(thresh1Hi,3).toString() + ' standard units is:</p>' +
          '<p class="figure">' +
          '<div id="normhilite8" class="curvehilite"></div>' +
-         '<script>' +
-         'jQuery(function() {' +
-         '  new Stici_NormHiLite(\'normhilite8\', {' +
-         '    hiLiteHi: ' + thresh1Hi.toString() + ',' +
-         '    hiLiteLo: ' + thresh1Lo.toString() +
-         '  });' +
-         '});' +
-         '</sc'+'ript>' +
          '</p><p>Thus the chance that ' +
          'the sum of ' + nDraws.toString() + ' draws from this box is between ' +
          roundToDig(sumThreshLo,3).toString() + ' and ' +
@@ -1082,6 +1074,12 @@ jQuery(function() {
     writeTextExercise(8,qCtr++,numToRange(prob1,0.002));
     document.writeln('</p>');
     writeSolution(pCtr-1, ansStr, function() {});
+    jQuery(function() { new Stici_NormHiLite('normhilite8', {
+                        hiLiteHi: thresh1Hi.toString(),
+                        hiLiteLo: thresh1Lo.toString()
+                      });
+         });
+
 // -->
 </script>
 </div>
@@ -1124,14 +1122,6 @@ jQuery(function() {
            'curve from ' + roundToDig(thresh2,3).toString() + ' standard units up ' +
            'to infinity is:</p><p class="figure">' +
            '<div id="normhilite9" class="curvehilite"></div>' +
-           '<script>' +
-           'jQuery(function() {' +
-           '  new Stici_NormHiLite(\'normhilite9\', {' +
-           '    hiLiteLo: ' + thresh2.toString() + ',' +
-           '    hiLiteHi: 100' +
-           '  });' +
-           '});' +
-           '</sc'+'ript>' +
            '</p><p>Thus the chance that the sum of ' + nDraws.toString() +
            ' draws from this box is at least ' + roundToDig(sumThresh,3).toString() +
            ' is about ' + roundToDig(100*tailProb,1).toString() + '%.</p>';
@@ -1143,8 +1133,13 @@ jQuery(function() {
     document.writeln(qStr);
     writeTextExercise(8,qCtr++,numToRange(tailProb,0.002));
     document.writeln('</p>');
-    var prob2Applet = document.applets.length;
     writeSolution(pCtr-1, ansStr, function(){});
+    jQuery(function() {
+             new Stici_NormHiLite('normhilite9', {
+               hiLiteLo: thresh2.toString(),
+               hiLiteHi: 100
+             });
+           });
 // -->
 </script>
 </div>
