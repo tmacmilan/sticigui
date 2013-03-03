@@ -2105,11 +2105,7 @@ $(document).ready(function() {
                      .hide();
     $(".solLink").click(function() {
                       $(this).parent().next().toggle();
-                      if ($(this).text() == '[+Solution]') {
-                          $(this).text('[-Solution]');
-                      } else {
-                          $(this).text('[+Solution]');
-                      }
+                      $(this).text( ($(this).text() == '[+Solution]') ? '[-Solution]' : '[+Solution]');
                //       pushSolutionOpened($(this));  // for analytics
                       return(false);
     });
@@ -2117,11 +2113,7 @@ $(document).ready(function() {
                   .hide();
     $(".fnLink").click(function() {
                       $(this).parent().next().toggle();
-                      if ($(this).text() == '[+]') {
-                          $(this).text('[-]');
-                      } else {
-                          $(this).text('[+]');
-                      }
+                      $(this).text( ($(this).text() == '[+]') ? '[-]' : '[+]');
                //       pushFootnoteOpened($(this));  // for analytics
                       return(false);
                 })
