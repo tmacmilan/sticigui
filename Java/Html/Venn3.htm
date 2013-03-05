@@ -28,6 +28,15 @@
     writeChapterHead('SeEd','','Venn Diagrams and Probability: 3 Sets',true,'../../SticiGui');
 // -->
 </script>
+    <style type="text/css">
+.venn {
+  width: 900px;
+  height: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
 </head>
 
 <body >
@@ -40,13 +49,14 @@
 
 
 <p align="center">
-
-<APPLET CODE="Venn3.class" WIDTH=900 HEIGHT=400 archive="PbsGui.zip" codebase="..">
-
-   You need Java to see this.
-
-</APPLET>
-
+<div id="venn1" class="venn"></div>
+<script type="text/javascript">
+jQuery(function() {
+  new Stici_Venn3('venn1', {
+    showConditional: true
+  });
+});
+</script>
 </p>
 
 
