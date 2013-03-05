@@ -239,21 +239,24 @@ function Stici_HistHiLite(container_id, params) {
 
     self.areaFromSlider.slider('option', 'min', self.binEnds.min());
     self.areaFromSlider.slider('option', 'max', self.binEnds.max());
-    if (self.options.hiLiteLo === null) {
-      self.areaFromSlider.slider('option', 'value', self.binEnds.min());
-      self.areaFromInput.val(self.binEnds.min());
-    } else {
-      self.areaFromSlider.slider('option', 'value', self.options.hiLiteLo);
-      self.areaFromInput.val(self.options.hiLiteLo);
-    }
     self.areaToSlider.slider('option', 'min', self.binEnds.min());
     self.areaToSlider.slider('option', 'max', self.binEnds.max());
-    if (self.options.hiLiteHi === null) {
-      self.areaToSlider.slider('option', 'value', self.binEnds.min());
-      self.areaToInput.val(self.binEnds.min());
-    } else {
-      self.areaToSlider.slider('option', 'value', self.options.hiLiteHi);
-      self.areaToInput.val(self.options.hiLiteHi);
+
+    if (!self.dataIsBinomial) {
+      if (self.options.hiLiteLo === null) {
+        self.areaFromSlider.slider('option', 'value', self.binEnds.min());
+        self.areaFromInput.val(self.binEnds.min());
+      } else {
+        self.areaFromSlider.slider('option', 'value', self.options.hiLiteLo);
+        self.areaFromInput.val(self.options.hiLiteLo);
+      }
+      if (self.options.hiLiteHi === null) {
+        self.areaToSlider.slider('option', 'value', self.binEnds.min());
+        self.areaToInput.val(self.binEnds.min());
+      } else {
+        self.areaToSlider.slider('option', 'value', self.options.hiLiteHi);
+        self.areaToInput.val(self.options.hiLiteHi);
+      }
     }
 
     if (self.dataIsBinomial) {
@@ -648,14 +651,15 @@ function Stici_HistHiLite(container_id, params) {
       self.areaFromInput = jQuery('<input type="text" />').change(function() {
         self.areaFromSlider.slider('value', self.areaFromInput.val());
       });
-      var updateAreaFromInput = function() {
-        self.areaFromInput.val(self.areaFromSlider.slider('value'));
+      var updateAreaFromInput = function(event, ui) {
+        self.areaFromInput.val(ui.value);
         refreshSelectedAreaOverlay();
       };
       self.areaFromSlider = jQuery('<span/>').addClass('slider').slider({
         change: updateAreaFromInput,
         slide: updateAreaFromInput,
-        step: self.dataIsBinomial ? 1.0 : 0.001
+        step: self.dataIsBinomial ? 1.0 : 0.001,
+        value: -0.5
       });
       row.append('Area from: ').append(self.areaFromInput)
                                 .append(self.areaFromSlider);
@@ -664,14 +668,15 @@ function Stici_HistHiLite(container_id, params) {
       self.areaToInput = jQuery('<input type="text" />').change(function() {
         self.areaToSlider.slider('value', self.areaToInput.val());
       });
-      var updateAreaToInput = function() {
-        self.areaToInput.val(self.areaToSlider.slider('value'));
+      var updateAreaToInput = function(event, ui) {
+        self.areaToInput.val(ui.value);
         refreshSelectedAreaOverlay();
       };
       self.areaToSlider = jQuery('<span/>').addClass('slider').slider({
         change: updateAreaToInput,
         slide: updateAreaToInput,
-        step: self.dataIsBinomial ? 1.0 : 0.001
+        step: self.dataIsBinomial ? 1.0 : 0.001,
+        value: -0.5
       });
       row.append(' to: ').append(self.areaToInput).append(self.areaToSlider);
 
@@ -690,6 +695,7 @@ function Stici_HistHiLite(container_id, params) {
       } else if(!self.dataIsBinomial) {
         row.append('Bins: ' + self.options.bins);
       }
+
       appendFooterRow(row);
     }
     function createRestrictionControls() {
@@ -992,8 +998,8 @@ function Stici_HistHiLite(container_id, params) {
   // Helper function that is called whenever any of the area overlay
   // sliders or inputs are changed.
   function refreshSelectedAreaOverlay() {
-    var lower = parseFloat(self.areaFromSlider.slider('value'));
-    var upper = parseFloat(self.areaToSlider.slider('value'));
+    var lower = parseFloat(self.areaFromInput.val());
+    var upper = parseFloat(self.areaToInput.val());
     var scale = self.chartDiv.width() /
       (self.binEnds.max() - self.binEnds.min());
     var left = (lower - self.binEnds.min()) * scale;
@@ -6096,9 +6102,9 @@ function Stici_Venn(container_id, params) {
   $.each(button_args, function(i, button_row) {
     var row = jQuery('<div/>').addClass('button_row');
     $.each(button_row, function(i, button) {
-      button.label = button.label.replace('c', '<sup>c</sup>');
-      button.label = button.label.replace('|', '&nbsp;|&nbsp;');
-      button.label = button.label.replace(' or ', '&nbsp;\u222A&nbsp;');
+      button.label = button.label.replace(/c/g, '<sup>c</sup>');
+      button.label = button.label.replace(/\|/g, '&nbsp;|&nbsp;');
+      button.label = button.label.replace(/ or /g, '&nbsp;\u222A&nbsp;');
 
       var button_div = jQuery('<div/>').addClass('button');
       row.append(button_div);
@@ -6356,6 +6362,9 @@ function Stici_Venn(container_id, params) {
 // params: A javascript object with various parameters to customize the chart.
 //  // Whether or not to render the conditional probability radio buttons.
 //  - showConditional: false
+//
+//  // Whether or not to show the P= labels
+//  - showProbabilities: true
 
 function Stici_Venn3(container_id, params) {
   var self = this;
@@ -6370,7 +6379,8 @@ function Stici_Venn3(container_id, params) {
 
   // Configuration option defaults.
   this.options = {
-    showConditional: false
+    showConditional: false,
+    showProbabilities: true
   };
 
   // Override options with anything specified by the user.
@@ -6429,7 +6439,7 @@ function Stici_Venn3(container_id, params) {
      {label: '{}'}]
   ];
 
-  if( this.options.showConditional) {
+  if (this.options.showConditional) {
     self.buttons_arr.push(
       [{label: 'P(A|B)', filled: b_fill, hilite: ab_fill},
        {label: 'P(Ac|B)', filled: ab_fill, hilite: b_fill},
@@ -6446,9 +6456,9 @@ function Stici_Venn3(container_id, params) {
     var row = jQuery('<div/>').addClass('button_row');
     button_row = $.map(button_row, function(button) {
       button.human_label = button.label;
-      button.label = button.label.replace('c', '<sup>c</sup>');
-      button.label = button.label.replace('|', '&nbsp;|&nbsp;');
-      button.label = button.label.replace(' or ', '&nbsp;\u222A&nbsp;');
+      button.label = button.label.replace(/c/g, '<sup>c</sup>');
+      button.label = button.label.replace(/\|/g, '&nbsp;|&nbsp;');
+      button.label = button.label.replace(/ or /g, '&nbsp;\u222A&nbsp;');
 
       if (button.opaque !== undefined) {
         if (!(button.opaque instanceof Array))
@@ -6670,47 +6680,53 @@ function Stici_Venn3(container_id, params) {
     intersect(a_outline, c_outline, ac_fill);
     intersect(ab_fill, bc_fill, abc_fill);
 
-    self.buttons['A'].p(a_outline.area());
-    self.buttons['B'].p(b_outline.area());
-    self.buttons['C'].p(c_outline.area());
-    self.buttons['Ac'].p(s_outline.area() - a_outline.area());
-    self.buttons['Bc'].p(s_outline.area() - b_outline.area());
-    self.buttons['Cc'].p(s_outline.area() - c_outline.area());
-    self.buttons['AB'].p(ab_fill.area());
-    self.buttons['AC'].p(ac_fill.area());
-    self.buttons['BC'].p(bc_fill.area());
-    self.buttons['A or B'].p(
-      a_outline.area() + b_outline.area() - ab_fill.area());
-    self.buttons['A or C'].p(
-      a_outline.area() + c_outline.area() - ac_fill.area());
-    self.buttons['B or C'].p(
-      b_outline.area() + c_outline.area() - bc_fill.area());
-    self.buttons['ABC'].p(abc_fill.area());
-    self.buttons['A or B or C'].p(
-      a_outline.area() + b_outline.area() + c_outline.area() -
-      ab_fill.area() - bc_fill.area() - bc_fill.area() +
-      abc_fill.area());
-    self.buttons['ABc'].p(a_outline.area() - ab_fill.area());
-    self.buttons['AcB'].p(b_outline.area() - ab_fill.area());
-    self.buttons['AcBC'].p(bc_fill.area() - abc_fill.area());
-    self.buttons['Ac or BC'].p(
-      s_outline.area() - a_outline.area() + abc_fill.area());
-    self.buttons['S'].p(s_outline.area());
-    self.buttons['{}'].p(0);
-    self.buttons['P(A|B)'].p(
-      ab_fill.area() / b_outline.area() * s_outline.area());
-    self.buttons['P(Ac|B)'].p(
-      s_outline.area() - ab_fill.area() / b_outline.area() * s_outline.area());
-    self.buttons['P(B|A)'].p(
-      ab_fill.area() / a_outline.area() * s_outline.area());
-    self.buttons['P(A|BC)'].p(
-      abc_fill.area() / bc_fill.area() * s_outline.area());
-    self.buttons['P(Ac|BC)'].p(
-      s_outline.area() - abc_fill.area() / bc_fill.area() * s_outline.area());
-    self.buttons['P(A|(B or C))'].p(
-      s_outline.area() *
-      (ab_fill.area() + ac_fill.area() - abc_fill.area()) /
-      (b_outline.area() + c_outline.area() - bc_fill.area()));
+    if (self.options.showProbabilities) {
+      self.buttons['A'].p(a_outline.area());
+      self.buttons['B'].p(b_outline.area());
+      self.buttons['C'].p(c_outline.area());
+      self.buttons['Ac'].p(s_outline.area() - a_outline.area());
+      self.buttons['Bc'].p(s_outline.area() - b_outline.area());
+      self.buttons['Cc'].p(s_outline.area() - c_outline.area());
+      self.buttons['AB'].p(ab_fill.area());
+      self.buttons['AC'].p(ac_fill.area());
+      self.buttons['BC'].p(bc_fill.area());
+      self.buttons['A or B'].p(
+        a_outline.area() + b_outline.area() - ab_fill.area());
+      self.buttons['A or C'].p(
+        a_outline.area() + c_outline.area() - ac_fill.area());
+      self.buttons['B or C'].p(
+        b_outline.area() + c_outline.area() - bc_fill.area());
+      self.buttons['ABC'].p(abc_fill.area());
+      self.buttons['A or B or C'].p(
+        a_outline.area() + b_outline.area() + c_outline.area() -
+        ab_fill.area() - bc_fill.area() - bc_fill.area() +
+        abc_fill.area());
+      self.buttons['ABc'].p(a_outline.area() - ab_fill.area());
+      self.buttons['AcB'].p(b_outline.area() - ab_fill.area());
+      self.buttons['AcBC'].p(bc_fill.area() - abc_fill.area());
+      self.buttons['Ac or BC'].p(
+        s_outline.area() - a_outline.area() + abc_fill.area());
+      self.buttons['S'].p(s_outline.area());
+      self.buttons['{}'].p(0);
+      if (self.options.showConditional) {
+        self.buttons['P(A|B)'].p(
+          ab_fill.area() / b_outline.area() * s_outline.area());
+        self.buttons['P(Ac|B)'].p(
+          s_outline.area() -
+          ab_fill.area() / b_outline.area() * s_outline.area());
+        self.buttons['P(B|A)'].p(
+          ab_fill.area() / a_outline.area() * s_outline.area());
+        self.buttons['P(A|BC)'].p(
+          abc_fill.area() / bc_fill.area() * s_outline.area());
+        self.buttons['P(Ac|BC)'].p(
+          s_outline.area() -
+          abc_fill.area() / bc_fill.area() * s_outline.area());
+        self.buttons['P(A|(B or C))'].p(
+          s_outline.area() *
+          (ab_fill.area() + ac_fill.area() - abc_fill.area()) /
+          (b_outline.area() + c_outline.area() - bc_fill.area()));
+      }
+    }
   }
 
   // Updates the sizes of the boxes according to their sliders.
