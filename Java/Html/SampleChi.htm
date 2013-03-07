@@ -40,37 +40,27 @@
 
 </h1>
 
-
-
 <p align="center">
+    <div id="samp" class="sampleDist">
+    </div>
 
-    <applet archive="PbsGui.zip" codebase=".."  code="SampleDist.class" WIDTH="640" HEIGHT="330">
-
-        <param name="variables" value="chi-squared">
-
-        <param name="showPopHist" value="false">
-
-        <param name="binControls" value="true">
-
-        <param name="curveControls" value="true">
-
-        <param name="showCurve" value="true">
-
-        <param name="boxHistControl" value="false">
-
-        <param name="boxEditable" value="true">
-
-        <param name="toggleVar" value="false">
-
-        <param name="bins" value="50">
-
-        <param name="boxContents" value="1,2,3,4">
-
-        <param name="sources" value="box">
-
-        You need Java to see this.
-
-    </applet>
+    <script>
+    jQuery(function() {
+      new Stici_Sample('samp', {
+        variables: chi-squared,
+        showPopHist: false,
+        binControls: true,
+        curveControls: true,
+	showCurve: true,
+        boxHistControl: true,
+	boxEditable: true,
+	toggleVar: false,
+	bins: 50,
+        boxContents: [0, 1, 2, 3, 4],
+        sources: box,
+      });
+    });
+    </script>
 
 </p>
 
