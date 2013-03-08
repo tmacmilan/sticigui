@@ -1160,20 +1160,24 @@
 </script>
 
 <p class="figure">
-    <applet code="SampleDist.class" codebase="../../Java/"
-        align="baseline" width="640" height="400" archive="PbsGui.zip">
-      <param name="variables" value="chi-squared">
-      <param name="startWith" value="chi-squared">
-      <param name="boxContents" value="1,2,3,4">
-      <param name="sources" value="box">
-      <param name="boxHistControl" value="false">
-      <param name="showBoxHist" value="false">
-      <param name="replaceControl" value="false">
-      <param name="bins" value="50">
-      <param name="hiLiteLo" value="7.8">
-      <param name="hiLiteHi" value="28">
-      You need Java to see this.
-    </applet>
+    <div id="samp" class="sampleDist">
+    </div>
+
+    <script>
+    jQuery(function() {
+      new Stici_Sample('sampChiSquared', {
+        variables: chi-squared,
+        startsWith: chi-squared,
+        boxContents: [1, 2, 3, 4],
+        sources: box,
+        boxHistControl: false,
+        replaceControl: false,
+        bins: 50,
+        hiLiteLo: 7.8,
+        hiLiteHi: 28
+      });
+    });
+    </script>
 </p>
 </div>
 
@@ -1539,20 +1543,7 @@ jQuery(function() {
            '<em>P</em>-value we would use in an approximate chi-squared test of the ' +
            'null hypothesis that the die is fair.  We would reject the hypothesis that ' +
            'the die is fair at any significance level greater than the <em>P</em>-value. ' +
-           '</p><p class="figure"><applet code="SampleDist.class" codebase="../../Java/" ' +
-           'align="baseline" width="640" height="400" archive="PbsGui.zip"> ' +
-           '<param name="variables" value="chi-squared"> ' +
-           '<param name="startWith" value="chi-squared"> ' +
-           '<param name="boxContents" value="1,1,1,1,1,1"> ' +
-           '<param name="sampleSize" value="' + rolls.toString() + '">' +
-           '<param name="samplesToTake" value="1000">' +
-           '<param name="sources" value="box"> ' +
-           '<param name="boxHistControl" value="false"> ' +
-           '<param name="showBoxHist" value="false"> ' +
-           '<param name="replaceControl" value="false"> ' +
-           '<param name="bins" value="50"> ' +
-           '<param name="hiLiteLo" value="' + chi2.toString() + '"> ' +
-           '<param name="hiLiteHi" value="35">You need Java to see this.</applet></p>';
+           '</p><p class="figure">' + '<div id="samp" class="sampleDist"></div></p>';
     document.writeln(qStr);
     var appNum = (document.applets.length - 1).toString();
     sectionContext += 'document.applets[' + appNum + '].' +
@@ -1570,15 +1561,31 @@ jQuery(function() {
            'in the null hypothesis is </p><p class="math">';
     var chi2b = 0.0;
     for (var i = 0; i < pVec.length; i++) {
-    expected = rolls*pVec[i];
-    chi2b += (outcomes[i] - expected)*(outcomes[i] - expected)/expected;
-    expStr = roundToDig(expected, 2).toString();
-    qStr += ' (' + outcomes[i] + ' - ' + expStr + ')<sup>2</sup>/' + expStr + ' +';
+      expected = rolls*pVec[i];
+      chi2b += (outcomes[i] - expected)*(outcomes[i] - expected)/expected;
+      expStr = roundToDig(expected, 2).toString();
+      qStr += ' (' + outcomes[i] + ' - ' + expStr + ')<sup>2</sup>/' + expStr + ' +';
     }
     qStr = qStr.substr(0, qStr.length-1);
     qStr += ' = ' + roundToDig(chi2b,2).toString() + '</p><p>The corresponding ' +
         '<em>P</em>-value is ' + roundToDig(100*(1 - chi2Cdf(df, chi2b)),2) + '%.';
     document.writeln(qStr);
+    jQuery(function() { 
+      new Stici_Sample('sampChiSquared2', { 
+        variables: 'chi-squared',
+        startsWith: 'chi-squared',
+        boxContents: [1, 1, 1, 1, 1, 1],
+        sampleSize: rolls.toString(),
+        samplesToTake: 1000,
+        sources: 'box',
+        boxHistControl: false,
+        showBoxHist: false,
+        replaceControl: false,
+        bins: 50,
+        hiLiteLo: chi2.toString(),
+        hiLiteHi: 35
+      });
+    });
 // -->
 </script>
 </p>

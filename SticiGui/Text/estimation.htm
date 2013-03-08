@@ -569,21 +569,25 @@
 </script>
 
 <p class="figure">
-    <applet code="SampleDist.class" codebase="../../Java/" align="baseline" width="640"
-        archive="PbsGui.zip" height="360" name="seApplet">
-    <param name="variables" value="mean">
-    <param name="startWith" value="mean">
-    <param name="boxContents" value="0,1,2,3,4,5,6,7,8,9,10">
-    <param name="sources" value="box">
-    <param name="boxHistControl" value="false">
-    <param name="showBoxHist" value="false">
-    <param name="replaceControl" value="false">
-    <param name="curveControls" value="false">
-    <param name="showCurve" value="false">
-    <param name="sampleSize" value="5">
-    <param name="replace" value="false">
-        You need Java to see this.
-    </applet>
+    <div id="samp" class="sampleDist">
+    </div>
+
+    <script>
+    jQuery(function() {
+      new Stici_Sample('samp', {
+        variables: mean,
+        startsWith: mean,
+        boxContents: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        sources: box,
+        boxHistControl: false,
+        replaceControl: false,
+        curveControls: false,
+        showCurve: false,
+        sampleSize: 5,
+        replace: false
+      });
+    });
+    </script>
 </p>
 
 <script language="JavaScript1.8" type="text/javascript"><!--
@@ -1291,21 +1295,22 @@
 </script>
 
 <p class="figure">
-    <applet code="SampleDist.class" codebase="../../Java/" align="baseline" width="640"
-        archive="PbsGui.zip" height="360" name="seApplet">
-    <param name="variables" value="s-squared">
-    <param name="startWith" value="s-squared">
-    <param name="boxContents" value="0,1,2,3,4,5,6,7,8,9,10">
-    <param name="sources" value="box">
-    <param name="boxHistControl" value="false">
-    <param name="showBoxHist" value="false">
-    <param name="replaceControl" value="true">
-    <param name="curveControls" value="false">
-    <param name="showCurve" value="false">
-    <param name="sampleSize" value="5">
-    <param name="replace" value="false">
-        You need Java to see this.
-    </applet>
+    <script>
+    jQuery(function() {
+      new Stici_Sample('sampSquared', {
+        variables: s-squared,
+        startsWith: s-squared,
+        boxContents: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        sources: box,
+        boxHistControl: false,
+        replaceControl: true,
+        curveControls: false,
+        showCurve: false,
+        sampleSize: 5,
+        replace: false
+      });
+    });
+    </script>
 </p>
 
 <script language="JavaScript1.8" type="text/javascript"><!--
