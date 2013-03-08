@@ -582,19 +582,24 @@
     SE of the sample sum as the number of samples grows.
 </p>
 <p class="figure">
-    <applet code="SampleDist.class" codebase="../../Java/" align="baseline" width="640"
-       archive="PbsGui.zip" height="360">
-    <param name="variables" value="sum">
-    <param name="startWith" value="sum">
-    <param name="curveControls" value="false">
-    <param name="showCurve" value="false">
-    <param name="boxContents" value="0,1,2,3,4">
-    <param name="showBoxHist" value="false">
-    <param name="boxHistControl" value="false">
-    <param name="sources" value="box">
-    <param name="replaceControl" value="false">
-    You need Java to see this.
-    </applet>
+    <div id="samp" class="sampleDist">
+    </div>
+
+    <script>
+    jQuery(function() {
+      new Stici_Sample('sampSum', {
+        variables: 'sum',
+        startsWith: 'sum',
+        curveControls: false,
+	      showCurve: false,
+        boxContents: [0, 1, 2, 3, 4],
+        showBoxHist: false,
+        boxHistControl: false,
+        sources: 'box',
+	      replace: false
+      });
+    });
+    </script>
 </p>
 </div>
 
@@ -1484,19 +1489,24 @@
     of the sample sum as the number of samples grows.
 </p>
 <p class="figure">
-    <applet code="SampleDist.class" codebase="../../Java/" align="baseline" width="640"
-       archive="PbsGui.zip" height="360">
-    <param name="variables" value="mean">
-    <param name="startWith" value="mean">
-    <param name="curveControls" value="false">
-    <param name="showCurve" value="false">
-    <param name="boxContents" value="0,1,2,3,4">
-    <param name="showBoxHist" value="false">
-    <param name="boxHistControl" value="false">
-    <param name="sources" value="box">
-    <param name="replaceControl" value="false">
-    You need Java to see this.
-    </applet>
+    <div id="samp" class="sampleDist">
+    </div>
+
+    <script>
+    jQuery(function() {
+      new Stici_Sample('sampMean', {
+        variables: 'mean',
+        startsWith: 'mean',
+        curveControls: false,
+	      showCurve: false,
+        boxContents: [0, 1, 2, 3, 4],
+        showBoxHist: false,
+        boxHistControl: false,
+        sources: 'box',
+	      replace: false
+      });
+    });
+    </script>
 </p>
 </div>
 
@@ -2252,20 +2262,25 @@
 </script>
 
 <p class="figure">
-    <applet code="SampleDist.class" codebase="../../Java/" align="baseline" width="640"
-       archive="PbsGui.zip" height="360">
-    <param name="variables" value="sum,mean">
-    <param name="startWith" value="sum">
-    <param name="boxContents" value="0,1,2,2,3,4,4,7">
-    <param name="showBoxHist" value="false">
-    <param name="boxHistControl" value="true">
-    <param name="sources" value="box">
-    <param name="replaceControl" value="true">
-    <param name="curveControls" value="false">
-    <param name="showCurve" value="false">
-    <param name="sampleSize" value="3">
-    You need Java to see this.
-    </applet>
+    <div id="samp" class="sampleDist">
+    </div>
+
+    <script>
+    jQuery(function() {
+      new Stici_Sample('sampMean', {
+        variables: ['sum', 'mean'],
+        startsWith: 'sum',
+        boxContents: [0, 1, 2, 2, 3, 4, 4, 7],
+        showBoxHist: false,
+        boxHistControl: true,
+        sources: 'box',
+	      replace: true,
+        curveControls: false,
+        showCurve: false,
+        sampleSize: 3
+      });
+    });
+    </script>
 </p>
 </div>
 
