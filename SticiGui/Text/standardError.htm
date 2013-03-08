@@ -582,12 +582,12 @@
     SE of the sample sum as the number of samples grows.
 </p>
 <p class="figure">
-    <div id="samp" class="sampleDist">
+    <div id="samp1" class="sampleDist">
     </div>
 
     <script>
     jQuery(function() {
-      new Stici_Sample('sampSum', {
+      new Stici_Sample('samp', {
         variables: 'sum',
         startsWith: 'sum',
         curveControls: false,
@@ -1489,12 +1489,12 @@
     of the sample sum as the number of samples grows.
 </p>
 <p class="figure">
-    <div id="samp" class="sampleDist">
+    <div id="samp2" class="sampleDist">
     </div>
 
     <script>
     jQuery(function() {
-      new Stici_Sample('sampMean', {
+      new Stici_Sample('samp', {
         variables: 'mean',
         startsWith: 'mean',
         curveControls: false,
@@ -2267,7 +2267,7 @@
 
     <script>
     jQuery(function() {
-      new Stici_Sample('sampMean', {
+      new Stici_Sample('samp', {
         variables: ['sum', 'mean'],
         startsWith: 'sum',
         boxContents: [0, 1, 2, 2, 3, 4, 4, 7],
