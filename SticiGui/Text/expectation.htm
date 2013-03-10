@@ -374,15 +374,16 @@
     <script>
     jQuery(function() {
       new Stici_SampleDist('samp1', {
+        bins: 30,
         variables: 'sum',
         startsWith: 'sum',
         boxContents: "0, 1, 1, 4",
         sources: 'box',
         boxHistControl: false,
-	      showCurve: false,
+        showCurve: false,
         curveControls: false,
         showBoxHist: false,
-	      replaceControl: false,
+        replaceControl: false,
         sampleSize: 1
       });
     });
@@ -1018,16 +1019,17 @@
     <script>
     jQuery(function() {
       new Stici_SampleDist('samp2', {
+        bins: 30,
         variables: 'sum',
         startsWith: 'sum',
         boxContents: "0, 1, 1, 4",
         sources: 'box',
         boxHistControl: false,
-	      showCurve: false,
+        showCurve: false,
         curveControls: false,
         toggleMean: false,
         showBoxHist: false,
-	      replaceControl: true,
+        replaceControl: true,
         sampleSize: 2
       });
     });

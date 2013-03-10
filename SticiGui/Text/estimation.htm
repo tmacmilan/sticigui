@@ -573,11 +573,13 @@
     </div>
 
     <script>
+    randBoxContents = listOfRandInts(20,0,50).join(',');
     jQuery(function() {
       new Stici_SampleDist('samp1', {
+        bins: 30,
         variables: 'mean',
         startsWith: 'mean',
-        boxContents: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10",
+        boxContents: randBoxContents,
         sources: 'box',
         boxHistControl: false,
         showBoxHist: false,
@@ -590,14 +592,6 @@
     });
     </script>
 </p>
-
-<script language="JavaScript1.8" type="text/javascript"><!--
-    var randBoxContents = listOfRandInts(20,0,50).join(',');
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum + '].' +
-              'setBox(randBoxContents,true);\n';
-// -->
-</script>
 </div>
 
 <p>
@@ -1301,9 +1295,10 @@
     <script>
     jQuery(function() {
       new Stici_SampleDist('samp2', {
+        bins: 30,
         variables: 's-squared',
         startsWith: 's-squared',
-        boxContents: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10",
+        boxContents: randBoxContents,
         sources: 'box',
         boxHistControl: false,
         showBoxHist: false,
@@ -1316,13 +1311,6 @@
     });
     </script>
 </p>
-
-<script language="JavaScript1.8" type="text/javascript"><!--
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum + '].' +
-              'setBox(randBoxContents,true);\n';
-// -->
-</script>
 </div>
 
 <p>
