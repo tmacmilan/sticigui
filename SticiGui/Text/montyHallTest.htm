@@ -249,16 +249,16 @@
 </script>
 
 <p class="figure">
-    <div id="samp" class="sampleDist">
+    <div id="samp" class="sampledist">
     </div>
 
     <script>
     jQuery(function() {
-      new Stici_Sample('samp', {
+      new Stici_SampleDist('samp', {
         bins: 51,
         sources: 'box',
 	      sampleSize: 50,
-        boxContents: [0, 1],
+        boxContents: "0, 1",
         boxHistControl: false,
         variables: 'sum',
 	      showBoxHist: false,

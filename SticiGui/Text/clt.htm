@@ -678,22 +678,22 @@ jQuery(function() {
 </script>
 
 <p class="figure">
-    <div id="samp" class="sampleDist">
+    <div id="samp" class="sampledist">
     </div>
 
     <script>
     jQuery(function() {
-      new Stici_Sample('samp', {
+      new Stici_SampleDist('samp', {
         bins: 100,
-        variables: ['sum', 'mean'],
+        variables: "sum mean",
         startsWith: 'sum',
         sources: 'box',
         toggleMean: true,
 	      showBoxHist: false,
         replaceControl: false,
-        boxContents: [0, 1, 2, 3, 4],
+        boxContents: "0, 1, 2, 3, 4",
         boxHistControl: false,
-        curveControls: false,
+        curveControls: true,
         curves: 'normal',
 	      sampleSize: 5,
         showCurve: true,

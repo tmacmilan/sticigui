@@ -34,15 +34,15 @@
 
 
 <p align="center">
-    <div id="samp" class="sampleDist">
+    <div id="samp" class="sampledist">
     </div>
 
     <script>
     jQuery(function() {
-      new Stici_Sample('samp', {
-        variables: ['mean', 'sum', 's-squared'],
+      new Stici_SampleDist('samp', {
+        variables: "mean sum s-squared",
         startsWith: 'mean',
-        boxContents: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        boxContents: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10",
         sources: 'box',
         boxHistControl: false,
 	      showBoxHist: false,

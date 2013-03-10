@@ -46,20 +46,20 @@
   </script>
 </p>
 <p align="center">
-  <div id="samp" class="sample">
+  <div id="samp" class="sampledist">
   </div>
 
   <script>
   jQuery(function() {
-    new Stici_Sample('samp', {
+    new Stici_SampleDist('samp', {
       samplesToTake: 10000,
       sampleSize: 10,
       sources: 'box',
-      boxContents: [0, 0, 0, 1, 5],
-      variables: ['mean', 'sum'],
+      boxContents: "0, 0, 0, 1, 5",
+      variables: "mean sum",
       showBoxHist: false,
       showCurve: true,
-      curves: 'normal'
+      curves: 'none normal'
     });
   });
   </script>

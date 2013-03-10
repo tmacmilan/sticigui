@@ -582,17 +582,17 @@
     SE of the sample sum as the number of samples grows.
 </p>
 <p class="figure">
-    <div id="samp1" class="sampleDist">
+    <div id="samp1" class="sampledist">
     </div>
 
     <script>
     jQuery(function() {
-      new Stici_Sample('samp', {
+      new Stici_SampleDist('samp1', {
         variables: 'sum',
         startsWith: 'sum',
         curveControls: false,
 	      showCurve: false,
-        boxContents: [0, 1, 2, 3, 4],
+        boxContents: "0, 1, 2, 3, 4",
         showBoxHist: false,
         boxHistControl: false,
         sources: 'box',
@@ -1489,17 +1489,17 @@
     of the sample sum as the number of samples grows.
 </p>
 <p class="figure">
-    <div id="samp2" class="sampleDist">
+    <div id="samp2" class="sampledist">
     </div>
 
     <script>
     jQuery(function() {
-      new Stici_Sample('samp', {
+      new Stici_SampleDist('samp2', {
         variables: 'mean',
         startsWith: 'mean',
         curveControls: false,
 	      showCurve: false,
-        boxContents: [0, 1, 2, 3, 4],
+        boxContents: "0, 1, 2, 3, 4",
         showBoxHist: false,
         boxHistControl: false,
         sources: 'box',
@@ -2262,19 +2262,20 @@
 </script>
 
 <p class="figure">
-    <div id="samp" class="sampleDist">
+    <div id="samp3" class="sampledist">
     </div>
 
     <script>
     jQuery(function() {
-      new Stici_Sample('samp', {
-        variables: ['sum', 'mean'],
+      new Stici_SampleDist('samp3', {
+        variables: 'sum mean',
         startsWith: 'sum',
-        boxContents: [0, 1, 2, 2, 3, 4, 4, 7],
+        boxContents: "0, 1, 2, 2, 3, 4, 4, 7",
         showBoxHist: false,
         boxHistControl: true,
         sources: 'box',
 	      replace: true,
+        replaceControl: true,
         curveControls: false,
         showCurve: false,
         sampleSize: 3

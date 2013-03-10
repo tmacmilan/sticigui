@@ -1160,15 +1160,15 @@
 </script>
 
 <p class="figure">
-    <div id="samp" class="sampleDist">
+    <div id="samp1" class="sampledist">
     </div>
 
     <script>
     jQuery(function() {
-      new Stici_Sample('samp', {
+      new Stici_SampleDist('samp1', {
         variables: 'chi-squared',
         startsWith: 'chi-squared',
-        boxContents: [1, 2, 3, 4],
+        boxContents: "1, 2, 3, 4",
         sources: 'box',
         boxHistControl: false,
         replaceControl: false,
@@ -1543,7 +1543,7 @@ jQuery(function() {
            '<em>P</em>-value we would use in an approximate chi-squared test of the ' +
            'null hypothesis that the die is fair.  We would reject the hypothesis that ' +
            'the die is fair at any significance level greater than the <em>P</em>-value. ' +
-           '</p><p class="figure">' + '<div id="samp2" class="sampleDist"></div></p>';
+           '</p><p class="figure">' + '<div id="samp2" class="sampledist"></div></p>';
     document.writeln(qStr);
     var appNum = (document.applets.length - 1).toString();
     sectionContext += 'document.applets[' + appNum + '].' +
@@ -1571,10 +1571,10 @@ jQuery(function() {
         '<em>P</em>-value is ' + roundToDig(100*(1 - chi2Cdf(df, chi2b)),2) + '%.';
     document.writeln(qStr);
     jQuery(function() { 
-      new Stici_Sample('samp', { 
+      new Stici_SampleDist('samp2', { 
         variables: 'chi-squared',
         startsWith: 'chi-squared',
-        boxContents: [1, 1, 1, 1, 1, 1],
+        boxContents: "1, 1, 1, 1, 1, 1",
         sampleSize: rolls.toString(),
         samplesToTake: 1000,
         sources: 'box',

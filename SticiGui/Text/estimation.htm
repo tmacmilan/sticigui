@@ -569,17 +569,18 @@
 </script>
 
 <p class="figure">
-    <div id="samp" class="sampleDist">
+    <div id="samp1" class="sampledist">
     </div>
 
     <script>
     jQuery(function() {
-      new Stici_Sample('samp', {
+      new Stici_SampleDist('samp1', {
         variables: 'mean',
         startsWith: 'mean',
-        boxContents: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        boxContents: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10",
         sources: 'box',
         boxHistControl: false,
+        showBoxHist: false,
         replaceControl: false,
         curveControls: false,
         showCurve: false,
@@ -1295,16 +1296,17 @@
 </script>
 
 <p class="figure">
-    <div id="samp2" class="sampleDist">
+    <div id="samp2" class="sampledist">
     </div>
     <script>
     jQuery(function() {
-      new Stici_Sample('samp', {
+      new Stici_SampleDist('samp2', {
         variables: 's-squared',
         startsWith: 's-squared',
-        boxContents: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        boxContents: "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10",
         sources: 'box',
         boxHistControl: false,
+        showBoxHist: false,
         replaceControl: true,
         curveControls: false,
         showCurve: false,
