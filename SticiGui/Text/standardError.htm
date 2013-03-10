@@ -6,7 +6,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "10 March 2013 16:19 PDT";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -69,7 +69,7 @@
     its SE is small, while if a random variable is likely to differ
     substantially from its expected value, its SE must be large.
     (<a class="glossRef" href="gloss.htm#chebychev">Chebychev's inequality</a> for random variables,
-    presented in 
+    presented in
 <script language="JavaScript1.8" type="text/javascript"><!--
     document.writeln(citeLinkChapter('clt') + ', ');
 // -->
@@ -124,7 +124,7 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript"> <!--
     var nTosses = listOfRandInts(1, 2, 10)[0];
-    var opt = [ 
+    var opt = [
         '<span class="math">' + nTosses.toString() + '&nbsp;&minus;&nbsp;X</span>',
         '<span class="math">X<sup>2</sup></span>',
         '<span class="math">X/2</span>',
@@ -152,7 +152,7 @@
 </div>
 
 <p>
-    We saw in 
+    We saw in
 <script language="JavaScript1.8" type="text/javascript"><!--
     document.writeln(citeLinkChapter('expectation') + ', ');
 // -->
@@ -169,13 +169,13 @@
     Suppose that the discrete random variable <span class="math">Y</span> is defined in terms of the discrete random
     variable <span class="math">X</span>, so that <span class="math">Y = g(X)</span> for some known
     function <span class="math">g</span>.
-    There are two ways to calculate <span class="math">E(Y)</span>, the expected value 
+    There are two ways to calculate <span class="math">E(Y)</span>, the expected value
     of <span class="math">Y</span>:
 </p>
 
 <ul>
     <li>
-        Work directly from the definition of the expected value: 
+        Work directly from the definition of the expected value:
         If the possible values of <span class="math">Y</span>
         are <span class="math">y<sub>1</sub>, y<sub>2</sub>, y<sub>3</sub>, &hellip; </span>, then
         <p class="math">
@@ -193,7 +193,7 @@
         <p class="inlineMath">
         <span class="math">E(Y) =
         g(x<sub>1</sub>)&times;P(X = x<sub>1</sub>)
-        + g(x<sub>2</sub>)&times;P(X = x<sub>2</sub>) 
+        + g(x<sub>2</sub>)&times;P(X = x<sub>2</sub>)
         + g(x<sub>3</sub>)&times;P(X = x<sub>3</sub>) + &hellip; </span>
 <script language="JavaScript1.8" type="text/javascript"><!--
     var fStr = 'Here is a sketch of a proof: Consider the <span class="math">j</span>th term,</p>' +
@@ -249,7 +249,7 @@
     What is the <a class="glossRef" href="gloss.htm#expectation">expected value</a>
     of the square of a <a class="glossRef" href="gloss.htm#binomial">binomial</a>
     <a class="glossRef" href="gloss.htm#random_variable">random variable</a>
-      <span class="math">X</span> with parameters <span class="math">n=3</span> 
+      <span class="math">X</span> with parameters <span class="math">n=3</span>
       and <span class="math">p=50%</span>
       (for example, the number of heads in 3
       <a class="glossRef" href="gloss.htm#independent">independent</a>
@@ -266,25 +266,25 @@
 </script>
     essentially contains the calculation, using the &quot;shortcut&quot;
     method presented above:
-    <span class="math">E(X<sup>2</sup>)</span> is the sum of 
+    <span class="math">E(X<sup>2</sup>)</span> is the sum of
     <span class="math">x<sup>2</sup></span> times the
-    chance that <span class="math">X</span> takes the value <span class="math">x</span>, 
+    chance that <span class="math">X</span> takes the value <span class="math">x</span>,
     over all possible values <span class="math">x</span> that <span class="math">X</span> can take.
     The first column of the table lists the possible values <span class="math">x</span> of
     <span class="math">X</span>, which are <span class="math">{0, 1, 2, 3}</span>.
     The second column lists the probabilities of each those values; the first two columns
     comprise the probability distribution of <span class="math">X</span>.
-    The third column gives the values of the function 
+    The third column gives the values of the function
     <span class="math">g(x)=x<sup>2</sup></span>
     for each possible value <span class="math">x</span> of <span class="math">X</span>.
     The fourth column lists the products
     <span class="math">g(x)&times;P(X=x)</span>, for <span class="math">x=0, 1, 2, 3</span>.
     The sum of the entries in the fourth column, 24/8=3, is the expected value of
     <span class="math">g(X)=X<sup>2</sup></span>.
-    Note that the <a class="glossRef" href="gloss.htm#expectation">expected value</a> 
+    Note that the <a class="glossRef" href="gloss.htm#expectation">expected value</a>
     of the square of <span class="math">X</span>,
     <span class="math">E(X<sup>2</sup>)</span>, is not equal to
-    the square of the expected value of <span class="math">X</span>, 
+    the square of the expected value of <span class="math">X</span>,
     <span class="math">(E(X))<sup>2</sup></span>,
     which is (3/2)<sup>2</sup> = 2&nbsp;1/4.
     Only if <span class="math">g</span> is an <a class="glossRef" href="gloss.htm#affine">affine transformation</a>
@@ -467,7 +467,7 @@
     plus a contribution that is zero on average (<em>i.e.</em>,
     its expected value is zero), but that differs randomly
     from zero.
-    That is, one can think of <span class="math">X</span> as being equal to 
+    That is, one can think of <span class="math">X</span> as being equal to
     <span class="math">E(X) + Y</span>, where
     <span class="math">Y= X &minus; E(X)</span>.
     Then
@@ -578,7 +578,7 @@
 // -->
 </script>
 <p align="left">
-    For any fixed sample size, the SD of the observed values of the sample sum tends to approach the 
+    For any fixed sample size, the SD of the observed values of the sample sum tends to approach the
     SE of the sample sum as the number of samples grows.
 </p>
 <p class="figure">
@@ -588,15 +588,16 @@
     <script>
     jQuery(function() {
       new Stici_SampleDist('samp1', {
+        bins: 30,
         variables: 'sum',
         startsWith: 'sum',
         curveControls: false,
-	      showCurve: false,
+        showCurve: false,
         boxContents: "0, 1, 2, 3, 4",
         showBoxHist: false,
         boxHistControl: false,
         sources: 'box',
-	      replace: false
+        replace: true
       });
     });
     </script>
@@ -854,9 +855,9 @@
         <span class="calloutCaption">Standard Error of an Affine Transformation of a Random Variable</span>
     </p>
     <p>
-        If <span class="math">Y = aX + b</span>, where <span class="math">a</span> and <span class="math">b</span> 
+        If <span class="math">Y = aX + b</span>, where <span class="math">a</span> and <span class="math">b</span>
         are constants
-        (<em>i.e.</em>, if <span class="math">Y</span> is an 
+        (<em>i.e.</em>, if <span class="math">Y</span> is an
         <a class="glossRef" href="gloss.htm#affine">affine transformation</a>
         of <span class="math">X</span>), then
     </p>
@@ -888,7 +889,7 @@
 </div>
 
 <p>&nbsp;
-    
+
 </p>
 
 <!-- ==================================START PROBLEM==================================== -->
@@ -1028,7 +1029,7 @@
         Then <span class="math">X</span> and <span class="math">Y</span> are <a class="glossRef" href="gloss.htm#dependent">dependent</a>
         because, for example, the <a class="glossRef" href="gloss.htm#event">event</a>
         <span class="math">{5&lt; X &le; 6}</span>
-        and the <a class="glossRef" href="gloss.htm#event">event</a> 
+        and the <a class="glossRef" href="gloss.htm#event">event</a>
         <span class="math">{&minus;1 &lt; Y &le;0}</span> are
         <a class="glossRef" href="gloss.htm#dependent">dependent</a>
         (in fact, those events are <a class="glossRef" href="gloss.htm#disjoint">mutually exclusive</a>).
@@ -1131,7 +1132,7 @@
     <p>
         If the
         <a class="glossRef" href="gloss.htm#random_variable">random
-        variables</a> <span class="math">X</span> and <span class="math">Y</span> are 
+        variables</a> <span class="math">X</span> and <span class="math">Y</span> are
         <a class="glossRef" href="gloss.htm#independent">independent</a>, then
     </p>
     <p class="math">
@@ -1228,7 +1229,7 @@
 </h3>
 
 <p>
-    We saw in 
+    We saw in
 <script language="JavaScript1.8" type="text/javascript"><!--
     document.writeln(citeLinkChapter('expectation') + ', ');
 // -->
@@ -1239,15 +1240,15 @@
     To find the <a class="glossRef" href="gloss.htm#se">SE</a>, we first need to find the
     <a class="glossRef" href="gloss.htm#expectation">expected value</a>
     of the square of the difference between the number drawn and the
-    <a class="glossRef" href="gloss.htm#expectation">expected value</a> 
-    of the number drawn, then take the square-root.  
+    <a class="glossRef" href="gloss.htm#expectation">expected value</a>
+    of the number drawn, then take the square-root.
     That is, we need to find the sum of the squares of the differences between
     each label it is possible to draw and the
     <a class="glossRef" href="gloss.htm#expectation">expected value</a>,
     each times the chance of drawing that number.
     The chance of drawing each possible label is
     the number of tickets with that label, divided by the total number of tickets.
-    Let <span class="math">{x<sub>1</sub>, x<sub>2</sub>, 
+    Let <span class="math">{x<sub>1</sub>, x<sub>2</sub>,
      &hellip;, x<sub>N</sub>}</span> be
     the set of distinct numbers on the ticket labels.
     We want to find the square-root of the following sum:
@@ -1436,7 +1437,7 @@
 </script>
     for help interpreting the SE of the sample sum.)
     As the <a class="glossRef" href="gloss.htm#sample_size">sample
-    size</a> <span class="math">n</span> grows, the 
+    size</a> <span class="math">n</span> grows, the
     <a class="glossRef" href="gloss.htm#expectation">expected value</a> grows
     faster than the <a class="glossRef" href="gloss.htm#se">SE</a> (assuming that neither Ave(box) nor SD(box)
     is zero): The variability of the sample sum increases with the sample size, but the
@@ -1450,7 +1451,7 @@
 <p>
     The <a class="glossRef" href="gloss.htm#sample_mean">sample mean</a> of <span class="math">n</span> independent
     random draws (with replacement)
-    from a box is the <a class="glossRef" href="gloss.htm#sample_sum">sample sum</a> 
+    from a box is the <a class="glossRef" href="gloss.htm#sample_sum">sample sum</a>
     divided by <span class="math">n</span>.
     This is an <a class="glossRef" href="gloss.htm#affine">affine transformation</a> of the
     sample sum, so
@@ -1485,7 +1486,7 @@
 // -->
 </script>
 <p align="left">
-    The SD of the observed values of the sample sum tends to approach the SE 
+    The SD of the observed values of the sample sum tends to approach the SE
     of the sample sum as the number of samples grows.
 </p>
 <p class="figure">
@@ -1495,15 +1496,16 @@
     <script>
     jQuery(function() {
       new Stici_SampleDist('samp2', {
+        bins: 30,
         variables: 'mean',
         startsWith: 'mean',
         curveControls: false,
-	      showCurve: false,
+        showCurve: false,
         boxContents: "0, 1, 2, 3, 4",
         showBoxHist: false,
         boxHistControl: false,
         sources: 'box',
-	      replace: false
+        replace: true
       });
     });
     </script>
@@ -1579,7 +1581,7 @@
     Law of Averages for 0-1 boxes.
     The Law of Averages can be proved using the Square-Root Law and
     <a class="glossRef" href="gloss.htm#chebychev">Chebychev's inequality</a> for random variables,
-    which is discussed in 
+    which is discussed in
 <script language="JavaScript1.8" type="text/javascript"><!--
     document.writeln(citeLinkChapter('clt') + '. ');
 // -->
@@ -1642,7 +1644,7 @@
     </p>
     <ul>
         <li>
-            The sample mean and sample sum are 
+            The sample mean and sample sum are
             <a class="glossRef" href="gloss.htm#random_variable">random variables</a>:
             their values depend on the sample.
             SE measures the typical size of
@@ -1673,7 +1675,7 @@
     Equivalently, a binomial random variable is the sum of <span class="math">n</span> independent
     random variables <span class="math">{X<sub>1</sub>, X<sub>2</sub>, X<sub>3</sub>,
     &hellip;, X<sub>n</sub> }</span>
-    each of which takes the value 1 with probability <span class="math">p</span>, 
+    each of which takes the value 1 with probability <span class="math">p</span>,
     and the value 0 with probability <span class="math">(1&minus;p)</span>.
     Random variables whose possible values are only 0 and 1 are called
     <a class="glossRef" href="gloss.htm#indicator">indicator random variables</a>: They indicate whether or not
@@ -1681,9 +1683,9 @@
     In this case, the <a class="glossRef" href="gloss.htm#indicator">indicator random variable</a>
     <span class="math">X<sub>j</sub></span> indicates
     whether the <span class="math">j</span>th trial results in &quot;success&quot; or &quot;failure.&quot;
-    If the <span class="math">j</span>th trial results in &quot;success,&quot; 
+    If the <span class="math">j</span>th trial results in &quot;success,&quot;
     <span class="math">X<sub>j</sub> = 1</span>;
-    if the <span class="math">j</span>th trial results in &quot;failure,&quot; 
+    if the <span class="math">j</span>th trial results in &quot;failure,&quot;
     <span class="math">X<sub>j</sub> = 0</span>.
     The sum
 </p>
@@ -1699,7 +1701,7 @@
 
 <p>
     What is the <a class="glossRef" href="gloss.htm#se">SE</a> of each <span class="math">X<sub>j</sub></span>?
-    We saw in 
+    We saw in
 <script language="JavaScript1.8" type="text/javascript"><!--
     document.writeln(citeLinkChapter('expectation') + ', ');
 // -->
@@ -1858,7 +1860,7 @@
 
 <div class="callout">
         <p>
-              <span class="calloutCaption"><a class="glossRef" href="gloss.htm#sd">SD</a> of 
+              <span class="calloutCaption"><a class="glossRef" href="gloss.htm#sd">SD</a> of
               a box with only two kinds of tickets</span>
         </p>
         <p>
@@ -1890,7 +1892,7 @@
     with parameter <span class="math">p</span> is <span class="math">(1&minus;p)<sup>&frac12;</sup>/p</span>.
     Verifying that this is true by calculating it directly is beyond the level of this text.
     However, starting with the SE of the geometric distribution, we can calculate the
-    SE of the negative binomial distribution, because, as we saw in 
+    SE of the negative binomial distribution, because, as we saw in
 <script language="JavaScript1.8" type="text/javascript"><!--
     document.writeln(citeLinkChapter('expectation') + ', ');
 // -->
@@ -2187,7 +2189,7 @@
 <p>
     But for the finite population correction, the formula is the same as the formula for the
     SE of a <a class="glossRef" href="gloss.htm#binomial">binomial</a> random variable with parameters
-    <span class="math">n</span> and <span class="math">p= G/N</span>: the sample sum of 
+    <span class="math">n</span> and <span class="math">p= G/N</span>: the sample sum of
     <span class="math">n</span>
     independent random draws with replacement from a 0-1 box with a fraction
     <span class="math">p = G/N</span> of tickets labeled &quot;1.&quot;
@@ -2220,7 +2222,7 @@
 <p>
     where SD(box) is the SD of the list of numbers on all the tickets, counting duplicated
     values as often as they occur.
-    In the special case that the box is a 0-1 box with a fraction <span class="math">p</span> 
+    In the special case that the box is a 0-1 box with a fraction <span class="math">p</span>
     of tickets labeled &quot;1,&quot;
     this implies that the SE of the sample percentage &phi; for
     random sampling without replacement is
@@ -2268,13 +2270,14 @@
     <script>
     jQuery(function() {
       new Stici_SampleDist('samp3', {
+        bins: 30,
         variables: 'sum mean',
         startsWith: 'sum',
         boxContents: "0, 1, 2, 2, 3, 4, 4, 7",
         showBoxHist: false,
         boxHistControl: true,
         sources: 'box',
-	      replace: true,
+        replace: true,
         replaceControl: true,
         curveControls: false,
         showCurve: false,
@@ -2409,7 +2412,7 @@
 
   <script>
   jQuery(function() {
-    new distCalc('dist', {distributions: 
+    new distCalc('dist', {distributions:
                                   [ ["Binomial", ["n","p"]],
                                      ["Geometric", ["p"]],
                                      ["Negative Binomial", ["p","r"]],
