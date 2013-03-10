@@ -67,7 +67,7 @@ var qStr ='<span class="qSpan">At what age does life expectancy in the U.S. beco
 <p>
 <script language="JavaScript1.8" type="text/javascript"><!--
      var qStr ='<span class="qSpan">Which of the following features is not part of Paul Ryan\'s health care ' +
-               'proposal reviewed in the readings:</span>';
+               'proposal reviewed in the readings?</span>';
      document.writeln(qStr);
      var rawOpt = [  'It is a defined benefit program',
                      'The federal government\'s contribution is capped',
@@ -77,7 +77,7 @@ var qStr ='<span class="qSpan">At what age does life expectancy in the U.S. beco
                   ];
      var optPerm = randPermutation(rawOpt,'inverse');
      var opt = optPerm[0];
-     writeSeletExercise(false,qCtr++,alphabet[optPerm[1][2]));
+     writeSelectExercise(false, qCtr++, opt, alphabet[optPerm[1][2]]);
 // -->
 </script>
 </p>
