@@ -1545,13 +1545,6 @@ jQuery(function() {
            'the die is fair at any significance level greater than the <em>P</em>-value. ' +
            '</p><p class="figure">' + '<div id="samp2" class="sampledist"></div></p>';
     document.writeln(qStr);
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum + '].' +
-              'setSampleSize(' + rolls.toString() + ');\n' +
-              'document.applets[' + appNum + '].' +
-              'setBars(\"' + chi2.toString() + '\", "35");\n' +
-              'document.applets[' + appNum + '].setAreas();\n' +
-              'document.applets[' + appNum + '].showPlot();\n';
     var tabArr = [sides, probVec];
     var header = ['side','probability'];
     var qStr = '<p>By the way, the actual probabilities of the six sides used to generate ' +
@@ -1570,10 +1563,11 @@ jQuery(function() {
     qStr += ' = ' + roundToDig(chi2b,2).toString() + '</p><p>The corresponding ' +
         '<em>P</em>-value is ' + roundToDig(100*(1 - chi2Cdf(df, chi2b)),2) + '%.';
     document.writeln(qStr);
-    jQuery(function() { 
-      new Stici_SampleDist('samp2', { 
+    jQuery(function() {
+      new Stici_SampleDist('samp2', {
         variables: 'chi-squared',
         startsWith: 'chi-squared',
+        showCurve: true,
         boxContents: "1, 1, 1, 1, 1, 1",
         sampleSize: rolls.toString(),
         samplesToTake: 1000,
