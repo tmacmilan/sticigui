@@ -47,26 +47,21 @@
 
 
 <p align="center">
+  <div id="samp" class="sampledist">
+  </div>
 
-    <applet code="SampleDist.class"
-
-            align="baseline" width="800" height="600" archive="PbsGui.zip" codebase=".." >
-
-      <param name="variables" value="all">
-
-      <param name="startWith" value="sum">
-
-      <param name="boxContents" value="0,1,2,3,4">
-
-      <param name="sources" value="all">
-
-      <param name="boxHistControl" value="true">
-
-      <param name="replaceControl" value="true">
-
-      You need Java to see this.
-
-    </applet>
+  <script>
+  jQuery(function() {
+    new Stici_SampleDist('samp', {
+      variables: 'all',
+      startsWith: 'sum',
+      boxContents: "0, 1, 2, 3, 4",
+      sources: 'all',
+      boxHistControl: true,
+      replaceControl: true
+    });
+  });
+  </script> 
 
 </p>
 

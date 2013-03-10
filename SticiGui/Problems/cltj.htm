@@ -46,18 +46,23 @@
   </script>
 </p>
 <p align="center">
-<applet code="SampleDist.class" codebase="../../Java/" align="baseline"
-        width="640" height="280" archive="PbsGui.zip">
-        <param name="samplesToTake" value="10000">
-        <param name="sampleSize" value="10">
-        <param name="sources" value="box">
-        <param name="boxContents" value="0,0,0,1,5">
-        <param name="variables" value="mean,sum">
-        <param name="showBoxHist" value="false">
-        <param name="showCurve" value="true">
-        <param name="curves" value="normal">
-        You need Java to see this.
-</applet>
+  <div id="samp" class="sampledist">
+  </div>
+
+  <script>
+  jQuery(function() {
+    new Stici_SampleDist('samp', {
+      samplesToTake: 10000,
+      sampleSize: 10,
+      sources: 'box',
+      boxContents: "0, 0, 0, 1, 5",
+      variables: "mean sum",
+      showBoxHist: false,
+      showCurve: true,
+      curves: 'none normal'
+    });
+  });
+  </script>
 </p>
 <p align="center">
 <div id="normhilite1" class="curvehilite"></div>

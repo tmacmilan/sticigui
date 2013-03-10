@@ -32,18 +32,23 @@
 
 
 <p align="center">
-    <applet code="SampleDist.class" codebase="../../Java/"
-            align="baseline" width="640" height="400" archive="PbsGui.zip">
-      <param name="variables" value="chi-squared">
-      <param name="startWith" value="chi-squared">
-      <param name="boxContents" value="1,1,1,1">
-      <param name="sources" value="box">
-      <param name="boxHistControl" value="false">
-      <param name="showBoxHist" value="false">
-      <param name="replaceControl" value="false">
-      <param name="bins" value="50">
-      You need Java to see this.
-    </applet>
+    <div id="samp" class="sampledist">
+    </div>
+
+    <script>
+    jQuery(function() {
+      new Stici_SampleDist('samp', {
+        variables: 'chi-squared',
+        startsWith: 'chi-squared',
+        boxContents: "1, 1, 1, 1",
+        sources: 'box',
+        boxHistControl: false,
+	      showBoxHist: false,
+        replaceControl: false,
+	      bins: 50
+      });
+    });
+    </script>
 </p>
 
 <p align="center">

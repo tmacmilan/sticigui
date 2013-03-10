@@ -366,24 +366,27 @@
 // -->
 </script>
 
- </p>
 
  <p class="figure">
-     <applet code="SampleDist.class" codebase="../../Java/" align="baseline" width="640"
-        archive="PbsGui.zip" height="360">
-     <param name="variables" value="sum">
-     <param name="startWith" value="sum">
-     <param name="boxContents" value="0,1,1,4">
-     <param name="sources" value="box">
-     <param name="boxHistControl" value="false">
-     <param name="showCurve" value="false">
-     <param name="curveControls" value="false">
-     <param name="toggleMean" value="false">
-     <param name="showBoxHist" value="false">
-     <param name="replaceControl" value="false">
-     <param name="sampleSize" value="1">
-         You need Java to see this.
-     </applet>
+    <div id="samp1" class="sampledist">
+    </div>
+
+    <script>
+    jQuery(function() {
+      new Stici_SampleDist('samp1', {
+        variables: 'sum',
+        startsWith: 'sum',
+        boxContents: "0, 1, 1, 4",
+        sources: 'box',
+        boxHistControl: false,
+	      showCurve: false,
+        curveControls: false,
+        showBoxHist: false,
+	      replaceControl: false,
+        sampleSize: 1
+      });
+    });
+    </script>
  </p>
 </div>
 
@@ -1009,23 +1012,26 @@
 </script>
 
 <p class="figure">
-    <applet code="SampleDist.class" codebase="../../Java/" align="baseline" width="640"
-       archive="PbsGui.zip" height="360">
-    <param name="variables" value="sum">
-    <param name="startWith" value="sum">
-    <param name="boxContents" value="0,1,1,4">
-    <param name="sources" value="box">
-    <param name="boxHistControl" value="false">
-    <param name="showCurve" value="false">
-    <param name="curveControls" value="false">
-    <param name="toggleMean" value="false">
-    <param name="showBoxHist" value="false">
-    <param name="replaceControl" value="true">
-    <param name="sampleSize" value="2">
-        You need Java to see this.
-    </applet>
-</p>
-</div>
+    <div id="samp2" class="sampledist">
+    </div>
+
+    <script>
+    jQuery(function() {
+      new Stici_SampleDist('samp2', {
+        variables: 'sum',
+        startsWith: 'sum',
+        boxContents: "0, 1, 1, 4",
+        sources: 'box',
+        boxHistControl: false,
+	      showCurve: false,
+        curveControls: false,
+        toggleMean: false,
+        showBoxHist: false,
+	      replaceControl: true,
+        sampleSize: 2
+      });
+    });
+    </script>
 
 <p>&nbsp;</p>
 

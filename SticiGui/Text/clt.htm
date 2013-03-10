@@ -678,25 +678,29 @@ jQuery(function() {
 </script>
 
 <p class="figure">
-    <applet width="600" height="300" code="SampleDist.class"
-      codebase="../../Java/" archive="PbsGui.zip">
-    <param name="bins" value="100">
-    <param name="variables" value="sum,mean">
-    <param name="startWith" value="sum">
-    <param name="sources" value="box">
-    <param name="toggleMean" value="true">
-    <param name="showBoxHist" value="false">
-    <param name="replaceControl" value="false">
-    <param name="boxContents" value="0,1,2,3,4">
-    <param name="boxHistControl" value="false">
-    <param name="curveControls" value="true">
-    <param name="curves" value="normal">
-    <param name="sampleSize" value="3">
-    <param name="showBoxHist" value="false">
-    <param name="showCurve" value="true">
-    <param name="replace" value="true">
-    You need Java to see this.
-    </applet>
+    <div id="samp" class="sampledist">
+    </div>
+
+    <script>
+    jQuery(function() {
+      new Stici_SampleDist('samp', {
+        bins: 100,
+        variables: "sum mean",
+        startsWith: 'sum',
+        sources: 'box',
+        toggleMean: true,
+	      showBoxHist: false,
+        replaceControl: false,
+        boxContents: "0, 1, 2, 3, 4",
+        boxHistControl: false,
+        curveControls: true,
+        curves: 'normal',
+	      sampleSize: 5,
+        showCurve: true,
+	      replace: true
+      });
+    });
+    </script>
 </p>
 </div>
 

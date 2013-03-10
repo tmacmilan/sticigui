@@ -249,18 +249,23 @@
 </script>
 
 <p class="figure">
-<applet code="SampleDist.class" codebase="../../Java/"
-  align="baseline" width="560" height="400" archive="PbsGui.zip">
-    <param name="bins" value="51">
-    <param name="sources" value="box">
-    <param name="boxContents" value="0,1">
-    <param name="boxHistControl" value="false">
-    <param name="sampleSize" value="50">
-    <param name="variables" value="sum">
-    <param name="showBoxHist" value="false">
-    <param name="curveControls" value="false">
-    You need Java to see this.
-</applet>
+    <div id="samp" class="sampledist">
+    </div>
+
+    <script>
+    jQuery(function() {
+      new Stici_SampleDist('samp', {
+        bins: 51,
+        sources: 'box',
+	      sampleSize: 50,
+        boxContents: "0, 1",
+        boxHistControl: false,
+        variables: 'sum',
+	      showBoxHist: false,
+        curveControls: false,
+      });
+    });
+    </script>
 </p>
 </div>
 
