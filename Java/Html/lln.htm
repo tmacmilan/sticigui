@@ -25,6 +25,14 @@
     writeChapterHead('SeEd','','Law of Large Numbers Demonstration',true,'../../SticiGui');
 // -->
 </script>
+<style>
+#chart {
+  width: 600px;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
 </head>
 
 <body >
@@ -36,10 +44,13 @@
 
 <p align=center>
 
-<APPLET archive="PbsGui.zip" codebase=".."  code="Lln.class" WIDTH=600 HEIGHT=350>You need
+<div id="chart"></div>
 
-Java to see this.
-
+<script>
+jQuery(function() {
+  new Stici_Lln('chart', {});
+});
+</script>
 </APPLET>
 
 </p>

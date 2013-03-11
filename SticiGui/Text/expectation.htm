@@ -27,165 +27,169 @@
 <script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
 
 <script language="JavaScript1.8" type="text/javascript"><!--
-    var cNum = "expectation";
-    writeChapterHead('SeEd',cNum);
+var cNum = "expectation";
+writeChapterHead('SeEd',cNum);
 // -->
 </script>
 </head>
 
 <body >
 <script language="JavaScript1.8" type="text/javascript"><!--
-    writeChapterNav('..');
-    writeChapterTitle();
+writeChapterNav('..');
+writeChapterTitle();
 // -->
 </script>
 
 
 <form method="POST">
-<h1>
+  <h1>
     The Long Run and the Expected Value
-</h1>
+  </h1>
 
-<p>
-    Random experiments and random variables have long-term regularities.
-    The <a class="glossRef" href="gloss.htm#law_of_large_numbers">Law of Large Numbers</a>
-    says that in repeated <a class="glossRef" href="gloss.htm#independent">independent</a> trials,
-    the relative frequency
-    of each outcome of a random experiment tends to approach the
-    <a class="glossRef" href="gloss.htm#probability">probability</a> of that outcome.
-    That implies that the long-term average value of a
-    <a class="glossRef" href="gloss.htm#discrete">discrete</a>
-    <a class="glossRef" href="gloss.htm#random_variable">random variable</a>
-    in repeated experiments tends to approach a limit, called the <em>expected value</em>
-    of the random variable.
-</p>
+  <p>
+  Random experiments and random variables have long-term regularities.
+  The <a class="glossRef" href="gloss.htm#law_of_large_numbers">Law of Large Numbers</a>
+  says that in repeated <a class="glossRef" href="gloss.htm#independent">independent</a> trials,
+  the relative frequency
+  of each outcome of a random experiment tends to approach the
+  <a class="glossRef" href="gloss.htm#probability">probability</a> of that outcome.
+  That implies that the long-term average value of a
+  <a class="glossRef" href="gloss.htm#discrete">discrete</a>
+  <a class="glossRef" href="gloss.htm#random_variable">random variable</a>
+  in repeated experiments tends to approach a limit, called the <em>expected value</em>
+  of the random variable.
+  </p>
 
-<p>
-    The expected value of a random variable depends only on the
-    <a class="glossRef" href="gloss.htm#prob_distribution">probability distribution</a> of the random variable.
-    The expected value has properties that can be exploited to find the expected
-    value of some complicated random variables in terms of simpler ones.
-    These properties allow us to find the expected value of the
-    <a class="glossRef" href="gloss.htm#sample_sum">sample sum</a> and
-    <a class="glossRef" href="gloss.htm#sample_mean">sample mean</a>
-    of random draws with and without replacement from a box of numbered tickets.
-    Special cases include the expected values of random variables with
-    <a class="glossRef" href="gloss.htm#binomial">binomial</a>
-    and <a class="glossRef" href="gloss.htm#hypergeometric">hypergeometric</a> distributions.
-    We also find the expected values of random variables with
-    <a class="glossRef" href="gloss.htm#geometric">geometric</a> and
-    <a class="glossRef" href="gloss.htm#negative_binomial">negative binomial</a> distributions.
-</p>
+  <p>
+  The expected value of a random variable depends only on the
+  <a class="glossRef" href="gloss.htm#prob_distribution">probability distribution</a> of the random variable.
+  The expected value has properties that can be exploited to find the expected
+  value of some complicated random variables in terms of simpler ones.
+  These properties allow us to find the expected value of the
+  <a class="glossRef" href="gloss.htm#sample_sum">sample sum</a> and
+  <a class="glossRef" href="gloss.htm#sample_mean">sample mean</a>
+  of random draws with and without replacement from a box of numbered tickets.
+  Special cases include the expected values of random variables with
+  <a class="glossRef" href="gloss.htm#binomial">binomial</a>
+  and <a class="glossRef" href="gloss.htm#hypergeometric">hypergeometric</a> distributions.
+  We also find the expected values of random variables with
+  <a class="glossRef" href="gloss.htm#geometric">geometric</a> and
+  <a class="glossRef" href="gloss.htm#negative_binomial">negative binomial</a> distributions.
+  </p>
 
-<h2>
+  <h2>
     <a id="law_of_large_numbers"></a>The Law of Large Numbers
-</h2>
+  </h2>
 
-<p class="video"> <iframe width="420" height="315" src="http://www.youtube.com/embed/QIGjhiGRWe4?start=613&end=1675" frameborder="0" allowfullscreen></iframe>
-</p>
-<p>
-    The Law of Large Numbers says that in repeated <a class="glossRef" href="gloss.htm#independent">independent</a>
-    trials with probability <span class="math">p</span> of success in each trial, the chance that the fraction
-    of successes is close to <span class="math">p</span> grows as the number of trials grows.
-    More precisely, for any tolerance <span class="math">e&gt;0</span>,
-</p>
+  <p class="video"> <iframe width="420" height="315" src="http://www.youtube.com/embed/QIGjhiGRWe4?start=613&end=1675" frameborder="0" allowfullscreen></iframe>
+  </p>
+  <p>
+  The Law of Large Numbers says that in repeated <a class="glossRef" href="gloss.htm#independent">independent</a>
+  trials with probability <span class="math">p</span> of success in each trial, the chance that the fraction
+  of successes is close to <span class="math">p</span> grows as the number of trials grows.
+  More precisely, for any tolerance <span class="math">e&gt;0</span>,
+  </p>
 
-<p class="math">
-    P(| (fraction of successes in <em>n</em> trials) - <em>p</em> | &lt; e)
-</p>
+  <p class="math">
+  P(| (fraction of successes in <em>n</em> trials) - <em>p</em> | &lt; e)
+  </p>
 
-<p>
-    approaches 100% as the number <span class="math">n</span> of trials grows.
-    This expresses a long-term regularity of repeated
-    independent trials with a shared probability of success.
-</p>
+  <p>
+  approaches 100% as the number <span class="math">n</span> of trials grows.
+  This expresses a long-term regularity of repeated
+  independent trials with a shared probability of success.
+  </p>
 
-<div class="callout">
+  <div class="callout">
     <p>
-        <span class="calloutCaption">The Law of Large Numbers</span>
+    <span class="calloutCaption">The Law of Large Numbers</span>
     </p>
     <p>
-        The chance that the fraction of successes in <span class="math">n</span> independent
-        trials with probability <span class="math">p</span> of success is close to <span class="math">p</span>
-        approaches 100% as <span class="math">n</span> grows.
+    The chance that the fraction of successes in <span class="math">n</span> independent
+    trials with probability <span class="math">p</span> of success is close to <span class="math">p</span>
+    approaches 100% as <span class="math">n</span> grows.
     </p>
 
     <p>
-        More precisely, as <span class="math">n</span> increases, for every number
-        <span class="math">e &gt; 0</span>,
+    More precisely, as <span class="math">n</span> increases, for every number
+    <span class="math">e &gt; 0</span>,
     </p>
 
     <p class="math">
-        P( | (fraction of successes in n trials) &minus; p | &lt; e ) approaches 100%.
+    P( | (fraction of successes in n trials) &minus; p | &lt; e ) approaches 100%.
     </p>
-</div>
+  </div>
 
-<p>
-    The Law of Large Numbers does not say that the <em>number of successes</em> in repeated independent
-    trials tends to be increasingly close to the chance of success times the number of trials,
-    only that the <em>fraction of successes</em> in repeated independent
-    trials tends to be increasingly close to the probability of success in each trial.
-<script language="JavaScript1.8" type="text/javascript"><!--
-    citeFig();
-// -->
-</script>
-    illustrates the Law of Large Numbers.
-    Let <span class="math">X</span> denote the number of successes in <span class="math">n</span>
-    independent trials with the same
-    chance <span class="math">p</span> of success in each trial.
-<script language="JavaScript1.8" type="text/javascript"><!--
-    citeFig();
-// -->
-</script>
-    plots either of two variables:
-</p>
+  <p>
+  The Law of Large Numbers does not say that the <em>number of successes</em> in repeated independent
+  trials tends to be increasingly close to the chance of success times the number of trials,
+  only that the <em>fraction of successes</em> in repeated independent
+  trials tends to be increasingly close to the probability of success in each trial.
+  <script language="JavaScript1.8" type="text/javascript"><!--
+citeFig();
+  // -->
+  </script>
+  illustrates the Law of Large Numbers.
+  Let <span class="math">X</span> denote the number of successes in <span class="math">n</span>
+  independent trials with the same
+  chance <span class="math">p</span> of success in each trial.
+  <script language="JavaScript1.8" type="text/javascript"><!--
+citeFig();
+  // -->
+  </script>
+  plots either of two variables:
+  </p>
 
-<ul>
+  <ul>
     <li>
-        (number of successes) &minus; (number of trials)&times;( the chance of success in each trial)
-        = <span class="math">X &minus; np</span>.
-        This is identified in the plot title as Successes &minus; Expected.
+    (number of successes) &minus; (number of trials)&times;( the chance of success in each trial)
+    = <span class="math">X &minus; np</span>.
+    This is identified in the plot title as Successes &minus; Expected.
     </li>
     <li>
-        (fraction of successes) &minus; (chance of success in each trial) =
-        <span class="math">X/n &minus; p = 100%&times;(X &minus; np)/n</span>.
-        This is identified in the plot title as %Successes &minus; %Expected.
+    (fraction of successes) &minus; (chance of success in each trial) =
+    <span class="math">X/n &minus; p = 100%&times;(X &minus; np)/n</span>.
+    This is identified in the plot title as %Successes &minus; %Expected.
     </li>
-</ul>
+  </ul>
 
-<p>
-    To toggle between these two plots, click the button near the bottom of the figure.
-<script language="JavaScript1.8" type="text/javascript"><!--
-    citeFig();
-// -->
-</script>
-    has two scrollbars.
-    One controls the number of trials, which you can increase to 20,000;
-    the other controls the chance of success in each trial.
-    Increase the number of trials to 20,000; verify that the the simulation agrees with
-    the Law of Large Numbers:
-    The difference
-    <span class="math"> X &minus; np</span> tends to grow as the number
-    of trials <span class="math">n</span> grows, and that the difference
-    <span class="math">100%&times;(X &minus; np)/n</span> tends to shrink as the number of trials
-    <span class="math">n</span> grows.
-    Change the chance <span class="math">p</span> of success in each trial using the
-    scrollbar and verify that the result remains true.
-</p>
+  <p>
+  To toggle between these two plots, click the button near the bottom of the figure.
+  <script language="JavaScript1.8" type="text/javascript"><!--
+citeFig();
+  // -->
+  </script>
+  has two scrollbars.
+  One controls the number of trials, which you can increase to 20,000;
+  the other controls the chance of success in each trial.
+  Increase the number of trials to 20,000; verify that the the simulation agrees with
+  the Law of Large Numbers:
+  The difference
+  <span class="math"> X &minus; np</span> tends to grow as the number
+  of trials <span class="math">n</span> grows, and that the difference
+  <span class="math">100%&times;(X &minus; np)/n</span> tends to shrink as the number of trials
+  <span class="math">n</span> grows.
+  Change the chance <span class="math">p</span> of success in each trial using the
+  scrollbar and verify that the result remains true.
+  </p>
 
-<div class="figure">
-<script language="JavaScript1.8" type="text/javascript"><!--
-    var qStr = 'Law of Large Numbers Simulation.';
+  <div class="figure">
+    <script language="JavaScript1.8" type="text/javascript"><!--
+var qStr = 'Law of Large Numbers Simulation.';
     writeFigureCaption(qStr);
-// -->
-</script>
+    // -->
+    </script>
 
-<p class="figure">
-    <applet code="Lln.class" codebase="../../Java/"
-        align="baseline" width="600" archive="PbsGui.zip" height="420">
-    <param name="percent" value="true">
-    You need Java to see this.
-    </applet>
+    <p class="figure">
+    <div id="chart" class='lln'></div>
+
+    <script>
+jQuery(function() {
+  new Stici_Lln('chart', {
+    percent: true
+  });
+});
+    </script>
 </p>
 </div>
 

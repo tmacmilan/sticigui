@@ -832,6 +832,13 @@ div.scatterplot {
   margin-right: auto;
 }
 
+div.lln {
+  width: 600px;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 div.venn3_diagram {
   width: 800px;
   height: 280px;
