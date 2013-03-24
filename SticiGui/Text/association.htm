@@ -5,7 +5,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "30 January 2013 17:37 PST";
+	pageModDate = "24 March 2013 9:30 PDT";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -106,18 +106,25 @@
 </p>
 <p>
   The <span class="math">\(SD\)</span> is a measure of the scatter in a list.
-  The typical deviation of the <span class="math">\(x\)</span> coordinate of a point from the mean of the <span class="math">\(x\)</span> coordinates is
+  The typical deviation of the <span class="math">\(x\)</span> coordinate of a
+  point from the mean of the <span class="math">\(x\)</span> coordinates is
   <span class="math">\( SD_X \)</span>.
   The typical deviation of the <span class="math">\(y\)</span> coordinate of a point from the mean of the y
-  coordinates is <span class="math">\( SD_X \)</span>.
-  We know from Chebychev's inequality that, for example, the <span class="math">\(x\)</span> coordinates of at
-  least 75% of the points will be within <span class="math">\( \pm SD_X \)</span> of the <span class="math">\(x\)</span> coordinate of the
+  coordinates is <span class="math">\( SD_Y \)</span>.
+  We know from Chebychev's inequality that, for example, the
+  <span class="math">\(x\)</span> coordinates of at
+  least 75% of the points will be within <span class="math">\( \pm SD_X \)</span>
+  of the <span class="math">\(x\)</span> coordinate of the
   <a class="glossRef" href="gloss.htm#point_of_averages">point of averages</a>, and that the
-  <span class="math">\(y\)</span> coordinates of at least 75% of the points will be within  <span class="math">\( \pm 2 \times SD_Y \)</span> of the
+  <span class="math">\(y\)</span> coordinates of at least 75% of the points will be within
+  <span class="math">\( \pm 2 \times SD_Y \)</span> of the
   <span class="math">\(y\)</span> coordinate of the point of averages.
-  However, in narrow ranges of <span class="math">\(x\)</span> (vertical slices), the scatter in <span class="math">\(y\)</span> might
-  typically be smaller than <span class="math">\( SD_Y \)</span>, and in narrow ranges of <span class="math">\(y\)</span> (horizontal slices),
-  the scatter in <span class="math">\(x\)</span> might typically be smaller than <span class="math">\( SD_X \)</span>.
+  However, in narrow ranges of <span class="math">\(x\)</span> (vertical slices),
+  the scatter in <span class="math">\(y\)</span> might
+  typically be smaller than <span class="math">\( SD_Y \)</span>, and in narrow ranges of
+  <span class="math">\(y\)</span> (horizontal slices),
+  the scatter in <span class="math">\(x\)</span> might typically be smaller than
+  <span class="math">\( SD_X \)</span>.
   If so, the two variables are <a class="glossRef" href="gloss.htm#association">associated</a>.
 </p>
 
@@ -144,9 +151,11 @@
 // -->
 </script>
     is the scatterplot of the GMAT data again, but this time with four new lines:
-    two vertical lines at the mean value of <span class="math">\(X\)</span>, plus and minus the <span class="math">\(SD\)</span> of <span class="math">\(X\)</span>, the
+    two vertical lines at the mean value of <span class="math">\(X\)</span>, plus and minus the
+    <span class="math">\(SD\)</span> of <span class="math">\(X\)</span>, the
     variable plotted on the horizontal axis; <span class="math">\( SD_X \)</span>, and two horizontal
-    lines at the mean value of <span class="math">\(Y\)</span>, plus and minus the <span class="math">\(SD\)</span> of <span class="math">\(Y\)</span>, the variable plotted
+    lines at the mean value of <span class="math">\(Y\)</span>, plus and minus the
+    <span class="math">\(SD\)</span> of <span class="math">\(Y\)</span>, the variable plotted
     on the vertical axis.
     There is also a new button, labeled &quot;No SDs.&quot;
     Click the button.
@@ -159,7 +168,8 @@
 <div class="figure">
 
 <script language="JavaScript1.8" type="text/javascript"><!--
-    var qStr = 'The GMAT data with a button to view <span class="math">\\( SD_X \\)</span> and <span class="math">\\( SD_Y \\)</span>.';
+    var qStr = 'The GMAT data with a button to view <span class="math">\\( SD_X \\)</span> and ' +
+               '<span class="math">\\( SD_Y \\)</span>.';
     writeFigureCaption(qStr);
 // -->
 </script>
@@ -209,7 +219,8 @@ jQuery(function() {
     than the overall <span class="math">\(SD\)</span> of the Quantitative GMAT scores, because there is an association
     between the variables.
     If we took other &quot;slices&quot; through the data&mdash;other narrow ranges of
-    Verbal GMAT&mdash;we would typically find something similar: the <span class="math">\(SD\)</span> of the Quantitative
+    Verbal GMAT&mdash;we would typically find something similar: the
+    <span class="math">\(SD\)</span> of the Quantitative
     GMAT scores for students whose Verbal GMAT scores are in narrow ranges tends to be
     a bit smaller than the overall <span class="math">\(SD\)</span> of the Quantitative GMAT scores.
 </p>
@@ -217,9 +228,12 @@ jQuery(function() {
 <p>
     Two variables are <em>associated</em> if knowing the value of one of them tells us
     something about the value of the other.
-    Slightly more precisely, <span class="math">\(X\)</span> and <span class="math">\(Y\)</span> are associated if the <span class="math">\(SD\)</span> of the values of <span class="math">\(Y\)</span> of points
+    Slightly more precisely, <span class="math">\(X\)</span> and
+    <span class="math">\(Y\)</span> are associated if the
+    <span class="math">\(SD\)</span> of the values of <span class="math">\(Y\)</span> of points
     whose <span class="math">\(X\)</span> coordinates are in a narrow range of values (a vertical slice through the
-    scatterplot) is smaller than the overall <span class="math">\(SD\)</span> of <span class="math">\(Y\)</span>, or if the <span class="math">\(SD\)</span> of the values of <span class="math">\(X\)</span> of
+    scatterplot) is smaller than the overall <span class="math">\(SD\)</span> of <span class="math">\(Y\)</span>,
+    or if the <span class="math">\(SD\)</span> of the values of <span class="math">\(X\)</span> of
     points whose <span class="math">\(Y\)</span> coordinates are in a narrow range of values (horizontal slice through
     the scatterplot) is smaller than the overall <span class="math">\(SD\)</span> of <span class="math">\(X\)</span>.
     In
