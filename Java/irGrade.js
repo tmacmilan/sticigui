@@ -28,13 +28,13 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/2/01/1045'; // modification date and time
+var irGradeModTime = '2013/3/29/2029'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
 var courseBase = './Courses/';     // base for looking for course-specific files
 var cssBase = '/Graphics/sticiGuiDefault.css';  // css file
-var graderActionURL = 'http://statistics.berkeley.edu/cgi-bin/grader5'; // URL of grading scripts
+var graderActionURL = 'http://www.stat.berkeley.edu/cgi-bin/grader5'; // URL of grading scripts
 var chapterTitles = [
                          ['Preface','preface'],
                          ['Introduction','howto'],
