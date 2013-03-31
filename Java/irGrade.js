@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/3/29/2029'; // modification date and time
+var irGradeModTime = '2013/3/31/1458'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -2054,7 +2054,7 @@ function writeChapterTitle(s) {
 function examSetUp(seed, sName, sn) {
     isLab = false;
     showQMarks = false;
-   sectionContext = '';
+    sectionContext = '';
     window.id= 'seti';
     examName = sName;
     examNum = sn;

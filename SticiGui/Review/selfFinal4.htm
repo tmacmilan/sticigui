@@ -2,9 +2,9 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"> <!--
-    pageModDate = "21 January 2013 08:37 PST";
+    pageModDate = "31 March 2013 16:17 PDT";
     // by P.B. Stark, statistics.berkeley.edu/~stark
-    // Copyright 2000-2009. All rights reserved.
+    // Copyright 2000-2013. All rights reserved.
 // -->
 </script>
 
@@ -14,12 +14,12 @@
 <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
 <script type="text/javascript" src="../../Java/sticigui.js"></script>
 <link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
-<script src="../../Java/irGrade.js" language="JavaScript1.8"></script>
+<script type="text/javascript" src="../../Java/irGrade.js" language="JavaScript1.8"></script>
 
 <script language="JavaScript1.8" type="text/javascript" ><!--
     window.name="bookWin";
     CA = true;
-    var ver = 479; // 
+    var ver = 479; //
     examSetUp(ver, 'Final', 4);
 // -->
 </script>
@@ -75,7 +75,7 @@
                            'the lowest infant mortality rates.  Therefore, if the U.S. switches to single-payer ' +
                            'healthcare, infant mortality in the U.S. will decrease.'
                       ];
-     var rawOpt = ['appeal to ignorance',    
+     var rawOpt = ['appeal to ignorance',
                    'questionable cause',
                    'false dichotomy',
                    'two wrongs make a right'
@@ -88,19 +88,19 @@
      opt[opt.length] = "none of the above";
      var aVal;
      switch (which) {
-         case 0: 
-           aVal = alphabet[optPerm[1][0]]; 
+         case 0:
+           aVal = alphabet[optPerm[1][0]];
            break;
          case 1:
-           aVal = alphabet[optPerm[1][1]]; 
+           aVal = alphabet[optPerm[1][1]];
            break;
          case 2:
-           aVal = alphabet[optPerm[1][3]]; 
+           aVal = alphabet[optPerm[1][3]];
            break;
          case 3:
-           aVal = alphabet[optPerm[1][1]]; 
+           aVal = alphabet[optPerm[1][1]];
            break;
-     }         
+     }
      writeRadioExercise(qCtr++,opt,aVal);
 // -->
 </script>
@@ -146,7 +146,7 @@
                            'is false or <span class="math">B</span> is false.'],
                        ['not (A and B).  Therefore, (not A) or (not B)',
                            'This is an application of one of ' +
-                           '<a class="glossRef" href="gloss.htm#de_morgan">de Morgan\'s laws</a>.'], 
+                           '<a class="glossRef" href="gloss.htm#de_morgan">de Morgan\'s laws</a>.'],
                        ['A or not B.  B. Therefore, A.',
                            'This is the definition of &quot;or&quot; applied to <span class="math">A</span> ' +
                            'and <span class="math">not B</span>.  If either <span class="math">A</span> is ' +
@@ -174,20 +174,20 @@
                            '<span class="math">B</span>, or both are false.  So, <span class="math">A</span> ' +
                            'might be true and <span class="math">B</span> might be false. It does not follow that ' +
                            '<span class="math">A</span> is false.'],
-                       ['If A then B. Not A. Therefore, not B.',   
+                       ['If A then B. Not A. Therefore, not B.',
                            'This is an example of <a class="glossRef" href="gloss.htm#denying_the_antecedent">' +
                            'denying the antecedent</a>.'],
-                       ['If A then B. Not B. Therefore, A.',  
+                       ['If A then B. Not B. Therefore, A.',
                            'By <a class="glossRef" href="gloss.htm#denying_the_consequent">denying the ' +
                            'consequent</a>, we can conclude that <span class="math">A</span> is false, not that ' +
                            '<span class="math">A</span> is true.'],
-                       ['If A then B. B. Therefore, A.', 
+                       ['If A then B. B. Therefore, A.',
                            'This is an example of <a class="glossRef" href="gloss.htm#affirming_the_consequent">' +
-                           'affirming the consequent</a>.'],  
+                           'affirming the consequent</a>.'],
                        ['not (A and B). Therefore, (not A) and (not B)',
                            'It follows that either <span class="math">A</span> is false or ' +
                            '<span class="math">B</span> is false, but not necessarily that both are false.'],
-                       ['If A then B. C. Therefore, A.',   
+                       ['If A then B. C. Therefore, A.',
                            'This is a <a class="glossRef" href="non_sequitur_of_evidence">non sequitur of ' +
                            'evidence</a>.'],
                        ['If A then B. A. Therefore, C.',
@@ -252,7 +252,7 @@
                   ['all five dice show different numbers', factorial(6)],
                   ['two dice show the same number and the rest show different numbers',
                            6*binomialCoef(5,2)*binomialCoef(5,3)*factorial(3)],
-                  ['three dice show the same number and the rest show different numbers', 
+                  ['three dice show the same number and the rest show different numbers',
                            6*binomialCoef(5,3)*binomialCoef(5,2)*2],
                   ['four dice show the same number and the fifth shows a different number',
                            6*5*5]
@@ -292,8 +292,8 @@
                'carrier\'s billing records, one by one, and calls them.  If she does not reach ' +
                'a subscriber on the first attempt, she tries back up to twice more, at different ' +
                'times of day, then moves on to the next randomly-selected subscriber. ' +
-               'She keeps calling until she reaches ' + subs.toString() + 
-               ' subscribers, which required trying to reach ' + commify(tries) + 
+               'She keeps calling until she reaches ' + subs.toString() +
+               ' subscribers, which required trying to reach ' + commify(tries) +
                ' subscribers.  Of the subscribers she reaches, ' + thought.toString() +
                ' did not expect to have to pay anything but the recurring monthly charge.</p>' +
                '<p>The next two questions refer to this scenario.</p>';
@@ -328,9 +328,9 @@
     var normApprox2 = 100*1.96*Math.sqrt((thought/subs) * (1 - thought/subs)/subs);
     var cheby = 100*20*(1/2)/Math.sqrt(subs);
     var cheby2 = 100*20*Math.sqrt((thought/subs) * (1 - thought/subs)/subs);
-    var rawOpt = [roundToDig(normApprox,2) + '%', 
-                  roundToDig(normApprox2,2) + '%', 
-                  roundToDig(cheby,2)  + '%', 
+    var rawOpt = [roundToDig(normApprox,2) + '%',
+                  roundToDig(normApprox2,2) + '%',
+                  roundToDig(cheby,2)  + '%',
                   roundToDig(cheby2,2) + '%'
                  ];
     var optPerm = randPermutation(rawOpt,"inverse");
@@ -668,7 +668,7 @@
     var qStr = 'Here is a table of bivariate data, 1990 U.S. Census estimates of the ' +
                explain[headInx[0]] + ', abbreviated by ' + header[0] + ', and ' +
                explain[headInx[1]] + ', abbreviated by ' + header[1] +
-               ', in a simple random sample of size ' + nStat.toString() + 
+               ', in a simple random sample of size ' + nStat.toString() +
                ' from the 50 states and the District of Columbia. ' +
                'The next several questions refer to these data:</p>';
     document.writeln(qStr);
@@ -713,11 +713,11 @@
     var rawOpt = [
                    (roundToDig(sortPopXList[pctili],3)).toString(),
                    (roundToDig(popXList[pctili],3)).toString(),
-                   (roundToDig(sortPopXList[pctili-1] + 
+                   (roundToDig(sortPopXList[pctili-1] +
                        pctToNext*(sortPopXList[pctili]-sortPopXList[pctili-1]),3)).toString(),
-                   (roundToDig(sortPopXList[pctili] + 
+                   (roundToDig(sortPopXList[pctili] +
                        pctToNext*(sortPopXList[pctili+1]-sortPopXList[pctili]),3)).toString(),
-                   (roundToDig(popXList[pctili-1] + 
+                   (roundToDig(popXList[pctili-1] +
                        pctToNext*(popXList[pctili]-popXList[pctili-1]),3)).toString(),
          ];
     var optPerm = randPermutation(rawOpt,'inverse');
@@ -1036,7 +1036,7 @@
                  'The mean of the original list of 51 values of ' + header[0] +
                  ' is ' + aveAllX.toString() + ', and the SD of the 51 values is ' +
                  sdAllX.toString() + '. <span class="qSpan">The percentage of ' +
-                 'numbers in the original list of 51 that are greater than or equal to ' + XPopLim + 
+                 'numbers in the original list of 51 that are greater than or equal to ' + XPopLim +
                  ' cannot be bigger than (pick the smallest correct answer)</span></p><p>';
       document.writeln(qStr);
       writeRadioExercise(qCtr++,opt,aVal);
@@ -1172,7 +1172,7 @@
    var op = makeProbOptions(pRange,.1,.9);
    var opt = op[0];
    var aVal = op[1];
-   var qStr = 'A box contains ' + cardinals[nTicks] + ' tickets labeled with the numbers ' + 
+   var qStr = 'A box contains ' + cardinals[nTicks] + ' tickets labeled with the numbers ' +
               theBox.join(', ')   + '.</p><p>The next three problems concern drawing ' +
              'at random with replacement from this box of tickets.';
    document.writeln(qStr);

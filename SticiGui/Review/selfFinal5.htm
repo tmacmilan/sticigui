@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <head>
-<script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
-	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
-    // All rights reserved.
+<script language="JavaScript1.8" type="text/javascript"> <!--
+    pageModDate = "31 March 2013 16:17 PDT";
+    // by P.B. Stark, statistics.berkeley.edu/~stark
+    // Copyright 2000-2013. All rights reserved.
 // -->
 </script>
 
@@ -13,7 +13,7 @@
 <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
 <script type="text/javascript" src="../../Java/sticigui.js"></script>
 <link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
-<script src="../../Java/irGrade.js" language="JavaScript1.8"></script>
+<script type="text/javascript" src="../../Java/irGrade.js" language="JavaScript1.8"></script>
 
 <script language="JavaScript1.8" type="text/javascript" ><!--
     window.name="bookWin";
@@ -68,7 +68,7 @@
                         'There is no evidence that cell phone use cannot cause brain cancer. Therefore, ' +
                            'cell phones cause brain cancer.'
                       ];
-     var rawOpt = ['appeal to ignorance',    
+     var rawOpt = ['appeal to ignorance',
                    'questionable cause',
                    'false dichotomy',
                    'two wrongs make a right'
@@ -81,19 +81,19 @@
      opt[opt.length] = "none of the above";
      var aVal;
      switch (which) {
-         case 0: 
-           aVal = alphabet[optPerm[1][1]]; 
+         case 0:
+           aVal = alphabet[optPerm[1][1]];
            break;
          case 1:
-           aVal = alphabet[optPerm[1][1]]; 
+           aVal = alphabet[optPerm[1][1]];
            break;
          case 2:
-           aVal = alphabet[optPerm[1][4]]; 
+           aVal = alphabet[optPerm[1][4]];
            break;
          case 3:
-           aVal = alphabet[optPerm[1][0]]; 
+           aVal = alphabet[optPerm[1][0]];
            break;
-     }         
+     }
      writeRadioExercise(qCtr++,opt,aVal);
 // -->
 </script>
@@ -139,7 +139,7 @@
                            'is false or <span class="math">B</span> is false.'],
                        ['not (A and B).  Therefore, (not A) or (not B)',
                            'This is an application of one of ' +
-                           '<a class="glossRef" href="gloss.htm#de_morgan">de Morgan\'s laws</a>.'], 
+                           '<a class="glossRef" href="gloss.htm#de_morgan">de Morgan\'s laws</a>.'],
                        ['A or not B.  B. Therefore, A.',
                            'This is the definition of &quot;or&quot; applied to <span class="math">A</span> ' +
                            'and <span class="math">not B</span>.  If either <span class="math">A</span> is ' +
@@ -167,20 +167,20 @@
                            '<span class="math">B</span>, or both are false.  So, <span class="math">A</span> ' +
                            'might be true and <span class="math">B</span> might be false. It does not follow that ' +
                            '<span class="math">A</span> is false.'],
-                       ['If A then B. Not A. Therefore, not B.',   
+                       ['If A then B. Not A. Therefore, not B.',
                            'This is an example of <a class="glossRef" href="gloss.htm#denying_the_antecedent">' +
                            'denying the antecedent</a>.'],
-                       ['If A then B. Not B. Therefore, A.',  
+                       ['If A then B. Not B. Therefore, A.',
                            'By <a class="glossRef" href="gloss.htm#denying_the_consequent">denying the ' +
                            'consequent</a>, we can conclude that <span class="math">A</span> is false, not that ' +
                            '<span class="math">A</span> is true.'],
-                       ['If A then B. B. Therefore, A.', 
+                       ['If A then B. B. Therefore, A.',
                            'This is an example of <a class="glossRef" href="gloss.htm#affirming_the_consequent">' +
-                           'affirming the consequent</a>.'],  
+                           'affirming the consequent</a>.'],
                        ['not (A and B). Therefore, (not A) and (not B)',
                            'It follows that either <span class="math">A</span> is false or ' +
                            '<span class="math">B</span> is false, but not necessarily that both are false.'],
-                       ['If A then B. C. Therefore, A.',   
+                       ['If A then B. C. Therefore, A.',
                            'This is a <a class="glossRef" href="non_sequitur_of_evidence">non sequitur of ' +
                            'evidence</a>.'],
                        ['If A then B. A. Therefore, C.',
@@ -294,7 +294,7 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    qStr = '<span class="qSpan">The chance that the ball lands on black in all ' + cardinals[spins] + 
+    qStr = '<span class="qSpan">The chance that the ball lands on black in all ' + cardinals[spins] +
            ' spins is closest to</span></p><p>';
     var pY = Math.pow(pBlack,spins);
     var facs = listOfRandInts(2, 2, 5);
@@ -314,7 +314,7 @@
             cardinals[nBlack] + blackWord + ' and lands on ' +
            'a color other than black in the last ' + cardinals[spins-nBlack] +
            ' spins is closest to</span></p><p>';
-    var pY = Math.pow(pBlack, nBlack)*Math.pow((pRed+pGreen), spins-nBlack); 
+    var pY = Math.pow(pBlack, nBlack)*Math.pow((pRed+pGreen), spins-nBlack);
     var facs = listOfRandInts(2, 2, 5);
     var op = makeProbOptions(pY,pY/facs[0],Math.min(1,pY*facs[1]),3,20);
     var opt = op[0];
@@ -331,7 +331,7 @@
     qStr = '<span class="qSpan">The chance that the ball lands on black on (any) ' +
             cardinals[nBlack] + ' of the spins and lands on a color other than black ' +
            'in the remaining ' + cardinals[spins-nBlack] + ' spins is closest to</span></p><p>';
-    var pY = binomialCoef(spins, nBlack)*Math.pow(pBlack, nBlack)*Math.pow((pRed+pGreen), spins-nBlack); 
+    var pY = binomialCoef(spins, nBlack)*Math.pow(pBlack, nBlack)*Math.pow((pRed+pGreen), spins-nBlack);
     var facs = listOfRandInts(2, 2, 5);
     var op = makeProbOptions(pY,pY/facs[0],Math.min(1,pY*facs[1]),3,20);
     var opt = op[0];
@@ -349,7 +349,7 @@
             cardinals[nBlack] + blackWord + ', lands on red on the next ' + cardinals[nRed] +
            redWord + ', and lands on green on the last ' + cardinals[nGreen] + greenWord +
            ' is closest to</span></p><p>';
-    var pY = Math.pow(pBlack, nBlack)*Math.pow(pRed, nRed)*Math.pow(pGreen, nGreen); 
+    var pY = Math.pow(pBlack, nBlack)*Math.pow(pRed, nRed)*Math.pow(pGreen, nGreen);
     var facs = listOfRandInts(2, 2, 5);
     var op = makeProbOptions(pY,pY/facs[0],Math.min(1,pY*facs[1]),3,20);
     var opt = op[0];
@@ -368,7 +368,7 @@
            redWord + ', and lands on green on the remaining ' + cardinals[nGreen] + greenWord +
            ' is closest to</span></p><p>';
     var pY = binomialCoef(spins, nBlack)*binomialCoef(spins-nBlack, nRed)*
-             Math.pow(pBlack, nBlack)*Math.pow(pRed, nRed)*Math.pow(pGreen, nGreen); 
+             Math.pow(pBlack, nBlack)*Math.pow(pRed, nRed)*Math.pow(pGreen, nGreen);
     var facs = listOfRandInts(2, 2, 5);
     var op = makeProbOptions(pY,pY/facs[0],Math.min(1,pY*facs[1]),3,20);
     var opt = op[0];
@@ -389,7 +389,7 @@
            'spaces.  I want to test whether the wheel is fair. The test consists of spinning the ' +
            'wheel over and over until the ' + ordinals[testLand] + ' time the ball lands on any one of ' +
            'the 38 spaces. (The 38 spaces are labeled, so it is possible to tell them apart.) I will ' +
-           'conclude that the wheel is not fair if it takes fewer than ' + cardinals[testSpins] + 
+           'conclude that the wheel is not fair if it takes fewer than ' + cardinals[testSpins] +
            ' spins. <span class="qSpan">The null hypothesis is that </span></p><p>';
     var opt = ['the wheel is fair',
                'the wheel is unfair',
@@ -407,7 +407,7 @@
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
     var qStr = '<span class="qSpan">If the null hypothesis is true, the probability distribution ' +
-            'of the number of rolls until any space shows up for the ' + ordinals[testLand] + 
+            'of the number of rolls until any space shows up for the ' + ordinals[testLand] +
             ' time is</span></p><p>';
     var opt = ['binomial','geometric','hypergeometric','negative binomial','none of the above'];
     var aVal = alphabet[4];
@@ -416,7 +416,7 @@
 // -->
 </script>
 </p>
-        
+
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
@@ -440,10 +440,10 @@
     var pR = roundToDig((1-pA)/37, 5);
     var qStr = '<span class="qSpan">The power of this test against the alternative hypothesis that ' +
                'the chance the ball lands one particular space is ' + (100*pA).toString() +
-               '% and the chance it lands in any of the other 37 spaces is ' + 
+               '% and the chance it lands in any of the other 37 spaces is ' +
                (100*pR).toString() + '% is closest to</span></p><p>';
-    var pY = Math.pow(pA,3) + 
-             37*Math.pow(pR,3) + 
+    var pY = Math.pow(pA,3) +
+             37*Math.pow(pR,3) +
              3*Math.pow(pA,3)*37*pR +
              37*3*Math.pow(pR,3)*36*pR +
              3*Math.pow(pR,3)*pA;
@@ -491,17 +491,17 @@
                'either will be on their transcript already or will be courses they are currently enrolled ' +
                'in. (In contrast, a current sophomore might not yet have taken an online class and might ' +
                'not be enrolled in one, but might still take one before graduating.) ' +
-               'She shuffles those SIDs into a random order, then selects the first ' + n.toString() + 
-               ' SIDs from the shuffled list. She then sends those ' + n.toString() + 
+               'She shuffles those SIDs into a random order, then selects the first ' + n.toString() +
+               ' SIDs from the shuffled list. She then sends those ' + n.toString() +
                ' SIDs to the Registrar, who looks up the transcripts and the courses each of those ' +
                'students is currently enrolled in, and reports to the dean the number who are L&amp;S ' +
                'majors, the number who are not, and for each of those groups, the number who have taken ' +
                'or are currently taking an online class at Berkeley. ' +
                'Suppose that the numbers of undergraduates are as below:</p> ';
     document.writeln(qStr);
-    var header = ['enrolled L&amp;S majors', 
-                  'L&amp;S majors on degree list', 
-                  'enrolled: all majors', 
+    var header = ['enrolled L&amp;S majors',
+                  'L&amp;S majors on degree list',
+                  'enrolled: all majors',
                   'degree list: all majors'
                  ];
     var lists = new Array(4);
@@ -509,7 +509,7 @@
     lists[1] = [commify(NGradLS),''];
     lists[2] = [commify(NAllLS+NAllO),''];
     lists[3] = [commify(NGradLS+NGradO),''];
-    listToTable(header,lists,"transpose","center",true,"-1");   
+    listToTable(header,lists,"transpose","center",true,"-1");
 // -->
 </script>
 
@@ -533,7 +533,7 @@
 </p>
 
 <p>
-<script language="JavaScript1.8" type="text/javascript" ><!-- 
+<script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
     qStr = '<span class="qSpan">What is the frame for this study?</span></p><p>';
     document.writeln(qStr);
@@ -726,8 +726,8 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    var qStr = 'It turns out that ' + nLS.toString() + ' of the ' + n.toString() + 
-               ' students in the sample are L&amp;S majors and ' + nO.toString() + ' are not. ' + 
+    var qStr = 'It turns out that ' + nLS.toString() + ' of the ' + n.toString() +
+               ' students in the sample are L&amp;S majors and ' + nO.toString() + ' are not. ' +
                Cardinals[nLSonl] + ' of the L&amp;S majors and ' + cardinals[nOonl] + ' of the non-L&amp;S ' +
                'students in the sample will have taken online classes by the time they graduate.</p>' +
                '<p><span class="qSpan">The sample percentage of L&amp;S majors who will have taken an ' +
@@ -746,7 +746,7 @@
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
     var qStr = '<span class="qSpan">Are the ' + nLS.toString() + ' L&amp;S majors in the sample a ' +
-               'simple random sample of size ' + nLS.toString() + ' of the ' + commify(NGradLS) + 
+               'simple random sample of size ' + nLS.toString() + ' of the ' + commify(NGradLS) +
                ' L&amp;S majors on the degree list?</span></p><p>';
     document.writeln(qStr);
     var opt = ['no','yes','there is not enough information to tell'];
@@ -802,11 +802,11 @@
                'online course before graduating. We will call this the <em>hypothesis of no association</em>. ' +
                'Then, given that the number of graduating L&amp;S majors ' +
                'in the sample is ' + nLS.toString() + ' and that the total number of students in ' +
-               'the sample who will have taken an online class by the time they graduate is ' + 
+               'the sample who will have taken an online class by the time they graduate is ' +
                nonl.toString() + ', the number of graduating L&amp;S majors in the sample who will have ' +
                'taken at least one online class is like the number of tickets labeled 1 in a simple ' +
-               'random sample of size ' + nLS.toString() + 
-               ' from a box that contains ' + n.toString() + ' tickets of which ' + nonl.toString() + 
+               'random sample of size ' + nLS.toString() +
+               ' from a box that contains ' + n.toString() + ' tickets of which ' + nonl.toString() +
                ' are labeled 1 and the rest are labeled 0.</p><p>';
     document.writeln(qStr);
     document.writeln(startProblem(pCtr++));
@@ -1074,8 +1074,8 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     var qStr = 'Here is a table of data, 1990 U.S. Census estimates of the ' +
-               explain[headInx[0]] + ', abbreviated by ' + header[0] + 
-               ', in a simple random sample of size ' + nStat.toString() + 
+               explain[headInx[0]] + ', abbreviated by ' + header[0] +
+               ', in a simple random sample of size ' + nStat.toString() +
                ' from the 50 states and the District of Columbia. ' +
                'The next several questions refer to these data:</p>';
     document.writeln(qStr);
@@ -1098,11 +1098,11 @@
     var rawOpt = [
                    (roundToDig(sortPopXList[pctili],3)).toString(),
                    (roundToDig(popXList[pctili],3)).toString(),
-                   (roundToDig(sortPopXList[pctili-1] + 
+                   (roundToDig(sortPopXList[pctili-1] +
                        pctToNext*(sortPopXList[pctili]-sortPopXList[pctili-1]),3)).toString(),
-                   (roundToDig(sortPopXList[pctili] + 
+                   (roundToDig(sortPopXList[pctili] +
                        pctToNext*(sortPopXList[pctili+1]-sortPopXList[pctili]),3)).toString(),
-                   (roundToDig(popXList[pctili-1] + 
+                   (roundToDig(popXList[pctili-1] +
                        pctToNext*(popXList[pctili]-popXList[pctili-1]),3)).toString(),
          ];
     var optPerm = randPermutation(rawOpt,'inverse');
@@ -1261,7 +1261,7 @@
                  'The mean of the original list of 51 values of ' + header[0] +
                  ' is ' + aveAllX.toString() + ', and the SD of the 51 values is ' +
                  sdAllX.toString() + '.</p><p> <span class="qSpan">The percentage of ' +
-                 'numbers in the original list of 51 that are greater than or equal to ' + XPopLim + 
+                 'numbers in the original list of 51 that are greater than or equal to ' + XPopLim +
                  ' cannot be bigger than (pick the smallest correct answer)</span></p><p>';
       document.writeln(qStr);
       writeRadioExercise(qCtr++,opt,aVal);
@@ -1381,7 +1381,7 @@
    var op = makeProbOptions(pRange,.1,.9);
    var opt = op[0];
    var aVal = op[1];
-   var qStr = 'A box contains ' + cardinals[nTicks] + ' tickets labeled with the numbers ' + 
+   var qStr = 'A box contains ' + cardinals[nTicks] + ' tickets labeled with the numbers ' +
               theBox.join(', ')   + '.</p><p>The next three problems concern drawing ' +
              'tickets at random with replacement from this box.';
    document.writeln(qStr);
