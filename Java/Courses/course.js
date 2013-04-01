@@ -1,10 +1,10 @@
 // script course:  sets course-specific javascript variables for SticiGui
-// copyright 1999-2012. P.B. Stark, statistics.berkeley.edu/~stark
-// Version 1.1
+// copyright 1999-2013. P.B. Stark, statistics.berkeley.edu/~stark
+// Version 1.2
 // All rights reserved.
 //
 
-var courseModTime = "2012/6/17/0020";   // last modification
+var courseModTime = "2013/03/29/2031";   // last modification
 
 
 // Modification instructions:  set due date file, instructor's name, semester,
@@ -14,10 +14,10 @@ var teacher;                       // instructor's name
 var teacherName;                   // English name
 var course;                        // course designation
 var cRoot = "Java/Courses/";       // relative root for course management
-var semester = "Summer 2012";      // semester
+var semester = "Spring 2013";      // semester
 var courseName;                    // English name of course
-var scoreBase = "../../../cgi-bin/scores6.dat?";
-var queryBase = "http://statistics.berkeley.edu/cgi-bin/querygrade5?";
+var scoreBase = "http://www.stat.berkeley.edu/cgi-bin/scores6.dat?";
+var queryBase = "http://www.stat.berkeley.edu/cgi-bin/querygrade5?";
 var courses = [
                ["0","s2-x","Statistics 2.1x, Spring 2013, UC Berkeley","stark","Profs P.B. Stark and A. Adhikari","",5,4],
                ["1","s21-s13","Statistics W21, Spring 2013, UC Berkeley","stark","Prof. S. Murali",

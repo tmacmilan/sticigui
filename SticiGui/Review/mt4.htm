@@ -1,34 +1,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <head>
-<script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
-	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
-    // All rights reserved.
+<script language="JavaScript1.8" type="text/javascript"> <!--
+    pageModDate = "31 March 2013 16:17 PDT";
+    // by P.B. Stark, statistics.berkeley.edu/~stark
+    // Copyright 2000-2013. All rights reserved.
 // -->
 </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+<script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1/build/rollups/sha256.js"></script>
+
+
+
 <script type="text/javascript" src="../../Java/sticigui.js"></script>
 <link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
-<script src="../../Java/irGrade.js" language="JavaScript1.8"></script>
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
 
-<script language="JavaScript1.8" type="text/javascript" ><!--
-    window.name="bookWin";
-    CA = true;
-    var ver = 7; // 50;// 343; // //7
-    examSetUp(ver, 'Midterm', 4);
-// -->
-</script>
 
 </head>
 
 <body >
-<script language="JavaScript1.8" type="text/javascript"><!--
+<script language="JavaScript1.8" type="text/javascript" ><!--
+    window.name="bookWin";
+    cNum = 99;
+    rand = new rng(17); // 11, 17, 20
+    var ver = rand.getSeed();
+    examSetUp(ver, 'Midterm', 4);
     var CA = true;
+    var HI = true;
+    var defaultStatus="SticiGui Midterm";
 // -->
 </script>
 
@@ -74,7 +79,7 @@
                            'the lowest infant mortality rates.  Therefore, if the U.S. switches to single-payer ' +
                            'healthcare, infant mortality in the U.S. will decrease.'
                       ];
-     var rawOpt = ['appeal to ignorance',    
+     var rawOpt = ['appeal to ignorance',
                    'questionable cause',
                    'false dichotomy',
                    'two wrongs make a right'
@@ -87,19 +92,19 @@
      opt[opt.length] = "none of the above";
      var aVal;
      switch (which) {
-         case 0: 
-           aVal = alphabet[optPerm[1][0]]; 
+         case 0:
+           aVal = alphabet[optPerm[1][0]];
            break;
          case 1:
-           aVal = alphabet[optPerm[1][1]]; 
+           aVal = alphabet[optPerm[1][1]];
            break;
          case 2:
-           aVal = alphabet[optPerm[1][3]]; 
+           aVal = alphabet[optPerm[1][3]];
            break;
          case 3:
-           aVal = alphabet[optPerm[1][1]]; 
+           aVal = alphabet[optPerm[1][1]];
            break;
-     }         
+     }
      writeRadioExercise(qCtr++,opt,aVal);
 // -->
 </script>
@@ -144,7 +149,7 @@
                            'is false or <span class="math">S</span> is false.'],
                        ['Not (Q and S).  Therefore, (not Q) or (not S)',
                            'This is an application of one of ' +
-                           '<a class="glossRef" href="gloss.htm#de_morgan">de Morgan\'s laws</a>.'], 
+                           '<a class="glossRef" href="gloss.htm#de_morgan">de Morgan\'s laws</a>.'],
                        ['Q or not S.  S. Therefore, Q.',
                            'This is the definition of &quot;or&quot; applied to <span class="math">Q</span> ' +
                            'and <span class="math">not S</span>.  If either <span class="math">Q</span> is ' +
@@ -172,16 +177,16 @@
                            '<span class="math">S</span>, or both are false.  So, <span class="math">Q</span> ' +
                            'might be true and <span class="math">S</span> might be false. It does not follow that ' +
                            '<span class="math">Q</span> is false.'],
-                       ['If Q then S. Not Q. Therefore, not S.',   
+                       ['If Q then S. Not Q. Therefore, not S.',
                            'This is an example of <a class="glossRef" href="gloss.htm#denying_the_antecedent">' +
                            'denying the antecedent</a>.'],
-                       ['If Q then S. Not S. Therefore, Q.',  
+                       ['If Q then S. Not S. Therefore, Q.',
                            'By <a class="glossRef" href="gloss.htm#denying_the_consequent">denying the ' +
                            'consequent</a>, we can conclude that <span class="math">Q</span> is false, not that ' +
                            '<span class="math">Q</span> is true.'],
-                       ['If Q then S. S. Therefore, Q.', 
+                       ['If Q then S. S. Therefore, Q.',
                            'This is an example of <a class="glossRef" href="gloss.htm#affirming_the_consequent">' +
-                           'affirming the consequent</a>.'],  
+                           'affirming the consequent</a>.'],
                        ['Not (Q and S). Therefore, (not Q) and (not S)',
                            'It follows that either <span class="math">Q</span> is false or ' +
                            '<span class="math">S</span> is false, but not necessarily that both are false.']
@@ -191,7 +196,7 @@
 // how many questions?
     var nQ = 4;
     var whichV = listOfDistinctRandInts(nQ,0,vstatements.length-1);
-    var whichF = listOfDistinctRandInts(nQ,0,fstatements.length-1);  
+    var whichF = listOfDistinctRandInts(nQ,0,fstatements.length-1);
     for (var j = 0; j < nQ; j++) {
        document.writeln('<p>' + startProblem(pCtr++));
        var which = randBoolean();
@@ -222,7 +227,7 @@
     var optPerm = randPermutation(rawOpt,'inverse');
     var opt = optPerm[0];
     opt[opt.length] = 'any of the above could be largest';
-    var aVal = alphabet[optPerm[1][0]]; 
+    var aVal = alphabet[optPerm[1][0]];
     writeRadioExercise(qCtr++, opt, aVal);
     document.writeln('</p>');
 // -->
@@ -244,7 +249,7 @@
     var optPerm = randPermutation(rawOpt,'inverse');
     var opt = optPerm[0];
     opt[opt.length] = 'all of the above must be true';
-    var aVal = alphabet[optPerm[1][2]]; 
+    var aVal = alphabet[optPerm[1][2]];
     writeRadioExercise(qCtr++, opt, aVal);
     document.writeln('</p>');
 // -->
@@ -266,8 +271,8 @@
               ];
     var optPerm = randPermutation(rawOpt,'inverse');
     var opt = optPerm[0];
-    opt[opt.length] = 'none of the above need be true'    
-    var aVal = alphabet[4]; 
+    opt[opt.length] = 'none of the above need be true'
+    var aVal = alphabet[4];
     writeRadioExercise(qCtr++, opt, aVal);
     document.writeln('</p>');
 // -->
@@ -295,7 +300,7 @@
     var qStr = 'A group of students have various amounts of money in their pockets.  On average, they have ' +
                '$' + meanBux.toString() + ', with a standard deviation of $' + sdBux.toString() + '. ' +
                '<span class="qSpan">Among the following numbers, which is the smallest upper bound ' +
-               'on the fraction of students who have $' + bux.toString() + 
+               'on the fraction of students who have $' + bux.toString() +
                ' or more in their pockets?</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++, opt, aVal);
@@ -329,14 +334,14 @@
    var wlen = theWord[theInt].split('').length;
    var distlen = (unique(theWord[theInt].split(''))).length;
    var rawOpt = [ commify(num),
-                  commify(factorial(wlen)), 
+                  commify(factorial(wlen)),
                   commify(factorial(distlen)),
                   commify(binomialCoef(wlen, distlen)),
                   commify(Math.pow(distlen, wlen))
                 ];
    var optPerm = randPermutation(rawOpt,"inverse");
    var opt = optPerm[0];
-   var aVal = alphabet[optPerm[1][0]]; 
+   var aVal = alphabet[optPerm[1][0]];
    document.writeln(qStr);
    writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -364,28 +369,32 @@
                'closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
-    var qStr = '</p><p align="center"><applet code="Correlation.class" ' +
-                'codebase="../../Java/" ' +
-                'align="baseline" width="600" height="380" archive="PbsGui.zip" ' +
-                'name="applet1"><param name="addPoints" value="false">' +
-                '<param name="graphAveButton" value="false">' +
-                '<param name="n" value="' + nPoints.toString() + '">' +
-                '<param name="regressButtons" value="false">' +
-                '<param name="sdLineButton" value="false">' +
-                '<param name="sdButton" value="false">' +
-                '<param name="showRBar" value="false">' +
-                '<param name="title" value="Correlation: Problem ' +
-                (pCtr-1).toString() + '">' +
-                '<param name="r" value="' + r1.toString() + '">' +
-                'You need Java to see this.' +
-                '</applet>\n';
-     document.writeln(qStr);
-     var appNum = (document.applets.length - 1).toString();
-     sectionContext += // 'document.applets[' + appNum + '].setN(' + nPoints.toString() + ');\n' +
-                       'document.applets[' + appNum + '].setR(' + r1.toString() + ');\n';
+//
+    var title1 = 'Correlation: Problem ' + (pCtr-1).toString();
+    var points1 = nPoints;
+    jQuery(function() {
+      new Stici_Scatterplot('chart1', {
+        addPoints: false,
+        graphAveButton: false,
+        n: points1,
+        r: r1,
+        regressButton: false,
+        sdButton: false,
+        residualsButton: false,
+        sdLineButton: false,
+        showR: false,
+        title: title1
+      });
+    });
 // -->
 </script>
 </p>
+
+<div class="figure">
+<p class="figure">
+<div class="scatterplot" id="chart1"></div>
+</p>
+</div>
 </div>
 
 
@@ -447,7 +456,7 @@
     var qStr = 'Here is a table of bivariate data, 1990 U.S. Census estimates of the ' +
                explain[headInx[0]] + ', abbreviated by ' + header[0] + ', and ' +
                explain[headInx[1]] + ', abbreviated by ' + header[1] +
-               ', in a simple random sample of size ' + nStat.toString() + 
+               ', in a simple random sample of size ' + nStat.toString() +
                ' from the 50 states and the District of Columbia. ' +
                'The next several questions refer to these data:</p>';
     document.writeln(qStr);
@@ -492,11 +501,11 @@
     var rawOpt = [
                    (roundToDig(sortPopXList[pctili],3)).toString(),
                    (roundToDig(popXList[pctili],3)).toString(),
-                   (roundToDig(sortPopXList[pctili-1] + 
+                   (roundToDig(sortPopXList[pctili-1] +
                        pctToNext*(sortPopXList[pctili]-sortPopXList[pctili-1]),3)).toString(),
-                   (roundToDig(sortPopXList[pctili] + 
+                   (roundToDig(sortPopXList[pctili] +
                        pctToNext*(sortPopXList[pctili+1]-sortPopXList[pctili]),3)).toString(),
-                   (roundToDig(popXList[pctili-1] + 
+                   (roundToDig(popXList[pctili-1] +
                        pctToNext*(popXList[pctili]-popXList[pctili-1]),3)).toString(),
          ];
     var optPerm = randPermutation(rawOpt,'inverse');
@@ -834,29 +843,30 @@
                ' in. with an SD of ' + sdHt.toString() + ' in. The correlation between ' +
                'height and weight is ' + cc.toString() + '.</p>';
     document.writeln(qStr);
-    var qStr = '<p align="center">' +
-               '<applet code="Correlation.class" codebase="../../Java" ' +
-               ' align="baseline" width="600" height="320" name="applet2" ' +
-               'archive="PbsGui.zip">' +
-               '<param name="addPoints" value="false">' +
-               '<param name="graphAveButton" value="false">' +
-               '<param name="sdButton" value="false">' +
-               '<param name="sdLineButton" value="false">' +
-               '<param name="title" value="Fake Height v. Weight Data">' +
-               '<param name="regressButtons" value="false">' +
-               '<param name="showR" value="false">' +
-               '<param name="x" value="' + (data6[0]).join() + '">' +
-               '<param name="y" value="' + (data6[1]).join() + '">' +
-               'You need Java to see this</applet>';
-    document.writeln(qStr);
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum + '].setVariables(\"' +
-                      (data6[0]).join() + '\",\"' +
-                      (data6[1]).join() + '\");\n' +
-                      'document.applets[' + appNum + '].showPlot();\n';
+//
+    jQuery(function() {
+      new Stici_Scatterplot('chart2', {
+        addPoints: false,
+        graphAveButton: false,
+        x: data6[0],
+        y: data6[1],
+        regressButton: false,
+        sdButton: false,
+        residualsButton: false,
+        sdLineButton: false,
+        showR: false,
+        title: "Faux Height/Weight Data"
+      });
+    });
 // -->
 </script>
 </p>
+
+<div class="figure">
+<p class="figure">
+<div class="scatterplot" id="chart2"></div>
+</p>
+</div>
 
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
@@ -1012,28 +1022,30 @@
                'plot indicate about the the underlying data and the regression?</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
-    document.writeln('</p><p align="center">' +
-                     '<applet code="Correlation.class" codebase="../../Java" ' +
-                     ' align="baseline" width="600" height="320" name="applet3" ' +
-                     'archive="PbsGui.zip">' +
-                     '<param name="addPoints" value="false">' +
-                     '<param name="graphAveButton" value="false">' +
-                     '<param name="sdButton" value="false">' +
-                     '<param name="sdLineButton" value="false">' +
-                     '<param name="title" value="Residual Plot">' +
-                     '<param name="regressButtons" value="false">' +
-                     '<param name="showR" value="false">' +
-                     '<param name="x" value="' + (data5[0]).join() + '">' +
-                     '<param name="y" value="' + (data5[1]).join() + '">' +
-                     'You need Java to see this</applet>');
-   var appNum = (document.applets.length - 1).toString();
-   sectionContext += 'document.applets[' + appNum + '].setVariables("' +
-                     (data5[0]).join() + '","' +
-                     (data5[1]).join() + '");\n' +
-                     'document.applets[' + appNum + '].showPlot();\n';
+//
+    jQuery(function() {
+      new Stici_Scatterplot('chart3', {
+        addPoints: false,
+        graphAveButton: false,
+        x: data5[0],
+        y: data5[1],
+        regressButton: false,
+        sdButton: false,
+        residualsButton: false,
+        sdLineButton: false,
+        showR: false,
+        title: "Residual Plot"
+      });
+    });
 // -->
 </script>
 </p>
+<div class="figure">
+<p class="figure">
+<div class="scatterplot" id="chart3"></div>
+</p>
+</div>
+
 </div>
 
 
@@ -1055,7 +1067,7 @@
                          ' = 286,000</span> possible <em>three-pair</em> hands.'
                      ],
                      [
-                       'tenement house', 
+                       'tenement house',
                        'four of one kind and two of another kind',
                        '{2 of spades, 2 of hearts, 2 of diamonds, 2 of clubs, 4 of clovers, 4 of hearts}',
                        13*5*12*10,
@@ -1066,7 +1078,7 @@
                          '<span class="math"><sub>5</sub>C<sub>4</sub> = 5</span> ways to pick the suits of ' +
                          'the four and <span class="math"><sub>5</sub>C<sub>2</sub> = 10</span> ways to pick ' +
                          'the suits of the pair.  By the fundamental rule of counting, there are thus ' +
-                         '<span class="math">13&times;12&times;5&times;10 = ' + commify(13*12*5*10) + 
+                         '<span class="math">13&times;12&times;5&times;10 = ' + commify(13*12*5*10) +
                          '</span> possible <em>tenement house</em> hands.'
                      ],
                      [
@@ -1084,11 +1096,11 @@
                          '<span class="math"><sub>5</sub>C<sub>2</sub> = 10</span> ways to pick ' +
                          'the suits of the pair, and <span class="math"><sub>5</sub>C<sub>1</sub> = 5</span> ' +
                          'ways to pick the suit of the sixth card.  By the fundamental rule of counting, there are ' +
-                         'thus <span class="math">13&times;12&times;11&times;10&times;10&times;5 = ' + 
+                         'thus <span class="math">13&times;12&times;11&times;10&times;10&times;5 = ' +
                           commify(13*12*11*10*10*5) + '</span> possible <em>house with a vacancy</em> hands.'
                      ],
                      [
-                       'house in the suburbs', 
+                       'house in the suburbs',
                        'three each of two kinds of cards',
                        '{2 of spades, 2 of hearts, 2 of diamonds, 4 of clovers, 4 of hearts, 4 of spades}',
                        13*6*100,
@@ -1097,11 +1109,11 @@
                          '<span class="math"><sub>5</sub>C<sub>3</sub> = 10</span> ways to ' +
                          'pick the suits of the three cards of that kind. By the fundamental rule of ' +
                          'counting, there are thus ' +
-                         '<span class="math">78&times;10&times;10= 780</span> ' + 
+                         '<span class="math">78&times;10&times;10= 780</span> ' +
                          'possible <em>house in the suburbs</em> hands.'
                      ],
                      [
-                       'well-suited', 
+                       'well-suited',
                        'at least one card of every suit, no more than one card of any kind (no pairs, etc.), ' +
                           'and not all cards of consecutive kinds',
                        '{2 of spades, 4 of hearts, 5 of diamonds, 8 of clubs, 10 of clubs, Jack of clovers}',
@@ -1118,20 +1130,20 @@
                          'fundamental rule of counting, there are thus ' +
                          '<span class="math">(1716&minus;9)&times;6&times;15&times;24 = 3,687,120</span> ' +
                          'possible <em>well-suited</em> hands.'
-                     ]                
+                     ]
                     ];
     var which = listOfRandInts(1, 0, theHands.length-1)[0];
     var qStr = 'A peculiar deck of playing cards is like a regular deck, but has five suits: spades, ' +
                'hearts, diamonds, clubs, and clovers.  There are 13 cards in each suit: Ace, 2, 3, ' +
                '&hellip;, 10, Jack, Queen, King.  There are thus 5&times;13 = 65 cards in this deck. ' +
                'Consider dealing a 6-card hand from this deck.</p> ' +
-               '<p> A <em>' + theHands[which][0] + 
-               '</em> hand is one that contains ' + theHands[which][1] + '.  An example of a <em>' + 
-               theHands[which][0] + '</em> hand is ' + theHands[which][2] + 
+               '<p> A <em>' + theHands[which][0] +
+               '</em> hand is one that contains ' + theHands[which][1] + '.  An example of a <em>' +
+               theHands[which][0] + '</em> hand is ' + theHands[which][2] +
                '.</p><p><span class="qSpan">How many different 6-card hands can be dealt from this deck that are ' +
                '<em>' + theHands[which][0] + '</em>?</span></p><p>Pick the closest answer.</p><p>';
     document.writeln(qStr);
-    var rawOpt = makeRangeOptions(theHands[which][3], Math.floor(theHands[which][3]/10), 2*theHands[which][3], 
+    var rawOpt = makeRangeOptions(theHands[which][3], Math.floor(theHands[which][3]/10), 2*theHands[which][3],
                                   0, 3*theHands[which][3], 0, '', 100);
     var opt = rawOpt[0];
     var aVal = rawOpt[1];

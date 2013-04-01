@@ -5,7 +5,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "4 February 2013 00:37 PST";
+	pageModDate = "24 March 2013 00:37 PST";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -208,7 +208,7 @@ jQuery(function() {
     Reading Residual Plots
 </h2>
 
-<p class="video"> 
+<p class="video">
     <iframe width="420" height="315" src="http://www.youtube.com/embed/EPrAKgawSnY?start=3958&end=4204" frameborder="0" allowfullscreen></iframe>
 </p>
 
@@ -229,17 +229,15 @@ jQuery(function() {
 // -->
 </script>
 
+
+<p class="figure">
+<div id="resid1" class="scatterplot"></div>
 <script language="JavaScript1.8" type="text/javascript"><!--
     var examplePoints = 100;
     var parms = [["polynomial", .5, rand.next()], 8, 5];
     var data1 = fakeBivariateData(examplePoints,parms[0],
-          parms[1],parms[2]);
-// -->
-</script>
+                     parms[1],parms[2]);
 
-<p class="figure">
-<div id="resid1" class="scatterplot"></div>
-<script>
 jQuery(function() {
   new Stici_Scatterplot('resid1', {
     addPoints: false,
@@ -356,15 +354,12 @@ jQuery(function() {
 </script>
 
 
+<p class="figure">
+<div id="resid3" class="scatterplot"></div>
 <script language="JavaScript1.8" type="text/javascript"><!--
     var parms = [["polynomial", .5, rand.next(),-.5,.25], 8, 5];
     var data2 = fakeBivariateData(examplePoints,parms[0], parms[1],parms[2]);
-// -->
-</script>
 
-<p class="figure">
-<div id="resid3" class="scatterplot"></div>
-<script>
 jQuery(function() {
   new Stici_Scatterplot('resid3', {
     addPoints: false,
@@ -485,6 +480,8 @@ jQuery(function() {
 // -->
 </script>
 
+<p class="figure">
+<div id="resid4" class="scatterplot"></div>
 <script language="JavaScript1.8" type="text/javascript"><!--
     var randSign = rand.next();
     if (randSign > 0.5) {
@@ -495,24 +492,18 @@ jQuery(function() {
     var parms = [["polynomial", 5*randSign], 1, 5];
     var data4 = fakeBivariateData(examplePoints,parms[0],
         parms[1],parms[2]);
-// -->
-</script>
 
-<p class="figure">
-<div id="resid4" class="scatterplot"></div>
-<script>
 jQuery(function() {
   new Stici_Scatterplot('resid4', {
     addPoints: false,
-    graphAveButton: true,
+    graphAveButton: false,
     sdButton: false,
     sdLineButton: false,
- //   title: "Impossible residual plot: something's wrong",
     regressButton: true,
-    residualsButton: true,
-    showResiduals: true,
-    x: data2[0],
-    y: data2[1]
+    residualsButton: false,
+    showResiduals: false,
+    x: data4[0],
+    y: data4[1]
   });
 });
 </script>
@@ -529,25 +520,22 @@ jQuery(function() {
 // -->
 </script>
 
+<p class="figure">
+<div id="resid5" class="scatterplot"></div>
 <script language="JavaScript1.8" type="text/javascript"><!--
     var parms = [["polynomial", 10*(1+rand.next()), 5*rand.next()], 1, 5];
     var data3 = fakeBivariateData(examplePoints,parms[0], parms[1],parms[2]);
-// -->
-</script>
 
-<p class="figure">
-<div id="resid5" class="scatterplot"></div>
-<script>
 jQuery(function() {
   new Stici_Scatterplot('resid5', {
     addPoints: false,
-    graphAveButton: true,
+    graphAveButton: false,
     sdButton: false,
     sdLineButton: false,
 //    title: "Impossible residual plot: something's wrong",
     regressButton: true,
-    residualsButton: true,
-    showResiduals: true,
+    residualsButton: false,
+    showResiduals: false,
     x: data3[0],
     y: data3[1]
   });
@@ -555,8 +543,6 @@ jQuery(function() {
 </script>
 </p>
 </div>
-
-
 
 <p>
     If the residuals have a trend, the slope of the regression line was computed incorrectly.
@@ -767,31 +753,26 @@ jQuery(function() {
     document.writeln(qStr);
     writeSelectExercise(true,qCtr++,opt,aVal);
     document.writeln('</p>');
+jQuery(function() {
+  new Stici_Scatterplot('resid6', {
+    title: "Residual Plot",
+    addPoints: false,
+    graphAveButton: false,
+    sdButton: false,
+    sdLineButton: false,
+    regressButton: true,
+    residualsButton: false,
+    showResiduals: false,
+    x: data5[0],
+    y: data5[1]
+  });
+});
 // -->
 </script>
 
 <p class="figure">
 <div id="resid6" class="scatterplot"></div>
-<script>
-jQuery(function() {
-  new Stici_Scatterplot('resid6', {
-    addPoints: false,
-    graphAveButton: true,
-    sdButton: false,
-    sdLineButton: false,
- //   title: "Impossible residual plot: something's wrong",
-    regressButton: true,
-    residualsButton: true,
-    showResiduals: true,
-    x: data5[0],
-    y: data5[1]
-  });
-});
-</script>
 </p>
-</div>
-// -->
-</script>
 </div>
 
 <h2>

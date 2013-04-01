@@ -5,25 +5,28 @@
       pref:renderer="css">
 
 <head>
-<script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
-	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
-    // All rights reserved.
+<script language="JavaScript1.8" type="text/javascript"> <!--
+    pageModDate = "31 March 2013 22:17 PDT";
+    // by P.B. Stark, statistics.berkeley.edu/~stark
+    // Copyright 2000-2013. All rights reserved.
 // -->
 </script>
 
-<script src="../../Java/irGrade.js" language="JavaScript1.8" type="text/javascript" ></script>
-<script src="../../Java/bbsal98.js" language="JavaScript1.8" type="text/javascript" ></script>
-
-
-<title>SticiGui Midterm</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+<script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1/build/rollups/sha256.js"></script>
+
+
+
 <script type="text/javascript" src="../../Java/sticigui.js"></script>
 <link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
-<script src="../../Java/irGrade.js" language="JavaScript1.8"></script>
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
+
+<script type="text/javascript" src="../../Java/bbsal98.js" language="JavaScript1.8"></script>
+
 </head>
 
 <body>
@@ -33,7 +36,7 @@
     cNum = 99;
     rand = new rng(11); // 11, 17, 20
     var ver = rand.getSeed();
-    examSetUp(ver, 'Midterm', 1);
+    examSetUp(ver, 'Midterm', 3);
     var CA = true;
     var HI = true;
     var defaultStatus="SticiGui Midterm";
@@ -746,29 +749,32 @@
     if (none) aVal += "a";
     if (aVal.lastIndexOf('&') == aVal.length - 1) aVal = aVal.substring(0, aVal.length - 1);
     writeRadioExercise(qCtr++,opt,aVal);
-    var qStr = '</p><p align="center">' +
-               '<applet code="Correlation.class" codebase="../../Java" ' +
-               ' align="baseline" width="600" height="320" name="q6Applet" ' +
-               'archive="PbsGui.zip">' +
-               '<param name="addPoints" value="false">' +
-               '<param name="graphAveButton" value="false">' +
-               '<param name="sdButton" value="false">' +
-               '<param name="sdLineButton" value="false">' +
-               '<param name="title" value="Fake Height v. Weight Data">' +
-               '<param name="regressButtons" value="false">' +
-               '<param name="showR" value="false">' +
-               '<param name="x" value="' + (data6[0]).join() + '">' +
-               '<param name="y" value="' + (data6[1]).join() + '">' +
-               'You need Java to see this</applet>';
-    document.writeln(qStr);
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum +
-                      '].setVariables((data6[0]).join().toString(), ' +
-                      '(data6[1]).join().toString());\n' +
-                      'document.applets[' + appNum + '].showPlot();\n';
+//
+    jQuery(function() {
+      new Stici_Scatterplot('chart1', {
+        addPoints: false,
+        graphAveButton: false,
+        x: data6[0],
+        y: data6[1],
+        regressButton: false,
+        sdButton: false,
+        residualsButton: false,
+        sdLineButton: false,
+        showR: false,
+        title: "Faux Height/Weight Data"
+      });
+    });
 // -->
 </script>
 </p>
+
+<div class="figure">
+<p class="figure">
+<div id="chart1" class="scatterplot"></div>
+</p>
+</div>
+
+
 
 <!-- ==================================START PROBLEM==================================== -->
 
@@ -784,29 +790,31 @@
              'in the scatterplot below is closest to</font></p><p>';
   document.writeln(qStr);
   writeRadioExercise(qCtr++, opt,aVal);
-// -->
-</script>
-<p align="center">
-<script language="JavaScript1.8" type="text/javascript" ><!--
-// alert(whichRValue);
-  document.writeln('<applet code="Correlation.class" codebase="../../Java" ' +
-      ' align="baseline" width="600" height="320" name="q3Applet" archive="PbsGui.zip">' +
-      '<param name="addPoints" value="false">' +
-      '<param name="graphAveButton" value="false">' +
-      '<param name="sdButton" value="false">' +
-      '<param name="sdLineButton" value="false">' +
-      '<param name="title" value="Estimate the Correlation Coefficient">' +
-      '<param name="regressButtons" value="false">' +
-      '<param name="showR" value="false">' +
-      '<param name="n" value="50">' +
-      '<param name="r" value="' + rOptions[whichRValue].toString() + '">' +
-      'You need Java to see this!</applet>');
-  var qNum = (document.applets.length - 1).toString();
-  sectionContext += 'document.applets[' + qNum + '].setR(' +
-                     rOptions[whichRValue].toString() + ');\n';
+  thisTitle = 'Faux dataset for problem ' + (pCtr-1).toString();
+//
+    jQuery(function() {
+      new Stici_Scatterplot('chart2', {
+        addPoints: false,
+        graphAveButton: false,
+        n: 50,
+        r: rOptions[whichRValue].toString(),
+        regressButton: false,
+        sdButton: false,
+        residualsButton: false,
+        sdLineButton: false,
+        showR: false,
+        title: thisTitle
+      });
+    });
 // -->
 </script>
 </p>
+
+<div class="figure">
+<p class="figure">
+<div id="chart2" class="scatterplot"></div>
+</p>
+</div>
 
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
@@ -829,7 +837,7 @@
                'That is, in counties where the vacancy rate is above average, median ' +
                'rents tend to be below average.  The correlation coefficient between ' +
                'vacancy rate and median rent by county is ' + cc.toString() +
-               '.  <font color="#009900">Select the true statement.</font></p>';
+               '.  <font color="#009900">Select the true statement.</font></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -1001,13 +1009,13 @@
     var qStr = 'The probability of the event <em>A</em> is ' + ps[1].toString() + '%, ' +
                'the probability of the event <em>B</em> is ' + ps[2].toString() + '%, ' +
                'and the probability of <em>AB</em> is ' + pAB.toString() +
-               '%. <font color="#009900">The probability of B given A is closest to</font></p>';
+               '%. <font color="#009900">The probability of B given A is closest to</font></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
     document.writeln('</p><p>');
     document.writeln(startProblem(pCtr++));
     qStr = '<font color="#009900">In the previous question, are the events ' +
-           '<em>A</em> and <em>B</em> independent?</font></p>';
+           '<em>A</em> and <em>B</em> independent?</font></p><p>';
     var opt = ['yes',
                'no',
                'cannot be determined from the information given'

@@ -5,24 +5,25 @@
       pref:renderer="css">
 
 <head>
-<script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
-	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
-    // All rights reserved.
+<script language="JavaScript1.8" type="text/javascript"> <!--
+    pageModDate = "31 March 2013 22:42 PDT";
+    // by P.B. Stark, statistics.berkeley.edu/~stark
+    // Copyright 2000-2013. All rights reserved.
 // -->
 </script>
 
-
-<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
-
-<title>SticiGui Final</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+<script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1/build/rollups/sha256.js"></script>
+
+
+
 <script type="text/javascript" src="../../Java/sticigui.js"></script>
 <link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
-<script src="../../Java/irGrade.js" language="JavaScript1.8"></script>
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
 
 </head>
 
@@ -137,8 +138,8 @@
     var op = makeOptions(100*px,5*px,1,"%");
     var opt = op[0];
     var aVal = op[1];
-    var qStr = '<font color="#009900">The probability that X = ' + x.toString() +
-               ' is closest to</font></p>';
+    var qStr = '<span class="qSpan">The probability that X = ' + x.toString() +
+               ' is closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -153,7 +154,7 @@
     var op = makeOptions(Ex,.03*Ex,4);
     var opt = op[0];
     var aVal = op[1];
-    var qStr = '<font color="#009900">The expected value of X is closest to</font></p>';
+    var qStr = '<span class="qSpan">The expected value of X is closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -168,7 +169,7 @@
     var op = makeOptions(SEx,.03*SEx,4);
     var opt = op[0];
     var aVal = op[1];
-    var qStr = '<font color="#009900">The standard error of X is closest to</font></p>';
+    var qStr = '<span class="qSpan">The standard error of X is closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -208,8 +209,8 @@
                ' or more times in the ' + cardinals[nTosses] + ' tosses. </p><p>';
     document.writeln(qStr);
     document.writeln(startProblem(pCtr++));
-    var qStr = '<font color="#009900">If the null hypothesis is true, the probability ' +
-               'distribution of the number of heads is</font></p>';
+    var qStr = '<span class="qSpan">If the null hypothesis is true, the probability ' +
+               'distribution of the number of heads is</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -224,8 +225,8 @@
     var op = makeProbOptions(alpha,.1,.5);
     var opt = op[0];
     var aVal = op[1];
-    var qStr = '<font color="#009900">The significance level of this test is closest ' +
-               'to</font></p>';
+    var qStr = '<span class="qSpan">The significance level of this test is closest ' +
+               'to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -248,10 +249,10 @@
     var op = makeProbOptions(power,lo,hi);
     var opt = op[0];
     var aVal = op[1];
-    var qStr = '<font color="#009900">The power of this test against the ' +
+    var qStr = '<span class="qSpan">The power of this test against the ' +
                'alternative hypothesis that the coin has chance ' +
                roundToDig(100*pAlt,0).toString() + '% of landing heads is ' +
-               'closest to</font></p>';
+               'closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -271,7 +272,7 @@
                '80 points, one for each country). The scatterplot is roughly football-shaped. ' +
                'The correlation coefficient between fat intake and serum cholesterol ' +
                'is 0.8. The regression line has slope 2 (2mg/dl of serum cholesterol ' +
-               'per gram of fat per day).</p><p><font color="#009900">' +
+               'per gram of fat per day).</p><p><span class="qSpan">' +
                'i) For the sample, people who consume one less gram of fat per day than ' +
                'average have a serum cholesterol level about 2mg/dl less than average.</p><p>' +
                'ii) An adult should expect that for each gram of fat he eliminates ' +
@@ -281,7 +282,7 @@
                'on the effect of dietary fat on serum cholesterol for individuals.</p><p>' +
                'iv) Because this is an observational study, one should not infer a ' +
                'causal relationship between dietary fat intake and serum cholesterol ' +
-               'level from the observed association.</font></p><p>';
+               'level from the observed association.</span></p><p>';
     document.writeln(qStr);
     var aVal = "e";
     var opt = ["All are true.",
@@ -311,8 +312,8 @@
     var opt = optPerm[0];
     var aVal = alphabet[optPerm[1][1]];
     var qStr = 'In our legal system, a person is innocent until proven guilty.</p>' +
-               '<p><font color="#009900">In a criminal trial, a type I error occurs if' +
-               '</font></p><p>';
+               '<p><span class="qSpan">In a criminal trial, a type I error occurs if' +
+               '</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -336,32 +337,36 @@
     var aVal = alphabet[rInx];
     var nPoints = 50*listOfRandInts(1,1,4)[0];
     var qStr = 'The following scatterplot contains ' + nPoints.toString() + ' points.</p><p>' +
-               '<font color="#009900">The correlation coefficient of the two variables is ' +
-               'closest to</font></p>';
+               '<span class="qSpan">The correlation coefficient of the two variables is ' +
+               'closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
-    var qStr = '</p><p align="center"><applet code="Correlation.class" ' +
-                'codebase="../../Java/" ' +
-                'align="baseline" width="600" height="380" archive="PbsGui.zip" ' +
-                'name="applet1"><param name="addPoints" value="false">' +
-                '<param name="graphAveButton" value="false">' +
-                '<param name="n" value="' + nPoints.toString() + '">' +
-                '<param name="regressButtons" value="false">' +
-                '<param name="sdLineButton" value="false">' +
-                '<param name="sdButton" value="false">' +
-                '<param name="showRBar" value="false">' +
-                '<param name="title" value="Correlation: Question ' +
-                (pCtr-1).toString() + '">' +
-                '<param name="r" value="' + r1.toString() + '">' +
-                'You need Java to see this.' +
-                '</applet>\n';
-     document.writeln(qStr);
-     var appNum = (document.applets.length - 1).toString();
-     sectionContext += // 'document.applets[' + appNum + '].setN(' + nPoints.toString() + ');\n' +
-                       'document.applets[' + appNum + '].setR(' + r1.toString() + ');\n';
+//
+    var points1 = nPoints;
+    var title1 = 'Correlation: Problem ' +  (pCtr-1).toString();
+    jQuery(function() {
+      new Stici_Scatterplot('chart1', {
+        addPoints: false,
+        graphAveButton: false,
+        n: points1,
+        r: r1,
+        regressButton: false,
+        sdButton: false,
+        residualsButton: false,
+        sdLineButton: false,
+        showR: false,
+        title: title1
+      });
+    });
 // -->
 </script>
 </p>
+
+<div class="figure">
+<p class="figure">
+<div id="chart1" class="scatterplot"></div>
+</p>
+</div>
 
 <hr />
 
@@ -381,8 +386,8 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    var qStr = '<font color="#009900">The lower quartile (in 1000s of people) of ' +
-               header[0] + ' for these 10 states is closest to</font></p><p>';
+    var qStr = '<span class="qSpan">The lower quartile (in 1000s of people) of ' +
+               header[0] + ' for these 10 states is closest to</span></p><p>';
     document.writeln(qStr);
     var rawOpt = [(roundToDig(popXList[1],3)).toString(),
                  (roundToDig((popXList[1] + popXList[2])/2,3)).toString(),
@@ -403,8 +408,8 @@
     document.writeln(startProblem(pCtr++));
     var theInts = listOfRandInts(2,1,9);
     var thePctile = 10*theInts[0]+theInts[1];
-    var qStr = '<font color="#009900">The ' + ordinals[thePctile] + ' percentile of the ' +
-               '10 values of ' + header[0] + ' is closest to </font></p><p>';
+    var qStr = '<span class="qSpan">The ' + ordinals[thePctile] + ' percentile of the ' +
+               '10 values of ' + header[0] + ' is closest to </span></p><p>';
     document.writeln(qStr);
     var rawOpt = [(roundToDig(popXList[theInts[0]-1],3)).toString(),
           (roundToDig(popXList[theInts[0]-1] +
@@ -425,8 +430,8 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    var qStr = '<font color="#009900">The median of these 10 values of ' +
-               header[0] + ' is closest to </font></p><p>';
+    var qStr = '<span class="qSpan">The median of these 10 values of ' +
+               header[0] + ' is closest to </span></p><p>';
     document.writeln(qStr);
     var rawOpt = [(roundToDig(popXList[4],3)).toString(),
               (roundToDig((popXList[4] + popXList[5])/2,3)).toString(),
@@ -445,8 +450,8 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    var qStr = '<font color="#009900">The IQR of these 10 values of ' + header[0] +
-               ' is closest to </font></p><p>';
+    var qStr = '<span class="qSpan">The IQR of these 10 values of ' + header[0] +
+               ' is closest to </span></p><p>';
     document.writeln(qStr);
     var uno = roundToDig((sortPopXList[7] - sortPopXList[2]),3);
     var dos = roundToDig((popXList[7] - popXList[2]),3);
@@ -485,10 +490,10 @@
         }
         pct = count*100/nStat;
     }
-    var qStr = '<font color="#009900">In a relative frequency table for the 10 ' +
+    var qStr = '<span class="qSpan">In a relative frequency table for the 10 ' +
                'values of ' + header[0] + ', the entry for the class interval ' +
                (limits[0]).toString() + ' (exclusive) to ' + (limits[1]).toString() +
-               ' (inclusive) is closest to</font></p><p>';
+               ' (inclusive) is closest to</span></p><p>';
     document.writeln(qStr);
     var rs = listOfRandSigns(2);
     var oneAns = pct + rs[1]*10;
@@ -519,10 +524,10 @@
         }
     }
     pct = count*100/nStat;
-    var qStr = '<font color="#009900">In a histogram for the 10 values of ' +
+    var qStr = '<span class="qSpan">In a histogram for the 10 values of ' +
                header[0] + ', the height of the bin for the class interval ' +
                (limits[0]).toString() + ' (exclusive) to ' +
-               (limits[1]).toString() + ' (inclusive) would be closest to</font></p><p>';
+               (limits[1]).toString() + ' (inclusive) would be closest to</span></p><p>';
     document.writeln(qStr);
     var binHt = pct/(limits[1]-limits[0]);
     var bhStr = (roundToDig(binHt,4)).toString();
@@ -572,9 +577,9 @@
             aVal = alphabet[i];
         }
     }
-    var qStr = '<font color="#009900">The point of averages of these data (for ' +
+    var qStr = '<span class="qSpan">The point of averages of these data (for ' +
                header[0] + ' on the X axis and ' + header[1] + ' on the Y axis) ' +
-               'is closest to</font></p><p>';
+               'is closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -592,8 +597,8 @@
     op = makeOptions(ssr,.01*ssr,1);
     opt = op[0];
     aVal = op[1];
-    var qStr = '<font color="#009900">The SD of the list of 10 values of ' +
-               header[0] + ' is closest to the square root of</font></p><p>';
+    var qStr = '<span class="qSpan">The SD of the list of 10 values of ' +
+               header[0] + ' is closest to the square root of</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -655,8 +660,8 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    var qStr = '<font color="#009900">The missing value for ' + header[1] +
-               ' in standard units is closest to</font></p><p>';
+    var qStr = '<span class="qSpan">The missing value for ' + header[1] +
+               ' in standard units is closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -687,8 +692,8 @@
             aVal = alphabet[i];
         }
     }
-    var qStr = '<font color="#009900">The correlation coefficient of ' +
-               header[0] + ' and ' + header[1] + ' is closest to</font></p><p>';
+    var qStr = '<span class="qSpan">The correlation coefficient of ' +
+               header[0] + ' and ' + header[1] + ' is closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -709,9 +714,9 @@
                  'list of 51 numbers, one for each state and the District of Columbia. ' +
                  'The mean of the original list of 51 values of ' + header[0] +
                  ' is ' + aveAllX.toString() + ', and the SD of the 51 values is ' +
-                 sdAllX.toString() + '. <font color="#009900">Which of the following is ' +
+                 sdAllX.toString() + '. <span class="qSpan">Which of the following is ' +
                  'closest to the smallest percentage of numbers in the original list of ' +
-                 '51 that cannot exceed ' + XPopLim + '? </font></p><p>';
+                 '51 that cannot exceed ' + XPopLim + '? </span></p><p>';
       document.writeln(qStr);
       writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -751,8 +756,8 @@
     var op = makeOptions(seBnd,0.1*seBnd,3,"%");
     var opt = op[0];
     var aVal = op[1];
-    var qStr = '<font color="#009900">The standard error of the sample percentage of ' +
-               'females is at most (give the smallest correct answer)</font></p><p>';
+    var qStr = '<span class="qSpan">The standard error of the sample percentage of ' +
+               'females is at most (give the smallest correct answer)</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -774,8 +779,8 @@
     var aVal = op[1];
     var qStr = 'The sample is drawn; it turns out that ' + cardinals[nOk] +
                ' of the people in the sample ' + isWord +
-               ' female; the rest are male.</p><p><font color="#009900">' +
-               'The sample percentage of females is closest to</font></p><p>';
+               ' female; the rest are male.</p><p><span class="qSpan">' +
+               'The sample percentage of females is closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++, opt, aVal);
 // -->
@@ -787,9 +792,9 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    var qStr = '<font color="#009900">The lower endpoint of a conservative ' + cl.toString() +
+    var qStr = '<span class="qSpan">The lower endpoint of a conservative ' + cl.toString() +
                '% confidence interval for the population percentage of females ' +
-               'is closest to </font></p><p>';
+               'is closest to </span></p><p>';
     document.writeln(qStr);
     var op = makeRangeOptions(lo,5,pHat,0,100,1,'%');
     var opt = op[0];
@@ -804,9 +809,9 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    var qStr = '<font color="#009900">The upper endpoint of a conservative ' +
+    var qStr = '<span class="qSpan">The upper endpoint of a conservative ' +
                cl.toString() + '% confidence interval for the population percentage ' +
-               'of females is closest to</font></p><p>';
+               'of females is closest to</span></p><p>';
     document.writeln(qStr);
     var op = makeRangeOptions(hi,pHat,90,0,100,1,'%');
     var opt = op[0];
@@ -835,8 +840,8 @@
                ' times, independently.  Let X be the number of times the coin lands ' +
                'heads in the first ' + cardinals[nr[0]] + ' tosses, and let Y be the ' +
                'number of times the coin lands tails in the last ' +
-               cardinals[nr[0]] + ' tosses. ' + '</p><p><font color="#009900">' +
-               'X and Y are independent random variables.</font></p><p>';
+               cardinals[nr[0]] + ' tosses. ' + '</p><p><span class="qSpan">' +
+               'X and Y are independent random variables.</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -882,9 +887,9 @@
    var aVal = op[1];
 // -->
 </script>
-    <font color="#009900">
+    <span class="qSpan">
     The expected value of X is closest to
-    </font>
+    </span>
 </p>
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
@@ -908,9 +913,9 @@
    var aVal = op[1];
 // -->
 </script>
-    <font color="#009900">
+    <span class="qSpan">
     The standard error of X is closest to
-    </font>
+    </span>
 </p>
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
@@ -970,10 +975,10 @@
    // -->
 </script>
     A student is selected at random from the class.
-    <font color="#009900">
+    <span class="qSpan">
     The conditional probability that the student cheated, given that the software
     says he or she did, is closest to
-    </font>
+    </span>
 </p>
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
@@ -992,11 +997,12 @@
    var aVal = op[1];
    // -->
 </script>
-    <font color="#009900">
+    <span class="qSpan">
     The expected number of cheaters who are correctly identified by
     the software is closest to
-    </font>
+    </span>
 </p>
+<p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -1013,11 +1019,12 @@
    var aVal = op[1];
 // -->
 </script>
-    <font color="#009900">
+    <span class="qSpan">
     The expected number of honest students who are incorrectly identified to be cheaters by
     the software is closest to
-    </font>
+    </span>
 </p>
+<p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
    writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -1033,14 +1040,14 @@
     var aVal = op[1];
 // -->
 </script>
-    <font color="#009900">
+    <span class="qSpan">
     The probability that the software correctly identifies at least
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(  cardinals[most]  + " ");
 // -->
 </script>
     of the cheaters is closest to
-    </font>
+    </span>
 </p>
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
@@ -1059,7 +1066,7 @@
    var aVal = op[1];
 // -->
 </script>
-<font color="#009900">
+<span class="qSpan">
     The probability that the software correctly identifies all
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln( cardinals[nCheat]   + " ");
@@ -1072,8 +1079,9 @@
 // -->
 </script>
     honest students to be cheaters, is closest to
-</font>
+</span>
 </p>
+<p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -1142,10 +1150,10 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    var qStr = '<font color="#009900">The normal approximation to the probability that ' +
+    var qStr = '<span class="qSpan">The normal approximation to the probability that ' +
                'the sum of the numbers on the tickets in ' + nDraws.toString() +
                ' random draws with replacement from this box is between ' +
-               loLim.toString() + ' and ' + hiLim.toString() + ' is closest to</font></p><p>';
+               loLim.toString() + ' and ' + hiLim.toString() + ' is closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -1159,7 +1167,7 @@
    document.writeln(startProblem(pCtr++));
 // -->
 </script>
-    <font color="#009900">
+    <span class="qSpan">
     The expected value of the sum of the
 <script language="JavaScript1.8" type="text/javascript" ><!--
    var which = randBoolean();
@@ -1185,7 +1193,7 @@
 // -->
 </script>
     random draws with replacement from the box is closest to
-    </font>
+    </span>
 </p>
 
 <p>
@@ -1211,7 +1219,7 @@
     var aVal = op[1];
 // -->
 </script>
-<font color="#009900">
+<span class="qSpan">
     The standard error of the sum of the
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln( '<em>' + word   + ' numbers</em> ');
@@ -1223,7 +1231,7 @@
 // -->
 </script>
     random draws with replacement is closest to
-</font>
+</span>
 </p>
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
@@ -1264,9 +1272,9 @@
     var which = (listOfRandInts(1,0, qOpt.length -1))[0];
     var p = randBoolean();
     var q = randBoolean()
-    var qStr = '<font color="#009900">When <em>p</em> is ' + p.toString() +
+    var qStr = '<span class="qSpan">When <em>p</em> is ' + p.toString() +
                ' and <em>q</em> is ' + q.toString() + ', ' + qOpt[which][0] +
-               ' is</font></p><p>';
+               ' is</span></p><p>';
     document.writeln(qStr);
     var evalStr = qOpt[which][1] + '(' + p.toString() + ',' + q.toString() + ');';
     var tv = qOpt[which][1](p, q);
@@ -1395,11 +1403,11 @@
             opt = [rawOpt[0], rawOpt[2], rawOpt[1], rawOpt[4], rawOpt[8]];
             aVal = 'a';
         }
-        document.writeln('<p>' + startProblem(pCtr++) + ' <font color="#009900">' +
-            qText[which[i]] + '</font></p><p>');
+        document.writeln('<p>' + startProblem(pCtr++) + ' <span class="qSpan">' +
+            qText[which[i]] + '</span></p><p>');
         writeRadioExercise(qCtr++,opt,aVal);
-        document.writeln('<p>' + startProblem(pCtr++) + ' <font color="#009900">' +
-            qText[which[i]] + '</font></p><p>');
+        document.writeln('<p>' + startProblem(pCtr++) + ' <span class="qSpan">' +
+            qText[which[i]] + '</span></p><p>');
         writeRadioExercise(qCtr++,opt2,alphabet[tV[which[i]]]);
         document.writeln('</p>');
     }
@@ -1453,29 +1461,30 @@
                ' in. with an SD of ' + sdHt.toString() + ' in. The correlation between ' +
                'height and weight is ' + cc.toString() + '.</p>';
     document.writeln(qStr);
-    var qStr = '<p align="center">' +
-               '<applet code="Correlation.class" codebase="../../Java" ' +
-               ' align="baseline" width="600" height="320" name="applet2" ' +
-               'archive="PbsGui.zip">' +
-               '<param name="addPoints" value="false">' +
-               '<param name="graphAveButton" value="false">' +
-               '<param name="sdButton" value="false">' +
-               '<param name="sdLineButton" value="false">' +
-               '<param name="title" value="Fake Height v. Weight Data">' +
-               '<param name="regressButtons" value="false">' +
-               '<param name="showR" value="false">' +
-               '<param name="x" value="' + (data6[0]).join() + '">' +
-               '<param name="y" value="' + (data6[1]).join() + '">' +
-               'You need Java to see this</applet>';
-    document.writeln(qStr);
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum + '].setVariables(\"' +
-                      (data6[0]).join() + '\",\"' +
-                      (data6[1]).join() + '\");\n' +
-                      'document.applets[' + appNum + '].showPlot();\n';
+//
+    jQuery(function() {
+      new Stici_Scatterplot('chart2', {
+        addPoints: false,
+        graphAveButton: false,
+        x: data6[0],
+        y: data6[1],
+        regressButton: false,
+        sdButton: false,
+        residualsButton: false,
+        sdLineButton: false,
+        showR: false,
+        title: "Faux Height/Weight Data"
+      });
+    });
 // -->
 </script>
 </p>
+
+<div class="figure">
+<p class="figure">
+<div id="chart2" class="scatterplot"></div>
+</p>
+</div>
 
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
@@ -1490,9 +1499,9 @@
     var op = makeOptions(predHt,pert,1," in.");
     var opt = op[0];
     var aVal = op[1];
-    var qStr = '<font color="#009900">The regression line estimate of the height of an ' +
+    var qStr = '<span class="qSpan">The regression line estimate of the height of an ' +
                'individual whose weight is ' + predWt.toString() +
-               ' lbs. is closest to</font></p><p>';
+               ' lbs. is closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
@@ -1502,8 +1511,8 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    var qStr = '<font color="#009900">The rms error of regression for regressing ' +
-               'height against weight is closest to</font></p><p>';
+    var qStr = '<span class="qSpan">The rms error of regression for regressing ' +
+               'height against weight is closest to</span></p><p>';
     document.writeln(qStr);
     var coef = roundToDig(1-cc*cc,2);
     var smallDiff = Math.min(coef, 1-coef);
@@ -1546,8 +1555,8 @@
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
     document.writeln(startProblem(pCtr++));
-    var qStr = '<font color="#009900">For this scatterplot, the regression line, together ' +
-               'with the SDs of height and weight, summarize the data</font></p><p>';
+    var qStr = '<span class="qSpan">For this scatterplot, the regression line, together ' +
+               'with the SDs of height and weight, summarize the data</span></p><p>';
     document.writeln(qStr);
     var opt = ["well",
                 "poorly, because of outliers",
@@ -1626,32 +1635,34 @@
         aVal = 'd';
     }
     var qStr = 'Below is a residual plot from a regression. The square is the point of ' +
-               'averages of the residual plot. <font color="#009900">What does the residual ' +
-               'plot indicate about the the underlying data and the regression?</font></p><p>';
+               'averages of the residual plot. <span class="qSpan">What does the residual ' +
+               'plot indicate about the the underlying data and the regression?</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
-    document.writeln('</p><p align="center">' +
-                     '<applet code="Correlation.class" codebase="../../Java" ' +
-                     ' align="baseline" width="600" height="320" name="applet3" ' +
-                     'archive="PbsGui.zip">' +
-                     '<param name="addPoints" value="false">' +
-                     '<param name="graphAveButton" value="false">' +
-                     '<param name="sdButton" value="false">' +
-                     '<param name="sdLineButton" value="false">' +
-                     '<param name="title" value="Residual Plot">' +
-                     '<param name="regressButtons" value="false">' +
-                     '<param name="showR" value="false">' +
-                     '<param name="x" value="' + (data5[0]).join() + '">' +
-                     '<param name="y" value="' + (data5[1]).join() + '">' +
-                     'You need Java to see this</applet>');
-   var appNum = (document.applets.length - 1).toString();
-   sectionContext += 'document.applets[' + appNum + '].setVariables("' +
-                     (data5[0]).join() + '","' +
-                     (data5[1]).join() + '");\n' +
-                     'document.applets[' + appNum + '].showPlot();\n';
+//
+    jQuery(function() {
+      new Stici_Scatterplot('chart3', {
+        addPoints: false,
+        graphAveButton: false,
+        x: data5[0],
+        y: data5[1],
+        regressButton: false,
+        sdButton: false,
+        residualsButton: false,
+        sdLineButton: false,
+        showR: false,
+        title: "Residual Plot"
+      });
+    });
 // -->
 </script>
 </p>
+
+<div class="figure">
+<p class="figure">
+<div id="chart3" class="scatterplot"></div>
+</p>
+</div>
 
 <hr />
 
@@ -1682,8 +1693,8 @@
     var aVal = alphabet[optPerm[1][0]];
     var qStr = 'We are taking turns tossing a fair coin.  When the coin lands heads, I ' +
                'win $1; when the coin lands tails, you win $1. After ' + nTosses.toString() +
-               ' tosses, you are up by $' + nUp.toString() + '. <font color="#009900">' +
-               'Suppose we keep playing indefinitely.</font></p><p>';
+               ' tosses, you are up by $' + nUp.toString() + '. <span class="qSpan">' +
+               'Suppose we keep playing indefinitely.</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
 // -->
