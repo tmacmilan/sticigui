@@ -225,17 +225,22 @@
 // -->
 </script>
 <p class="figure">
-    <applet code="Ci.class" codebase="../../Java/" align="baseline"
-        width="800" archive="PbsGui.zip" height="400">
-    <param name="factor" value="2">
-    <param name="sampleSize" value="3">
-    <param name="showTruth" value="true">
-    <param name="sources" value="0-1 box">
-    <param name="replace" value="false">
-    <param name="seChoices" value="Bound on SE (0-1 Box only)">
-    <param name="boxContents" value="0,0,0,1,1,1">
-    You need Java to see this.
-    </applet>
+  <div id="ci1" class="ci">
+  </div>
+
+  <script>
+  jQuery(function() {
+    new Stici_Ci('ci1', {
+      factor: 2,
+      sampleSize: 3,
+      showTruth: true,
+      sources: '0-1 box',
+      replace: false,
+      seChoices: 'Bound on SE (0-1 box only)',
+      boxContents: '0,0,0,1,1,1'
+    });
+  });
+  </script>
 <script language="JavaScript1.8" type="text/javascript"><!--
     var appNum = (document.applets.length - 1).toString();
     sectionContext += 'var newPop = listOfRandInts(6,0,1);\n' +
@@ -1191,15 +1196,20 @@ jQuery(function() {
 
 
 <p class="figure">
-    <applet code="Ci.class" codebase="../../Java/" align="baseline"
-        width="800" archive="PbsGui.zip" height="400">
-    <param name="factor" value="1.15">
-    <param name="sampleSize" value="30">
-    <param name="showTruth" value="true">
-    <param name="seChoices" value="Estimated SE,Bound on SE (0-1 Box only)">
-    <param name="boxContents" value="0,0,0,1,1">
-    You need Java to see this.
-    </applet>
+  <div id="ci2" class="ci">
+  </div>
+
+  <script>
+  jQuery(function() {
+    new Stici_Ci('ci2', {
+      factor: 1.15,
+      sampleSize: 30,
+      showTruth: true,
+      seChoices: 'Estimated SE,Bound on SE (0-1 box only)',
+      boxContents: '0,0,0,1,1'
+    });
+  });
+  </script>
 <script language="JavaScript1.8" type="text/javascript"><!--
     var appNum = (document.applets.length - 1).toString();
     sectionContext += 'var newPop = listOfRandInts(5,0,1);\n' +

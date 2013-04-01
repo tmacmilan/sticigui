@@ -45,23 +45,20 @@
 
 
 <p align="center">
+  <div id="ci" class="ci">
+  </div>
 
-<applet code="Ci.class" align="baseline" width="800"
-
-      height="400" archive="PbsGui.zip" codebase=".." >
-
-    <param name="boxContents" value="0,1,2,3,4">
-
-    <param name="sources" value="all">
-
-    <param name="showTruth" value="true">
-
-    <param name="replaceControl" value="true">
-
-    <param name="seChoices" value="True SE,Estimated SE,Bound on SE (0-1 Box only)">
-
-</applet>
-
+  <script>
+  jQuery(function() {
+    new Stici_Ci('ci', {
+      boxContents: '0,1,2,3,4',
+      sources: 'all',
+      showTruth: true,
+      replaceControl: true,
+      seChoices: 'True SE,Estimated SE,Bound on SE (0-1 box only)'
+    });
+  });
+  </script>
 </p>
 
 

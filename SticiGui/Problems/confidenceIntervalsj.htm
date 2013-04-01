@@ -32,15 +32,20 @@
 
 
 <p align="center">
-    <applet code="Ci.class" codebase="../../Java/" align="baseline"
-          width="800" height="400">
-        <param name="boxContents" value="1,1,0">
-        <param name="showTruth" value="true">
-        <param name="useTrueSE" value="false">
-        <param name="seChoices" value="Estimated SE">
-        <param name="sampleSize" value="5">
-        You need Java to see this.
-    </applet>
+  <div id="ci" class="ci">
+  </div>
+
+  <script>
+  jQuery(function() {
+    new Stici_Ci('ci', {
+      boxContents: '1,1,0',
+      showTruth: true,
+      useTrueSE: false,
+      seChoices: 'Estimated SE',
+      sampleSize: 5
+    });
+  });
+  </script>
 </p>
 
 <p align="center">
