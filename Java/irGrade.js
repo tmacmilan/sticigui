@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/3/31/1458'; // modification date and time
+var irGradeModTime = '2013/3/31/2158'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -833,7 +833,7 @@ function radioExercise(q, opt, ca){  // makes a collection of radio inputs.
     for (var i = 0; i < oplen; i++) {
         s  += '<input type="radio" id="' + q + '_' + i + '" name="' + q + '" class="' + q + '" value="' + alphabet[i] + '" ';
         if (ca == null || ca) {
-            s += 'onClick="checkAnswer(id,value);"';
+            s += 'onClick="checkAnswer(name,value);"';
         }
         s += ' />\n' + alphabet[i] + ') ' + opt[i] + '<br />\n';
     }

@@ -8,13 +8,21 @@
 // -->
 </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+<script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1/build/rollups/sha256.js"></script>
+
+
+
 <script type="text/javascript" src="../../Java/sticigui.js"></script>
 <link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../../Java/irGrade.js" language="JavaScript1.8"></script>
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
+
+<script type="text/javascript" src="../../Java/bbsal98.js" language="JavaScript1.8"></script>
+
 
 <script language="JavaScript1.8" type="text/javascript" ><!--
     var cNum = 99;
@@ -76,11 +84,6 @@
     var HI = true;
     CA = true;
     var defaultStatus="SticiGui Final";
-    function setApplets() {
-        document.applets[q6AppletNum].setVariables((data6[0]).join().toString(),
-            (data6[1]).join().toString());
-        document.applets[q6AppletNum].showPlot();
-    }
 // -->
 </script>
 
@@ -1775,53 +1778,54 @@ The rms error of regression for regressing height against weight is closest to
 document.writeln(startProblem(pCtr++));
 // -->
 </script>
-  <font color="green">For this scatterplot, the regression line, together with the
-  SDs of height and weight, summarize the data
+  <span class="qSpan">For this scatterplot, the regression line, together with the
+  SDs of height and weight, summarize the data</span>
 </p>
 <p>
 <script language="JavaScript1.2"><!--
-var opt = ["well",
-    "poorly, because of outliers",
-    "poorly, because of nonlinearity",
-    "poorly, because of heteroscedasticity",
-    "poorly, because the association is weak"
-    ];
-var aVal = "";
-var none = true;
-if (pVals[0] != 0) {
-    aVal += "c&";
-    none = false;
-}
-if (pVals[1] > 0) {
-    aVal += "d&";
-    none = false;
-}
-if (none) aVal += "a";
-if (aVal.lastIndexOf('&') == aVal.length - 1) aVal = aVal.substring(0, aVal.length - 1);
-writeRadioExercise(qCtr++,opt,aVal);
+    var opt = ["well",
+        "poorly, because of outliers",
+        "poorly, because of nonlinearity",
+        "poorly, because of heteroscedasticity",
+        "poorly, because the association is weak"
+        ];
+    var aVal = "";
+    var none = true;
+    if (pVals[0] != 0) {
+        aVal += "c&";
+        none = false;
+    }
+    if (pVals[1] > 0) {
+        aVal += "d&";
+        none = false;
+    }
+    if (none) aVal += "a";
+    if (aVal.lastIndexOf('&') == aVal.length - 1) aVal = aVal.substring(0, aVal.length - 1);
+    writeRadioExercise(qCtr++,opt,aVal);
+//
+    jQuery(function() {
+      new Stici_Scatterplot('chart1', {
+        addPoints: false,
+        graphAveButton: false,
+        x: data6[0],
+        y: data6[1],
+        regressButton: false,
+        sdButton: false,
+        residualsButton: false,
+        sdLineButton: false,
+        showR: false,
+        title: "Faux Height/Weight Data"
+      });
+    });
 // -->
 </script>
-</font></p>
-  <div align="center"><center><p>
-  <script language="JavaScript1.2"><!--
-  document.writeln('<applet code="Correlation.class" codebase="../../Java" ' +
-    ' align="baseline" width="600" height="320" name="q6Applet" archive="PbsGui.zip">');
-  document.writeln('<param name="addPoints" value="false">');
-  document.writeln('<param name="graphAveButton" value="false">');
-  document.writeln('<param name="sdButton" value="false">');
-  document.writeln('<param name="sdLineButton" value="false">');
-  document.writeln('<param name="title" value="Fake Weight v. Height Data">');
-  document.writeln('<param name="regressButtons" value="false">');
-  document.writeln('<param name="showR" value="false">');
-  document.writeln('<param name="x" value="' + (data6[0]).join() + '">');
-  document.writeln('<param name="y" value="' + (data6[1]).join() + '">');
-  document.writeln('You need Java to see this</applet>');
-  // -->
-  </script>
-  <script language="JavaScript1.2"><!--
-q6AppletNum = document.applets.length - 1;
- // -->
- </script></p></center></div>
+</p>
+
+<div class="figure">
+<p class="figure">
+<div id="chart1" class="scatterplot"></div>
+</p>
+</div>
 
 
 <!-- ==================================START PROBLEM==================================== -->

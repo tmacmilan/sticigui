@@ -1,19 +1,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <head>
 <script language="JavaScript1.8" type="text/javascript"> <!--
-    pageModDate = "31 March 2013 16:17 PDT";
+    pageModDate = "31 March 2013 22:58 PDT";
     // by P.B. Stark, statistics.berkeley.edu/~stark
     // Copyright 2000-2013. All rights reserved.
 // -->
 </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://d3js.org/d3.v2.js"></script>
+<script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1/build/rollups/sha256.js"></script>
+
+
+
 <script type="text/javascript" src="../../Java/sticigui.js"></script>
 <link href="../../Java/CSS/sticigui.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="../../Java/irGrade.js" language="JavaScript1.8"></script>
+<script language="JavaScript1.8" type="text/javascript" src="../../Java/irGrade.js"></script>
 
 <script language="JavaScript1.8" type="text/javascript" ><!--
     window.name="bookWin";
@@ -918,28 +923,32 @@
                'closest to</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
-    var qStr = '</p><p align="center"><applet code="Correlation.class" ' +
-                'codebase="../../Java/" ' +
-                'align="baseline" width="600" height="380" archive="PbsGui.zip" ' +
-                'name="applet1"><param name="addPoints" value="false">' +
-                '<param name="graphAveButton" value="false">' +
-                '<param name="n" value="' + nPoints.toString() + '">' +
-                '<param name="regressButtons" value="false">' +
-                '<param name="sdLineButton" value="false">' +
-                '<param name="sdButton" value="false">' +
-                '<param name="showRBar" value="false">' +
-                '<param name="title" value="Correlation: Question ' +
-                (pCtr-1).toString() + '">' +
-                '<param name="r" value="' + r1.toString() + '">' +
-                'You need Java to see this.' +
-                '</applet>\n';
-     document.writeln(qStr);
-     var appNum = (document.applets.length - 1).toString();
-     sectionContext += // 'document.applets[' + appNum + '].setN(' + nPoints.toString() + ');\n' +
-                       'document.applets[' + appNum + '].setR(' + r1.toString() + ');\n';
+//
+    var points1 = nPoints;
+    var title1 = 'Correlation: Problem ' +  (pCtr-1).toString();
+    jQuery(function() {
+      new Stici_Scatterplot('chart1', {
+        addPoints: false,
+        graphAveButton: false,
+        n: points1,
+        r: r1,
+        regressButton: false,
+        sdButton: false,
+        residualsButton: false,
+        sdLineButton: false,
+        showR: false,
+        title: title1
+      });
+    });
 // -->
 </script>
 </p>
+
+<div class="figure">
+<p class="figure">
+<div id="chart1" class="scatterplot"></div>
+</p>
+</div>
 </div>
 
 <!-- ==================================START PROBLEM==================================== -->
@@ -994,28 +1003,31 @@
                'plot indicate about the the underlying data and the regression?</span></p><p>';
     document.writeln(qStr);
     writeRadioExercise(qCtr++,opt,aVal);
-    document.writeln('</p><p align="center">' +
-                     '<applet code="Correlation.class" codebase="../../Java" ' +
-                     ' align="baseline" width="600" height="320" name="applet3" ' +
-                     'archive="PbsGui.zip">' +
-                     '<param name="addPoints" value="false">' +
-                     '<param name="graphAveButton" value="false">' +
-                     '<param name="sdButton" value="false">' +
-                     '<param name="sdLineButton" value="false">' +
-                     '<param name="title" value="Residual Plot">' +
-                     '<param name="regressButtons" value="false">' +
-                     '<param name="showR" value="false">' +
-                     '<param name="x" value="' + (data5[0]).join() + '">' +
-                     '<param name="y" value="' + (data5[1]).join() + '">' +
-                     'You need Java to see this</applet>');
-   var appNum = (document.applets.length - 1).toString();
-   sectionContext += 'document.applets[' + appNum + '].setVariables("' +
-                     (data5[0]).join() + '","' +
-                     (data5[1]).join() + '");\n' +
-                     'document.applets[' + appNum + '].showPlot();\n';
+//
+    jQuery(function() {
+      new Stici_Scatterplot('chart3', {
+        addPoints: false,
+        graphAveButton: false,
+        x: data5[0],
+        y: data5[1],
+        regressButton: false,
+        sdButton: false,
+        residualsButton: false,
+        sdLineButton: false,
+        showR: false,
+        title: "Residual Plot"
+      });
+    });
 // -->
 </script>
 </p>
+
+<div class="figure">
+<p class="figure">
+<div id="chart3" class="scatterplot"></div>
+</p>
+</div>
+
 </div>
 
 
@@ -1687,29 +1699,30 @@
                ' in. with an SD of ' + sdHt.toString() + ' in. The correlation between ' +
                'height and weight is ' + cc.toString() + '.</p>';
     document.writeln(qStr);
-    var qStr = '<p align="center">' +
-               '<applet code="Correlation.class" codebase="../../Java" ' +
-               ' align="baseline" width="600" height="320" name="applet2" ' +
-               'archive="PbsGui.zip">' +
-               '<param name="addPoints" value="false">' +
-               '<param name="graphAveButton" value="false">' +
-               '<param name="sdButton" value="false">' +
-               '<param name="sdLineButton" value="false">' +
-               '<param name="title" value="Fake Height v. Weight Data">' +
-               '<param name="regressButtons" value="false">' +
-               '<param name="showR" value="false">' +
-               '<param name="x" value="' + (data6[0]).join() + '">' +
-               '<param name="y" value="' + (data6[1]).join() + '">' +
-               'You need Java to see this</applet>';
-    document.writeln(qStr);
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'document.applets[' + appNum + '].setVariables(\"' +
-                      (data6[0]).join() + '\",\"' +
-                      (data6[1]).join() + '\");\n' +
-                      'document.applets[' + appNum + '].showPlot();\n';
+//
+    jQuery(function() {
+      new Stici_Scatterplot('chart2', {
+        addPoints: false,
+        graphAveButton: false,
+        x: data6[0],
+        y: data6[1],
+        regressButton: false,
+        sdButton: false,
+        residualsButton: false,
+        sdLineButton: false,
+        showR: false,
+        title: "Faux Height/Weight Data"
+      });
+    });
 // -->
 </script>
 </p>
+
+<div class="figure">
+<p class="figure">
+<div id="chart2" class="scatterplot"></div>
+</p>
+</div>
 
 <p>
 <script language="JavaScript1.8" type="text/javascript" ><!--
