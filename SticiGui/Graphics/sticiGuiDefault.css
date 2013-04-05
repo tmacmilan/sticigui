@@ -858,6 +858,7 @@ div.curvehilite {
   height: 280px;
   margin-left: auto;
   margin-right: auto;
+  background-color: white;
 }
 div.ci {
   width: 800px;
