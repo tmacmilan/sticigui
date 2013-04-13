@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/3/31/2158'; // modification date and time
+var irGradeModTime = '2013/4/13/0858'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -71,8 +71,8 @@ var chapterTitles = [
                                'zTest'],
                          ['The Multinomial Distribution and the Chi-Squared Test for Goodness of Fit',
                                'chiSquare'],
-                         ['A Case Study in Natural Resource Legislation','abalone'],
-                         ['A Case Study in Risk Assessment: Bovine Spongiform Encephalopathy','bse']
+                         ['A Case Study in Natural Resource Legislation: California Abalone Fisheries','abalone'],
+                         ['A Case Study in Risk Assessment: Bovine Spongiform Encephalopathy and Import Restrictions','bse']
                     ];
 var assignmentTitles = [
                          ['Have you read the syllabus and instructions?', // topic
