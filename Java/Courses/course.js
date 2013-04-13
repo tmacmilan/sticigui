@@ -19,7 +19,7 @@ var courseName;                    // English name of course
 var scoreBase = "http://www.stat.berkeley.edu/cgi-bin/scores6.dat?";
 var queryBase = "http://www.stat.berkeley.edu/cgi-bin/querygrade5?";
 var courses = [
-               ["0","s2-x","Statistics 2.1x, Spring 2013, UC Berkeley","stark","Profs P.B. Stark and A. Adhikari","",5,4],
+               ["0","s2-x","Statistics 2.2x, Spring 2013, UC Berkeley","stark","Profs P.B. Stark and A. Adhikari","","",1],
                ["1","s21-s13","Statistics W21, Spring 2013, UC Berkeley","stark","Prof. S. Murali",
                       "Teach/S21/Su13/Grades", 5, 4],
                ["2","guest-","guest login (no grading)","stark","Prof. P.B. Stark","","",1],
