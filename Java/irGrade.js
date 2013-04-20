@@ -2104,7 +2104,8 @@ $(document).ready(function() {
     $("div.solution").css('display','block')
                      .hide();
     $(".solLink").click(function() {
-                      $(this).parent().next().toggle();
+                //      $(this).parent().next().toggle();
+                      $("*").eq($("*").index(this)+1).toggle();
                       $(this).text( ($(this).text() == '[+Solution]') ? '[-Solution]' : '[+Solution]');
                //       pushSolutionOpened($(this));  // for analytics
                       return(false);
@@ -2112,7 +2113,7 @@ $(document).ready(function() {
     $(".footnote").css('display','block')
                   .hide();
     $(".fnLink").click(function() {
-                      $(this).parent().next().toggle();
+                      $("*").eq($("*").index(this)+1).toggle();
                       $(this).text( ($(this).text() == '[+]') ? '[-]' : '[+]');
                //       pushFootnoteOpened($(this));  // for analytics
                       return(false);

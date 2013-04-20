@@ -1,5 +1,5 @@
 /* default style file for SticiGui text.
-   Copyright 2006-2013 P.B. Stark, statistics.berkeley.edu/~stark 1/20/2013.
+   Copyright 2006-2013 P.B. Stark, statistics.berkeley.edu/~stark 4/20/2013.
    All rights reserved.
 */
 
@@ -360,8 +360,8 @@ div.solution {
     font-family: helvetica, arial, 'sans serif';
     font-size: 100%;
     color: #000099;
-    margin-left: 0%;
-    margin-right: 0%;
+    margin-left: 5%;
+    margin-right: 5%;
     display: block;
 }
 
