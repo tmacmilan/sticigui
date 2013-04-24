@@ -1,12 +1,12 @@
 // script class
 //
-// copyright 1997-2010. P.B. Stark, statistics.berkeley.edu/~stark
+// copyright 1997-2013. P.B. Stark, statistics.berkeley.edu/~stark
 // Version 1.0
 // All rights reserved.
 
 // !!!!Beginning of the code!!!!
 
-var classModTime = '2008/1/15/1050';
+var classModTime = '2008/4/21/2350';
                                    // modification date and time
 var today = (new Date()).toLocaleString();
 defaultLinkList = [  ['Home','index.htm'],
@@ -33,11 +33,12 @@ function classLinks(base, size, list) {
 }
 
 function noteLinks(base, size, lastNote) {
+    var i;
     var qStr = '<p align="center">';
     if (typeof(base) == 'undefined' || base == null) {
             base = '';
     }
-    for (var i=1; i <= lastNote; i++) {
+    for (i=1; i <= lastNote; i+=1) {
         qStr += '&nbsp;<a href="' + base + 'ch' + i.toString() + '.htm">Set ' + i.toString() + '</a>&nbsp;';
         if ((i) % 12 == 0) {
                 qStr += '</p><p align="center">';
