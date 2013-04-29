@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/4/20/1333'; // modification date and time
+var irGradeModTime = '2013/4/26/2050'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -1261,22 +1261,27 @@ function enqueueJsonRequest(_url) {
 }
 
 //  set maximum wait for json callback
-  var jsonIterationCount;
   var jsonMaxIterationCount = 200;
 
 function waitForJsonRequest(_callback) {
-/* REMOVED PBS 11/2/2012
-    if ((jsonRequestBusy || jsonRequestQueue.length > 0) &&
-        jsonIterationCount <= jsonMaxIterationCount) {
-             jsonIterationCount+=1;
-             setTimeout(function() { waitForJsonRequest(_callback); }, 100);
-    } else  {
-*/
-             jsonIterationCount = 0;
-             if (_callback) {
-                  _callback();
+/* Removed by PBS.  Needs testing when analytics are restored
+     var that = this;
+     var jsonIterationCount = 0;
+     var cb = _callback;
+     function jsonRequestWait() {
+         if ((jsonRequestBusy || jsonRequestQueue.length > 0) &&
+            jsonIterationCount < jsonMaxIterationCount ) {
+               jsonIterationCount += 1;
+               setTimeout(jsonRequestWait, 100);
+         } else {
+             if (cb) {
+                  cb();
              }
-//    }
+         }
+     }
+     setTimeout(jonRequestWait, 100);
+     return that;
+*/
 }
 
 function resolveAddOrUpdateUrl(_eventType) {
