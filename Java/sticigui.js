@@ -1,7 +1,6 @@
-// Javascript rewrite of
-// http://statistics.berkeley.edu/~stark/Java/Html/Ci.htm
+// Javascript statistics tools and HTML5 rewrite of SticiGui java applets
 //
-// Author: James Eady <jeady@berkeley.edu>
+// Author: James Eady <jeady@berkeley.edu>, Philip B. Stark <stark@stat.berkeley.edu>
 //
 // container_id: the CSS ID of the container to create the histogram (and
 //               controls) in.
@@ -2459,7 +2458,7 @@ function Stici_SampleDist(container_id, params) {
         popMean = 0;
         popSd = 0;
         if (pop.length === 0) {
-          console.log("Error in SampleDist.initPop(): Population is empty!\n");
+          console.error("Error in SampleDist.initPop(): Population is empty!\n");
           for (var i= 0; i < nBins; i++) {
             countPop[i] = 0;
           }
@@ -6665,11 +6664,11 @@ function chiHiLitArea(loEnd, hiEnd, sampleSize, pop, popSd, sampleType) {
     if (hiEnd > loEnd) {
         if (varChoice.getSelectedItem().equals("Sample S-Squared")) {
             var scale = (sampleSize - 1.0)/(popSd*popSd);
-            area = chi2Cdf(scale*hiEnd, sampleSize-1) -
-                chi2Cdf(scale*loEnd, sampleSize-1);
+            area = chi2Cdf(sampleSize-1, scale*hiEnd) -
+                chi2Cdf(sampleSize-1, scale*loEnd);
         } else if (varChoice.getSelectedItem().equals("Sample Chi-Squared")) {
-            area = chi2Cdf(hiEnd, pop.length-1) -
-                chi2Cdf(loEnd, pop.length-1);
+            area = chi2Cdf(pop.length-1, hiEnd) -
+                chi2Cdf(pop.length-1, loEnd);
         } else {
             console.log("Error in SampleDist.chiHiLitArea(): " + varChoice.getSelectedItem() +
                         " not supported. ");
@@ -7419,11 +7418,10 @@ function chi2Pdf(df, x) {
 }
 
 function chi2Inv( p, df ) { // kluge for chi-square quantile function.
-    var guess = Number.NaN;
     var tolAbs = 1.0e-8;
-    var tolRel = 1.0e-3;
-    var loP, hiP, currP, guessLo, guessHi;
-    if (p === 0.0) {
+    var tolRel = 1.0e-5;
+    var loP, hiP, currP, guess, guessLo, guessHi;
+    if (p == 0.0) {
         guess = 0.0;
     } else if ( p == 1.0 ) {
         guess = Number.POSITIVE_INFINITY;
@@ -7431,21 +7429,21 @@ function chi2Inv( p, df ) { // kluge for chi-square quantile function.
         guess = Number.NaN;
     } else {
         guess = Math.max(0.0, df + Math.sqrt(2*df)*normInv(p)); // guess from normal approx
-        currP = chi2Cdf( guess, df);
+        currP = chi2Cdf(df, guess);
         loP = currP;
         hiP = currP;
         guessLo = guess;
         guessHi = guess;
         while (loP > p) { // step down
             guessLo = 0.8*guessLo;
-            loP = chi2Cdf( guessLo, df);
+            loP = chi2Cdf(df, guessLo);
         }
         while (hiP < p) { // step up
             guessHi = 1.2*guessHi;
-            hiP = chi2Cdf( guessHi, df);
+            hiP = chi2Cdf(df, guessHi);
         }
         guess = (guessLo + guessHi)/2.0;
-        currP = chi2Cdf( guess, df);
+        currP = chi2Cdf(df, guess);
         while ( (Math.abs(currP - p) > tolAbs) || (Math.abs(currP - p)/p > tolRel) ) { // bisect
             if ( currP < p ) {
                 guessLo = guess;
@@ -7453,7 +7451,7 @@ function chi2Inv( p, df ) { // kluge for chi-square quantile function.
                 guessHi = guess;
             }
             guess = (guessLo + guessHi)/2.0;
-            currP = chi2Cdf(guess, df);
+            currP = chi2Cdf(df, guess);
         }
     }
     return guess;
