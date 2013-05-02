@@ -1132,8 +1132,8 @@ function spawnProblem(theForm,setName,relPath) {
             lablet.dFile = dFile;
             lablet.course = course;
             lablet.teacher = teacher;
-            lablet.maxSubmits = assign[setName][3] ? assign[setName][3]: maxSubmits ;
-            lablet.showWrongAfterSubmits = assign[setName][4] ? assign[setName][4]: showWrongAfterSubmits;
+            lablet.maxSubmits = assign[setName][3] ? assign[setName][3] : maxSubmits ;
+            lablet.showWrongAfterSubmits = assign[setName][4] ? assign[setName][4] : showWrongAfterSubmits;
             lablet.formname = setName;
             lablet.theChapter = setName;
             lablet.assignmentname = setName;
@@ -1282,6 +1282,12 @@ function waitForJsonRequest(_callback) {
      setTimeout(jonRequestWait, 100);
      return that;
 */
+     jsonIterationCount = 0;
+     if (_callback) {
+        _callback();
+     }
+     console.log('waitForJsonRequest: done.');
+     return true;
 }
 
 function resolveAddOrUpdateUrl(_eventType) {
