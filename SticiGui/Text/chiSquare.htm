@@ -6,7 +6,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "28 January 2013 10:37 PST";
+	pageModDate = "1 May 2013 22:17 PDT";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -1414,10 +1414,18 @@ jQuery(function() {
     document.writeln(qStr);
     writeTextExercise(8, qCtr++, numToRange(pctile));
     document.writeln('</p>');
+    jQuery(function() {
+        new Stici_NormHiLite('normhilite2', {
+            hiLiteHi: pctile.toString(),
+            hiLiteLo: 0,
+            distribution: "chi-square",
+            df: df
+        });
+    });
     var ansStr = '<p>To find the area, just plug the appropriate values into the chi-square ' +
          'curve tool.  To find the percentile, use trial and error in the tool, ' +
          'with the lower limit set to zero and the degrees of freedom set to ' +
-         df.toString() + '.</p>';
+         df.toString() + ':</p><p class="figure"><div class="curvehilite" id="normhilite2"></div></p>';
     writeSolution(pCtr-1, ansStr);
 // -->
 </script>
