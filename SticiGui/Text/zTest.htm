@@ -6,7 +6,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "1 May 2013 17:37 PDT";
+	pageModDate = "7 May 2013 14:37 PDT";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -1292,13 +1292,18 @@
            roundToDig(boxProb*100,2).toString() + '%.</p><p><span class="qSpan">Is the ' +
            'list of numbers approximately normally distributed?</span>';
     document.writeln(qStr);
-    var opt = ['no','yes'];
+    var opt = ['no','possibly','yes'];
+    var moreToSay = '';
     if (Math.abs(boxProb-normApprox) > 0.01) {
         aVal = 'a';
         var isWord = ' is ';
     } else {
         aVal = 'b';
         var isWord = ' is not ';
+        moreToSay = ' However, this is only a comparison of the fraction of values in one range: ' +
+                    'The normal curve might not match the fraction for other ranges.  Hence, ' +
+                    'it is possible that the list is approximately normally distributed, but it ' +
+                    'is also possible that it is not.';
     }
     writeSelectExercise(false,qCtr++,opt,aVal);
     document.writeln('</p>');
@@ -1319,7 +1324,7 @@
          (roundToDig(100*normApprox,1)).toString() + '%:</p><p class="figure">' +
          '<div class="curvehilite" id="normhilite4"></div></p><p>This ' +
          isWord + ' very different from the actual fraction, ' +
-         roundToDig(100*boxProb,2).toString() + '%.<p>';
+         roundToDig(100*boxProb,2).toString() + '%. ' + moreToSay + '<p>';
     writeSolution(pCtr-1,ansStr);
 // -->
 </script>
@@ -1333,7 +1338,7 @@
     var which = listOfRandInts(1,0,opt.length)[0];
     var nNums = listOfRandInts(1,2,5)[0];
     var qStr = 'A list contains three distinct values, <span class="math">a &lt; b &lt; c</span>. ' +
-           '<span class="qSpan">Depending on the relative frequencies of the values, ' +
+           '<span class="qSpan">Depending on the relative frequencies of the values in ' +
            'the list, the list could be nearly normally distributed.</span>';
     document.writeln(qStr);
     writeSelectExercise(false, qCtr++, ['false','true'], 'a');
@@ -1365,7 +1370,8 @@
     Let <span class="math">M</span> denote the sample mean of a random sample of size <span class="math">n</span> drawn
     with replacement from a population, and let <em>s</em> denote the sample standard
     deviation of the sample.
-    The expected value of <span class="math">M</span> is <span class="math">&mu;</span>, and the SE of <span class="math">M</span> is
+    The expected value of <span class="math">M</span> is <span class="math">&mu;</span>,
+    and the SE of <span class="math">M</span> is
     SD/<em>n</em><sup>&frac12;</sup>. Let
 </p>
 
@@ -1508,7 +1514,8 @@ jQuery(function() {
 
 <p>
     Under the null hypothesis, if <span class="math">n</span> is not too small, Student's <em>t</em> curve
-    with <span class="math">n&minus;1</span> degrees of freedom will be an accurate approximation to the probability
+    with <span class="math">n&minus;1</span> degrees of freedom will be an accurate
+    approximation to the probability
     histogram of <em>T</em>, so
 </p>
 
@@ -1770,7 +1777,8 @@ jQuery(function() {
 
 <p>
     Similarly, suppose we have an hypothesis-testing procedure that lets us test the null
-    hypothesis that <span class="math">&mu;=&mu;<sub>0</sub></span> for any value of <span class="math">&mu;<sub>0</sub></span>, at
+    hypothesis that <span class="math">&mu;=&mu;<sub>0</sub></span> for any value of
+    <span class="math">&mu;<sub>0</sub></span>, at
     significance level <span class="math">a</span>. Define
 </p>
 
@@ -1780,7 +1788,8 @@ jQuery(function() {
 </p>
 
 <p>
-    Then <span class="math">A</span> is a <span class="math">100%&times;(1&minus;a)</span> confidence set</em> for
+    Then <span class="math">A</span> is a <span class="math">100%&times;(1&minus;a)</span>
+    confidence set</em> for
      <span class="math">&mu;</span>:
 </p>
 
@@ -1790,7 +1799,8 @@ jQuery(function() {
 
 <p>
     (A <em>confidence set</em> is a generalization of the idea of a confidence interval:
-    a <span class="math">1&minus;a</span> confidence set for the parameter <span class="math">&mu;</span> is a random set that
+    a <span class="math">1&minus;a</span> confidence set for the parameter
+    <span class="math">&mu;</span> is a random set that
     has probability <span class="math">1&minus;a</span> of containing <span class="math">&mu;</span>.
     As is the case with confidence intervals, the probability makes sense only
     before collecting the data.)
@@ -1942,7 +1952,8 @@ jQuery(function() {
     hypothesis is correct:
     If the null hypothesis is true, the expected value of a <em>Z</em> statistic is zero,
     the SE of a <em>Z</em> statistic is approximately 1, and the probability that a
-    <em>Z</em> statistic is between <span class="math">a</span> and <span class="math">b</span> is approximately the
+    <em>Z</em> statistic is between <span class="math">a</span> and <span class="math">b</span>
+    is approximately the
     area under the normal curve between <span class="math">a</span> and <span class="math">b</span>.
     Suppose that the random variable <em>Z</em> is a <em>Z</em> statistic.
     If, under the alternative hypothesis, <span class="math">E(<em>Z</em>)&lt;0</span>, the appropriate
