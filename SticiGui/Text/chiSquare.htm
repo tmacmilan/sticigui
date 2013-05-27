@@ -6,7 +6,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "28 January 2013 10:37 PST";
+	pageModDate = "1 May 2013 22:45 PDT";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -1396,6 +1396,7 @@ jQuery(function() {
 <script language="JavaScript1.8" type="text/javascript"><!--
     document.writeln(startProblem(pCtr++));
     var df = listOfRandInts(1, 3, 50)[0];
+    var df2;
     var lims = listOfRandInts(2, 1, 4);
     var se = Math.sqrt(2*df);
     lims[0] = roundToDig(Math.max(0, df - lims[0]*se), 1) ;
@@ -1408,16 +1409,25 @@ jQuery(function() {
            ' to ' + lims[1].toString() + ' is </span>';
     document.writeln(qStr);
     writeTextExercise(8, qCtr++, numToRange(theProb));
-    var qStr = '</p><p><span class="qSpan">The ' + theP.toString() +
-           '% percentile of the chi-square curve with ' + df.toString() +
+    var qStr = '</p><p><span class="qSpan">The ' + ordinals[theP] +
+           ' percentile of the chi-square curve with ' + df.toString() +
            ' degrees of freedom is </span>';
     document.writeln(qStr);
     writeTextExercise(8, qCtr++, numToRange(pctile));
     document.writeln('</p>');
+    df2 = df;
+    jQuery(function() {
+        new Stici_NormHiLite('normhilite2', {
+            hiLiteHi: pctile.toString(),
+            hiLiteLo: 0,
+            distribution: "chi-square",
+            df: df2
+        });
+    });
     var ansStr = '<p>To find the area, just plug the appropriate values into the chi-square ' +
          'curve tool.  To find the percentile, use trial and error in the tool, ' +
          'with the lower limit set to zero and the degrees of freedom set to ' +
-         df.toString() + '.</p>';
+         df.toString() + ':</p><p class="figure"><div class="curvehilite" id="normhilite2"></div></p>';
     writeSolution(pCtr-1, ansStr);
 // -->
 </script>

@@ -2,7 +2,7 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "29 April 2013 13:20 PDT";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -235,7 +235,7 @@
                'of bathrooms, state of repair, amenities (such as laundry facilities, ' +
                'bathtub/shower), <em>etc</em>. He will compute the sample mean rent of those ' +
                'apartments he finds to be comparable to the university-owned apartments. ' +
-               'Let <em>r</em> denote the mean rent of all comparable two-bedroom apartments ' +
+               'Let <em>r</em> denote the true mean rent of all comparable two-bedroom apartments ' +
                'in the area, and let <em>R</em> denote the sample mean rent of the comparable ' +
                'two-bedroom apartments the administrator finds.  The administrator will ' +
                'approach the problem of determining whether the university is complying with ' +
@@ -254,8 +254,21 @@
     document.writeln('$');
     writeTextExercise(8, qCtr++, numToRange(targRent,0.001));
     var qStr = '.</p><p>Suppose that the administrator finds that ' +
-               samSize.toString() + ' of the apartments are comparable to two-bedroom ' +
-               'university-owned student apartments. Assume that </p>' +
+               samSize.toString() + ' of the apartments are comparable to the two-bedroom ' +
+               'university-owned student apartments. <span class="qSpan">Are those ' +
+               samSize.toString() + ' apartments a simple random sample of comparable apartments ' +
+               'in the area?</span> (select all that apply)</p><p>';
+    document.writeln(qStr);
+    var rawOpt = [  'yes',
+                    'no, because the sample size is random',
+                    'if and only if the administrator\'s master list of 2-bedroom ' +
+                       'apartments was complete'
+                 ];
+    var optPerm = randPermutation(rawOpt,'inverse');
+    var opt = optPerm[0];
+    var aVal = alphabet[optPerm[1][1]];
+    writeSelectExercise(true, qCtr++, opt, aVal);
+    qStr =     '</p><p>Assume that: </p>' +
                '<ul><li> these ' + samSize.toString() + ' apartments can be treated as a ' +
                'random sample of size ' + samSize.toString() + ' with replacement from ' +
                'the population of comparable two-bedroom apartments for rent in the area, ' +

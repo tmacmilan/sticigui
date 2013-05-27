@@ -6,7 +6,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "13 April 2013 08:49 PDT";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -14,6 +14,9 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script type="text/javascript" src="../../Java/Jquery/Current/jquery.bullseye-1.0.min.js"></script>
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1/build/rollups/sha256.js"></script>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
 
 <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
 <link href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
@@ -31,13 +34,13 @@
     var cName = "Assignments";
     writeChapterHead('SeEd',cName,'Online Assignments');
     theCourse = ["0",
-                 "s2-x",
-                 "Statistics 2.1x, Spring 2013, UC Berkeley",
+                 "s2.2-x",
+                 "Statistics 2.2x, Spring 2013, UC Berkeley",
                  "stark",
                  "Profs P.B. Stark and A. Adhikari",
                  "",
-                 5,
-                 4,
+                 0,
+                 "",
                  "../../Java/Courses/s2x-s13-due.json",
                  "../../Java/Courses/s2x-s13-enroll.json",
                  "./"
@@ -91,10 +94,8 @@
 		<span class="qSpan">
 		<label for="firstName">First Name:</label> <input type="text" size="25" id="firstName" />
 		<label for="lastName">Last Name:</label> <input type="text" size="25" id="lastName" />
-		<label for="password">Student ID:</label><input type="password" size="10" id="sid" />
-		<br />
-		<label for="email">Email address on record at the beginning of the term:</label><input type="text"
-		       size="35" id="email" />
+		<input type="hidden" id="sid" value="12345678" />
+		<input type="hidden" id="email" value="nobody@nowhere.edu" />
 		</span>
 	</p>
 </fieldset>
@@ -208,11 +209,15 @@
                                     });
                                 });
             })
-            .fail( function(jqxhr, settings, exception) {alert('failed to load due dates: ' + exception.toString());});
+            .fail( function(jqxhr, settings, exception) {
+                   alert('failed to load due dates: ' + exception.toString());
+            });
 
             $.getJSON(accessURL, function(data) {
                  enrollList = data;
-            }).fail( function(jqxhr, settings, exception) {alert('failed to load enrollment list: ' + exception.toString());});
+            }).fail( function(jqxhr, settings, exception) {
+                   alert('failed to load enrollment list: ' + exception.toString());
+            });
 
     });
 
@@ -272,13 +277,14 @@ identifying information:
 </p>
 
 <p>
-   The window that contained the problem set will show a confirmation screen (from AutoGrader) giving your
+   The window that contained the problem set will show a confirmation screen
+   (from AutoGrader) giving your
    score and telling you how many times you have submitted the problem set so far.
    It might take up to 30 seconds for the confirmation screen to appear, depending on web and server traffic.
    Be patient.
    If you get the confirmation screen, the server definitely received your submission.
-   You can also see your scores by clicking the &quot;My Scores on Past Assignments&quot; button near the top of this
-   page, just below where you type in your login information.
+   You can also see your scores by clicking the &quot;My Scores on Past Assignments&quot;
+   button near the top of this page, just below where you type in your login information.
 </p>
 <p>
    <strong>If you open the problem set after the due date, there will be no &quot;submit&quot;

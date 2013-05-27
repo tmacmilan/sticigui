@@ -2,7 +2,7 @@
 <html>
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "21 January 2013 08:37 PST";
+	pageModDate = "11 April 2013 19:42 PDT";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -28,14 +28,20 @@
 
 </head>
 
-<body >
+<body>
 
-
-<p align="center">
-  <div id="ci" class="ci">
-  </div>
-
-  <script>
+<div class="figure">
+    <p class="figure">
+      <div id="ci" class="ci"></div>
+    </p>
+    <p class="figure">
+       <div id="normhilite1" class="curvehilite"></div>
+    </p>
+    <p class="figure">
+       <div id="calc" class="calculator"></div>
+    </p>
+</div>
+  <script language="JavaScript1.8" type="text/javascript">
   jQuery(function() {
     new Stici_Ci('ci', {
       boxContents: '1,1,0',
@@ -45,30 +51,15 @@
       sampleSize: 5
     });
   });
-  </script>
-</p>
-
-<p align="center">
-<div id="normhilite1" class="curvehilite"></div>
-<script>
-jQuery(function() {
-  new Stici_NormHiLite('normhilite1', {
-  });
-});
-</script>
-</p>
-
-<p align="center">
-  <div id="calc" class="calculator">
-  </div>
-
-  <script>
   jQuery(function() {
-    new statCalc('calc', {
-      });
+        new Stici_NormHiLite('normhilite1', {
+            });
   });
-  </script>
-</p>
+  jQuery(function() {
+       new statCalc('calc', {
+            });
+  });
+</script>
 
 
 <script language="JavaScript1.8" type="text/javascript" ><!--

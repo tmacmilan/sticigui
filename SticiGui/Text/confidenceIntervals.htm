@@ -228,7 +228,14 @@
   <div id="ci1" class="ci">
   </div>
 
-  <script>
+<script language="JavaScript1.8" type="text/javascript"><!--
+  var newPop = listOfRandInts(6,0,1);
+  if (vSum(newPop) == 0) {
+     newPop[0] = 1;
+  } else if (vSum(newPop) == newPop.length) {
+     newPop[0] = 0;
+  }
+  newPop1 = newPop.join();
   jQuery(function() {
     new Stici_Ci('ci1', {
       factor: 2,
@@ -237,20 +244,9 @@
       sources: '0-1 box',
       replace: false,
       seChoices: 'Bound on SE (0-1 box only)',
-      boxContents: '0,0,0,1,1,1'
+      boxContents: newPop1
     });
   });
-  </script>
-<script language="JavaScript1.8" type="text/javascript"><!--
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'var newPop = listOfRandInts(6,0,1);\n' +
-              'if (vSum(newPop) == 0) {\n' +
-              '     newPop[0] = 1;\n' +
-              ' } else if (vSum(newPop) == newPop.length) {\n' +
-              '     newPop[0] = 0;\n' +
-              ' }\n' +
-              ' newPop = newPop.join();\n' +
-              '//document.applets[' + appNum + '].setBox(newPop,true);\n';
 // -->
 </script>
 </p>
@@ -1199,29 +1195,24 @@ jQuery(function() {
   <div id="ci2" class="ci">
   </div>
 
-  <script>
+  <script language="JavaScript1.8" type="text/javascript">
+  var newPop = listOfRandInts(5,0,1);
+  if (vSum(newPop) == 0) {
+     newPop[0] = 1;
+  } else if (vSum(newPop) == newPop.length) {
+      newPop[0] = 0;
+  }
   jQuery(function() {
+  newPop2 = newPop.join();
     new Stici_Ci('ci2', {
       factor: 1.15,
       sampleSize: 30,
       showTruth: true,
       seChoices: 'Estimated SE,Bound on SE (0-1 box only)',
-      boxContents: '0,0,0,1,1'
+      boxContents: newPop2
     });
   });
   </script>
-<script language="JavaScript1.8" type="text/javascript"><!--
-    var appNum = (document.applets.length - 1).toString();
-    sectionContext += 'var newPop = listOfRandInts(5,0,1);\n' +
-              'if (vSum(newPop) == 0) {\n' +
-              '     newPop[0] = 1;\n' +
-              ' } else if (vSum(newPop) == newPop.length) {\n' +
-              '     newPop[0] = 0;\n' +
-              ' }\n' +
-              ' newPop = newPop.join();\n' +
-              '//document.applets[' + appNum + '].setBox(newPop,true);\n';
-// -->
-</script>
 </p>
 </div>
 

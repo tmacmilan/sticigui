@@ -28,7 +28,7 @@ interactive, real-time grading; html formatting; statistical functions, linear a
  !!!!Beginning of the code!!!!
 */
 
-var irGradeModTime = '2013/3/31/2158'; // modification date and time
+var irGradeModTime = '2013/4/26/2050'; // modification date and time
 var today = (new Date()).toLocaleString();
 var copyYr = '1997&ndash;2013. ';  // copyright years
 var sticiRelPath = '.';            // relative path to the root of SticiGui
@@ -71,8 +71,8 @@ var chapterTitles = [
                                'zTest'],
                          ['The Multinomial Distribution and the Chi-Squared Test for Goodness of Fit',
                                'chiSquare'],
-                         ['A Case Study in Natural Resource Legislation','abalone'],
-                         ['A Case Study in Risk Assessment: Bovine Spongiform Encephalopathy','bse']
+                         ['A Case Study in Natural Resource Legislation: California Abalone Fisheries','abalone'],
+                         ['A Case Study in Risk Assessment: Bovine Spongiform Encephalopathy and Import Restrictions','bse']
                     ];
 var assignmentTitles = [
                          ['Have you read the syllabus and instructions?', // topic
@@ -229,12 +229,14 @@ var assignmentTitles = [
                          ]
                         ];
 
-var chapterNumbers = new Object;
-var assignmentNumbers = new Object;
-for (var j = 0; j < chapterTitles.length ; j++) {
+var chapterNumbers = {};
+var assignmentNumbers = {};
+var i;
+var j;
+for (j = 0; j < chapterTitles.length ; j+=1) {
     chapterNumbers[chapterTitles[j][1]] = j;
 }
-for (var j=0; j < assignmentTitles.length; j++) {
+for (j=0; j < assignmentTitles.length; j+=1) {
     assignmentNumbers[assignmentTitles[j][2]] = j;
 }
 
@@ -252,8 +254,8 @@ var qCtr = 1;                      // counter for questions
 var tCtr = 1;                      // counter for tables
 var xCtr = 1;                      // counter for examples
 var fCtr = 0;                      // counter for footnotes
-var key = new Array();             // key for self-graded exercises
-var boxList = new Array();         // list of images for self-graded exercises
+var key = [];                      // key for self-graded exercises
+var boxList = [];                  // list of images for self-graded exercises
 var setNum;                        // current problem set number
 var isLab = false;                 // is this a problem set?
 var acccessURL;
@@ -360,7 +362,7 @@ var ordinals = ['zeroth','first','second','third','fourth','fifth','sixth','seve
             'ninety-sixth','ninety-seventh','ninety-eighth','ninety-ninth','hundredth'
             ];
 var iteratives = ['no times','once','twice','thrice'];
-for (var i=4; i < cardinals.length; i++) {
+for (i=4; i < cardinals.length; i+=1) {
     iteratives[i] = cardinals[i] + ' times';
 }
 var primes = [ 2,      3,      5,      7,     11,     13,     17,     19,     23,     29,
@@ -396,7 +398,7 @@ var colors = ['red','orange','yellow','green','blue','indigo','violet',
 // ===============  STRING HANDLERS and HTML GENERATORS ===================
 
 function trimBlanks(s){
-    return(s ? s.replace(/^\s+|\s+$/g,'') : s);
+    return (s ? s.replace(/^\s+|\s+$/g,'') : s);
 }
 
 function allBlanks(s) {
@@ -404,47 +406,48 @@ function allBlanks(s) {
 }
 
 function removeAllBlanks(s){
-    return(s ? s.replace(/\s+/gm,'') : s);
+    return (s ? s.replace(/\s+/gm,'') : s);
 
 }
 
 function removeMarkup(s) { // removes html markup
-    return(s ? s.replace(/<[^>]*>/gm,'') : s);
+    return (s ? s.replace(/<[^>]*>/gm,'') : s);
 }
 
 function replaceMarkupByChar(s,sub) { // replaces html markup with sub
     if (typeof(sub) == 'undefined' || sub == null || sub.length == 0) {
        sub = ' ';
     }
-    return(s.replace(/<[^>]*>/gm, sub));
+    return (s.replace(/<[^>]*>/gm, sub));
 }
 
 function removeSpecials(s) { // removes special characters markup EXCEPT brackets
-    return(s ? s.replace(/[0123456789:;~`'"<>,.?\/+_@#$%^&*|!=-]+/gm,'') : s);
+    return (s ? s.replace(/[0123456789:;~`'"<>,.?\/+_@#$%^&*|!=-]+/gm,'') : s);
 }
 
 function removeNonLogicals(s) { // removes special characters markup EXCEPT brackets and logical symbols
-    return(s ? s.replace(/[0123456789:;`'"<>,.?\/+_@#$%^*=-]+/gm,'') : s);
+    return (s ? s.replace(/[0123456789:;`'"<>,.?\/+_@#$%^*=-]+/gm,'') : s);
 }
 
 function trimToLowerCase(s) {
 // trim trailing blanks, convert to lower case
-    return(s ? (s.toLowerCase()).replace(/^\s+|\s+$/g,'') : s);
+    return (s ? (s.toLowerCase()).replace(/^\s+|\s+$/g,'') : s);
 }
 
 function removeCommas(s) { // removes commas from a string
-    return(s ? s.replace(/,/gm,'') : s);
+    return (s ? s.replace(/,/gm,'') : s);
 }
 
 function removeString(str,s) { // removes instances of the string str from s.
-    return(s ? s.replace(eval('/'+str+'/gm'),'') : s);
+    return (s ? s.replace(eval('/'+str+'/gm'),'') : s);
 }
 
 function removeStrings(strArr,s) {
-    for (var j=0; j < strArr.length; j++) {
+    var j;
+    for (j=0; j < strArr.length; j+=1) {
         s = removeString(strArr[j], s);
     }
-    return(s);
+    return s;
 }
 
 function parsePercent(s) {
@@ -459,7 +462,7 @@ function parsePercent(s) {
         }
         value = parseFloat(trimBlanks(removeCommas(s)))/100;
     }
-    return(value);
+    return value;
 }
 
 function evalNum(s) { // try to evaluate a string as a numeric value
@@ -480,17 +483,17 @@ function evalNum(s) { // try to evaluate a string as a numeric value
             value = 'NaN';
         }
     }
-    return(value);
+    return value;
 }
 
 function parseMultiple(id) {
   // pre-processes multiple selections so that checkAnswer can be used to grade them
-    return( ($('#' + id ).val() || []).join(','));
+    return ($('#' + id ).val() || []).join(',');
 }
 
 function parseRadio(c) {
   // pre-processes multiple selections so that checkAnswer can be used to grade them
-    return($('.' + c + ' :checked').val());
+    return  $('.' + c + ' :checked').val();
 }
 
 function findNum(s) {
@@ -498,26 +501,28 @@ function findNum(s) {
 // if not, tries to remove characters to
 // leave an int, and returns that int.
     var i = parseInt(s);
+    var j;
     if ( !isNaN(i)) {
-        return(i);
+        return i;
     } else {
         var q = '';
-        for (var j=0; j < s.length; j++) {
+        for (j=0; j < s.length; j+=1) {
             var dum = q;
             if (!isNaN(parseInt(dum + s.charAt(j)))) {
                 q += s.charAt(j);
             }
         }
-        return(q);
+        return q;
     }
 }
 
 function vFindNum(s) { // finds numbers in a string array
     var a = new Array(s.length);
-    for (var i=0; i < s.length; i++) {
+    var i;
+    for (i=0; i < s.length; i+=1) {
         a[i] = findNum(s[i]);
     }
-    return(a);
+    return a;
 }
 
 // ============================================================================
@@ -533,7 +538,7 @@ function expireTimeString(ed) {
         cookDays = ed;
     }
     expire.setTime(now.getTime() + cookDays*60*60*1000*24);
-    return(expire.toGMTString());
+    return expire.toGMTString();
 }
 
 function getCookieVal(cook,key){ // gets the value of key within the cookie cook
@@ -545,36 +550,39 @@ function getCookieVal(cook,key){ // gets the value of key within the cookie cook
         searchStr = searchStr.substring(inx + pat.length, searchStr.length);
         val = unescape(searchStr.substring(0, searchStr.indexOf('&')));
     }
-    return(val);
+    return val;
 }
 
 function deleteAllCookies() {
      var et = expireTimeString(-1);
      var clist = document.cookie.split(';');
-     for (var j=0; j < clist.length; j++) {
+     var j;
+     for (j=0; j < clist.length; j+=1) {
          var cook = clist[j].split('=');
          document.cookie = cook[0] + '= ;EXPIRES=' + et;
      }
-     return(true);
+     return true;
 }
 
 function getCookieArray(cook,stem,len) { // gets an array from the cookie
     var ansArr = new Array(len);
-    for (var i=0; i < len; i++) {
+    var i;
+    for (i=0; i < len; i+=1) {
         ansArr[i] = getCookieVal(cook, stem + i.toString());
     }
-    return(ansArr);
+    return ansArr;
 }
 
 function setCookieArray(arr,stem) { // make a cookie-like string from the array arr
     var ansStr = '';
-    for (var i=0; i < arr.length; i++) {
+    var i;
+    for (i=0; i < arr.length; i+=1) {
         ansStr += stem + i.toString() + '=' + arr[i] + '&';
     }
     if (ansStr.substr(ansStr.length-1,1) == '&') {
         ansStr = ansStr.substring(0, ansStr.length - 1);
     }
-    return(ansStr);
+    return ansStr;
 }
 
 // ============================================================================
@@ -583,23 +591,24 @@ function setCookieArray(arr,stem) { // make a cookie-like string from the array 
 function numToMultiple(opt,ans) { // finds the multiple choice closest to ans
     var dif = Math.abs(parsePercent(opt[0]) - ans);
     var aVal = 'a';
-    for (var i=1; i < opt.length; i++) {
+    var i;
+    for (i=1; i < opt.length; i+=1) {
         var d2 = Math.abs(parsePercent(opt[i]) - ans);
         if (d2 < dif) {
             dif = d2;
             aVal = alphabet[i];
         }
     }
-    return(aVal);
+    return aVal;
 }
 
 function hiddenInput(string, val){  // hidden input with id, name, and class ="string" and value="val"
-    return('<input type="hidden" class="' + string + '" id="' + string + '" name="' + string + '" value="' + val + '" />');
+    return '<input type="hidden" class="' + string + '" id="' + string + '" name="' + string + '" value="' + val + '" />';
 }
 
 function citeChapter(s) {
     var j = chapterNumbers[s];
-    return('<span class="chapterCite">Chapter ' + j.toString() + ', ' + chapterTitles[j][0] + '</span>');
+    return '<span class="chapterCite">Chapter ' + j.toString() + ', ' + chapterTitles[j][0] + '</span>';
 }
 
 function citeLinkChapter(s, anchor, relpath) {
@@ -611,7 +620,7 @@ function citeLinkChapter(s, anchor, relpath) {
     if (typeof(relpath) == 'undefined' || relpath == null || relpath.length == 0) {
          relpath = './';
     }
-    return('<a class="chapterLink" target="_self" href="' + relpath + s + anchor + '.htm">' + citeChapter(s) + '</a>');
+    return '<a class="chapterLink" target="_self" href="' + relpath + s + anchor + '.htm">' + citeChapter(s) + '</a>';
 }
 
 function writeCaption(ref, q, capt, align) { // start a numbered caption.
@@ -665,9 +674,9 @@ function citeTable(num, print) {
                '</span> ';
     if (print) {
             document.writeln(cStr);
-            return(true);
+            return true;
     } else {
-            return(cStr);
+            return cStr;
     }
 }
 
@@ -682,9 +691,9 @@ function citeFig(num, print) {
                num.toString() + '</span> ';
     if (print) {
             document.writeln(cStr);
-            return(true);
+            return true;
     } else {
-            return(cStr);
+            return cStr;
     }
 }
 
@@ -699,9 +708,9 @@ function citeExample(num, print) {
                num.toString() + '</span> ';
     if (print) {
             document.writeln(cStr);
-            return(true);
+            return true;
     } else {
-            return(cStr);
+            return cStr;
     }
 }
 
@@ -718,12 +727,12 @@ function startProblem(q) {  // writes html to start a problem, numbered q
     }
     var linkStr = 'P-' + q.toString();
     var s = '<a id="' + linkStr + '"></a><p>&nbsp;</p><p><strong>' + ref + '.</strong>';
-    return(s);
+    return s;
 }
 
 function writeSelectExercise(mult, q, opt, ans) {
     document.writeln(selectExerciseString(mult, q, opt, ans));
-    return(true);
+    return true;
 }
 
 function selectExerciseString(mult, q, opt, ans) {
@@ -744,16 +753,16 @@ function selectExerciseString(mult, q, opt, ans) {
         }
     }
     key[q - 1] = crypt(ans, randSeed.toString());
-    return(s);
+    return s;
 }
 
 function qCheckString(q) {
     var s = '<a href="javascript:void();" target="_self"' +
-            ' onClick="giveAnswer(\'Q' + q.toString() + '\');return(false);">' +
+            ' onClick="giveAnswer(\'Q' + q.toString() + '\');return false;">' +
             ' <img src="' + qImgSrc + '" ' +
             ' border="1" align="top" title="see the answer" /></a>' +
             ' <span class="ansSpan" id="ansSpan' + q.toString() + '"></span>';
-   return(s);
+   return s;
 }
 
 function areaExercise(rows,cols,q,ca) {
@@ -763,7 +772,7 @@ function areaExercise(rows,cols,q,ca) {
         s += 'onChange="checkAnswer(id,value);"';
     }
     s += ' ></textarea>';
-    return(s);
+    return s;
 }
 
 function writeAreaExercise(rows, cols, q, ans) {
@@ -779,7 +788,7 @@ function writeAreaExercise(rows, cols, q, ans) {
         }
     }
     key[q - 1] = crypt(ans, randSeed.toString());
-    return(true);
+    return true;
 }
 
 function textExercise(size,q,ca) {
@@ -789,12 +798,12 @@ function textExercise(size,q,ca) {
         s += 'onChange="checkAnswer(id,value);"';
     }
     s += ' />';
-    return(s);
+    return s;
 }
 
 function textProblem(size,q) {  // makes text input area of "size" size, id, name and class "q"
     var s = '<input type="text" size="' + size + '" id="' + q + '" name="' + q + '" class="' + q + '" />';
-    return(s);
+    return s;
 }
 
 function writeTextExercise(size, q, ans) {  // does all the printing for a textfield exercise
@@ -809,7 +818,7 @@ function writeTextExercise(size, q, ans) {  // does all the printing for a textf
         }
     }
     key[q - 1] = crypt(ans, randSeed.toString());
-    return(true);
+    return true;
 }
 
 function writeRadioExercise(q, opt, ans) {  // write a radio exercise
@@ -824,20 +833,21 @@ function writeRadioExercise(q, opt, ans) {  // write a radio exercise
         }
     }
     key[q-1] = crypt(ans, randSeed.toString());
-    return(true);
+    return true;
 }
 
 function radioExercise(q, opt, ca){  // makes a collection of radio inputs.
     var s = '';
     var oplen = opt.length;
-    for (var i = 0; i < oplen; i++) {
+    var i;
+    for (i=0; i < oplen; i+=1) {
         s  += '<input type="radio" id="' + q + '_' + i + '" name="' + q + '" class="' + q + '" value="' + alphabet[i] + '" ';
         if (ca == null || ca) {
             s += 'onClick="checkAnswer(name,value);"';
         }
         s += ' />\n' + alphabet[i] + ') ' + opt[i] + '<br />\n';
     }
-    return(s);
+    return s;
 }
 
 function selectExercise(mult, q, opt, ca) {
@@ -845,6 +855,7 @@ function selectExercise(mult, q, opt, ca) {
    // if mult, makes the size large enough to show all options.
    // otherwise size=1;  opt is a 1 by array.
     var s;
+    var i;
     var size;
     var oplen = opt.length;
     if (mult) { // leave room for all the answers to be visible.
@@ -861,18 +872,18 @@ function selectExercise(mult, q, opt, ca) {
     }
     s += '>\n <option>?</option>\n';
     if (oplen <= 26) {
-        for (var i=0; i < oplen; i++) {
+        for (var i=0; i < oplen; i+=1) {
             s += '<option value="' + alphabet[i] + '">' + ALPHABET[i] +
                 ': ' + opt[i] + '</option>\n';
         }
     } else {
-        for (var i=0; i < oplen; i++) {
+        for (i=0; i < oplen; i+=1) {
             s += '<option value="' + (i+1).toString() + '">' +
                 (i+1).toString() + ': ' + opt[i] + '</option>\n';
         }
     }
     s += '</select>';
-    return(s);
+    return s;
 }
 
 function functionalGradeString(fn, ans) {
@@ -888,6 +899,8 @@ function scoreProblem(truth,response){
     response = trimToLowerCase(response);  // student response
     var rsp;
     var correctness;
+    var i;
+    var k;
     if (response == null) {
         correctness = false;
     } else if (qTypeCode == 'FN') {  // functional solution
@@ -911,10 +924,10 @@ function scoreProblem(truth,response){
     } else if (qTypeCode == 'MA') {  // multiple allowed
         resArray = response.split(',');
         resArray.sort()
-        var matches = new Array();
-        for (var k=0; k < resArray.length; k++) {
+        var matches = [];
+        for (k=0; k < resArray.length; k+=1) {
             matches[k] = 0;
-            for (var i=0; i < answer.length; i++) {
+            for (i=0; i < answer.length; i+=1) {
                 if (resArray[k] == answer[i]) {
                     matches[k] = 1;
                 }
@@ -927,14 +940,14 @@ function scoreProblem(truth,response){
         resArray.sort()
         if (resArray.length == answer.length) {
             correctness = true;
-            for (var i=0; i < answer.length; i++ ) {
+            for (i=0; i < answer.length; i+=1 ) {
                 if (answer[i] != trimToLowerCase(resArray[i])) {
                     correctness = false;
                 }
             }
         }
     }
-    return(correctness);
+    return correctness;
 }
 
 function parseKey(s) {
@@ -945,6 +958,7 @@ function parseKey(s) {
     s = trimBlanks(s) // remove trailing blanks
     var answer;
     var ansText;
+    var i;
     if (s.indexOf('@') == 0) { // answer is a function
         answer = s.substring(1,s.length);
         qTypeCode = 'FN';                  // answer is type function (FN)
@@ -960,7 +974,7 @@ function parseKey(s) {
         answer = s.toLowerCase().split(':')
         if (answer.length != 2) { alert('Error #2 in irGrade.parseKey(): bad range syntax!') }
         qTypeCode = 'RG';                   // answer is of type range (RG)
-        for (var i=0; i < answer.length; i++) {
+        for (i=0; i < answer.length; i+=1) {
             answer[i] = parsePercent(answer[i]);
             if (isNaN(answer[i])){
                 alert('Error #3 in irGrade.parseKey(): unparsable number in range!');
@@ -971,23 +985,23 @@ function parseKey(s) {
                                        // are letters
         answer = s.toLowerCase().split('&');
         qTypeCode = 'MR';                   // answer is of type multiple required (MR)
-        for (var i=0; i < answer.length; i++ ) {
+        for (i=0; i < answer.length; i+=1 ) {
             answer[i] = trimBlanks(answer[i].toLowerCase());
             answer.sort();
         }
         ansText = answer[0];
-        for (var i=1; i < answer.length; i++) {
+        for (i=1; i < answer.length; i+=1) {
             ansText += ' and ' + answer[i];
         }
     } else if (s.indexOf('|') != -1 ){ // multiple answers accepted; assume all
                                        // are letters
         answer = s.toLowerCase().split('|');
         qTypeCode = 'MA';                   // answer is of type multiple accepted (MA)
-        for (var i=0; i < answer.length; i++ ) {
+        for (i=0; i < answer.length; i+=1 ) {
             answer[i] = trimBlanks(answer[i].toLowerCase());
         }
         ansText = answer[0];
-        for (var i=1; i < answer.length; i++) {
+        for (i=1; i < answer.length; i+=1) {
             ansText += ' or ' + answer[i];
         }
     } else if (s == '*') {
@@ -1006,7 +1020,7 @@ function parseKey(s) {
         }
         ansText = answer;
     }
-    return([qTypeCode,answer,ansText]);
+    return [qTypeCode,answer,ansText];
 }
 
 function setCourseSpecs() {
@@ -1030,7 +1044,7 @@ function setCourseSpecs() {
             $("#courseSelector").text(courseName + ': ' + teacherName)
                                 .css('color', 'blue');
     });
-    return(true);
+    return true;
 }
 
 function getGrades(theForm) {
@@ -1081,7 +1095,7 @@ function spawnProblem(theForm,setName,relPath) {
         var assigned = assign[setName] && (assign[setName][1] == 'ready');
         if (!assigned) {
                     alert('Error #1 in irGrade.spawnProblem(): This has not been assigned yet.\n Try again later.');
-                    return(false);
+                    return false;
         } else {
             var sstr =  crypt('sid' + theForm.sid.value, theForm.sid.value) + '=';
             if (ck.indexOf(sstr) < 0){
@@ -1096,7 +1110,7 @@ function spawnProblem(theForm,setName,relPath) {
                     alert('Error #2 in irGrade.spawnProblem()!\n' +
                           'Make sure your browser is configured to accept cookies.\n' +
                           'Clear existing cookies and try again.');
-                    return(false);
+                    return false;
                 }
             }
             var ss = ck.substring(ck.indexOf(sstr) + sstr.length, ck.length);
@@ -1118,8 +1132,8 @@ function spawnProblem(theForm,setName,relPath) {
             lablet.dFile = dFile;
             lablet.course = course;
             lablet.teacher = teacher;
-            lablet.maxSubmits = assign[setName][3] ? assign[setName][3]: maxSubmits ;
-            lablet.showWrongAfterSubmits = assign[setName][4] ? assign[setName][4]: showWrongAfterSubmits;
+            lablet.maxSubmits = assign[setName][3] ? assign[setName][3] : maxSubmits ;
+            lablet.showWrongAfterSubmits = assign[setName][4] ? assign[setName][4] : showWrongAfterSubmits;
             lablet.formname = setName;
             lablet.theChapter = setName;
             lablet.assignmentname = setName;
@@ -1132,10 +1146,10 @@ function spawnProblem(theForm,setName,relPath) {
                 ' frameborder="1" framespacing="0" border="1" /><frame id="appletWin" src="' + appl + '"' +
                 ' frameborder="1" framespacing="0" border="1" /></frameset></html>');
             lablet.document.close();
-            return(true);
+            return true;
     }
   } else {
-     return(false);
+     return false;
   }
 }
 
@@ -1162,11 +1176,11 @@ $(function() {
    });
    $('#loginLink').hover(function() {
         $('#loginBox').slideDown(1000);
-        return(true);
+        return true;
     });
     $('#loginLink').mouseout(function() {
         setTimeout("$('#loginBox').slideUp(10000)",2500);
-        return(true);
+        return true;
     });
 });
 
@@ -1177,7 +1191,7 @@ function handleUserLoginCheck(_userEid) {
         $('#loginBox').show();
         setTimeout("$('#loginBox').slideUp(10000)",2500);
     }
-    return(true);
+    return true;
 }
 
 // ########################  START Onsophic ##################################
@@ -1247,22 +1261,33 @@ function enqueueJsonRequest(_url) {
 }
 
 //  set maximum wait for json callback
-  var jsonIterationCount;
   var jsonMaxIterationCount = 200;
 
 function waitForJsonRequest(_callback) {
-/* REMOVED PBS 11/2/2012
-    if ((jsonRequestBusy || jsonRequestQueue.length > 0) &&
-        jsonIterationCount <= jsonMaxIterationCount) {
-             jsonIterationCount++;
-             setTimeout(function() { waitForJsonRequest(_callback); }, 100);
-    } else  {
-*/
-             jsonIterationCount = 0;
-             if (_callback) {
-                  _callback();
+/* Removed by PBS.  Needs testing when analytics are restored
+     var that = this;
+     var jsonIterationCount = 0;
+     var cb = _callback;
+     function jsonRequestWait() {
+         if ((jsonRequestBusy || jsonRequestQueue.length > 0) &&
+            jsonIterationCount < jsonMaxIterationCount ) {
+               jsonIterationCount += 1;
+               setTimeout(jsonRequestWait, 100);
+         } else {
+             if (cb) {
+                  cb();
              }
-//    }
+         }
+     }
+     setTimeout(jonRequestWait, 100);
+     return that;
+*/
+     jsonIterationCount = 0;
+     if (_callback) {
+        _callback();
+     }
+     console.log('waitForJsonRequest: done.');
+     return true;
 }
 
 function resolveAddOrUpdateUrl(_eventType) {
@@ -1304,14 +1329,15 @@ function pushActivityEventSet(_eventType, _anchorValuesAndScorePercents) {
     var pushUrl = '';
     var cnt = 1;
     var scorePercent;
-    for (var anchorValue in _anchorValuesAndScorePercents) {
+    var anchorValue;
+    for (anchorValue in _anchorValuesAndScorePercents) {
       scorePercent = _anchorValuesAndScorePercents[anchorValue];
       pushUrl += resolveEventParameters(cnt, anchorValue, scorePercent);
       if (console && console.log) {
           console.log('pushActivityEventSet(' + cnt + ', ' + _eventType + ', ' +
               anchorValue + ', ' + scorePercent + ')');
       }
-      cnt++;
+      cnt+=1;
       //ssanders: Ensure shorter than max URL length
       if (pushUrl.length > 2048 - pushUrlPrefix.length - 128) {
         enqueueJsonRequest(pushUrlPrefix + pushUrl);
@@ -1344,12 +1370,14 @@ function pushSectionViewed(_heading, _eventType) {
 function pushQuestionsWorked(_questionsAndAnswers) {
 	var anchorValuesAndScorePercents = [];
 	var truth;
-	for (var questionNumber in _questionsAndAnswers) {
+	var questionNumber;
+	var cnt;
+	for (questionNumber in _questionsAndAnswers) {
 		truth = _questionsAndAnswers[questionNumber];
 	    var anchorValue = 'Q' + questionNumber;
     	    var questionInput = $(anchorValue);
 	    if (!questionInput) {
-    	    for (var cnt = 0; cnt < frames.length; cnt++) {
+    	    for (cnt = 0; cnt < frames.length; cnt+=1) {
         	    try {
             	        questionInput = frames[cnt].document.getElementById(anchorValue);
                 	if (questionInput) {
@@ -1381,8 +1409,9 @@ function pushQuestionsWorked(_questionsAndAnswers) {
 function pushSolutionOpened(_questionNumber) {
     var anchorValue = 'solDivLink' + _questionNumber;
     var solutionLink = $(anchorValue);
+    var cnt;
     if (!solutionLink) {
-        for (var cnt = 0; cnt < frames.length; cnt++) {
+        for (cnt = 0; cnt < frames.length; cnt+=1) {
             try {
                 solutionLink = frames[cnt].document.getElementById(anchorValue);
                 if (solutionLink) {
@@ -1447,13 +1476,14 @@ function checkAnswer(number, response) {
     var questionsAndAnswers = [];
     questionsAndAnswers[theQuestion] = truth;
     pushQuestionsWorked(questionsAndAnswers); //* Onsophic
-    return(truth);
+    return truth;
 }
 
 function isAnswered(qVal) { // checks whether the student answered a question
     var n = findNum(qVal) - 1;
     var iA = false;
     var inx;
+    var i;
     var el = document.forms[0].elements[qVal];
     var qT = el.type;
     if (qT == 'select-one') {
@@ -1475,7 +1505,7 @@ function isAnswered(qVal) { // checks whether the student answered a question
     } else if (qT == 'radio') { // incomprehensible bugs with this
         iA = parseRadio(el.class);
     } else if ( typeof(qT) == 'undefined' || qT == null ) { // assume it is a radio
-        for (var i=0; i < el.length; i++) {
+        for (i=0; i < el.length; i+=1) {
             if (el[i].checked) {
                 iA = true;
             }
@@ -1484,7 +1514,7 @@ function isAnswered(qVal) { // checks whether the student answered a question
         alert('Error #1 in irGrade.js.isAnswered(): input type ' + qT +
            ' is not supported!');
     }
-    return(iA);
+    return iA;
 }
 
 
@@ -1508,12 +1538,13 @@ function giveAnswer(number) {
        $(ansSpan).html(qStr)
                  .css('display','block');
     }
-    return(true);
+    return true;
 }
 
 function validEmail(e) { // checks whether e appears to be a valid email address
     var okEmailChars="._-@:%0123456789abcdefghijklmnopqrstuvwxyz";
     var truth = true;
+    var i;
     if (e == null || e.length == 0) {
         truth=false;
     } else {
@@ -1525,12 +1556,12 @@ function validEmail(e) { // checks whether e appears to be a valid email address
         else if (et.indexOf('@') != et.lastIndexOf('@')) {
             truth = false;
         } else {
-            for (var i=0; i < et.length; i++) {
+            for (i=0; i < et.length; i+=1) {
                 if(okEmailChars.indexOf(et.charAt(i)) < 0) {truth = false;}
             }
         }
     }
-    return(truth);
+    return truth;
 }
 
 function validSID(s){ // check whether SID is valid
@@ -1543,17 +1574,17 @@ function validSID(s){ // check whether SID is valid
              truth = false;
         }
     }
-    return(truth);
+    return truth;
 */
-    return(true);
+    return true;
 }
 
 function validateLabletSubmit(theForm){
 // check that various form entries are filled in correctly, submit or cancel
     if (validateLablet(theForm)){
-        return(labletSubmit(theForm));
+        return labletSubmit(theForm);
     } else {
-        return(false);
+        return false;
     }
 }
 
@@ -1576,7 +1607,7 @@ function labletSubmit(theForm) {
         alert('Your assignment has NOT been submitted.');
         OK = false;
      }
-     return(OK);
+     return OK;
 }
 
 function validateLablet(theForm) {
@@ -1584,16 +1615,16 @@ function validateLablet(theForm) {
           theForm.firstName.value.length == 0 || allBlanks(theForm.firstName.value)) {
         alert('First Name is missing');
         theForm.firstName.focus();
-        return(false);
+        return false;
     } else if (theForm.lastName.value == null || theForm.lastName.value.length == 0 ||
              allBlanks(theForm.lastName.value) ) {
         alert('Last Name is missing');
         theForm.lastName.focus();
-        return(false);
+        return false;
     } else if ( !validEmail(theForm.email.value)) {
         alert('Email address is missing or invalid');
         theForm.email.focus();
-        return(false);
+        return false;
     }
     var OK = false;
     if (enrollList.indexOf(CryptoJS.SHA256(trimToLowerCase(theForm.sid.value) + ',' +
@@ -1608,7 +1639,7 @@ function validateLablet(theForm) {
                 'address correctly and that this page is the correct assignment page for the class ' +
                 'you are enrolled in.');
     }
-    return(OK);
+    return OK;
 }
 
 function saveResponses(setName,theForm,saveAns) {
@@ -1618,11 +1649,11 @@ function saveResponses(setName,theForm,saveAns) {
                'You should write your answers down, too.\n' +
                'The cookie will be erased automatically in ' +
                cookieExpireDays.toString() + ' days or less.');
-        return(true);
+        return true;
     } else {
         alert('Error #1 in irGrade.saveResponses:\nYour answers might NOT have been saved,\n' +
                 'or previous answers might have been deleted, because the cookie became too large.');
-        return(false);
+        return false;
     }
 }
 
@@ -1637,12 +1668,12 @@ function setSubmitCookie(fff,theForm,idInfo){
                             '=' + crypt(s, theForm.sid.value) + ';EXPIRES=' + expireTimeString();
          ok = false;
     }
-    return(ok);
+    return ok;
 }
 
 function recoverResponses() {
     if (continueLab == null) {
-        return(false);
+        return false;
     } else {
         var theSid = getCookieVal(continueLab,"sid");
         var thePw = theSid;
@@ -1652,7 +1683,7 @@ function recoverResponses() {
         var searchStr = document.cookie;
         var startInx = searchStr.indexOf(ascStr);
         if (startInx < 0 ) {
-            return(false);
+            return false;
         }
         searchStr = searchStr.substring(startInx+ascStr.length,searchStr.length);
         var endInx = searchStr.indexOf(';');
@@ -1665,7 +1696,9 @@ function recoverResponses() {
         var inx;
         var ampInx;
         var elem;
-        for (var i=0; i < theForm.elements.length; i++) {
+        var i;
+        var j;
+        for (i=0; i < theForm.elements.length; i+=1) {
             qName = theForm.elements[i].id + '=';
             if (qName.indexOf('Q') == 0) {
                 elem = theForm.elements[i];
@@ -1677,7 +1710,7 @@ function recoverResponses() {
                            qText = unescape(searchStr.substring(0,ampInx));
                            // search for option to select
                            var ag = false;
-                           for (var j=0; j < elem.length; j++) {
+                           for (j=0; j < elem.length; j+=1) {
                                 if (elem[j].value == qText) {
                                     elem.options[j].selected = true;
                                     ag = true;
@@ -1691,7 +1724,7 @@ function recoverResponses() {
                            ampInx = searchStr.indexOf('&');
                            qText = unescape(searchStr.substring(0,ampInx));
                            // search for option to select
-                           for (var j=0; j < elem.length; j++) {
+                           for (j=0; j < elem.length; j+=1) {
                              if (elem[j].value == qText) {
                                 elem.options[j].selected = true;
                              }
@@ -1720,20 +1753,22 @@ function recoverResponses() {
                 } else {
                     alert('Error #1 in irGrade.recoverResponses(): unsupported problem type ' +
                         elem.type + '!');
-                    return(false);
+                    return false;
                 }
             }
         }
     }
-    return(true);
+    return true;
 }
 
 function collectResponses(theForm,saveAs,saveId) {
     var typ;
     var nam;
     var s = '';
+    var i;
+    var j;
     s += 'randSeed=' + escape(randSeed) + '&';
-    for (var i=0; i < theForm.elements.length; i++) {
+    for (i=0; i < theForm.elements.length; i+=1) {
         typ = theForm.elements[i].type;
         nam = theForm.elements[i].id;
         if (typ == "button" || typ == "submit" || typ == "reset") {
@@ -1745,7 +1780,7 @@ function collectResponses(theForm,saveAs,saveId) {
                  escape(theForm.elements[i].options[
                    theForm.elements[i].options.selectedIndex].value)+ '&';
         } else if (typ == "select-multiple") {
-            for (var j=0; j < theForm.elements[i].options.length; j++) {
+            for (j=0; j < theForm.elements[i].options.length; j+=1) {
                 if (theForm.elements[i].options[j].selected) {
                     s += escape(nam) + '=' +
                         escape(theForm.elements[i].options[j].value) + '&';
@@ -1761,14 +1796,14 @@ function collectResponses(theForm,saveAs,saveId) {
         }
     }
     if (saveAs) {
-        for (var i=0; i < key.length; i++) {
+        for (i=0; i < key.length; i+=1) {
             s += escape('a' + (i+1).toString()) + '=' + escape(crypt(key[i],randSeed.toString()).toString()) + '&';
         }
     }
     if (s[s.length-1] == "&") {
         s = s.substring(0,s.length - 1);
     }
-    return(s);
+    return s;
 }
 
 function labInstrSetUp(seed,sn) {
@@ -1780,7 +1815,7 @@ function labInstrSetUp(seed,sn) {
     cNum = assignmentPrefix + setNum;
     HI = true;
     writeProblemSetHead(setNum);
-    return(true);
+    return true;
 }
 
 function labSetUp(seed, sn) {
@@ -1809,7 +1844,7 @@ function labSetUp(seed, sn) {
             document.close();
             window.close();
             parent.close();
-            return(false);
+            return false;
         } else {
             var searchStr = continueLab + '&';
             var pat = "randSeed=";
@@ -1829,7 +1864,7 @@ function labSetUp(seed, sn) {
     }
     randSeed = rand.getSeed();
     writeProblemSetHead(setNum);
-    return(true);
+    return true;
 }
 
 function setRequiredInputs(theForm) {
@@ -1840,10 +1875,11 @@ function setRequiredInputs(theForm) {
     theForm.elements['sid2'].value = getCookieVal(continueLab,"sid");
     theForm.elements['passwd'].value = getCookieVal(continueLab,"sid");
     theForm.elements['passwd2'].value = getCookieVal(continueLab,"sid");
-    return(true);
+    return true;
 }
 
 function setExtraInputs(theForm) {
+    var i;
     theForm.elements['inlinekey'].value = inlinePrefix + (qCtr-1).toString();
     theForm.elements['dFile'].value = parent.dFile;
     theForm.elements['teacher'].value = parent.teacher;
@@ -1860,7 +1896,7 @@ function setExtraInputs(theForm) {
     var resp;
     var qType;
     var questionsAndAnswers = [];
-    for (var i=1; i < qCtr; i++) {
+    for (i=1; i < qCtr; i+=1) {
         qVal = $('#Q' + i.toString());
         try {
               qType = qVal.attr('type'); // theForm.elements[qVal].type;
@@ -1882,7 +1918,7 @@ function setExtraInputs(theForm) {
               }
               var sp = scoreProblem(crypt(key[i-1], randSeed.toString()), resp);
               if (sp) {
-                    nRight++;
+                    nRight+=1;
               }
               questionsAndAnswers[i] = sp;
         } catch(e) {
@@ -1891,7 +1927,7 @@ function setExtraInputs(theForm) {
     }
     pushQuestionsWorked(questionsAndAnswers); // Onsophic
     theForm.elements['score'].value = roundToDig(100*nRight/(qCtr - 1),2).toString();
-    return(true);
+    return true;
 }
 
 
@@ -1902,7 +1938,7 @@ function styleSheetRef(relPath) {
     if (typeof(relPath) == 'undefined' || relPath == null || relPath.length == 0) {
     	relPath = '..';
     }
-    return('<link rel="stylesheet" type="text/css" href="' + relPath + cssBase.toString() + '" />');
+    return '<link rel="stylesheet" type="text/css" href="' + relPath + cssBase.toString() + '" />';
 }
 
 function writeChapterHead(seed, chTit, titStr, showSticiGui, relPath) {
@@ -1954,7 +1990,7 @@ function writeChapterHead(seed, chTit, titStr, showSticiGui, relPath) {
     HI = false;
     randSeed = rand.getSeed();
     sectionContext = '';
-    return(true);
+    return true;
 }
 
 function writeChapterNav(relPath) {
@@ -2024,8 +2060,9 @@ function writeChapterNav(relPath) {
 }
 
 function sfHover() {
+    var i;
 	var sfEls = document.getElementById("navMenu").getElementsByTagName("LI");
-	for (var i=0; i<sfEls.length; i++) {
+	for (i=0; i<sfEls.length; i+=1) {
 		sfEls[i].onmouseover=function() {
 			this.className+= " sfhover";
 		}
@@ -2033,7 +2070,7 @@ function sfHover() {
 			this.className=this.className.replace(new RegExp(" sfhover\\b"), "");
 		}
 	}
-        return(true);
+        return true;
 }
 
 
@@ -2048,7 +2085,7 @@ function writeChapterTitle(s) {
     }
     qStr +=  '</h1>';
     document.writeln(qStr);
-    return(true);
+    return true;
 }
 
 function examSetUp(seed, sName, sn) {
@@ -2068,7 +2105,7 @@ function examSetUp(seed, sName, sn) {
     randSeed = rand.getSeed();
     writeExamHeader(examName, examNum.toString() + '.' + randSeed.toString() );
     dfStat = 'SticiGui ' + examName + ' ' + examNum.toString();
-    return(true);
+    return true;
 }
 
 function writeExamHeader(exNam, exVer, relPath) {
@@ -2082,7 +2119,7 @@ function writeExamHeader(exNam, exVer, relPath) {
                    '<a href="../index.htm" target="_new">SticiGui</a> ' + exNam +
                    '</h1><h2> Version ' + exVer.toString() + '</h2>';
     document.writeln(qStr);
-    return(true);
+    return true;
 }
 
 $(document).ready(function() {
@@ -2104,18 +2141,19 @@ $(document).ready(function() {
     $("div.solution").css('display','block')
                      .hide();
     $(".solLink").click(function() {
-                      $(this).parent().next().toggle();
+                //      $(this).parent().next().toggle();
+                      $("*").eq($("*").index(this)+1).toggle();
                       $(this).text( ($(this).text() == '[+Solution]') ? '[-Solution]' : '[+Solution]');
                //       pushSolutionOpened($(this));  // for analytics
-                      return(false);
+                      return false;
     });
     $(".footnote").css('display','block')
                   .hide();
     $(".fnLink").click(function() {
-                      $(this).parent().next().toggle();
+                      $("*").eq($("*").index(this)+1).toggle();
                       $(this).text( ($(this).text() == '[+]') ? '[-]' : '[+]');
                //       pushFootnoteOpened($(this));  // for analytics
-                      return(false);
+                      return false;
                 })
                 .css('vertical-align','super');
 });
@@ -2135,7 +2173,7 @@ function writeProblemSetFooter() {
             '<form method="POST" accept-charset="UTF-8">' + hiddenInput('contents',' '); + '</form>';
     document.writeln(qStr);
     writeMiscFooter(false);
-    return(true);
+    return true;
 }
 
 function writeSolution(p,text,solFunc) {
@@ -2146,7 +2184,7 @@ function writeSolution(p,text,solFunc) {
     }
     qStr += '</div></div>';
     document.writeln(qStr);
-    return(true);
+    return true;
 }
 
 function writeFootnote(p,label,text, print) {
@@ -2164,9 +2202,9 @@ function writeFootnote(p,label,text, print) {
                '<div class="footnote"><p>' + footnote + '</p></div> ';
     if (print) {
        document.writeln(qStr);
-       return(true);
+       return true;
     } else {
-       return(qStr);
+       return qStr;
     }
 }
 
@@ -2179,7 +2217,7 @@ function writeChapterFooter(finalCommand, relPath) {
     }
     eval(finalCommand);
     writeMiscFooter(false);
-    return(true);
+    return true;
 }
 
 function writeMiscFooter(sr) {
@@ -2199,15 +2237,16 @@ function writeMiscFooter(sr) {
         document.write('Content last modified ' + pageModDate + '. ');
     }
     document.writeln('</small></p>');
-    return(true);
+    return true;
 }
 
 function sticiBottom(relPath) {
+    var i;
     if (typeof(relPath) == 'undefined' || relPath == null || relPath.length == 0) {
     	relPath = '..';
     }
     document.writeln('<hr /><div id="chapterMenu"><p class="center">Jump to chapter:</p><p class="center">|');
-    for (var i=0; i< chapterTitles.length; i++) {
+    for (i=0; i< chapterTitles.length; i+=1) {
         var theChapterLinkName = chapterTitles[i][0];
         if (i > 1) {
             theChapterLinkName = i.toString();
@@ -2228,7 +2267,7 @@ function writeProblemSetHead(sn) {
             'Make sure your browser is set up to accept cookies and try again.');
         document.close();
         window.close();
-        return(false);
+        return false;
     } else {
         theChapter = sn;
         parent.theChapter = sn;
@@ -2236,7 +2275,7 @@ function writeProblemSetHead(sn) {
                   '<title>SticiGui Assignment ' + theChapter.toString() +
                   '</title><base target="_self">'
     	document.writeln(qStr);
-    	return(true);
+    	return true;
     }
 }
 
@@ -2271,7 +2310,7 @@ function writeProblemSetBody( ch, title ) {
             title + '</h1>';
     document.writeln(qStr);
     pushAssignmentOpened();
-    return(true);
+    return true;
 }
 
 
@@ -2280,6 +2319,7 @@ function makeOptions(ans, pert, dig, extra) { // make a set of numerical options
                                               // precision. each answer is perturbed by a
                                               // signed multiple of pert.
                                               // extra is appended to each answer
+    var i;
     if (typeof(dig) == 'undefined' || dig == null) {
         dig = 0;
     }
@@ -2288,12 +2328,12 @@ function makeOptions(ans, pert, dig, extra) { // make a set of numerical options
     }
     var rs = listOfRandSigns(5);
     var rawOpt = new Array(5);
-    for (var i=0; i < 5; i++) {
+    for (i=0; i < 5; i+=1) {
         rawOpt[i] = commify(roundToDig(ans + i*rs[i]*pert,dig)) + extra;
     }
     var optPerm = randPermutation(rawOpt,'inverse');
     optPerm[1] = alphabet[optPerm[1][0]];
-    return(optPerm);
+    return optPerm;
 }
 
 function makeRangeOptions(t, lo, hi, loLim, hiLim, dig, extra, iterLim) {
@@ -2306,6 +2346,7 @@ function makeRangeOptions(t, lo, hi, loLim, hiLim, dig, extra, iterLim) {
     var pertFac = 0.07;      // amount by which to move endpoints each iteration
     var closeFac = 0.35;     // how much closer should answer be to one endpoint?
     var av;
+    var i;
     var altern = false;      // alternate moving upper and lower endpoints
     if (typeof(extra) == 'undefined' || extra == null) {
         extra = '';
@@ -2331,7 +2372,7 @@ function makeRangeOptions(t, lo, hi, loLim, hiLim, dig, extra, iterLim) {
            av = alphabet[4];
            ok = true;
        } else {
-           for (i=0; i < ans.length; i++) {
+           for (i=0; i < ans.length; i+=1) {
               if (Math.abs(t - ans[i]) <= d) {
                  ok = true;
                  av = alphabet[i];
@@ -2348,7 +2389,7 @@ function makeRangeOptions(t, lo, hi, loLim, hiLim, dig, extra, iterLim) {
         if (lim++ == maxIt) {
             av = alphabet[0];
             var ref = Math.abs(t-ans[0]);
-            for (var i=1; i < ans.length; i++ ) {
+            for (i=1; i < ans.length; i+=1 ) {
                 var nref = Math.abs(t-ans[i]);
                 if (nref < ref) {
                     ref = nref;
@@ -2362,47 +2403,49 @@ function makeRangeOptions(t, lo, hi, loLim, hiLim, dig, extra, iterLim) {
         }
     }
     var opt = new Array(ans.length);
-    for (i=0; i < ans.length; i++) {
+    for (i=0; i < ans.length; i+=1) {
        opt[i] = commify((roundToDig(ans[i],dig)))+ extra;
     }
     var out = new Array(2);
     out[0] = opt;
     out[1] = av;
-    return(out);
+    return out;
 }
 
 function makeProbOptions(t, lo, hi, dig, iter) {
     if (typeof(dig) == 'undefined' || dig == null) {
         dig = 0;
     }
-    return(makeRangeOptions(100*t,100*lo,100*hi,0,100,dig,'%', iter));
+    return makeRangeOptions(100*t,100*lo,100*hi,0,100,dig,'%', iter);
 }
 
 function breakTF(groups, topt, fopt) { // randomly partition a collection of True statements
                                        // and a collection of False statements
+    var g;
+    var i;
     if (groups > Math.min(topt.length, fopt.length)) {
         alert('Error #1 in irGrade.breakTF(): too many groups!');
-        return(false);
+        return false;
     } else {
         var per = Math.floor((topt.length+fopt.length)/groups);
         var groupsT = constrainedRandomPartition(topt, groups, per-1);
         var fSoFar = 0;
         var broken = new Array(groups);
         var nArray = new Array(groups);
-        for (var g = 0; g < groups; g++) {
-            broken[g] = new Array();
+        for (g = 0; g < groups; g+=1) {
+            broken[g] = [];
             nArray[g] = groupsT[g].length;
-            for (var i=0; i < groupsT[g].length; i++) {
+            for (i=0; i < groupsT[g].length; i+=1) {
                 broken[g][i] = groupsT[g][i];
             }
-            for (var i = 0; i < per-groupsT[g].length; i++) {
+            for (i = 0; i < per-groupsT[g].length; i+=1) {
                 if (i+fSoFar < fopt.length) {
                     broken[g][i+groupsT[g].length] = fopt[i+fSoFar];
                 }
             }
             fSoFar = fSoFar + per - groupsT[g].length;
          }
-         return([broken,nArray]);
+         return [broken,nArray];
     }
 }
 
@@ -2410,9 +2453,9 @@ function breakTF(groups, topt, fopt) { // randomly partition a collection of Tru
 function truthTable(title, valArr) { // make a 2 by 2 truth table
     if (valArr.length < 4) {
         alert('Error #1 in irGrade.truthTable: number of truth values is ' + valArr.length);
-        return(null);
+        return null;
     } else {
-        return(truthTableHeader(title) +
+        return truthTableHeader(title) +
             '<tr><td headers="col0" align="center">T</td><td headers="col1" align="center">T</td>' +
             '<td headers="col2" align="center">' + valArr[0] + '</td></tr>' +
             '<tr><td headers="col0" align="center">T</td><td headers="col1" align="center">F</td>' +
@@ -2422,34 +2465,35 @@ function truthTable(title, valArr) { // make a 2 by 2 truth table
             '<tr><td headers="col0" align="center">F</td><td headers="col1" align="center">F</td>' +
             '<td headers="col2" align="center">' + valArr[3] + '</td></tr>' +
             '</table></center></div>'
-        );
+         ;
      }
 }
 
 
 function writeTruthTable(title, valArr) {
     document.writeln(truthTable(title, valArr));
-    return(true);
+    return true;
 }
 
 function truthTableHeader(title) {
-    return( '<a id="' + title.replace(/[ &!;<>|\\\/)(]/gi,'_') + '"></a><div class="plainTable"><center><table class="truthTable">' +
+    return  '<a id="' + title.replace(/[ &!;<>|\\\/)(]/gi,'_') + '"></a><div class="plainTable"><center><table class="truthTable">' +
             '<caption>Truth Table</caption>' +
             '<tr><th id="col0" align="center" bgcolor="lightblue"><span class="math">p</span></th>' +
             '<th id="col1" align="center" bgcolor="lightblue"><span class="math">q</span></th>' +
             '<th id="col2" align="center" bgcolor="lightblue"><span class="math">' + title +
             '</span></th></tr>'
-          );
+          ;
 }
 
 function writeTruthTableProblem(title, ansArr) { // 2 by 2 truth table problem
     var opt = ['T','F'];
+    var i;
     document.writeln(truthTableHeader(title));
     var solArr = new Array(ansArr.length);
     if ( (typeof(ansArr)).toLowerCase() == 'function') {
         trueArr = [true, false];
-        for (var i=0; i < 2; i++ ) {
-            for (var j=0; j < 2; j++) {
+        for (i=0; i < 2; i+=1 ) {
+            for (var j=0; j < 2; j+=1) {
                 var inx = j + 2*i;
                 if (ansArr(trueArr[j], trueArr[i])) {
                     solArr[inx] = 'a';
@@ -2459,7 +2503,7 @@ function writeTruthTableProblem(title, ansArr) { // 2 by 2 truth table problem
             }
         }
     } else {
-        for (var i=0; i < ansArr.length; i++) {
+        for (i=0; i < ansArr.length; i+=1) {
             if (ansArr[i]) {
                 solArr[i] = 'a';
             } else {
@@ -2490,6 +2534,7 @@ function writeTruthTableProblem(title, ansArr) { // 2 by 2 truth table problem
 
 function commify(num) { // punctuate number strings greater than 1,000 in magnitude
     var str;
+    var loc;
     var strA = (removeAllBlanks(num.toString())).toLowerCase();
     if ( (strA.indexOf('e') > -1) || (strA.indexOf('d') > -1) ) {
         str = strA;  // don't mess with exponential notation
@@ -2500,53 +2545,56 @@ function commify(num) { // punctuate number strings greater than 1,000 in magnit
             curLoc = str.indexOf('.');
         }
         var negSign = str.indexOf('-');
-        for (var loc = curLoc-4; loc > negSign; loc -= 3) {
+        for (loc = curLoc-4; loc > negSign; loc -= 3) {
             str = str.substr(0,loc+1) + ',' + str.substr(loc+1, str.length);
         }
     }
-    return(str);
+    return str;
 }
 
 function commifyList(list) { // commify an array
+    var j;
     var listStr = new Array(list.length);
-    for (var j=0; j < list.length; j++) {
+    for (j=0; j < list.length; j+=1) {
         listStr[j] = commify(list[j]);
     }
-    return(listStr);
+    return listStr;
 }
 
 
 
 function writeBlankLines(k) {  // blank space
+    var i;
     if ( (typeof(k) == 'undefined') || (k == null) || (k < 0) ) {
         k = 1;
     }
-    for (var i=0; i < k; i++) {
+    for (i=0; i < k; i+=1) {
         document.writeln('<p>&nbsp;</p>');
     }
 }
 
 function roundToDig(num, dig) { // rounds a number or list to dig digits after the decimal place
+    var i;
     var powOfTen = Math.pow(10,dig);
     if ((typeof(num)).toLowerCase() == 'number') {
         var fmt = Math.round(num*powOfTen)/powOfTen;
-        return(fmt);
+        return fmt;
     } else if ((typeof(num)).toLowerCase() == 'object' ||
                (typeof(num)).toLowerCase() == 'array') {
         var fmt = new Array(num.length);
-        for (var i = 0; i < num.length; i++) {
+        for (i = 0; i < num.length; i+=1) {
             fmt[i] = Math.round(num[i]*powOfTen)/powOfTen;
         }
-        return(fmt);
+        return fmt;
     } else {
         alert('Error #1 in irGrade.roundToDig(): argument (' + num.toString() + ') is not a number or an array');
-        return(Number.NaN);
+        return Number.NaN;
     }
 }
 
 function doubleToStr(num,dig) {
   // returns a string representation of num, rounded to dig digits after the decimal
-    return(removeAllBlanks(roundToDig(num,dig).toString()));
+    return removeAllBlanks(roundToDig(num,dig).toString());
 }
 
 function doubleToRange(num,fudge) {
@@ -2556,7 +2604,7 @@ function doubleToRange(num,fudge) {
     var range = doubleToStr(s - Math.abs(fudge),dig) + ':' +
                           doubleToStr(s+ Math.abs(fudge),dig);
     range = range.replace(/ /g,'');
-    return(range);
+    return range;
 }
 
 function numToRange(num,fudge) {
@@ -2567,7 +2615,7 @@ function numToRange(num,fudge) {
     if (fudge == 0) {
         fudge = absFudge;
     }
-    return(doubleToRange(num,Math.abs(fudge)));
+    return doubleToRange(num,Math.abs(fudge));
 }
 
 function numToOrdinal(num) { // turns integer into string, appends appropriate suffix
@@ -2580,11 +2628,13 @@ function numToOrdinal(num) { // turns integer into string, appends appropriate s
     } else {
        st = st + suffArray[finalDig];
     }
-    return(st);
+    return st;
 }
 
 function listToTable(header,list,orientation,centering,print,ft) {
   // formats an array of arrays as an html table
+    var i;
+    var j;
     if (typeof(centering) == 'undefined' || centering == null) {
         centering = 'right';
     }
@@ -2610,14 +2660,14 @@ function listToTable(header,list,orientation,centering,print,ft) {
         str += '<tr>';
         str += '<th align="' + centering + '" id="col1"> ' + ft + header + eft + '</th>\n';
         if (orientation == 'standard') {
-            for (var j=0; j < rows; j++) {
+            for (j=0; j < rows; j+=1) {
                 str +='<td align="' + centering + '" headers="col1">' +
                       ft + list[j] + eft + '</td>\n';
             }
             str += '</tr>';
         } else if (orientation == 'transpose') {
             str += '</tr>';
-            for (var j=0; j < rows; j++) {
+            for (j=0; j < rows; j+=1) {
                 str += '<tr>';
                 str += '<td align="' + centering + '" headers="col1">' +
                        ft + list[j] + eft + '</td>\n';
@@ -2628,11 +2678,11 @@ function listToTable(header,list,orientation,centering,print,ft) {
         }
     } else {
         if (orientation == 'standard') {
-            for (var j = 0; j < rows; j++) {
+            for (j = 0; j < rows; j+=1) {
                 str += '<tr>';
                 str += '<th align="' + centering + '" id="row' + j.toString() + '">' +
                        ft + header[j] + eft + '</th>\n';
-                for (var i=0; i < cols; i++) {
+                for (i=0; i < cols; i+=1) {
                     str += '<td align="' + centering + '" headers="row' + j.toString() + '">' +
                            ft + list[j][i] + eft + '</td>';
                 }
@@ -2640,14 +2690,14 @@ function listToTable(header,list,orientation,centering,print,ft) {
             }
          } else if (orientation == 'transpose') {
             str += '<tr>';
-            for (var i=0; i < header.length; i++) {
+            for (i=0; i < header.length; i+=1) {
                 str += '<th align="' + centering + '" id="col' + i.toString() + '">' +
                         ft + header[i] + eft + '</th>\n';
             }
             str += '</tr>';
-            for (var j = 0; j < cols; j++) {
+            for (j = 0; j < cols; j+=1) {
                 str += '<tr>';
-                for (var i=0; i < rows; i++) {
+                for (i=0; i < rows; i+=1) {
                     str += '<td align="' + centering + '" headers="col' + j.toString() + '">' +
                            ft + list[i][j] + eft + '</td>\n';
                 }
@@ -2660,21 +2710,22 @@ function listToTable(header,list,orientation,centering,print,ft) {
     str += '</table></center></div>';
     if (print) {
         document.writeln(str);
-        return(true);
+        return true;
     } else {
-        return(str);
+        return str;
     }
  }
 
 function arrayToRow(v,alignment) {
  // makes a row of a table from the elements of the array v, with specified alignment
+    var i;
     document.writeln('<tr>');
-    for (var i=0; i < v.length; i++) {
+    for (i=0; i < v.length; i+=1) {
         document.write('<td align="right">');
         document.write(v[i].toString());
         document.writeln('</td>');
     }
     document.writeln('</tr>');
-    return(true);
+    return true;
 }
 

@@ -6,7 +6,7 @@
 
 <head>
 <script language="JavaScript1.8" type="text/javascript"><!--
-	pageModDate = "29 January 2013 08:37 PST";
+	pageModDate = "7 May 2013 14:37 PDT";
 	// copyright 1997--2013 by P.B. Stark, statistics.berkeley.edu/~stark.
     // All rights reserved.
 // -->
@@ -962,11 +962,11 @@
      var opt = ['no','yes'];
      writeSelectExercise(false, qCtr++, opt, 'a');
      document.writeln('</p>');
-     var ansStr = 'There is no reason to think that the sample is random; using these data ' +
+     var ansStr = '<p>There is no reason to think that the sample is random; using these data ' +
           'for a test of significance is meaningless.  The manufacturer might have ' +
           'sent phones with particularly long talk times, or particularly short talk ' +
           'times.  One cannot perform a significance test without a well-defined ' +
-          'random mechanism.';
+          'random mechanism.</p>';
      writeSolution(pCtr-1, ansStr);
 // -->
 </script>
@@ -1000,7 +1000,7 @@
     var opt = ['no','yes'];
     writeSelectExercise(false, qCtr++, opt, 'b');
     document.writeln('</p>');
-    var ansStr = 'Under the assumption that the sample is like a random sample of size ' +
+    var ansStr = '<p>Under the assumption that the sample is like a random sample of size ' +
          samSize.toString() + ' with replacement from the population of cell phones ' +
          'of that model, the conditions of the <em>z</em> test are met: the ' +
          'sample mean talk time is an unbiased estimator of the population mean, ' +
@@ -1019,7 +1019,7 @@
          'sum is twice the area of the normal curve to the left of &minus;|<em>z</em>|, ' +
          'where <em>z</em> is the <em>z</em>-score.  That area is ' +
          (roundToDig(100*pVal,2)).toString() + '%.  Because this is less than the ' +
-         'significance level of the test, we should reject the null hypothesis. ';
+         'significance level of the test, we should reject the null hypothesis.</p>';
     writeSolution(pCtr-1, ansStr);
 // -->
 </script>
@@ -1106,7 +1106,7 @@
     }
     writeSelectExercise(false, qCtr++, opt, aVal);
     document.writeln('</p>');
-    var ansStr = 'Because both random samples are large, the two sample standard deviations ' +
+    var ansStr = '<p>Because both random samples are large, the two sample standard deviations ' +
          'are very likely to be close to the two population standard deviations, and ' +
          'thus <em>S</em><sub><em>X</em></sub>/' + samSize.toString() +
          '<sup>&frac12;</sup> is likely to be close to SE(<em>X</em>) and ' +
@@ -1133,7 +1133,7 @@
           'hypothesis at significance level ' + sig.toString() + '%.';
     } else {
     ansStr += ' larger than the significance level, so we would not reject the null ' +
-          'hypothesis at significance level ' + sig.toString() + '%.';
+          'hypothesis at significance level ' + sig.toString() + '%.</p>';
     }
     writeSolution(pCtr-1, ansStr);
 // -->
@@ -1247,7 +1247,13 @@
     document.writeln(qStr);
     writeTextExercise(10,qCtr++,numToRange(normApprox));
     document.writeln('</p>');
-    var ansStr = 'In standard units, the lower endpoint is </p><p class="math">( ' +
+    jQuery(function() {
+       new Stici_NormHiLite('normhilite3', {
+        hiLiteHi: hiSu3.toString(),
+        hiLiteLo: loSu3.toString()
+       });
+    });
+    var ansStr = '<p>In standard units, the lower endpoint is </p><p class="math">( ' +
          endPts[0].toString() + 'in. &minus; ' + meanHt.toString() + 'in. )/ ' +
          sdHt.toString() + 'in. = ' + roundToDig(loSu3,3) + ',</p><p> and the ' +
          'upper endpoint is </p><p class="math">( ' +
@@ -1255,21 +1261,9 @@
          sdHt.toString() + 'in. = ' + roundToDig(hiSu3,3) + ',</p><p>so the fraction ' +
          'is approximately the area under the normal curve between ' +
          roundToDig(loSu3,3) + ' and ' + roundToDig(hiSu3,3) + ', which is ' +
-         (roundToDig(100*normApprox,1)).toString() + '%:<p><p class="figure">' +
-         '<applet code="NormHiLite.class" codebase="../../Java/" align="baseline" ' +
-         'width="620" height="300" archive="PbsGui.zip"><param name="hiLiteHi" value="' +
-         hiSu3.toString() + '"><param name="hiLiteLo" value="' + loSu3.toString() +
-         '"></applet></p>';
-    var thisApplet1 = document.applets.length;
-    var setThisApplet = function(thisApplet1) {
-                           return function() {
-                              waitForAppletIterationCount = 0;
-                              waitForApplet(thisApplet1,
-                                            function(){document.applets[thisApplet1].setLimits(loSu3.toString(),hiSu3.toString())}
-                                           );
-                           }
-                        }
-    writeSolution(pCtr-1,ansStr,setThisApplet());
+         (roundToDig(100*normApprox,1)).toString() + '%:</p><p class="figure">' +
+         '<div id="normhilite3" class="curvehilite"></div></p>';
+    writeSolution(pCtr-1,ansStr);
 // -->
 </script>
 </div>
@@ -1298,17 +1292,28 @@
            roundToDig(boxProb*100,2).toString() + '%.</p><p><span class="qSpan">Is the ' +
            'list of numbers approximately normally distributed?</span>';
     document.writeln(qStr);
-    var opt = ['no','yes'];
+    var opt = ['no','possibly','yes'];
+    var moreToSay = '';
     if (Math.abs(boxProb-normApprox) > 0.01) {
         aVal = 'a';
         var isWord = ' is ';
     } else {
         aVal = 'b';
         var isWord = ' is not ';
+        moreToSay = ' However, this is only a comparison of the fraction of values in one range: ' +
+                    'The normal curve might not match the fraction for other ranges.  Hence, ' +
+                    'it is possible that the list is approximately normally distributed, but it ' +
+                    'is also possible that it is not.';
     }
     writeSelectExercise(false,qCtr++,opt,aVal);
     document.writeln('</p>');
-    var ansStr = 'In standard units, the lower endpoint is </p><p class="math">( ' +
+    jQuery(function() {
+       new Stici_NormHiLite('normhilite4', {
+        hiLiteHi: hiSu4.toString(),
+        hiLiteLo: loSu4.toString()
+       });
+    });
+    var ansStr = '<p>In standard units, the lower endpoint is </p><p class="math">( ' +
          endPts[0].toString() + 'in. &minus; ' + meanHt.toString() + 'in. )/ ' +
          sdHt.toString() + 'in. = ' + roundToDig(loSu4,3) + ',</p><p> and the ' +
          'upper endpoint is </p><p class="math">( ' +
@@ -1316,23 +1321,11 @@
          sdHt.toString() + 'in. = ' + roundToDig(hiSu4,3) + ',</p><p>so the normal ' +
          'approximation to the fraction is the area under the normal curve between ' +
          roundToDig(loSu4,3) + ' and ' + roundToDig(hiSu4,3) + ', which is ' +
-         (roundToDig(100*normApprox,1)).toString() + '%:<p><p class="figure">' +
-         '<applet code="NormHiLite.class" codebase="../../Java/" align="baseline" ' +
-         'width="620" height="300" archive="PbsGui.zip"><param name="hiLiteHi" value="' +
-         hiSu4.toString() + '"><param name="hiLiteLo" value="' + loSu4.toString() +
-         '"></applet></p><p>This ' +
+         (roundToDig(100*normApprox,1)).toString() + '%:</p><p class="figure">' +
+         '<div class="curvehilite" id="normhilite4"></div></p><p>This ' +
          isWord + ' very different from the actual fraction, ' +
-         roundToDig(100*boxProb,2).toString() + '%.';
-    var thisApplet2 = document.applets.length;
-    var setThisApplet = function(thisApplet2) {
-                           return function() {
-                              waitForAppletIterationCount = 0;
-                              waitForApplet(thisApplet2,
-                                            function(){document.applets[thisApplet2].setLimits(loSu4.toString(),hiSu4.toString())}
-                                           );
-                           }
-                        }
-    writeSolution(pCtr-1,ansStr,setThisApplet());
+         roundToDig(100*boxProb,2).toString() + '%. ' + moreToSay + '<p>';
+    writeSolution(pCtr-1,ansStr);
 // -->
 </script>
 </div>
@@ -1345,7 +1338,7 @@
     var which = listOfRandInts(1,0,opt.length)[0];
     var nNums = listOfRandInts(1,2,5)[0];
     var qStr = 'A list contains three distinct values, <span class="math">a &lt; b &lt; c</span>. ' +
-           '<span class="qSpan">Depending on the relative frequencies of the values, ' +
+           '<span class="qSpan">Depending on the relative frequencies of the values in ' +
            'the list, the list could be nearly normally distributed.</span>';
     document.writeln(qStr);
     writeSelectExercise(false, qCtr++, ['false','true'], 'a');
@@ -1377,7 +1370,8 @@
     Let <span class="math">M</span> denote the sample mean of a random sample of size <span class="math">n</span> drawn
     with replacement from a population, and let <em>s</em> denote the sample standard
     deviation of the sample.
-    The expected value of <span class="math">M</span> is <span class="math">&mu;</span>, and the SE of <span class="math">M</span> is
+    The expected value of <span class="math">M</span> is <span class="math">&mu;</span>,
+    and the SE of <span class="math">M</span> is
     SD/<em>n</em><sup>&frac12;</sup>. Let
 </p>
 
@@ -1520,7 +1514,8 @@ jQuery(function() {
 
 <p>
     Under the null hypothesis, if <span class="math">n</span> is not too small, Student's <em>t</em> curve
-    with <span class="math">n&minus;1</span> degrees of freedom will be an accurate approximation to the probability
+    with <span class="math">n&minus;1</span> degrees of freedom will be an accurate
+    approximation to the probability
     histogram of <em>T</em>, so
 </p>
 
@@ -1724,7 +1719,7 @@ jQuery(function() {
     }
     writeSelectExercise(false, qCtr++, opt, aVal);
     document.writeln('</p>');
-    var ansStr = 'The null hypothesis is that the average number of email messages per month ' +
+    var ansStr = '<p>The null hypothesis is that the average number of email messages per month ' +
          'for all customers (the population) is 200; the alternative hypothesis ' +
          'is that the population mean exceeds 200.  The sample is drawn without ' +
          'replacement, but the sample size is very small compared with the population ' +
@@ -1755,7 +1750,7 @@ jQuery(function() {
           'at significance level ' + sig.toString() + '%.';
     } else {
     ansStr += 'greater than ' + sig.toString() + '%, so we would not reject the null ' +
-          'hypothesis at significance level ' + sig.toString() + '%.';
+          'hypothesis at significance level ' + sig.toString() + '%.</p>';
     }
     writeSolution(pCtr-1, ansStr);
 // -->
@@ -1782,7 +1777,8 @@ jQuery(function() {
 
 <p>
     Similarly, suppose we have an hypothesis-testing procedure that lets us test the null
-    hypothesis that <span class="math">&mu;=&mu;<sub>0</sub></span> for any value of <span class="math">&mu;<sub>0</sub></span>, at
+    hypothesis that <span class="math">&mu;=&mu;<sub>0</sub></span> for any value of
+    <span class="math">&mu;<sub>0</sub></span>, at
     significance level <span class="math">a</span>. Define
 </p>
 
@@ -1792,7 +1788,8 @@ jQuery(function() {
 </p>
 
 <p>
-    Then <span class="math">A</span> is a <span class="math">100%&times;(1&minus;a)</span> confidence set</em> for
+    Then <span class="math">A</span> is a <span class="math">100%&times;(1&minus;a)</span>
+    confidence set</em> for
      <span class="math">&mu;</span>:
 </p>
 
@@ -1802,7 +1799,8 @@ jQuery(function() {
 
 <p>
     (A <em>confidence set</em> is a generalization of the idea of a confidence interval:
-    a <span class="math">1&minus;a</span> confidence set for the parameter <span class="math">&mu;</span> is a random set that
+    a <span class="math">1&minus;a</span> confidence set for the parameter
+    <span class="math">&mu;</span> is a random set that
     has probability <span class="math">1&minus;a</span> of containing <span class="math">&mu;</span>.
     As is the case with confidence intervals, the probability makes sense only
     before collecting the data.)
@@ -1916,15 +1914,20 @@ jQuery(function() {
     writeTextExercise(8, qCtr++, numToRange(hiEnd) );
     document.writeln('(high)</span>');
     document.writeln('</p>');
-    var ansStr = 'The 100%&minus;<em>p</em>/2 percentile of Student\'s <em>t</em> curve with ' +
+    appl5lo = (-tCrit).toString();
+    appl5hi = (tCrit).toString()
+    jQuery(function() {
+       new Stici_NormHiLite('normhilite5', {
+        hiLiteHi: appl5hi,
+        hiLiteLo: appl5lo,
+        distribution: "Student-t",
+        df: (samSize-1).toString()
+       });
+    });
+    var ansStr = '<p>The 100%&minus;<em>p</em>/2 percentile of Student\'s <em>t</em> curve with ' +
          (samSize-1).toString() + ' degrees of freedom is ' +
-         roundToDig(tCrit,3).toString() + ':</p><p class="figure">' +
-         '<applet archive="PbsGui.zip" CODE="NormHiLite.class" WIDTH="640" ' +
-         'HEIGHT="330" codebase="../../Java"><param name="hiLiteLo" value="' +
-         (-tCrit).toString() + '"><param name="hiLiteHi" value="' + tCrit.toString() +
-         '"><param name="distribution" value="Student-t"><param name="df" value="' +
-         (samSize-1).toString() + '">You need Java to see this ' +
-         'tool.</applet></p><p>Therefore, a ' + (100-sig).toString() +
+         roundToDig(tCrit,3).toString() + ':</p><p class="figure"><div class="curvehilite" id="normhilite5">' +
+         '</div></p><p>Therefore, a ' + (100-sig).toString() +
          '% confidence interval for <span class="math">&mu;</span> starts at </p><p class="math">' +
          samMean.toString() + ' &minus; (' + samSd.toString() + '/' +
          roundToDig(Math.sqrt(samSize),3).toString() + ') &times; ' +
@@ -1934,16 +1937,7 @@ jQuery(function() {
          roundToDig(Math.sqrt(samSize),3).toString() + ') &times; ' +
          roundToDig(tCrit,3).toString() + ' = ' + roundToDig(hiEnd,3).toString() +
          ' emails/month.</p>';
-    var thisApplet3 = document.applets.length;
-    var setThisApplet = function(thisApplet3) {
-                           return function() {
-                              waitForAppletIterationCount = 0;
-                              waitForApplet(thisApplet3,
-                                            function(){document.applets[thisApplet3].setLimits((-tCrit).toString(), tCrit.toString())}
-                                           );
-                           }
-                        }
-    writeSolution(pCtr-1, ansStr, setThisApplet());
+    writeSolution(pCtr-1, ansStr);
 // -->
 </script>
 </div>
@@ -1958,7 +1952,8 @@ jQuery(function() {
     hypothesis is correct:
     If the null hypothesis is true, the expected value of a <em>Z</em> statistic is zero,
     the SE of a <em>Z</em> statistic is approximately 1, and the probability that a
-    <em>Z</em> statistic is between <span class="math">a</span> and <span class="math">b</span> is approximately the
+    <em>Z</em> statistic is between <span class="math">a</span> and <span class="math">b</span>
+    is approximately the
     area under the normal curve between <span class="math">a</span> and <span class="math">b</span>.
     Suppose that the random variable <em>Z</em> is a <em>Z</em> statistic.
     If, under the alternative hypothesis, <span class="math">E(<em>Z</em>)&lt;0</span>, the appropriate
